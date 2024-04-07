@@ -4,7 +4,6 @@ import './App.css'
 import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
-import Productos from './pages/Productos'
 
 const router = createBrowserRouter([
 	{
@@ -13,10 +12,6 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
-			},
-			{
-				path: '/Productos',
-				element: <Productos />,
 			},
 		],
 		errorElement: <NotFound />,

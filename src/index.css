@@ -90,8 +90,8 @@ body {
 	transition: border 0.5s ease-in-out;
 }
 .nav-link{
-	padding: 5px 5px;
-  	margin-right: 0;
+	padding: 5px 0;
+  	margin-right: -10px ;
   	border: 2px solid transparent;
   	transition: 0.3s ease-in-out;
 	color:var(--primary-color) !important ;

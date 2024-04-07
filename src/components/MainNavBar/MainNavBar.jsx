@@ -7,14 +7,18 @@ import logo from '../../assets/images/logo_AlAngulo.png'
 import { IconContext } from "react-icons"
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { NavLink } from "react-router-dom"
+import Button from 'react-bootstrap/Button';
 
 export const MainNavBar = () => {
     const [isOpen , setIsOpen] = useState(false);
 
-    const [user, setUser] = useState({ userName: 'tomy telechea', role: 'admin' });
+    const [user, setUser] = useState({ userName: 'Facundo', role: 'admin' });
 
     const isAdmin = () => {
         return user && user.role === 'admin';
+    };
+    const isUser = () => {
+        return user.role === 'user' || user.role === 'admin';
     };
 
     const [showCart, setShowCart] = useState(false);
@@ -95,7 +99,7 @@ export const MainNavBar = () => {
                                 <IconContext.Provider value={{className: "global-class-name Nav-Icon" }}>
                                     <span>
                                         <AiOutlineLogin />
-                                        <b className="user_Name">Hola {user.userName}</b>
+                                        {isUser() && <b className="user_Name">Hola {user.userName}</b>}
                                     </span>
                                     
                                 </IconContext.Provider>
@@ -111,7 +115,7 @@ export const MainNavBar = () => {
                     <Offcanvas.Title>
                         <RiShoppingCartLine />  
                         
-                        <i className="ms-4">Carrito</i>
+                        <i className="ms-4">CARRITO</i>
                     </Offcanvas.Title>
                 </Offcanvas.Header>
                 <hr />
@@ -133,9 +137,21 @@ export const MainNavBar = () => {
                                 </div>
                             ))}
                             <hr />
-                            <p className="paragraph cart-total">Total : $ {total}</p>
+                            <p className="paragraph cart-total">Total : ${total}</p>
                         </div>
                         )}
+                        <hr />
+                    <div className="d-grid">
+                        <Button 
+                        variant="outline-success" 
+                        size="md"
+                        className="cart-button"
+                        href=''>
+                            IR AL CARRITO
+                        </Button>
+                    
+                        
+                    </div>
                 </Offcanvas.Body>
             </Offcanvas>
 		</>

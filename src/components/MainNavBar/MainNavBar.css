@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
 
 .nav-container{
     width: 100%;
@@ -22,6 +23,7 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%);
+    display: flex;
 }
 
 .menuBar{
@@ -32,6 +34,12 @@
 .noti{
     display: flex;
     gap: 20px;
+}
+.logoName{
+    font-family: "Montserrat", sans-serif;
+    font-size: var(--title-font-size);
+    align-self: center;
+    color: var(--secondary-font-color);
 }
 
 /* a{
@@ -67,10 +75,15 @@
         gap: 20px;
         background: #fff;
     }
-    .logoName{
+    .user_Name{
         display: none;
     }
     
+}
+@media (max-width : 950px) {
+    .logoName{
+        display: none;
+    }
 }
 .global-class-name{
     color: var(--primary-color);
@@ -141,6 +154,14 @@ ul li:nth-child(2){
     font-family: var(--main-font);
     font-size: var(--paragraph-font-size);
 }
+ul li:nth-child(3){
+    color: var(--primary-font-color);
+    font-family: var(--main-font);
+    font-size: var(--paragraph-font-size);
+}
 .cart-total{
     text-align: right;
+}
+.cart-button{
+    font-family: "Montserrat", sans-serif;
 }
