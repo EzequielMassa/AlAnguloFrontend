@@ -1,0 +1,15 @@
+.sFieldFilterInput,
+.sFieldFilterInput:focus,
+.sFieldFilterInput:active {
+	background-color: transparent;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid green;
+	outline: none;
+	box-shadow: none;
+}
+
+.sFieldFilterIcon {
+	color: var(--primary-color);
+}
