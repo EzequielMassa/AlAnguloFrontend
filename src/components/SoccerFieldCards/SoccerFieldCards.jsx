@@ -11,7 +11,6 @@ function SoccerFieldCards() {
 			setSoccerFields(relevants)
 		}
 	}
-	console.log(soccerFields)
 
 	useEffect(() => {
 		fetchSoccerFields()
