@@ -82,3 +82,20 @@ body {
 		font-size: var(--paragraph-font-size-desktop);
 	}
 }
+
+.nav-link.active,
+.nav-link.show {
+	color: var(--primary-color);
+	border-bottom: 2px solid var(--primary-color);
+	transition: border 0.5s ease-in-out;
+}
+.nav-link{
+	padding: 5px 5px;
+  	margin-right: 0;
+  	border: 2px solid transparent;
+  	transition: 0.3s ease-in-out;
+	color:var(--primary-color) !important ;
+}
+.nav-link:hover{
+	color: var(--secondary-color) !important;
+}
