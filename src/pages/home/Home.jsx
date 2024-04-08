@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFilter'
-import SoccerFieldFilterCard from '../../components/SoccerFieldFilterCard/SoccerFieldFilterCard'
-import SoccerFieldCards from '../../components/SoccerFieldCards/SoccerFieldCards'
 import { Link } from 'react-router-dom'
+import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
+import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFilter'
+import SoccerFieldPreviewCards from '../../components/SoccerFieldPreviewCards/SoccerFieldPreviewCards'
 
 export const Home = () => {
 	const [queryResult, setQueryResult] = useState([])
@@ -22,7 +22,7 @@ export const Home = () => {
 						<SoccerFieldFilter onQueryResultChange={handleQueryResultChange} />
 						{queryResult ? (
 							queryResult.map((result) => (
-								<SoccerFieldFilterCard key={result._id} soccerField={result} />
+								<SoccerFieldCard key={result._id} soccerField={result} />
 							))
 						) : (
 							<></>
@@ -34,7 +34,7 @@ export const Home = () => {
 				<section className='row'>
 					<h3 className='text-center subtitle'>Descubri nuestras canchas</h3>
 					<div className='col-12 d-flex flex-column align-items-center gap-3'>
-						<SoccerFieldCards />
+						<SoccerFieldPreviewCards />
 						<Link className='btn btn-primary ' to={'/canchas'}>
 							Explora nuestras canchas
 						</Link>

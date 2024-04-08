@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import SoccerFieldCard from '../SoccerFieldCard/SoccerFieldCard'
+import SoccerFieldImgCard from '../SoccerFieldImgCard/SoccerFieldImgCard'
 
-function SoccerFieldCards() {
+function SoccerFieldPreviewCards() {
 	const [soccerFields, setSoccerFields] = useState([])
 	const fetchSoccerFields = async () => {
 		const response = await fetch('http://localhost:4000/api/soccerfields')
@@ -21,7 +21,7 @@ function SoccerFieldCards() {
 			<div className='d-flex justify-content-center gap-2  '>
 				{soccerFields ? (
 					soccerFields.map((field) => (
-						<SoccerFieldCard key={field._id} fieldImage={field.imgUrl} />
+						<SoccerFieldImgCard key={field._id} fieldImage={field.imgUrl} />
 					))
 				) : (
 					<></>
@@ -30,4 +30,4 @@ function SoccerFieldCards() {
 		</>
 	)
 }
-export default SoccerFieldCards
+export default SoccerFieldPreviewCards
