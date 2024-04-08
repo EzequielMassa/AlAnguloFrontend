@@ -1,0 +1,23 @@
+.s_field_container {
+	width: 100%;
+	height: 70vh;
+	overflow: hidden;
+	position: relative;
+}
+
+.s_field_img {
+	filter: blur(4px);
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: -100;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.s_field_container .title {
+	font-weight: 700;
+	color: var(--background-color);
+	text-shadow: 1px 4px 2px rgba(0, 0, 0, 0.6);
+}
