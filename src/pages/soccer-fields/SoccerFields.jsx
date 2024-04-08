@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import Form from 'react-bootstrap/Form'
+import { useSearchParams } from 'react-router-dom'
 import nuestrasCanchasHero from '../../assets/images/nuestras-canchas-hero.webp'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldDetail from '../../components/SoccerFieldsDetail/SoccerFieldDetail'
@@ -7,9 +9,10 @@ import {
 	detailSoccerField5,
 } from '../../utils/soccerfieldDetails'
 import './SoccerFields.css'
+
 function SoccerFields() {
 	const [soccerFields, setSoccerFields] = useState([])
-
+	const [searchParams, setSearchParams] = useSearchParams({})
 	const fetchSoccerFields = async () => {
 		const response = await fetch('http://localhost:4000/api/soccerfields')
 		const data = await response.json()
@@ -19,6 +22,75 @@ function SoccerFields() {
 	useEffect(() => {
 		fetchSoccerFields()
 	}, [])
+
+	const applyFilters = () => {
+		const name = searchParams.get('name')
+		const price = searchParams.get('price')
+		const grass = searchParams.get('grass')
+		const size = searchParams.get('size')
+
+		let filteredFields = soccerFields
+
+		if (name) {
+			filteredFields = filteredFields.filter((field) =>
+				field.name.toLowerCase().includes(name.toLowerCase())
+			)
+		}
+
+		if (price) {
+			if (price === 'menor') {
+				filteredFields = filteredFields.sort((a, b) => a.price - b.price)
+			} else if (price === 'mayor') {
+				filteredFields = filteredFields.sort((a, b) => b.price - a.price)
+			}
+		}
+
+		if (grass) {
+			filteredFields = filteredFields.filter((field) => field.grass === grass)
+		}
+
+		if (size) {
+			filteredFields = filteredFields.filter(
+				(field) => field.size === parseInt(size)
+			)
+		}
+
+		return filteredFields
+	}
+
+	const filteredSoccerFields = applyFilters()
+
+	const setFilters = (name, price, grass, size) => {
+		const params = new URLSearchParams()
+
+		if (name) {
+			params.set('name', name)
+		}
+
+		if (price) {
+			params.set('price', price)
+		}
+
+		if (grass) {
+			params.set('grass', grass)
+		}
+
+		if (size) {
+			params.set('size', size)
+		}
+
+		setSearchParams(params)
+	}
+
+	const handleInputChange = (e) => {
+		const { name, value } = e.target
+		setFilters(
+			name === 'name' ? value : searchParams.get('name'),
+			name === 'price' ? value : searchParams.get('price'),
+			name === 'grass' ? value : searchParams.get('grass'),
+			name === 'size' ? value : searchParams.get('size')
+		)
+	}
 
 	return (
 		<>
@@ -40,11 +112,63 @@ function SoccerFields() {
 					</div>
 				</section>
 			</article>
+
+			<article className='container-md'>
+				<Form>
+					<Form.Group className='mb-3' controlId='name'>
+						<Form.Label>Nombre de la cancha</Form.Label>
+						<Form.Control
+							type='text'
+							placeholder='Nombre de la cancha'
+							name='name'
+							onChange={handleInputChange}
+							value={searchParams.get('name') || ''}
+						/>
+					</Form.Group>
+					<Form.Group className='mb-3' controlId='name'>
+						<Form.Label>Precio</Form.Label>
+						<Form.Select
+							aria-label='price'
+							name='price'
+							onChange={handleInputChange}
+							value={searchParams.get('price') || ''}>
+							<option hidden>Todos</option>
+							<option value='menor'>Menor precio</option>
+							<option value='mayor'>Mayor precio</option>
+						</Form.Select>
+					</Form.Group>
+					<Form.Group className='mb-3' controlId='grass'>
+						<Form.Label>Pasto</Form.Label>
+						<Form.Select
+							aria-label='grass'
+							name='grass'
+							onChange={handleInputChange}
+							value={searchParams.get('grass') || ''}>
+							<option value=''>Todos</option>
+							<option value='natural'>Natural</option>
+							<option value='sintetic'>Sintetico</option>
+						</Form.Select>
+					</Form.Group>
+					<Form.Group className='mb-3' controlId='size'>
+						<Form.Label>Tamaño</Form.Label>
+						<Form.Select
+							aria-label='size'
+							name='size'
+							onChange={handleInputChange}
+							value={searchParams.get('size') || ''}>
+							<option value=''>Todos</option>
+							<option value='5'>5</option>
+							<option value='11'>11</option>
+						</Form.Select>
+					</Form.Group>
+				</Form>
+			</article>
+
 			<article className='container-md '>
 				<section className='row'>
 					<div className='col-12'>
-						{soccerFields ? (
-							soccerFields.map((field) => (
+						{filteredSoccerFields ? (
+							filteredSoccerFields.map((field) => (
 								<SoccerFieldCard key={field._id} soccerField={field} />
 							))
 						) : (
