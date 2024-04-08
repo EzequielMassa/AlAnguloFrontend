@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFilter'
 import SoccerFieldPreviewCards from '../../components/SoccerFieldPreviewCards/SoccerFieldPreviewCards'
+import './Home.css'
 
 export const Home = () => {
 	const [queryResult, setQueryResult] = useState([])
@@ -12,7 +13,19 @@ export const Home = () => {
 
 	return (
 		<>
-			<h1>Home</h1>
+			<section class="hero">
+				<div class="hero-content">
+					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
+					<div className='d-flex justify-content-between'>
+						<Link to={'./Canchas'} className={'hero-link me-5'}>
+							Nuestras Canchas
+						</Link>
+						<Link to={'./Productos'} className={'hero-link ms-5'}>
+							Nuestras Canchas
+						</Link>	
+					</div>
+				</div>
+			</section>
 			<article className='container-md my-4'>
 				<section className='row'>
 					<h2 className='text-center title py-4'>
