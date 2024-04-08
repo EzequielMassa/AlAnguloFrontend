@@ -1,27 +1,45 @@
 import Button from 'react-bootstrap/Button'
-import './soccerFieldCard.css'
+import Card from 'react-bootstrap/Card'
+import { GiBabyfootPlayers, GiGrass } from 'react-icons/gi'
+import { TbClockHour1 } from 'react-icons/tb'
 import { capitalizeWord } from '../../helpers/capitalizeWord.js'
-
+import './soccerFieldCard.css'
 function SoccerFieldFilterCard({ soccerField }) {
-	const { name, description, imgUrl } = soccerField
+	const { name, description, imgUrl, size, grass, price } = soccerField
 
 	return (
 		<>
-			<article className='container-md '>
-				<div className='row my-4 d-flex flex-column flex-md-row align-items-center justify-content-center soccerfield_card_container rounded rounded-2 overflow-hidden p-2'>
-					<div className='col-12 col-md-4 px-0 '>
-						<img src={imgUrl} alt={name + ' imagen'} className='img-fluid ' />
-					</div>
-					<div className='col-12 col-md-8 soccerFieldCard d-flex flex-column align-items-center'>
-						<h2 className='text-center my-1 subtitle soccerfield_card_title '>
+			<article className='container-md p-0 my-4 soccerfield_card_container'>
+				<Card className='bg-dark text-white'>
+					<Card.Img
+						src={imgUrl}
+						alt='Card image'
+						className='soccerfield_card_img'
+					/>
+					<Card.ImgOverlay className='overlay'>
+						<Card.Title className='subtitle soccerfield_card_title'>
 							{capitalizeWord(name)}
-						</h2>
-						<p className='text-center paragraph '>
+						</Card.Title>
+						<Card.Text className='paragraph text-light '>
 							{capitalizeWord(description)}
-						</p>
-						<Button className='my-2 w-50  '>Reservar</Button>
-					</div>
-				</div>
+						</Card.Text>
+						<Card.Text className='paragraph text-light d-flex align-items-center  '>
+							<GiBabyfootPlayers className='me-2 soccerfield_card_icon' /> :{' '}
+							{size}
+						</Card.Text>
+						<Card.Text className='paragraph text-light d-flex align-items-center '>
+							<GiGrass className='me-2 soccerfield_card_icon' /> : {grass}
+						</Card.Text>
+						<Card.Text className='paragraph text-light d-flex align-items-center '>
+							<TbClockHour1 className='me-2 soccerfield_card_icon' /> : &nbsp;
+							{price.toLocaleString('es-AR', {
+								style: 'currency',
+								currency: 'ARS',
+							})}
+						</Card.Text>
+						<Button className='my-2 '>Reservar</Button>
+					</Card.ImgOverlay>
+				</Card>
 			</article>
 		</>
 	)

@@ -57,8 +57,12 @@ function SoccerFieldFilter({ onQueryResultChange }) {
 						onChange={handleChange}
 						value={searchParams.get('size') || ''}>
 						<option hidden> Seleccione el tamaño</option>
-						<option value='5'>5</option>
-						<option value='11'>11</option>
+						<option value='5' className='soccerfieldOption'>
+							5
+						</option>
+						<option value='11' className='soccerfieldOption'>
+							11
+						</option>
 					</Form.Select>
 				</Form.Group>
 				<Form.Group
@@ -74,8 +78,12 @@ function SoccerFieldFilter({ onQueryResultChange }) {
 						onChange={handleChange}
 						value={searchParams.get('grass') || ''}>
 						<option hidden> Seleccione el pasto</option>
-						<option value='natural'>natural</option>
-						<option value='sintetic'>sintetico</option>
+						<option value='natural' className='soccerfieldOption'>
+							natural
+						</option>
+						<option value='sintetic' className='soccerfieldOption'>
+							sintetico
+						</option>
 					</Form.Select>
 				</Form.Group>
 			</Form>
