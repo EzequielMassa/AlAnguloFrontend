@@ -21,7 +21,7 @@ export const Home = () => {
 							Nuestras Canchas
 						</Link>
 						<Link to={'./Productos'} className={'hero-link ms-5'}>
-							Nuestras Canchas
+							Nuestros Productos
 						</Link>	
 					</div>
 				</div>

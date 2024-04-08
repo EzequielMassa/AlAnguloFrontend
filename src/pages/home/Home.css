@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
 .hero{
 	position: relative;
 	width: 100%;
@@ -28,7 +29,9 @@
 	padding-bottom: 30px;
 	font-size: var(--title-font-size-desktop);
 	text-align: center;
-    color: var(--secondary-font-color);
+	font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+	text-transform: capitalize;
 }
 .hero-content .hero-link{
 	text-decoration: none;
@@ -37,6 +40,7 @@
 	border: 1px solid var(--primary-color);
 	text-transform: uppercase;
 	transition: all .3s ease-in-out;
+	font-family: 'Montserrat', sans-serif;
 }
 .hero-content a:hover{
 	background-color: var(--primary-color);

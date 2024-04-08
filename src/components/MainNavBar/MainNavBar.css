@@ -27,6 +27,7 @@
     left: 50%;
     transform: translate(-50%);
     display: flex;
+    text-decoration: none;
 }
 
 .menuBar{
