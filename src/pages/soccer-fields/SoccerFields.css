@@ -3,6 +3,7 @@
 	height: 70vh;
 	overflow: hidden;
 	position: relative;
+	background-color: rgba(0, 22, 40, 0.6);
 }
 
 .s_field_img {
