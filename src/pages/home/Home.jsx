@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, ScrollRestoration } from 'react-router-dom'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFilter'
 import SoccerFieldPreviewCards from '../../components/SoccerFieldPreviewCards/SoccerFieldPreviewCards'
@@ -13,8 +13,8 @@ export const Home = () => {
 
 	return (
 		<>
-			<section className="hero">
-				<div className="hero-content">
+			<section className='hero'>
+				<div className='hero-content'>
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
 					<div className='d-flex justify-content-between'>
 						<Link to={'./Canchas'} className={'hero-link me-5'}>
@@ -22,7 +22,7 @@ export const Home = () => {
 						</Link>
 						<Link to={'./Productos'} className={'hero-link ms-5'}>
 							Nuestros Productos
-						</Link>	
+						</Link>
 					</div>
 				</div>
 			</section>
@@ -54,6 +54,11 @@ export const Home = () => {
 					</div>
 				</section>
 			</article>
+			<ScrollRestoration
+				getKey={(location) => {
+					return location.pathname
+				}}
+			/>
 		</>
 	)
 }

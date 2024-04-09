@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import {
+	ScrollRestoration,
+	useNavigate,
+	useSearchParams,
+} from 'react-router-dom'
 import nuestrasCanchasHero from '../../assets/images/nuestras-canchas-hero.webp'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldDetail from '../../components/SoccerFieldsDetail/SoccerFieldDetail'
@@ -142,6 +146,11 @@ function SoccerFields() {
 					</div>
 				</section>
 			</article>
+			<ScrollRestoration
+				getKey={(location) => {
+					return location.pathname
+				}}
+			/>
 		</>
 	)
 }

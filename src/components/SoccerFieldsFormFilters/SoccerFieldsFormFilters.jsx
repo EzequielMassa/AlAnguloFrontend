@@ -7,7 +7,9 @@ function SoccerFieldsFomFilters({
 	clearSoccerFieldsFilter,
 }) {
 	return (
-		<Form className='d-flex flex-column flex-md-row  justify-content-center align-items-center  '>
+		<Form
+			className='d-flex flex-column flex-md-row  justify-content-center align-items-center  '
+			zzz>
 			<Form.Group className='mb-3 filter_form_group_container' controlId='name'>
 				<Form.Label>Nombre de la cancha</Form.Label>
 				<Form.Control
