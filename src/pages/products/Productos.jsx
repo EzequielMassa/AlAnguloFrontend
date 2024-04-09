@@ -3,6 +3,7 @@ import { Row, Col, Container, Card, Button, Navbar, Nav, Form, FormControl, Drop
 import imagen from './camiseta.jpg';
 import './products.css'
 import './filter.css'
+import { ScrollRestoration } from "react-router-dom";
 import logo from '../../assets/images/logo_AlAngulo.png'
 function Products() {
    const [productos, setProductos] = useState([
@@ -165,20 +166,21 @@ function Products() {
       </Navbar>
      </Container> 
      <Container fluid className='mt-5'>
-
       {filteredProducts.length === 0 ? (
         <div className='text-center'>No hay productos</div>
       ) : (
-        <Row className='row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 gap-3 product-row'>
+        <Row className=' product-row  '>
           {filteredProducts.map((p, index) => (
             <Col xl={4} key={index} className='product-column'>
-              <Card className='card-products'>
+              <Card className='card-products my-2'>
                 <Card.Img variant="top" className='camiseta' src={imagen} />
-                <Card.Body className='text-center'>
-                  <Card.Title>{p.nombre}</Card.Title>
-                  <Card.Text>${p.precio}</Card.Text>
+                
+                <Card.Body className='text-center bg-white'>
+                <div className='divisor-line' />
+                  <Card.Title className='btn-product'>{p.nombre}</Card.Title>
+                  <Card.Text className='btn-product btn-price'>${p.precio}</Card.Text>
                   <div className="btn-container d-flex">
-                    <Button className='btn-success'>Ver producto</Button>
+                    <Button className='btn-product btn-success'>Ver producto</Button>
                     
                   </div>
                 </Card.Body>
@@ -188,6 +190,8 @@ function Products() {
         </Row>
       )}
     </Container>
+    <ScrollRestoration/>
+
     </>
   );
 }
