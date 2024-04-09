@@ -75,6 +75,9 @@ export const MainNavBar = () => {
                                 </IconContext.Provider>}
                             </div>
                             <div className={isOpen ? "smallMenu" : "menu"}>
+                                <NavLink to={'./'} className={'nav-link'}>
+                                    Inicio
+                                </NavLink>
                                 <NavLink to={'./Productos'} className={'nav-link'}>
                                     Productos
                                 </NavLink>
@@ -89,10 +92,10 @@ export const MainNavBar = () => {
                                     Admin
                                 </NavLink>} 
                             </div>
-                            <div className="logo">
+                            <NavLink to={'./'} className={'logo'}>
                                 <img src={logo} alt="logo" />
                                 <b className="logoName">AlAngulo</b>
-                            </div>
+                            </NavLink>
                             <div className="noti">
                                 <IconContext.Provider value={{className: "global-class-name Nav-Icon" }}>
                                     <span>
