@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
+
 .product-row {
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-evenly;
 }
 
 .camiseta {
@@ -15,10 +17,26 @@
 
 .card-products {
     background-color: var(--primary-color);
+    box-shadow: rgba(0, 22, 40, .8);
 }
 
 .nav-filter {
     display: flex;
     justify-content: center;
     flex-direction: row;
+}
+.divisor-line{
+    width: 100%;
+    border-radius: 50% ;
+    background-color: var(--primary-color);
+    height:5px;
+    margin-bottom: 10px;
+}
+.btn-product{
+    text-transform: uppercase;
+    font-family: "Montserrat" , sans-serif;
+}
+.btn-price{
+    font-size: 1.5rem;
+    color: var(--primary-color);
 }

@@ -33,3 +33,8 @@
     
     color: var(--secondary-font-color);
 }
+@media screen and (max-width:425px) {
+    .nav-search{
+      margin-top: 10px;
+    }
+}
