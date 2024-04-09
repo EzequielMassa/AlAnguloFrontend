@@ -140,18 +140,18 @@ function Products() {
 
   return (
     <>
-    <Container fluid className='mt-5 pt-5 '>
+    <Container  className='mt-5 pt-5 '>
       <Navbar bg="light" expand="lg" className="mb-3 nav-filter ">
         <Navbar.Brand >Búsqueda de Productos</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className=" w-100 d-flex flex-column flex-md-row justify-content-center align-items-center">
             <Form  className='form-search flex-column flex-md-row gap-2 w-100 d-flex justify-content-center align-items-center'>
-              <FormControl type="text" placeholder="Buscar por nombre" className="mr-sm-2" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+              <FormControl type="text" onChangeCapture={handleSearch} placeholder="Buscar por nombre" className="mr-sm-2 nav-search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
               <Button className='btn-search align-self-center d-flex mb-2 ms-2' variant="outline-success" onClick={handleSearch}>Buscar</Button>
               <DropdownButton title="Categoría" onSelect={(category) => setSelectedCategory(category)}>
-              <Dropdown.Item eventKey="remeras">Remeras</Dropdown.Item>
-              <Dropdown.Item eventKey="pantalones">Pantalones</Dropdown.Item>
+              <Dropdown.Item  eventKey="remeras">Remeras</Dropdown.Item>
+              <Dropdown.Item  eventKey="pantalones">Pantalones</Dropdown.Item>
             </DropdownButton>
             <DropdownButton title="Ordenar por precio">
               <Dropdown.Item onClick={() => handleSort('asc')}>Menor a mayor</Dropdown.Item>
@@ -165,7 +165,7 @@ function Products() {
 
       </Navbar>
      </Container> 
-     <Container fluid className='mt-5'>
+     <Container  className='mt-5'>
       {filteredProducts.length === 0 ? (
         <div className='text-center'>No hay productos</div>
       ) : (
