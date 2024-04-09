@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import nuestrasCanchasHero from '../../assets/images/nuestras-canchas-hero.webp'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldDetail from '../../components/SoccerFieldsDetail/SoccerFieldDetail'
+import SoccerFieldsFomFilters from '../../components/SoccerFieldsFormFilters/SoccerFieldsFormFilters'
 import {
 	detailSoccerField11,
 	detailSoccerField5,
@@ -13,6 +13,7 @@ import './SoccerFields.css'
 function SoccerFields() {
 	const [soccerFields, setSoccerFields] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams({})
+	const navigate = useNavigate()
 	const fetchSoccerFields = async () => {
 		const response = await fetch('http://localhost:4000/api/soccerfields')
 		const data = await response.json()
@@ -82,6 +83,9 @@ function SoccerFields() {
 		setSearchParams(params)
 	}
 
+	const clearSoccerFieldsFilter = () => {
+		navigate('/canchas')
+	}
 	const handleInputChange = (e) => {
 		const { name, value } = e.target
 		setFilters(
@@ -113,55 +117,16 @@ function SoccerFields() {
 				</section>
 			</article>
 
-			<article className='container-md'>
-				<Form>
-					<Form.Group className='mb-3' controlId='name'>
-						<Form.Label>Nombre de la cancha</Form.Label>
-						<Form.Control
-							type='text'
-							placeholder='Nombre de la cancha'
-							name='name'
-							onChange={handleInputChange}
-							value={searchParams.get('name') || ''}
+			<article className='container-md my-4 '>
+				<section className='row'>
+					<div className='col'>
+						<SoccerFieldsFomFilters
+							searchParams={searchParams}
+							handleInputChange={handleInputChange}
+							clearSoccerFieldsFilter={clearSoccerFieldsFilter}
 						/>
-					</Form.Group>
-					<Form.Group className='mb-3' controlId='name'>
-						<Form.Label>Precio</Form.Label>
-						<Form.Select
-							aria-label='price'
-							name='price'
-							onChange={handleInputChange}
-							value={searchParams.get('price') || ''}>
-							<option hidden>Todos</option>
-							<option value='menor'>Menor precio</option>
-							<option value='mayor'>Mayor precio</option>
-						</Form.Select>
-					</Form.Group>
-					<Form.Group className='mb-3' controlId='grass'>
-						<Form.Label>Pasto</Form.Label>
-						<Form.Select
-							aria-label='grass'
-							name='grass'
-							onChange={handleInputChange}
-							value={searchParams.get('grass') || ''}>
-							<option value=''>Todos</option>
-							<option value='natural'>Natural</option>
-							<option value='sintetic'>Sintetico</option>
-						</Form.Select>
-					</Form.Group>
-					<Form.Group className='mb-3' controlId='size'>
-						<Form.Label>Tamaño</Form.Label>
-						<Form.Select
-							aria-label='size'
-							name='size'
-							onChange={handleInputChange}
-							value={searchParams.get('size') || ''}>
-							<option value=''>Todos</option>
-							<option value='5'>5</option>
-							<option value='11'>11</option>
-						</Form.Select>
-					</Form.Group>
-				</Form>
+					</div>
+				</section>
 			</article>
 
 			<article className='container-md '>
