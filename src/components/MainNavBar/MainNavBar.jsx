@@ -6,10 +6,20 @@ import { RiShoppingCartLine } from 'react-icons/ri'
 import logo from '../../assets/images/logo_AlAngulo.png'
 import { IconContext } from "react-icons"
 import Offcanvas from 'react-bootstrap/Offcanvas'
+
 import { NavLink } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
-
+import Login from "../Login/Login"
 export const MainNavBar = () => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleCloseModal = () => {
+      setShowModal(false);
+    };
+  
+    const handleShowModal = () => {
+      setShowModal(true);
+    };
     const [isOpen , setIsOpen] = useState(false);
 
     const [user, setUser] = useState({ userName: 'Facundo', role: 'admin' });
@@ -104,7 +114,8 @@ export const MainNavBar = () => {
                                     
                                 </IconContext.Provider>
                                 
-                                
+                                <Button onClick={handleShowModal}>Iniciar Sesión</Button>
+                                <Login show={showModal} handleClose={handleCloseModal} />
                             </div>
                         </div>
                     </div>
