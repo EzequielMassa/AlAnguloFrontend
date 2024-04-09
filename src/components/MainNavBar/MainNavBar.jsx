@@ -6,10 +6,20 @@ import { RiShoppingCartLine } from 'react-icons/ri'
 import logo from '../../assets/images/logo_AlAngulo.png'
 import { IconContext } from "react-icons"
 import Offcanvas from 'react-bootstrap/Offcanvas'
+
 import { NavLink } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
-
+import Login from "../Login/Login"
 export const MainNavBar = () => {
+    const [showModal, setShowModal] = useState(false);
+
+    const handleCloseModal = () => {
+      setShowModal(false);
+    };
+  
+    const handleShowModal = () => {
+      setShowModal(true);
+    };
     const [isOpen , setIsOpen] = useState(false);
 
     const [user, setUser] = useState({ userName: 'Facundo', role: 'admin' });
@@ -68,17 +78,17 @@ export const MainNavBar = () => {
                                 <NavLink to={'./'} className={'nav-link'}>
                                     Inicio
                                 </NavLink>
-                                <NavLink to={'./Productos'} className={'nav-link'}>
+                                <NavLink to={'./productos'} className={'nav-link'}>
                                     Productos
                                 </NavLink>
-                                <NavLink to={'./Canchas'} className={'nav-link'}>
+                                <NavLink to={'./canchas'} className={'nav-link'}>
                                     Canchas
                                 </NavLink>
-                                <NavLink to={'./Nosotros'} className={'nav-link'}>
+                                <NavLink to={'./nosotros'} className={'nav-link'}>
                                     Nosotros
                                 </NavLink>
                                 
-                                {isAdmin() && <NavLink to={'./Admin'} className={'nav-link'}>
+                                {isAdmin() && <NavLink to={'./admin'} className={'nav-link'}>
                                     Admin
                                 </NavLink>} 
                             </div>
@@ -101,7 +111,8 @@ export const MainNavBar = () => {
                                 </IconContext.Provider>
                                 <IconContext.Provider value={{className: "global-class-name Nav-Icon" }}>
                                     <span>
-                                        <AiOutlineLogin />
+                                        <AiOutlineLogin onClick={handleShowModal} />
+                                        <Login show={showModal} handleClose={handleCloseModal} />
                                         {isUser() && <b className="user_Name">Hola {user.userName}</b>}
                                     </span>
                                     

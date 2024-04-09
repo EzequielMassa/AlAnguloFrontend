@@ -4,7 +4,7 @@ import './App.css'
 import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
-
+import Products from './pages/products/Productos'
 const router = createBrowserRouter([
 	{
 		element: <Layout />,
@@ -13,6 +13,10 @@ const router = createBrowserRouter([
 				path: '/',
 				element: <Home />,
 			},
+			{
+				path:'/productos',
+				element:<Products/>
+			}
 		],
 		errorElement: <NotFound />,
 	},

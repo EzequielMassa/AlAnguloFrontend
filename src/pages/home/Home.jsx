@@ -13,8 +13,8 @@ export const Home = () => {
 
 	return (
 		<>
-			<section class="hero">
-				<div class="hero-content">
+			<section className="hero">
+				<div className="hero-content">
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
 					<div className='d-flex justify-content-between'>
 						<Link to={'./Canchas'} className={'hero-link me-5'}>
