@@ -141,14 +141,17 @@ export const MainNavBar = () => {
                         </div>
                         )}
                         <hr />
-                    <div className="d-grid">
-                        <Button 
-                        variant="outline-success" 
-                        size="md"
-                        className="cart-button"
-                        href=''>
-                            IR AL CARRITO
-                        </Button>
+                    <div>
+                        <NavLink to={'./Cart'} className="d-grid text-decoration-none">
+                            <Button 
+                            variant="outline-success" 
+                            size="md"
+                            className="cart-button"
+                            onClick={handleCartToggle}
+                            >
+                                IR AL CARRITO
+                            </Button>
+                        </NavLink>
                     
                         
                     </div>

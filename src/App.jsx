@@ -4,6 +4,7 @@ import './App.css'
 import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
+import { Cart } from './pages/Cart/Cart'
 
 const router = createBrowserRouter([
 	{
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
+			},
+			{
+				path: '/Cart',
+				element: <Cart />,
 			},
 		],
 		errorElement: <NotFound />,
