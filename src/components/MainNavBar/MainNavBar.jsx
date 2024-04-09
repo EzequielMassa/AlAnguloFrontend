@@ -12,10 +12,19 @@ import { HiBars4 } from 'react-icons/hi2'
 import { RiShoppingCartLine } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/logo_AlAngulo.png'
+import Login from '../Login/Login'
 import './MainNavBar.css'
 
 export const MainNavBar = () => {
+	const [showModal, setShowModal] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
+	const handleCloseModal = () => {
+		setShowModal(false)
+	}
+
+	const handleShowModal = () => {
+		setShowModal(true)
+	}
 
 	const [user, setUser] = useState({ userName: 'Facundo', role: 'admin' })
 
@@ -78,6 +87,9 @@ export const MainNavBar = () => {
 								)}
 							</div>
 							<div className={isOpen ? 'smallMenu' : 'menu'}>
+								<NavLink to={'./'} className={'nav-link'}>
+									Inicio
+								</NavLink>
 								<NavLink to={'./productos'} className={'nav-link'}>
 									Productos
 								</NavLink>
@@ -94,10 +106,10 @@ export const MainNavBar = () => {
 									</NavLink>
 								)}
 							</div>
-							<div className='logo'>
+							<NavLink to={'./'} className={'logo'}>
 								<img src={logo} alt='logo' />
 								<b className='logoName'>AlAngulo</b>
-							</div>
+							</NavLink>
 							<div className='noti'>
 								<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
@@ -116,7 +128,8 @@ export const MainNavBar = () => {
 								<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
 									<span>
-										<AiOutlineLogin />
+										<AiOutlineLogin onClick={handleShowModal} />
+										<Login show={showModal} handleClose={handleCloseModal} />
 										{isUser() && (
 											<b className='user_Name'>Hola {user.userName}</b>
 										)}
