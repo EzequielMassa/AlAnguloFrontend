@@ -6,7 +6,7 @@
 }
 
 .s_field_img {
-	filter: blur(4px);
+	filter: brightness(50%);
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -18,6 +18,5 @@
 
 .s_field_container .title {
 	font-weight: 700;
-	color: var(--background-color);
-	text-shadow: 1px 4px 2px rgba(0, 0, 0, 0.6);
+	color: var(--primary-color);
 }
