@@ -138,17 +138,17 @@ function Products() {
   };
 
   return (
-    <Container fluid className='mt-5'>
-      <Navbar bg="light" expand="lg" className="mb-3 nav-filter">
+    <>
+    <Container fluid className='mt-5 pt-5 '>
+      <Navbar bg="light" expand="lg" className="mb-3 nav-filter ">
         <Navbar.Brand >Búsqueda de Productos</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Form  className='form-search'>
+          <Nav className=" w-100 d-flex flex-column flex-md-row justify-content-center align-items-center">
+            <Form  className='form-search flex-column flex-md-row gap-2 w-100 d-flex justify-content-center align-items-center'>
               <FormControl type="text" placeholder="Buscar por nombre" className="mr-sm-2" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-              <Button className='btn-search' variant="outline-success" onClick={handleSearch}>Buscar</Button>
-            </Form>
-            <DropdownButton title="Categoría" onSelect={(category) => setSelectedCategory(category)}>
+              <Button className='btn-search align-self-center d-flex mb-2 ms-2' variant="outline-success" onClick={handleSearch}>Buscar</Button>
+              <DropdownButton title="Categoría" onSelect={(category) => setSelectedCategory(category)}>
               <Dropdown.Item eventKey="remeras">Remeras</Dropdown.Item>
               <Dropdown.Item eventKey="pantalones">Pantalones</Dropdown.Item>
             </DropdownButton>
@@ -156,15 +156,16 @@ function Products() {
               <Dropdown.Item onClick={() => handleSort('asc')}>Menor a mayor</Dropdown.Item>
               <Dropdown.Item onClick={() => handleSort('desc')}>Mayor a menor</Dropdown.Item>
             </DropdownButton>
+            </Form>
+           
             <Button variant="outline-secondary" onClick={handleClearFilters}>Limpiar Filtros</Button>
-            <div className="logo-filter">
-               <img src={logo} alt="logo" />
-                <b className="logoName-filter">AlAngulo</b>
-            </div>
           </Nav>
         </Navbar.Collapse>
 
       </Navbar>
+     </Container> 
+     <Container fluid className='mt-5'>
+
       {filteredProducts.length === 0 ? (
         <div className='text-center'>No hay productos</div>
       ) : (
@@ -175,11 +176,10 @@ function Products() {
                 <Card.Img variant="top" className='camiseta' src={imagen} />
                 <Card.Body className='text-center'>
                   <Card.Title>{p.nombre}</Card.Title>
-                  <Card.Text>{p.descripcion}</Card.Text>
                   <Card.Text>${p.precio}</Card.Text>
                   <div className="btn-container d-flex">
-                    <Button className='btn-success' >Comprar</Button>
-                    <Button className='btn-success'>Ver más</Button>
+                    <Button className='btn-success'>Ver producto</Button>
+                    
                   </div>
                 </Card.Body>
               </Card>
@@ -188,6 +188,7 @@ function Products() {
         </Row>
       )}
     </Container>
+    </>
   );
 }
 

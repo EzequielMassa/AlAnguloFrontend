@@ -78,17 +78,17 @@ export const MainNavBar = () => {
                                 <NavLink to={'./'} className={'nav-link'}>
                                     Inicio
                                 </NavLink>
-                                <NavLink to={'./Productos'} className={'nav-link'}>
+                                <NavLink to={'./productos'} className={'nav-link'}>
                                     Productos
                                 </NavLink>
-                                <NavLink to={'./Canchas'} className={'nav-link'}>
+                                <NavLink to={'./canchas'} className={'nav-link'}>
                                     Canchas
                                 </NavLink>
-                                <NavLink to={'./Nosotros'} className={'nav-link'}>
+                                <NavLink to={'./nosotros'} className={'nav-link'}>
                                     Nosotros
                                 </NavLink>
                                 
-                                {isAdmin() && <NavLink to={'./Admin'} className={'nav-link'}>
+                                {isAdmin() && <NavLink to={'./admin'} className={'nav-link'}>
                                     Admin
                                 </NavLink>} 
                             </div>
@@ -111,14 +111,14 @@ export const MainNavBar = () => {
                                 </IconContext.Provider>
                                 <IconContext.Provider value={{className: "global-class-name Nav-Icon" }}>
                                     <span>
-                                        <AiOutlineLogin />
+                                        <AiOutlineLogin onClick={handleShowModal} />
+                                        <Login show={showModal} handleClose={handleCloseModal} />
                                         {isUser() && <b className="user_Name">Hola {user.userName}</b>}
                                     </span>
                                     
                                 </IconContext.Provider>
                                 
-                                <Button onClick={handleShowModal}>Iniciar Sesión</Button>
-                                <Login show={showModal} handleClose={handleCloseModal} />
+                                
                             </div>
                         </div>
                     </div>

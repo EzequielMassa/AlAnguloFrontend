@@ -1,6 +1,7 @@
 .nav-filter {
     border-radius: 20px; /* Establece bordes redondeados */
     padding: 10px 20px; /* Añade espaciado interno */
+    margin-top: 20px;
   }
   
   .nav-filter .navbar-brand {
