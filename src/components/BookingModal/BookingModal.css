@@ -1,0 +1,9 @@
+.booking_modal_title {
+	color: var(--primary-color);
+}
+.booking_modal_time_icon {
+	color: var(--accent-color);
+}
+.booking_modal_img {
+	width: 10rem;
+}
