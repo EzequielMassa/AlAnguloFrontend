@@ -6,7 +6,7 @@ import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
 import Products from './pages/products/Productos'
 import SoccerFields from './pages/soccer-fields/SoccerFields'
-
+import ProductDetail from './pages/ProductDetail/ProductDetail'
 const router = createBrowserRouter([
 	{
 		element: <Layout />,
@@ -23,6 +23,10 @@ const router = createBrowserRouter([
 				path: '/canchas',
 				element: <SoccerFields />,
 			},
+			{
+				path:'/productDetail',
+				element:<ProductDetail/>
+			}
 		],
 		errorElement: <NotFound />,
 	},
