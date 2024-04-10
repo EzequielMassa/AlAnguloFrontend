@@ -10,18 +10,18 @@
   position: relative;
   background-color: white;
   color: #fff;
-  border: 1px solid #333;
+  border: 5px solid var(--secondary-color);
 }
+
 
 .title {
   font-size: 28px;
   color: royalblue;
   font-weight: 600;
-  letter-spacing: -1px;
-  position: relative;
-  display: flex;
+  
   align-items: center;
-  padding-left: 30px;
+  text-align: center;
+ 
 }
 .link-login{
   padding-left: 5.5rem;
