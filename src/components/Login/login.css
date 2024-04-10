@@ -12,23 +12,25 @@
 .contenedor{
     max-width: 350px;
     background: #F8F9FD;
-    background: var(--accent-color);
+    background: var(--secondary-color);
     border-radius: 40px;
     padding: 25px 35px;
-    border: 5px solid rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
     margin: 20px;
 }
-
+.heading-text{
+    display: flex;
+    justify-content: center;
+}
 .heading{
     text-align: center;
   font-weight: 900;
   font-size: 30px;
-  color: rgb(16, 137, 211);
+  color:var(--secondary-color);
 }
-.form{
-    margin-top: 20px;
-}
+
+
 .form-input{
     width: 100%;
     background: white;
@@ -65,3 +67,22 @@
     gap: 10px
 }
 
+.nav-link-container{
+    width: 100px;
+    height: 38px;
+    color: white;
+    margin-right: 20px;
+    border-radius: 6px;
+    background-color: var(--secondary-color);
+    text-align: center;
+    align-content: center;
+}
+.link-nav{
+    font-family: var(--secondary-font);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+.btn-register{
+    background-color: var(--secondary-color);
+}
