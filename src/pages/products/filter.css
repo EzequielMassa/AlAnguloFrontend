@@ -1,6 +1,7 @@
 .nav-filter {
     border-radius: 20px; /* Establece bordes redondeados */
     padding: 10px 20px; /* Añade espaciado interno */
+    margin-top: 20px;
   }
   
   .nav-filter .navbar-brand {
@@ -31,4 +32,9 @@
     font-size: var(--title-font-size);
     
     color: var(--secondary-font-color);
+}
+@media screen and (max-width:425px) {
+    .nav-search{
+      margin-top: 10px;
+    }
 }

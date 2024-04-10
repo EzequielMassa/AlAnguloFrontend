@@ -11,7 +11,6 @@ function Login({ show, handleClose }) {
     // Aquí puede   s implementar la lógica de inicio de sesión, por ejemplo, enviar los datos al servidor
     console.log('Email:', email);
     console.log('Password:', password);
-    console.log('Es humano:', humanChecked);
     handleClose(); // Cierra el modal después de iniciar sesión
   };
 
