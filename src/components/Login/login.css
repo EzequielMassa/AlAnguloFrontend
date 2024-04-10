@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
+
 .body-modal{
     display: flex;
     justify-content: center;
 }
+.form-label{
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    color: var(--secondary-font-color);
+}
 .contenedor{
     max-width: 350px;
     background: #F8F9FD;
-    background: linear-gradient(0deg, rgb(175, 166, 166) 0%, rgb(126, 159, 202) 100%);
+    background: var(--accent-color);
     border-radius: 40px;
     padding: 25px 35px;
     border: 5px solid rgb(255, 255, 255);
@@ -33,20 +40,28 @@
     border-inline: 2px solid transparent;
 }
 .login-button{
-    display: block;
-    width: 100%;
+    
+    
     font-weight: bold;
     background: linear-gradient(45deg, rgb(16, 137, 211) 0%, rgb(18, 177, 209) 100%);
     color: white;
-    padding-block: 15px;
+    width: 100%;
     margin: 20px auto;
     border-radius: 20px;
     box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 20px 10px -15px;
     border: none;
     transition: all 0.2s ease-in-out;
 }
-.secondary-buttons{
-  display: flex;
-  flex-direction: row;
-  column-gap: 20px;
+.button-group{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+.secondary-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px
+}
+
