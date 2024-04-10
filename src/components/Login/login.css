@@ -30,8 +30,7 @@
   color:var(--secondary-color);
 }
 
-.form{
-}
+
 .form-input{
     width: 100%;
     background: white;
@@ -83,4 +82,7 @@
     color: white;
     text-decoration: none;
     text-align: center;
+}
+.btn-register{
+    background-color: var(--secondary-color);
 }

@@ -39,7 +39,7 @@ function Login({ show, handleClose }) {
       <Modal.Footer className='justify-content-center ' >
       <div className="button-group">
         <div className="secondary-buttons">
-            <div className="nav-link-container"><NavLink to={'./register'} onClick={handleClose} className='link-nav'> Registrate</NavLink></div>
+          <Button variant='success'><NavLink to={'./register'} onClick={handleClose} className='link-nav'> Registrate</NavLink></Button>
             <Button variant="danger" onClick={handleClose}>Cancelar</Button>
         </div>
       </div> 
