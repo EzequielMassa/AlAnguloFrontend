@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
 .form-register   {
   display: flex;
   flex-direction: column;
@@ -5,9 +6,9 @@
   gap: 10px;
   width: 400px;
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   position: relative;
-  background-color: #a69ee9;
+  background-color: white;
   color: #fff;
   border: 1px solid #333;
 }
@@ -21,4 +22,24 @@
   display: flex;
   align-items: center;
   padding-left: 30px;
+}
+.link-login{
+  padding-left: 5.5rem;
+  text-decoration: none;
+}
+.form-label{
+  font-size: 1rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+}
+.box-link{
+  display: flex;
+  justify-content: center;
+}
+.redirect-link{
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
 }
