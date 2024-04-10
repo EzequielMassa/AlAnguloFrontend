@@ -1,11 +1,18 @@
+import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { GiBabyfootPlayers, GiGrass } from 'react-icons/gi'
 import { TbClockHour1 } from 'react-icons/tb'
 import { capitalizeWord } from '../../helpers/capitalizeWord.js'
+import BookingModal from '../BookingModal/BookingModal.jsx'
 import './SoccerFieldCard.css'
 function SoccerFieldCard({ soccerField }) {
-	const { name, description, imgUrl, size, grass, price } = soccerField
+	const [modalShow, setModalShow] = useState(false)
+	const { _id, name, description, imgUrl, size, grass, price } = soccerField
+
+	const handleBookingModalClick = (soccerField) => {
+		setModalShow(true)
+	}
 
 	return (
 		<>
@@ -37,10 +44,21 @@ function SoccerFieldCard({ soccerField }) {
 								currency: 'ARS',
 							})}
 						</Card.Text>
-						<Button className='my-2 '>Reservar</Button>
+						<Button
+							className='my-2 '
+							id={_id}
+							onClick={() => handleBookingModalClick(soccerField)}>
+							Reservar
+						</Button>
 					</Card.ImgOverlay>
 				</Card>
 			</article>
+
+			<BookingModal
+				soccerfield={soccerField}
+				show={modalShow}
+				onHide={() => setModalShow(false)}
+			/>
 		</>
 	)
 }
