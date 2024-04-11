@@ -166,13 +166,14 @@ function Products() {
       </Navbar>
      </Container> 
      <Container  className='mt-5'>
+     
       {filteredProducts.length === 0 ? (
-        <div className='text-center'>No hay productos</div>
+        <div className='text-center no-product'>No hay productos</div>
       ) : (
-        <Row className=' product-row  '>
-          {filteredProducts.map((p, index) => (
-            <Col xl={4} key={index} className='product-column'>
-              <Card className='card-products my-2'>
+        <Row className=' product-row  '>  
+           {filteredProducts.map((p, index) => (
+            <Col xl={3} md={4} key={index} className='product-column '>
+              <Card key={p.id} className='card-products my-2 d-flex flex-column  '>
                 <Card.Img variant="top" className='camiseta' src={imagen} />
                 
                 <Card.Body className='text-center bg-white'>
@@ -186,9 +187,12 @@ function Products() {
                 </Card.Body>
               </Card>
             </Col>
-          ))}
-        </Row>
+           
+          ))} </Row>
+        
+        
       )}
+    
     </Container>
     <ScrollRestoration/>
 
