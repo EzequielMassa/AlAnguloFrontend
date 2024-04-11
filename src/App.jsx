@@ -9,8 +9,8 @@ import Products from './pages/products/Productos'
 
 import Register from './pages/register/Register'
 
+import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
 import SoccerFields from './pages/soccer-fields/SoccerFields'
-import { BookingContextProvider } from './context/BookingContext'
 
 const router = createBrowserRouter([
 	{
@@ -20,9 +20,9 @@ const router = createBrowserRouter([
 				path: '/',
 
 				element: (
-					<BookingContextProvider>
+					<SoccerFieldsContextProvider>
 						<Home />
-					</BookingContextProvider>
+					</SoccerFieldsContextProvider>
 				),
 			},
 			{
@@ -36,9 +36,9 @@ const router = createBrowserRouter([
 			{
 				path: '/canchas',
 				element: (
-					<BookingContextProvider>
+					<SoccerFieldsContextProvider>
 						<SoccerFields />
-					</BookingContextProvider>
+					</SoccerFieldsContextProvider>
 				),
 			},
 		],

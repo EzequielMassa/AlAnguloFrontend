@@ -8,15 +8,15 @@ import nuestrasCanchasHero from '../../assets/images/nuestras-canchas-hero.webp'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldDetail from '../../components/SoccerFieldsDetail/SoccerFieldDetail'
 import SoccerFieldsFomFilters from '../../components/SoccerFieldsFormFilters/SoccerFieldsFormFilters'
+import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import {
 	detailSoccerField11,
 	detailSoccerField5,
 } from '../../utils/soccerfieldDetails'
 import './SoccerFields.css'
-import { useBookingContext } from '../../context/BookingContext'
 
 function SoccerFields() {
-	const { pepe } = useBookingContext()
+	const { pepe } = useSoccerFieldsContext()
 	console.log(pepe)
 	const [soccerFields, setSoccerFields] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams({})
