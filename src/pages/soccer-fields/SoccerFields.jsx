@@ -16,18 +16,9 @@ import {
 import './SoccerFields.css'
 
 function SoccerFields() {
-	const { soccerFields } = useSoccerFieldsContext()
+	const { soccerFields, getAllSoccerfields } = useSoccerFieldsContext()
 	const [searchParams, setSearchParams] = useSearchParams({})
 	const navigate = useNavigate()
-	// const fetchSoccerFields = async () => {
-	// 	const response = await fetch('http://localhost:4000/api/soccerfields')
-	// 	const data = await response.json()
-	// 	setSoccerFields(data.data)
-	// }
-
-	// useEffect(() => {
-	// 	fetchSoccerFields()
-	// }, [])
 
 	const applyFilters = () => {
 		const name = searchParams.get('name')
@@ -100,6 +91,10 @@ function SoccerFields() {
 			name === 'size' ? value : searchParams.get('size')
 		)
 	}
+
+	useEffect(() => {
+		getAllSoccerfields()
+	}, [])
 
 	return (
 		<>
