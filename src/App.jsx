@@ -10,7 +10,7 @@ import Products from './pages/products/Productos'
 import Register from './pages/register/Register'
 
 import SoccerFields from './pages/soccer-fields/SoccerFields'
-
+import { BookingContextProvider } from './context/BookingContext'
 
 const router = createBrowserRouter([
 	{
@@ -18,21 +18,29 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Home />,
+
+				element: (
+					<BookingContextProvider>
+						<Home />
+					</BookingContextProvider>
+				),
 			},
 			{
-				path:'/products',
-				element:<Products/>
+				path: '/products',
+				element: <Products />,
 			},
 			{
-				path:"/register",
-				element:<Register/>
+				path: '/register',
+				element: <Register />,
 			},
 			{
 				path: '/canchas',
-				element: <SoccerFields />,
+				element: (
+					<BookingContextProvider>
+						<SoccerFields />
+					</BookingContextProvider>
+				),
 			},
-
 		],
 		errorElement: <NotFound />,
 	},

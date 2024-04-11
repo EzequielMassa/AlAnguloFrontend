@@ -13,8 +13,11 @@ import {
 	detailSoccerField5,
 } from '../../utils/soccerfieldDetails'
 import './SoccerFields.css'
+import { useBookingContext } from '../../context/BookingContext'
 
 function SoccerFields() {
+	const { pepe } = useBookingContext()
+	console.log(pepe)
 	const [soccerFields, setSoccerFields] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams({})
 	const navigate = useNavigate()
