@@ -2,8 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import { Home } from './pages/home/Home'
+import Admin from './pages/admin/Admin'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
+import UsersContext from './context/UsersContext'
 
 const router = createBrowserRouter([
 	{
@@ -12,6 +14,10 @@ const router = createBrowserRouter([
 			{
 				path: '/',
 				element: <Home />,
+			},
+			{
+				path: '/admin',
+				element: <UsersContext> <Admin /> </UsersContext>,
 			},
 		],
 		errorElement: <NotFound />,
