@@ -1,20 +1,33 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import SoccerFieldImgCard from '../SoccerFieldImgCard/SoccerFieldImgCard'
 
 function SoccerFieldPreviewCards() {
-	const [soccerFields, setSoccerFields] = useState([])
-	const fetchSoccerFields = async () => {
-		const response = await fetch('http://localhost:4000/api/soccerfields')
-		const data = await response.json()
-		if (data.data) {
-			const relevants = data.data.slice(0, 3)
-			setSoccerFields(relevants)
-		}
-	}
+	const {
+		soccerFields,
+		soccerFieldsLoading,
+		soccerFieldsError,
+		getAllSoccerfields,
+	} = useSoccerFieldsContext()
 
 	useEffect(() => {
-		fetchSoccerFields()
+		getAllSoccerfields()
 	}, [])
+
+	if (soccerFieldsLoading) {
+		return (
+			<>
+				<h1>loading...</h1>
+			</>
+		)
+	}
+	if (soccerFieldsError) {
+		return (
+			<>
+				<h1>{soccerFieldsError.message}</h1>
+			</>
+		)
+	}
 
 	return (
 		<>
