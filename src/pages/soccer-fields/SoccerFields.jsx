@@ -16,20 +16,18 @@ import {
 import './SoccerFields.css'
 
 function SoccerFields() {
-	const { pepe } = useSoccerFieldsContext()
-	console.log(pepe)
-	const [soccerFields, setSoccerFields] = useState([])
+	const { soccerFields } = useSoccerFieldsContext()
 	const [searchParams, setSearchParams] = useSearchParams({})
 	const navigate = useNavigate()
-	const fetchSoccerFields = async () => {
-		const response = await fetch('http://localhost:4000/api/soccerfields')
-		const data = await response.json()
-		setSoccerFields(data.data)
-	}
+	// const fetchSoccerFields = async () => {
+	// 	const response = await fetch('http://localhost:4000/api/soccerfields')
+	// 	const data = await response.json()
+	// 	setSoccerFields(data.data)
+	// }
 
-	useEffect(() => {
-		fetchSoccerFields()
-	}, [])
+	// useEffect(() => {
+	// 	fetchSoccerFields()
+	// }, [])
 
 	const applyFilters = () => {
 		const name = searchParams.get('name')
