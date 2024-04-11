@@ -1,5 +1,5 @@
-import { createContext, useContext, useEffect } from 'react'
-import UseAxiosSoccerFields from '../hooks/useAxios'
+import { createContext, useContext, useState } from 'react'
+import UseAxiosSoccerFields from '../hooks/useAxiosSoccerFields.js'
 
 export const SoccerFieldsContext = createContext()
 
@@ -13,7 +13,13 @@ export const SoccerFieldsContextProvider = ({ children }) => {
 		soccerFieldsQueryLoading,
 		soccerFieldsQueryError,
 		getSoccerfieldsByQuery,
+		soccerFieldAvailableHours,
+		soccerFieldAvailableHoursLoading,
+		soccerFieldAvailableHoursError,
+		getSoccerFieldAvailableHours,
 	} = UseAxiosSoccerFields()
+
+	const [selectedSoccerField, setSelectedSoccerField] = useState({})
 
 	return (
 		<SoccerFieldsContext.Provider
@@ -26,6 +32,12 @@ export const SoccerFieldsContextProvider = ({ children }) => {
 				soccerFieldsQueryLoading,
 				soccerFieldsQueryError,
 				getSoccerfieldsByQuery,
+				soccerFieldAvailableHours,
+				soccerFieldAvailableHoursLoading,
+				soccerFieldAvailableHoursError,
+				getSoccerFieldAvailableHours,
+				selectedSoccerField,
+				setSelectedSoccerField,
 			}}>
 			{children}
 		</SoccerFieldsContext.Provider>

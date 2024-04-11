@@ -3,14 +3,17 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { GiBabyfootPlayers, GiGrass } from 'react-icons/gi'
 import { TbClockHour1 } from 'react-icons/tb'
+import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext.jsx'
 import { capitalizeWord } from '../../helpers/capitalizeWord.js'
 import BookingModal from '../BookingModal/BookingModal.jsx'
 import './SoccerFieldCard.css'
 function SoccerFieldCard({ soccerField }) {
 	const [modalShow, setModalShow] = useState(false)
+	const { setSelectedSoccerField } = useSoccerFieldsContext()
 	const { _id, name, description, imgUrl, size, grass, price } = soccerField
 
-	const handleBookingModalClick = (soccerField) => {
+	const handleBookingModalClick = (soccerfield) => {
+		setSelectedSoccerField(soccerfield)
 		setModalShow(true)
 	}
 
@@ -39,7 +42,7 @@ function SoccerFieldCard({ soccerField }) {
 						</Card.Text>
 						<Card.Text className='paragraph text-light d-flex align-items-center '>
 							<TbClockHour1 className='me-2 soccerfield_card_icon' /> : &nbsp;
-							{price.toLocaleString('es-AR', {
+							{price?.toLocaleString('es-AR', {
 								style: 'currency',
 								currency: 'ARS',
 							})}
@@ -54,11 +57,7 @@ function SoccerFieldCard({ soccerField }) {
 				</Card>
 			</article>
 
-			<BookingModal
-				soccerfield={soccerField}
-				show={modalShow}
-				onHide={() => setModalShow(false)}
-			/>
+			<BookingModal show={modalShow} onHide={() => setModalShow(false)} />
 		</>
 	)
 }

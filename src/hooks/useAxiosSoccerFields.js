@@ -13,6 +13,15 @@ function UseAxiosSoccerFields() {
 		useState(false)
 	const [soccerFieldsQueryError, setSoccerFieldsQueryError] = useState(null)
 
+	const [soccerFieldAvailableHours, setSoccerFieldAvailableHours] = useState([])
+	const [
+		soccerFieldAvailableHoursLoading,
+		setSoccerFieldAvailableHoursLoading,
+	] = useState(false)
+	const [soccerFieldAvailableHoursError, setSoccerFieldAvailableHoursError] =
+		useState(null)
+	useState(false)
+
 	const getAllSoccerfields = async () => {
 		setSoccerFieldsLoading(true)
 		try {
@@ -45,6 +54,37 @@ function UseAxiosSoccerFields() {
 			setSoccerFieldsQueryError(err)
 		} finally {
 			setSoccerFieldsQueryLoading(false)
+		}
+	}
+
+	const getSoccerFieldAvailableHours = async (
+		soccerfieldId,
+		date,
+		selectedDate
+	) => {
+		setSoccerFieldAvailableHoursLoading(true)
+		try {
+			const response = await axios.get(
+				`${baseUrl}/bookings/available_hours?soccerfield=${soccerfieldId}&date=${date}`
+			)
+			const fechaActual = new Date()
+
+			if (
+				fechaActual.getDate() === selectedDate.getDate() &&
+				fechaActual.getMonth() === selectedDate.getMonth()
+			) {
+				const horariosFiltrados = response.data.data.filter((horario) => {
+					const hora = parseInt(horario.split(':')[0], 10)
+					return hora >= new Date().getHours() + 1
+				})
+				setSoccerFieldAvailableHours(horariosFiltrados)
+			} else {
+				setSoccerFieldAvailableHours(response.data.data)
+			}
+		} catch (err) {
+			setSoccerFieldAvailableHoursError(err)
+		} finally {
+			setSoccerFieldAvailableHoursLoading(false)
 		}
 	}
 
@@ -93,6 +133,10 @@ function UseAxiosSoccerFields() {
 		soccerFieldsQueryLoading,
 		soccerFieldsQueryError,
 		getSoccerfieldsByQuery,
+		soccerFieldAvailableHours,
+		soccerFieldAvailableHoursLoading,
+		soccerFieldAvailableHoursError,
+		getSoccerFieldAvailableHours,
 	}
 }
 
