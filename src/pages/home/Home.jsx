@@ -7,7 +7,8 @@ import './Home.css'
 import { Image } from 'react-bootstrap'
 import logo from './logorolling-remove.png'
 import Spinner from '../../components/Spinner/Spinner'
-
+import Facilitie from '../../components/Facilitie/Facilitie'
+import { facilites } from '../../utils/facilitiesInfo'
 
 export const Home = () => {
 	const {
@@ -18,7 +19,7 @@ export const Home = () => {
 
 	return (
 		<>
-			 <section className='hero'>
+			<section className='hero'>
 				<div className='hero-content'>
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
 					<div className='d-flex justify-content-between'>
@@ -30,7 +31,7 @@ export const Home = () => {
 						</Link>
 					</div>
 				</div>
-			</section> 
+			</section>
 			<article className='container-md my-4'>
 				<section className='row'>
 					<h2 className='text-center title py-4'>
@@ -63,58 +64,70 @@ export const Home = () => {
 					</div>
 				</section>
 			</article>
-			<div className="slider d-none d-md-grid ">
-				<div className="slide-track">
-					<div className="slide">
+			<article className='container-md my-5 '>
+				<h2 className='text-center d-block  title'>Nuestras Instalaciones</h2>
+				<section className='row'>
+					<div className='col-12'>
+						{facilites.map((f) => (
+							<Facilitie key={f.title} facilitie={f} />
+						))}
+					</div>
+				</section>
+			</article>
+			<div className='slider d-none d-md-grid '>
+				<div className='slide-track'>
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
-						<img src={logo} />
-					</div><div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
-						<img src={logo} />
-					</div><div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
+						<img src={logo} />
+					</div>
+					<div className='slide'>
+						<img src={logo} />
+					</div>
+					<div className='slide'>
 						<img src={logo} />
 					</div>
 				</div>
