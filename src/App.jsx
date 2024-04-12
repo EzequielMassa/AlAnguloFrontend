@@ -5,12 +5,13 @@ import './App.css'
 import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
+import { Cart } from './pages/Cart/Cart'
 import Products from './pages/products/Productos'
 
 import Register from './pages/register/Register'
 
+import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
 import SoccerFields from './pages/soccer-fields/SoccerFields'
-
 
 const router = createBrowserRouter([
 	{
@@ -18,21 +19,33 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: '/',
-				element: <Home />,
+
+				element: (
+					<SoccerFieldsContextProvider>
+						<Home />
+					</SoccerFieldsContextProvider>
+				),
 			},
 			{
-				path:'/products',
-				element:<Products/>
+				path: '/carrito',
+				element: <Cart />,
 			},
 			{
-				path:"/register",
-				element:<Register/>
+				path: '/productos',
+				element: <Products />,
+			},
+			{
+				path: '/register',
+				element: <Register />,
 			},
 			{
 				path: '/canchas',
-				element: <SoccerFields />,
+				element: (
+					<SoccerFieldsContextProvider>
+						<SoccerFields />
+					</SoccerFieldsContextProvider>
+				),
 			},
-
 		],
 		errorElement: <NotFound />,
 	},

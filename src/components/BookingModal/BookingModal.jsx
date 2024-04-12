@@ -10,8 +10,11 @@ import Row from 'react-bootstrap/Row'
 import DatePicker from 'react-datepicker'
 import { FaClock, FaRegCalendarAlt } from 'react-icons/fa'
 import { LuAlarmClock } from 'react-icons/lu'
+import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import './BookingModal.css'
 function BookingModal(props) {
+	const { selectedSoccerField } = useSoccerFieldsContext()
+
 	const [form, setForm] = useState({
 		soccerfield: '',
 		user: '',
@@ -19,36 +22,24 @@ function BookingModal(props) {
 		time: '',
 	})
 	const [selectedDate, setSelectedDate] = useState(new Date())
-	const [availableHours, setAvailableHours] = useState([])
 	const [time, setTime] = useState('')
-	const fetchAvailableHours = async (soccerfieldId, date) => {
-		const response = await fetch(
-			`http://localhost:4000/api/bookings/available_hours?soccerfield=${soccerfieldId}&date=${date}`
-		)
-		const data = await response.json()
-
-		const fechaActual = new Date()
-
-		if (
-			fechaActual.getDate() === selectedDate.getDate() &&
-			fechaActual.getMonth() === selectedDate.getMonth()
-		) {
-			const horariosFiltrados = data.data.filter((horario) => {
-				const hora = parseInt(horario.split(':')[0], 10)
-				return hora >= new Date().getHours() + 1
-			})
-			setAvailableHours(horariosFiltrados)
-		} else {
-			setAvailableHours(data.data)
-		}
-	}
+	const {
+		soccerFieldAvailableHours,
+		soccerFieldAvailableHoursLoading,
+		soccerFieldAvailableHoursError,
+		getSoccerFieldAvailableHours,
+	} = useSoccerFieldsContext()
 
 	const handleDateChange = (date) => {
 		const formatedDate = formatDate(date)
 		setSelectedDate(date)
 		setForm((prev) => ({ ...prev, date: formatedDate }))
-		fetchAvailableHours(props.soccerfield._id, formatedDate)
-		setTime(availableHours[0])
+		getSoccerFieldAvailableHours(
+			selectedSoccerField._id,
+			formatedDate,
+			selectedDate
+		)
+		setTime(soccerFieldAvailableHours[0])
 	}
 	const handleTimeChange = (e) => {
 		setTime(e.target.value)
@@ -77,18 +68,22 @@ function BookingModal(props) {
 	useEffect(() => {
 		setForm((prev) => ({
 			...prev,
-			soccerfield: props.soccerfield._id,
+			soccerfield: selectedSoccerField._id,
 			user: '6608ccf89897b94a2f273473',
 			date: formatDate(selectedDate),
-			time: availableHours[0],
+			time: soccerFieldAvailableHours[0],
 		}))
-	}, [availableHours, selectedDate, props.soccerfield._id])
+	}, [soccerFieldAvailableHours, selectedDate, selectedSoccerField._id])
 
 	useEffect(() => {
-		if (props.soccerfield._id) {
-			fetchAvailableHours(props.soccerfield._id, formatDate(selectedDate))
+		if (selectedSoccerField._id) {
+			getSoccerFieldAvailableHours(
+				selectedSoccerField._id,
+				formatDate(selectedDate),
+				selectedDate
+			)
 		}
-	}, [selectedDate, props.soccerfield._id])
+	}, [selectedDate, selectedSoccerField._id])
 
 	return (
 		<Modal
@@ -144,8 +139,8 @@ function BookingModal(props) {
 								selected={time}
 								value={time}
 								onChange={handleTimeChange}>
-								{availableHours ? (
-									availableHours.map((hour) => (
+								{soccerFieldAvailableHours ? (
+									soccerFieldAvailableHours.map((hour) => (
 										<option key={hour} value={hour}>
 											{hour}
 										</option>
@@ -155,11 +150,11 @@ function BookingModal(props) {
 								)}
 							</Form.Select>
 							<img
-								src={props.soccerfield.imgUrl}
+								src={selectedSoccerField.imgUrl}
 								alt='imagen cancha'
 								className='booking_modal_img rounded rounded-2 mt-3 '
 							/>
-							<h5 className='pt-1 text-center'>{props.soccerfield.name}</h5>
+							<h5 className='pt-1 text-center'>{selectedSoccerField.name}</h5>
 							<div className='d-flex align-items-center justify-content-center gap-3'>
 								<FaClock />
 								<span>1 hora</span>
@@ -170,7 +165,7 @@ function BookingModal(props) {
 						<Col xs={12} className='text-center mt-4 '>
 							<h5 className='text-muted '>
 								Total:{' '}
-								{props.soccerfield.price.toLocaleString('es-AR', {
+								{selectedSoccerField.price?.toLocaleString('es-AR', {
 									style: 'currency',
 									currency: 'ARS',
 								})}

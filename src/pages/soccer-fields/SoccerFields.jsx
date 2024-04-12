@@ -8,6 +8,7 @@ import nuestrasCanchasHero from '../../assets/images/nuestras-canchas-hero.webp'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldDetail from '../../components/SoccerFieldsDetail/SoccerFieldDetail'
 import SoccerFieldsFomFilters from '../../components/SoccerFieldsFormFilters/SoccerFieldsFormFilters'
+import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import {
 	detailSoccerField11,
 	detailSoccerField5,
@@ -15,18 +16,9 @@ import {
 import './SoccerFields.css'
 
 function SoccerFields() {
-	const [soccerFields, setSoccerFields] = useState([])
+	const { soccerFields, getAllSoccerfields } = useSoccerFieldsContext()
 	const [searchParams, setSearchParams] = useSearchParams({})
 	const navigate = useNavigate()
-	const fetchSoccerFields = async () => {
-		const response = await fetch('http://localhost:4000/api/soccerfields')
-		const data = await response.json()
-		setSoccerFields(data.data)
-	}
-
-	useEffect(() => {
-		fetchSoccerFields()
-	}, [])
 
 	const applyFilters = () => {
 		const name = searchParams.get('name')
@@ -99,6 +91,10 @@ function SoccerFields() {
 			name === 'size' ? value : searchParams.get('size')
 		)
 	}
+
+	useEffect(() => {
+		getAllSoccerfields()
+	}, [])
 
 	return (
 		<>
