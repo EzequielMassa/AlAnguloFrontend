@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import SoccerFieldImgCard from '../SoccerFieldImgCard/SoccerFieldImgCard'
+import Spinner from '../Spinner/Spinner'
+import SpinnerAlternative from '../SpinnerAlternative/SpinnerAlternative'
 
 function SoccerFieldPreviewCards() {
 	const {
@@ -13,13 +15,10 @@ function SoccerFieldPreviewCards() {
 	useEffect(() => {
 		getAllSoccerfields()
 	}, [])
-
-	if (soccerFieldsLoading) {
-		return (
-			<>
-				<h1>loading...</h1>
-			</>
-		)
+	const test = true
+	if (test) {
+		// return <Spinner />
+		return <SpinnerAlternative />
 	}
 	if (soccerFieldsError) {
 		return (

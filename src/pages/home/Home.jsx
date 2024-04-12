@@ -4,6 +4,7 @@ import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFil
 import SoccerFieldPreviewCards from '../../components/SoccerFieldPreviewCards/SoccerFieldPreviewCards'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import './Home.css'
+import Spinner from '../../components/Spinner/Spinner'
 
 export const Home = () => {
 	const {
@@ -14,7 +15,7 @@ export const Home = () => {
 
 	return (
 		<>
-			<section className='hero'>
+			{/* <section className='hero'>
 				<div className='hero-content'>
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
 					<div className='d-flex justify-content-between'>
@@ -26,7 +27,7 @@ export const Home = () => {
 						</Link>
 					</div>
 				</div>
-			</section>
+			</section> */}
 			<article className='container-md my-4'>
 				<section className='row'>
 					<h2 className='text-center title py-4'>
@@ -35,7 +36,7 @@ export const Home = () => {
 					<div className='col-12'>
 						<SoccerFieldFilter />
 						{soccerFieldsQueryLoading ? (
-							<h1>loading...</h1>
+							<Spinner />
 						) : soccerFieldsQueryError ? (
 							<h1>{soccerFieldsQueryError.response.data.message}</h1>
 						) : soccerFieldsQuery ? (
