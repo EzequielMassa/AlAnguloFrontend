@@ -93,7 +93,7 @@ export const Cart = () => {
                                     <div className='d-flex align-items-center justify-content-around '>
 
                                         <div className=''>
-                                            <Card.Img src={product.image} className='card-img col-3'/>
+                                            <Card.Img src={product.image} className='card-imagen col-3'/>
                                         </div>
                                         <div className='separador'> 
                                         </div>
@@ -145,7 +145,7 @@ export const Cart = () => {
                     </div>
                 )}
             </div>
-            <div className='d-flex flex-column align-items-end container total-price'>
+            <div className='d-flex flex-column align-items-end container total-price my-2 '>
                 
                 {displayProducts ? (
                     <h3>
