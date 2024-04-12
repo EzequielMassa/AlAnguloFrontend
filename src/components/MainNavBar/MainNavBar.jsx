@@ -176,7 +176,7 @@ export const MainNavBar = () => {
 					)}
 					<hr />
 					<div className='d-grid'>
-                        <NavLink to={'./Cart'} className={'d-grid text-decoration-none'}>
+                        <NavLink to={'./carrito'} className={'d-grid text-decoration-none'}>
 
                             <Button
                                 variant='outline-success'
