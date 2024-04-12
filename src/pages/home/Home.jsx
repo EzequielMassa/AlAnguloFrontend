@@ -1,20 +1,22 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, ScrollRestoration } from 'react-router-dom'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFilter'
 import SoccerFieldPreviewCards from '../../components/SoccerFieldPreviewCards/SoccerFieldPreviewCards'
+import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import './Home.css'
+import Spinner from '../../components/Spinner/Spinner'
 
 export const Home = () => {
-	const [queryResult, setQueryResult] = useState([])
-	const handleQueryResultChange = (newQueryResult) => {
-		setQueryResult(newQueryResult)
-	}
+	const {
+		soccerFieldsQuery,
+		soccerFieldsQueryLoading,
+		soccerFieldsQueryError,
+	} = useSoccerFieldsContext()
 
 	return (
 		<>
-			<section className="hero">
-				<div className="hero-content">
+			{/* <section className='hero'>
+				<div className='hero-content'>
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
 					<div className='d-flex justify-content-between'>
 						<Link to={'./Canchas'} className={'hero-link me-5'}>
@@ -22,19 +24,23 @@ export const Home = () => {
 						</Link>
 						<Link to={'./Productos'} className={'hero-link ms-5'}>
 							Nuestros Productos
-						</Link>	
+						</Link>
 					</div>
 				</div>
-			</section>
+			</section> */}
 			<article className='container-md my-4'>
 				<section className='row'>
 					<h2 className='text-center title py-4'>
 						Encontra la cancha que necesitas rapidamente
 					</h2>
 					<div className='col-12'>
-						<SoccerFieldFilter onQueryResultChange={handleQueryResultChange} />
-						{queryResult ? (
-							queryResult.map((result) => (
+						<SoccerFieldFilter />
+						{soccerFieldsQueryLoading ? (
+							<Spinner />
+						) : soccerFieldsQueryError ? (
+							<h1>{soccerFieldsQueryError.response.data.message}</h1>
+						) : soccerFieldsQuery ? (
+							soccerFieldsQuery.map((result) => (
 								<SoccerFieldCard key={result._id} soccerField={result} />
 							))
 						) : (
@@ -54,6 +60,11 @@ export const Home = () => {
 					</div>
 				</section>
 			</article>
+			<ScrollRestoration
+				getKey={(location) => {
+					return location.pathname
+				}}
+			/>
 		</>
 	)
 }
