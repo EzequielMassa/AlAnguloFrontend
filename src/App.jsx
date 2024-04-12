@@ -7,9 +7,8 @@ import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
 import { Cart } from './pages/Cart/Cart'
 import Products from './pages/products/Productos'
-
+import About from './pages/about/About'
 import Register from './pages/register/Register'
-
 import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
 import SoccerFields from './pages/soccer-fields/SoccerFields'
 
@@ -46,6 +45,10 @@ const router = createBrowserRouter([
 					</SoccerFieldsContextProvider>
 				),
 			},
+			{
+				path:'/nosotros',
+				element:<About />
+			}
 		],
 		errorElement: <NotFound />,
 	},
