@@ -5,6 +5,7 @@ import './App.css'
 import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
+import { Cart } from './pages/Cart/Cart'
 import Products from './pages/products/Productos'
 
 import Register from './pages/register/Register'
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-				path: '/products',
+				path: '/carrito',
+				element: <Cart />,
+			},
+			{
+				path: '/productos',
 				element: <Products />,
 			},
 			{
