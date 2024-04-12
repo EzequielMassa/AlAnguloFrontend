@@ -4,7 +4,7 @@ import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFilter'
 import SoccerFieldPreviewCards from '../../components/SoccerFieldPreviewCards/SoccerFieldPreviewCards'
 import './Home.css'
-import {Image} from 'react-bootstrap'
+import { Image } from 'react-bootstrap'
 import logo from './logorolling-remove.png'
 
 export const Home = () => {
@@ -62,53 +62,53 @@ export const Home = () => {
 						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
-					</div>
-					<div className="slide">
-						<img src={logo} />	
-					</div>
-					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
 						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
+					</div>
+					<div className="slide">
+						<img src={logo} />
+					</div>
+					<div className="slide">
+						<img src={logo} />
 					</div><div className="slide">
 						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div><div className="slide">
 						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 					<div className="slide">
-						<img src={logo} />	
+						<img src={logo} />
 					</div>
 				</div>
 			</div>
