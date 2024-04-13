@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
 
-.nav-container{
+.header .nav-container{
     width: 100%;
     height: 70px;
     padding: 10px 50px;
@@ -8,7 +8,7 @@
     top: 0;
     z-index: 100;
 }
-.nav{
+.header .nav-container .nav{
     display: flex;
     justify-content: space-between;
     background: white;
@@ -61,10 +61,10 @@
 } */
 
 @media (max-width : 850px) {
-    .nav-container{
+    .header .nav-container{
         padding: 10px;
     }
-    .nav{
+    .header .nav-container .nav{
         position: relative;
     }
     .menuBar{
