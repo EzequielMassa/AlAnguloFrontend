@@ -1,6 +1,7 @@
 import { Col } from 'react-bootstrap'
 import { Link, ScrollRestoration } from 'react-router-dom'
 import Contact from '../../components/Contact/Contact'
+import EShop from '../../components/E-Shop/EShop'
 import Facilitie from '../../components/Facilitie/Facilitie'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFilter'
@@ -17,10 +18,10 @@ import logo6 from './logoPublicity/logoNikeRemove.png'
 import logo7 from './logoPublicity/logoPlayRemove.png'
 import logo8 from './logoPublicity/logoStarbucksRemove.png'
 import logo5 from './logoPublicity/logomongoremove.png'
+import logo12 from './logoPublicity/logorolling-remove.png'
 import logo9 from './logoPublicity/logotwremove.png'
 import logo10 from './logoPublicity/nintendoLogoRemove.png'
 import logo11 from './logoPublicity/nodeLogoRemove.png'
-import logo12 from './logoPublicity/logorolling-remove.png'
 
 export const Home = () => {
 	const {
@@ -83,6 +84,15 @@ export const Home = () => {
 						{facilites.map((f) => (
 							<Facilitie key={f.title} facilitie={f} />
 						))}
+					</div>
+				</section>
+			</article>
+
+			<article className='container-md my-5 '>
+				<h2 className='text-center d-block  title'>Descubri nuestro E-Shop</h2>
+				<section className='row'>
+					<div className='col-12'>
+						<EShop />
 					</div>
 				</section>
 			</article>
