@@ -1,26 +1,14 @@
 import Form from 'react-bootstrap/Form'
 import { GiHighGrass, GiSoccerField } from 'react-icons/gi'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import './SoccerFieldFilter.css'
-function SoccerFieldFilter({ onQueryResultChange }) {
+function SoccerFieldFilter() {
+	const { getSoccerfieldsByQuery } = useSoccerFieldsContext()
 	const [searchParams, setSearchParams] = useSearchParams({})
-	const [queryResult, setQueryResult] = useState([])
 
-	const fetchField = async (size, grass) => {
-		const url = `http://localhost:4000/api/soccerfields/query?`
-		let response
-		if (size && grass) {
-			response = await fetch(`${url}size=${size}&grass=${grass}`)
-		} else if (size) {
-			response = await fetch(`${url}size=${size}`)
-		} else {
-			response = await fetch(`${url}grass=${grass}`)
-		}
-		const data = await response.json()
-		setQueryResult(data.data)
-	}
 	const handleChange = (e) => {
 		const inputName = e.target.name
 		const inputValue = e.target.value
@@ -34,12 +22,8 @@ function SoccerFieldFilter({ onQueryResultChange }) {
 		const size = searchParams.get('size')
 		const grass = searchParams.get('grass')
 		if (!size && !grass) return
-		fetchField(size, grass)
+		getSoccerfieldsByQuery(size, grass)
 	}, [searchParams])
-
-	useEffect(() => {
-		onQueryResultChange(queryResult)
-	}, [queryResult, onQueryResultChange])
 
 	return (
 		<>

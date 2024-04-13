@@ -4,16 +4,20 @@
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  width: 400px;
   padding: 20px;
   border-radius: 10px;
   position: relative;
   background-color: white;
   color: #fff;
-  border: 5px solid var(--secondary-color);
+  border: 1px solid #333;
+  height: 100%;
 }
-
-
+.register-container{
+  padding-top:6rem;
+}
+.card-info{
+  background-color: var(--secondary-color);
+}
 .title {
   font-size: 28px;
   color: royalblue;
@@ -21,7 +25,7 @@
   
   align-items: center;
   text-align: center;
- 
+  padding-left: 30px;
 }
 .link-login{
   padding-left: 5.5rem;
@@ -42,4 +46,19 @@
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
+}
+.logo-img{
+  width: 80%;
+}
+.principal-row{
+  justify-content: center;
+  align-items: center;
+}
+.tittle{
+  font-family: var(--main-font);
+  font-size: var(--subtitle-font-size);
+}
+.text-card{
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
 }
