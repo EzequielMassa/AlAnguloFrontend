@@ -4,6 +4,11 @@ import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFil
 import SoccerFieldPreviewCards from '../../components/SoccerFieldPreviewCards/SoccerFieldPreviewCards'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import './Home.css'
+import { Image } from 'react-bootstrap'
+import logo from './logorolling-remove.png'
+import Spinner from '../../components/Spinner/Spinner'
+import Facilitie from '../../components/Facilitie/Facilitie'
+import { facilites } from '../../utils/facilitiesInfo'
 import logo from './logoPublicity/logorolling-remove.png'
 import logo1 from './logoPublicity/logoAdidasRemove.png'
 import logo2 from './logoPublicity/logoFacebookRemove.png'
@@ -16,8 +21,8 @@ import logo8 from './logoPublicity/logoStarbucksRemove.png'
 import logo9 from './logoPublicity/logotwremove.png'
 import logo10 from './logoPublicity/nintendoLogoRemove.png'
 import logo11 from './logoPublicity/nodeLogoRemove.png'
-
-import Spinner from '../../components/Spinner/Spinner'
+import { Col } from 'react-bootstrap'
+import Contact from '../../components/Contact/Contact'
 
 
 export const Home = () => {
@@ -29,7 +34,7 @@ export const Home = () => {
 
 	return (
 		<>
-			 <section className='hero'>
+			<section className='hero'>
 				<div className='hero-content'>
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
 					<div className='d-flex justify-content-between'>
@@ -41,7 +46,7 @@ export const Home = () => {
 						</Link>
 					</div>
 				</div>
-			</section> 
+			</section>
 			<article className='container-md my-4'>
 				<section className='row'>
 					<h2 className='text-center title py-4'>
@@ -74,62 +79,75 @@ export const Home = () => {
 					</div>
 				</section>
 			</article>
-			<div className="slider d-none d-md-grid ">
-				<div className="slide-track">
-					<div className="slide">
+			<article className='container-md my-5 '>
+				<h2 className='text-center d-block  title'>Nuestras Instalaciones</h2>
+				<section className='row'>
+					<div className='col-12'>
+						{facilites.map((f) => (
+							<Facilitie key={f.title} facilitie={f} />
+						))}
+					</div>
+				</section>
+			</article>
+			<div className='slider d-none d-md-grid '>
+				<div className='slide-track'>
+					<div className='slide'>
 						<img src={logo} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo1} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo2} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo3} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo4} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo5} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo6} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo7} />
-					</div><div className="slide">
+					</div>
+					<div className='slide'>
 						<img src={logo8} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo9} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo10} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo11} />
-					</div><div className="slide">
+					</div>
+					<div className='slide'>
 						<img src={logo4} />
 					</div>
-					<div className="slide">
-						<img src={logo} />
-					</div>
-					<div className="slide">
-						<img src={logo4} />
-					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo2} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo1} />
 					</div>
-					<div className="slide">
+					<div className='slide'>
 						<img src={logo10} />
 					</div>
 				</div>
 			</div>
+			<article className='container-md my-5 '>
+				<section className='row'>
+					<Col xs={12}>
+						<Contact />
+					</Col>
+				</section>
+			</article>
 			<ScrollRestoration
 				getKey={(location) => {
 					return location.pathname
