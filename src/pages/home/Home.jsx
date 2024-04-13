@@ -9,6 +9,21 @@ import logo from './logorolling-remove.png'
 import Spinner from '../../components/Spinner/Spinner'
 import Facilitie from '../../components/Facilitie/Facilitie'
 import { facilites } from '../../utils/facilitiesInfo'
+import logo from './logoPublicity/logorolling-remove.png'
+import logo1 from './logoPublicity/logoAdidasRemove.png'
+import logo2 from './logoPublicity/logoFacebookRemove.png'
+import logo3 from './logoPublicity/logoJs.png'
+import logo4 from './logoPublicity/logoLinkedinRemove.png'
+import logo5 from './logoPublicity/logomongoremove.png'
+import logo6 from './logoPublicity/logoNikeRemove.png'
+import logo7 from './logoPublicity/logoPlayRemove.png'
+import logo8 from './logoPublicity/logoStarbucksRemove.png'
+import logo9 from './logoPublicity/logotwremove.png'
+import logo10 from './logoPublicity/nintendoLogoRemove.png'
+import logo11 from './logoPublicity/nodeLogoRemove.png'
+import { Col } from 'react-bootstrap'
+import Contact from '../../components/Contact/Contact'
+
 
 export const Home = () => {
 	const {
@@ -80,58 +95,59 @@ export const Home = () => {
 						<img src={logo} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo1} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo2} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo3} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo4} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo5} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo6} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo7} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo8} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo9} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo10} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo11} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo4} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo2} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo1} />
 					</div>
 					<div className='slide'>
-						<img src={logo} />
-					</div>
-					<div className='slide'>
-						<img src={logo} />
-					</div>
-					<div className='slide'>
-						<img src={logo} />
+						<img src={logo10} />
 					</div>
 				</div>
 			</div>
+			<article className='container-md my-5 '>
+				<section className='row'>
+					<Col xs={12}>
+						<Contact />
+					</Col>
+				</section>
+			</article>
 			<ScrollRestoration
 				getKey={(location) => {
 					return location.pathname
