@@ -149,17 +149,17 @@ hr{
 ul{
     list-style: none;
 }
-ul li:nth-child(1){
+.product-details ul li:nth-child(1){
     font-family: var(--main-font);
     color: var(--primary-font-color);
     font-style: italic;
 }
-ul li:nth-child(2){
+.product-details ul li:nth-child(2){
     color: var(--primary-color);
     font-family: var(--main-font);
     font-size: var(--paragraph-font-size);
 }
-ul li:nth-child(3){
+.product-details ul li:nth-child(3){
     color: var(--primary-font-color);
     font-family: var(--main-font);
     font-size: var(--paragraph-font-size);

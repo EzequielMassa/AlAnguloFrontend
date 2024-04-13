@@ -13,10 +13,10 @@ export const MainFooter = () => {
 			</Nav>
 			<div className="Footer">
 				<Container>
-					<Row>
-						<Col md={6} lg={5} sm={12} className='foot-1'>
+					<Row className='d-flex flex-column flex-md-row justify-content-center align-items-center '>
+						<Col md={6} lg={5} sm={12} className='foot-1 justify-content-center align-items-center d-flex flex-column'>
 							<h3><span>A</span>l<span>A</span>ngulo</h3>
-							<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt esse incidunt eius velit </p>
+							<p className='text-center'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nesciunt esse incidunt eius velit </p>
 							<div className="footer-icons d-flex justify-content-start gap-2 fs-1">
 								<FaFacebook className='icons'/>
 								<AiFillInstagram className='icons'/>
@@ -25,9 +25,9 @@ export const MainFooter = () => {
 
 							</div>
 						</Col>
-						<Col md={6} lg={3} sm={12}>
+						<Col md={6} lg={3} sm={12} className='justify-content-center align-items-center d-flex flex-column foot-2'>
 							<h5>links rapidos</h5>
-							<ul className='d-flex flex-column'>
+							<ul className='d-flex flex-column justify-content-center align-items-center list-unstyled '>
 								<li className='nav-item'>
 									<NavLink to='./' className={'nav-link'}>Nosotros</NavLink>
 								</li>
@@ -45,11 +45,13 @@ export const MainFooter = () => {
 								</li>
 							</ul>
 						</Col>
-						<Col md={6} lg={4} sm={12} className='Foot-3'>
+						<Col md={6} lg={4} sm={12} className='Foot-3 justify-content-center align-items-center d-flex flex-column'>
 							<h5>Información de Contacto</h5>
-							<p><FaPhoneVolume className='icons'/>381-5891234</p>
-							<p><FaEnvelope className='icons'/>Al.Angulo@gmail.com</p>
-							<p><FaPaperPlane className='icons'/>Tucuman, Argentina</p>
+							<ul className='d-flex flex-column justify-content-center align-items-center list-unstyled gap-2'>
+								<li><FaPhoneVolume className='icons me-2 '/>381-5891234</li>
+								<li><FaEnvelope className='icons me-2'/>Al.Angulo@gmail.com</li>
+								<li><FaPaperPlane className='icons me-2'/>Tucuman, Argentina</li>
+							</ul>
 						</Col>
 					</Row>
 				</Container>

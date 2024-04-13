@@ -22,6 +22,7 @@
     color: var(--primary-color);
     font-weight: 700;
     font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
 }
 .Foot-3 .icons{
     color: var(--primary-color);
