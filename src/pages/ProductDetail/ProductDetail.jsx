@@ -23,9 +23,9 @@ const ProductDetail = () => {
           </Col>
           <Col xs={12} lg={4} className="d-flex aling-items-center justify-content-center" >
             <div className="info-container d-flex aling-items-center mb-3 gap-2">
-              <h2 className="text-center ">{product.nombre}</h2>
-              <h3 className="text-center mt-2">{product.descripcion}</h3>
-              <h3 className="text-center mt-2">${product.precio}</h3>
+              <h2 className="text-center titl ">{product.nombre}</h2>
+              <h3 className="text-center mt-2 subtitle">{product.descripcion}</h3>
+              <h3 className="text-center mt-2 subtitle">${product.precio}</h3>
             </div>
           </Col>
           

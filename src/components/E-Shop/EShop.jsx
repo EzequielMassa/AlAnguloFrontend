@@ -26,6 +26,8 @@ function EShop() {
 						<CategoryCard />
 						<CategoryCard />
 						<CategoryCard />
+						<CategoryCard />
+						<CategoryCard />
 					</Col>
 				</Row>
 			</Container>

@@ -3,6 +3,7 @@ import { Row, Col, Container, Card, Button, Navbar, Nav, Form, FormControl, Drop
 import imagen from './camiseta.jpg';
 import './products.css'
 import './filter.css'
+import {NavLink} from 'react-router-dom'
 import { ScrollRestoration } from "react-router-dom";
 import logo from '../../assets/images/logo_AlAngulo.png'
 function Products() {
@@ -181,7 +182,9 @@ function Products() {
                   <Card.Title className='btn-product'>{p.nombre}</Card.Title>
                   <Card.Text className='btn-product btn-price'>${p.precio}</Card.Text>
                   <div className="btn-container d-flex">
-                    <Button className='btn-product btn-success'>Ver producto</Button>
+                   <NavLink to='/ProductDetail'> 
+                   <Button className='btn-product btn-success'>Ver producto</Button>
+                   </NavLink>
                     
                   </div>
                 </Card.Body>

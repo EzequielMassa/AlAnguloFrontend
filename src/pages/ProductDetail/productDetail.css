@@ -10,7 +10,13 @@
 .info-container{
   flex-direction: column;
   justify-content: center;
-
+}
+.subtitle{
+  font-size: 1.5rem;
+}
+.titl{
+  font-size: 2rem;
+  font-family: var(--primary-font);
 }
 .info-actions{
   display: flex;
