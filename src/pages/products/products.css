@@ -4,6 +4,11 @@
     display: flex;
     justify-content: space-evenly;
 }
+.product-column{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+}
 
 .camiseta {
     width: 100%;
@@ -39,4 +44,8 @@
 .btn-price{
     font-size: 1.5rem;
     color: var(--primary-color);
+}
+.no-product{
+    font-size: 2rem;
+    font-family: var(--secondary-font);
 }
