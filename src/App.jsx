@@ -12,7 +12,7 @@ import Register from './pages/register/Register'
 
 import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
 import SoccerFields from './pages/soccer-fields/SoccerFields'
-
+import ProductDetail from './pages/ProductDetail/ProductDetail'
 const router = createBrowserRouter([
 	{
 		element: <Layout />,
@@ -46,6 +46,10 @@ const router = createBrowserRouter([
 					</SoccerFieldsContextProvider>
 				),
 			},
+			{
+				path:'/productDetail',
+				element:<ProductDetail/>
+			}
 		],
 		errorElement: <NotFound />,
 	},
