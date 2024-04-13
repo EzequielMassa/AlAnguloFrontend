@@ -1,10 +1,21 @@
 import { Button, Form, Container, Row, Col, Image, Card } from 'react-bootstrap';
 import { NavLink } from "react-router-dom"
 import './register.css'
-
+import { useState } from 'react';
 import logo from "../../assets/images/logo_AlAngulo.png"
 function Register() {
+  const [phone, setPhone] = useState('');
+  const reg = /^[0-9]+$/;
 
+  const handlePhoneChange = (e) => {
+      const inputValue = e.target.value;
+      if (!reg.test(inputValue)) {
+          // Display error message or handle invalid input
+          console.log('Invalid phone number');
+      } else {
+          setPhone(inputValue);
+      }
+  };
   return (
     <>
       <Container className='justify-content-center d-flex register-container w-100 align-content-center  '>
@@ -43,7 +54,16 @@ function Register() {
                 </div>
                 <div className="box mt-3">
                   <Form.Label className='form-label'>Telefono celular</Form.Label>
-                  <Form.Control id='phone' required type="tel" minLength={9} maxLength={10} placeholder="Celular, ej: 3816646368" />
+                  <Form.Control 
+                   id='phone' 
+                   required 
+                   type="text" 
+                   minLength={9} 
+                   maxLength={10} 
+                   placeholder="Celular, ej: 3816646368" 
+                   value={phone}
+                  onChange={handlePhoneChange}
+                  />
                 </div>
                 <div className="box mt-3" >
                   <Form.Label className='form-label'>Nombre</Form.Label>
