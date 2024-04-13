@@ -1,29 +1,26 @@
+import { Col } from 'react-bootstrap'
 import { Link, ScrollRestoration } from 'react-router-dom'
+import Contact from '../../components/Contact/Contact'
+import Facilitie from '../../components/Facilitie/Facilitie'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldFilter from '../../components/SoccerFieldFilter/SoccerFieldFilter'
 import SoccerFieldPreviewCards from '../../components/SoccerFieldPreviewCards/SoccerFieldPreviewCards'
-import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
-import './Home.css'
-import { Image } from 'react-bootstrap'
-import logo from './logorolling-remove.png'
 import Spinner from '../../components/Spinner/Spinner'
-import Facilitie from '../../components/Facilitie/Facilitie'
+import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import { facilites } from '../../utils/facilitiesInfo'
-import logo from './logoPublicity/logorolling-remove.png'
+import './Home.css'
 import logo1 from './logoPublicity/logoAdidasRemove.png'
 import logo2 from './logoPublicity/logoFacebookRemove.png'
 import logo3 from './logoPublicity/logoJs.png'
 import logo4 from './logoPublicity/logoLinkedinRemove.png'
-import logo5 from './logoPublicity/logomongoremove.png'
 import logo6 from './logoPublicity/logoNikeRemove.png'
 import logo7 from './logoPublicity/logoPlayRemove.png'
 import logo8 from './logoPublicity/logoStarbucksRemove.png'
+import logo5 from './logoPublicity/logomongoremove.png'
 import logo9 from './logoPublicity/logotwremove.png'
 import logo10 from './logoPublicity/nintendoLogoRemove.png'
 import logo11 from './logoPublicity/nodeLogoRemove.png'
-import { Col } from 'react-bootstrap'
-import Contact from '../../components/Contact/Contact'
-
+import logo12 from './logoPublicity/logorolling-remove.png'
 
 export const Home = () => {
 	const {
@@ -92,7 +89,7 @@ export const Home = () => {
 			<div className='slider d-none d-md-grid '>
 				<div className='slide-track'>
 					<div className='slide'>
-						<img src={logo} />
+						<img src={logo12} />
 					</div>
 					<div className='slide'>
 						<img src={logo1} />
