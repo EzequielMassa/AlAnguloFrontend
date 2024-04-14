@@ -22,6 +22,7 @@ import logo12 from './logoPublicity/logorolling-remove.png'
 import logo9 from './logoPublicity/logotwremove.png'
 import logo10 from './logoPublicity/nintendoLogoRemove.png'
 import logo11 from './logoPublicity/nodeLogoRemove.png'
+import { useAuthContext } from '../../context/AuthContext'
 
 export const Home = () => {
 	const {
