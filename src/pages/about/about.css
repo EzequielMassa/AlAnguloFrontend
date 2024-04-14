@@ -1,6 +1,6 @@
 
 
-.card{
+.carta{
     border: 1px solid hsl(0, 0%, 80%);
     border-radius: 10px;
     box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.1);
@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
 }
-.card .card-image{
+.carta .card-image{
     width: 150px; 
     height: 150px; 
     object-fit: cover; 
@@ -20,12 +20,12 @@
     margin-bottom: 10px;
     margin-right: 20px;
 }
-.card .card-title{
+.carta .card-title{
     font-family: Arial, sans-serif;
     margin: 0;
     color: hsl(0, 0%, 20%);
 }
-.card .card-text{
+.carta .card-text{
     font-family: Arial, sans-serif;
     color: hsl(0, 0%, 30%);
 }
