@@ -14,7 +14,6 @@ import './MainFooter.css'
 export const MainFooter = () => {
 	return (
 		<>
-			<Nav className='navbar navbar-expand-lg navbar-light bg-light'></Nav>
 			<div className='Footer'>
 				<Container>
 					<Row className='d-flex flex-column flex-md-row justify-content-center align-items-center '>

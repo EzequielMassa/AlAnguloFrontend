@@ -21,7 +21,7 @@ function Contact() {
 									alt='icono contacto telefono'
 									className='contact_icon'
 								/>{' '}
-								+54 (123) 456-7890
+								+54 (381) 5891234
 							</a>
 							<a
 								href='mailto:alangulo@alangulo.com'

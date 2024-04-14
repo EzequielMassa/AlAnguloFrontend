@@ -47,7 +47,7 @@ export const Home = () => {
 			</section>
 			<article className='container-md my-4'>
 				<section className='row'>
-					<h2 className='text-center title py-4'>
+					<h2 className='text-center subtitle py-4'>
 						Encontra la cancha que necesitas rapidamente
 					</h2>
 					<div className='col-12'>
@@ -68,7 +68,7 @@ export const Home = () => {
 			</article>
 			<article className='container-md my-4'>
 				<section className='row'>
-					<h3 className='text-center subtitle'>Descubri nuestras canchas</h3>
+					<h3 className='text-center title'>Descubri nuestras canchas</h3>
 					<div className='col-12 d-flex flex-column align-items-center gap-3'>
 						<SoccerFieldPreviewCards />
 						<Link className='btn btn-primary ' to={'/canchas'}>
