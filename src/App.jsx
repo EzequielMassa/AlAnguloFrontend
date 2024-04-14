@@ -5,6 +5,7 @@ import './App.css'
 import { AuthContextProvider } from './context/AuthContext'
 import { ProductsContextProvider } from './context/ProductsContext'
 import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
+import { UserContextProvider } from './context/UserContext'
 import { Cart } from './pages/Cart/Cart'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import About from './pages/about/About'
@@ -72,7 +73,9 @@ function App() {
 	return (
 		<>
 			<AuthContextProvider>
-				<RouterProvider router={router} />
+				<UserContextProvider>
+					<RouterProvider router={router} />
+				</UserContextProvider>
 			</AuthContextProvider>
 		</>
 	)
