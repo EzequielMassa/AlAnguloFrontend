@@ -1,10 +1,21 @@
 import { Button, Form, Container, Row, Col, Image, Card } from 'react-bootstrap';
 import { NavLink } from "react-router-dom"
 import './register.css'
-
+import { useState } from 'react';
 import logo from "../../assets/images/logo_AlAngulo.png"
 function Register() {
+  const [phone, setPhone] = useState('');
+  const reg = /^[0-9]+$/;
 
+  const handlePhoneChange = (e) => {
+      const inputValue = e.target.value;
+      if (!reg.test(inputValue)) {
+          // Display error message or handle invalid input
+          console.log('Invalid phone number');
+      } else {
+          setPhone(inputValue);
+      }
+  };
   return (
     <>
       <Container className='justify-content-center d-flex register-container w-100 align-content-center  '>
@@ -20,7 +31,7 @@ function Register() {
                   desarrollada para atender una necesidad
                 </Card.Text>
                 <div className="card-links d-flex flex-row gap-2">
-                <NavLink to={'/products'} className='text-decoration-none '>Productos en nuestra tienda</NavLink>
+                <NavLink to={'/productos'} className='text-decoration-none '>Productos en nuestra tienda</NavLink>
                 </div>
               </Card.Body>
             </Card>
@@ -28,34 +39,43 @@ function Register() {
           <Col className='  d-flex justify-content-center align-content-center' xs={12} md={6} xl={6} >
             <Form className='form-register align-content-center '>
               <h1 className='title'>Formulario de Registro</h1>
-              <Form.Group className="mb-2 form-group" controlId="formBasicEmail">
+              <Form.Group className="mb-2 form-group" >
                 <Form.Label className='form-label'>Direccion email</Form.Label>
-                <Form.Control required type="email" minLength={5} maxLength={40} placeholder="Ingresa un email" />
+                <Form.Control id='email' required type="email" minLength={5} maxLength={40} placeholder="Ingresa un email" />
                 <Form.Text className="text-muted">
                   Nunca compartiremos tu email con nadie
                 </Form.Text>
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Group className="mb-3" >
                 <div className="box">
                   <Form.Label className='form-label' >Contraseña</Form.Label>
-                  <Form.Control required type="password" minLength={8} maxLength={20} placeholder="Ingresa una contraseña de 8-20 caracteres" />
+                  <Form.Control id='password' required type="password" minLength={8} maxLength={20} placeholder="Ingresa una contraseña de 8-20 caracteres" />
                 </div>
                 <div className="box mt-3">
                   <Form.Label className='form-label'>Telefono celular</Form.Label>
-                  <Form.Control required type="tel" minLength={9} maxLength={10} placeholder="Celular, ej: 3816646368" />
+                  <Form.Control 
+                   id='phone' 
+                   required 
+                   type="text" 
+                   minLength={9} 
+                   maxLength={10} 
+                   placeholder="Celular, ej: 3816646368" 
+                   value={phone}
+                  onChange={handlePhoneChange}
+                  />
                 </div>
                 <div className="box mt-3" >
                   <Form.Label className='form-label'>Nombre</Form.Label>
-                  <Form.Control required minLength={4} maxLength={20} type="text" placeholder="Nombre" />
+                  <Form.Control id='name' required minLength={4} maxLength={20} type="text" placeholder="Nombre" />
                 </div>
                 <div className="box mt-3">
                   <Form.Label className='form-label'>Apellido</Form.Label>
-                  <Form.Control required minLength={4} maxLength={20} type="text" placeholder="Apellido" />
+                  <Form.Control id='lastname' required minLength={4} maxLength={20} type="text" placeholder="Apellido" />
                 </div>
                 <div className="box mt-3">
                   <Form.Label className='form-label'>Imagen</Form.Label>
-                  <Form.Control required type="url" placeholder="Agrega una url de tu imagen" />
+                  <Form.Control id='url' required type="url" placeholder="Agrega una url de tu imagen" />
                 </div>
 
               </Form.Group>
