@@ -3,6 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import { AuthContextProvider } from './context/AuthContext'
+import { ProductsContextProvider } from './context/ProductsContext'
 import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
 import { Cart } from './pages/Cart/Cart'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/productos',
-				element: <Products />,
+				element: (
+					<ProductsContextProvider>
+						<Products />
+					</ProductsContextProvider>
+				),
 			},
 			{
 				path: '/register',
@@ -52,7 +57,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/productDetail',
-				element: <ProductDetail />,
+				element: (
+					<ProductsContextProvider>
+						<ProductDetail />
+					</ProductsContextProvider>
+				),
 			},
 		],
 		errorElement: <NotFound />,
