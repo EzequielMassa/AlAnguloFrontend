@@ -1,15 +1,25 @@
 import './UsersTable.css';
-import { useContext } from 'react';
-import { Table, Button, Modal, Dropdown, DropdownButton } from 'react-bootstrap';
+import { useContext, useState } from 'react';
+import { Table, Button, Modal, Dropdown, DropdownButton, Image } from 'react-bootstrap';
 import { UsersProvider } from '../../context/UsersContext';
 import Swal from 'sweetalert2';
+import { FaRegEdit } from "react-icons/fa";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { MdOutlineNoPhotography } from "react-icons/md";
+import { MdOutlinePhotoLibrary } from "react-icons/md";
+import EditUserForm from '../EditUserForm/EditUserForm';
 
 const UsersTable = () => {
-    const { usersArr } = useContext(UsersProvider);
-    console.log(usersArr)
+    const { usersArr, getUsers, updateUserActive, deleteUser } = useContext(UsersProvider);
+    const [editUser, setEditUser] = useState({});
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleEdit = (userObj) => {
+      setEditUser(userObj)
+      setShow(true)
+    };
 
-    const userImage = (url) => {
-        console.log(url)
+    const userImagePopup = (url) => {
         return (
             Swal.fire({
                 imageUrl: url,
@@ -17,52 +27,60 @@ const UsersTable = () => {
                 showCloseButton: true,
                 closeButtonAriaLabel: 'Cierra ésta imagen',
                 showConfirmButton: false,
-                // timer: 5000
+                timer: 8000
             })
         )
     };
+    console.log(editUser)
+    
+    const handleChange = (e) => {
+      e.preventDefault();
+      const { name } = e.target
+      console.log(name)
+      setEditUser({
+          ...editUser,
+          ["active"]: (name==="true" ?true :false),
+      });
+      // updateUserActive(editUser);
+      // getUsers();
+    };
+    
 
     const isActiveMenu = (userObj)=> {
-        console.log(userObj)
+      const der = (e) => {
+        setEditUser(userObj);
+        console.log(editUser)
+        handleChange(e);
+      }
         return (
-            <>
-                {/* <Dropdown className="d-inline mx-2" >
-                    <Dropdown.Toggle id="dropdown-autoclose-true" size="sm">
-                        {userObj.active}
+            <>   
+                <Dropdown>
+                    <Dropdown.Toggle 
+                    className='activeDropdown' 
+                    id="dropdown-autoclose-true" 
+                    variant="muted" 
+                    size="sm">
+                        {userObj.active ?"Si" :"No"}
                     </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                      <Dropdown.Item href="#">Menu Item1</Dropdown.Item>
-                      <Dropdown.Item href="#">Menu Item2</Dropdown.Item>
+                    <Dropdown.Menu className='min-width-0'>
+                      <Dropdown.Item name="true" onClick={der}>Si</Dropdown.Item>
+                      <Dropdown.Item name="false" onClick={der}>No</Dropdown.Item>
                     </Dropdown.Menu>
-                </Dropdown> */}
-                <DropdownButton
-            //   as="ButtonGroup"
-              key="end"
-              id="dropdown-button-drop-end"
-              drop="end"
-              variant="secondary"
-              title={userObj.name}
-            >
-              <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-              <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-              <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-            </DropdownButton>
+                </Dropdown>
             </>
         )
-    }
-
+    };
   return (
     <>
     <Table
+        bordered
         striped
         hover
         responsive
-        className="border border-success border-opacity-100 text-center align-middle">
-        <thead>
-          <tr>
+        size='sm'
+        className="text-center align-middle">
+        <thead className=''>
+          <tr className='tableTitles'>
             <th key="ACTIVE" className="border border-success border-opacity-50">ACTIVO</th>
             <th key="NAME" className="border border-success border-opacity-50">NOMBRE</th>
             <th key="LASTNAME" className="border border-success border-opacity-50">APELLIDO</th>
@@ -74,50 +92,55 @@ const UsersTable = () => {
         </thead>
         <tbody>
           {usersArr.map((userObj) => (
-            <tr key={userObj._id}>
-              <td key={"active"+userObj._id} className="border border-success border-opacity-50" >
+            <tr key={userObj._id} className='fs-5' >
+              <td key={"active"+userObj._id} className="borderCustom" >
+                <div className='d-flex align-items-center justify-content-evenly'>
+                <Image style={userObj.active ?null :{filter: "grayscale(100%)"}}  src={userObj.image} alt="imagen de usuario" onClick={ ()=> userImagePopup(userObj.image) } roundedCircle className='cursorChange userImg'/>
                 {isActiveMenu(userObj)}
+                </div>
               </td>
-              <td key={"name"+userObj._id} className="cursorChange border-start border-success border-opacity-25" onClick={ ()=> userImage(userObj.image) }>
+              <td key={"name"+userObj._id} className="cursorChange borderCustom" onClick={ ()=> userImagePopup(userObj.image) }>
                 {userObj.name}
               </td>
-              <td key={"lastname"+userObj._id} className="cursorChange border-start border-success border-opacity-25" onClick={ ()=> userImage(userObj.image) }>
+              <td key={"lastname"+userObj._id} className="cursorChange borderCustom" onClick={ ()=> userImagePopup(userObj.image) }>
                 {userObj.lastname}
               </td>
-              <td key={"email"+userObj._id} className="cursorChange border-start border-success border-opacity-25" onClick={ ()=> userImage(userObj.image) }>
+              <td key={"email"+userObj._id} className="cursorChange borderCustom" onClick={ ()=> userImagePopup(userObj.image) }>
                 {userObj.email}
               </td>
-              <td key={"phone"+userObj._id} className="cursorChange border-start border-success border-opacity-25" onClick={ ()=> userImage(userObj.image) }>
+              <td key={"phone"+userObj._id} className="cursorChange borderCustom" onClick={ ()=> userImagePopup(userObj.image) }>
                 {userObj.phone}
               </td>
-              <td key={"role"+userObj._id} className="cursorChange border-start border-success border-opacity-25" onClick={ ()=> userImage(userObj.image) }>
-                {userObj.roles}
+              <td key={"role"+userObj._id} className="cursorChange borderCustom" onClick={ ()=> userImagePopup(userObj.image) }>
+                {userObj.roles[0].name}
               </td>
-              <td key={"actions"+userObj._id} className="border-start border-success border-opacity-25 text-nowrap">
-                    <Button onClick={ ()=> userImage(userObj.image) } className="" variant="info">
-                      IMG
-                    </Button>
-                    <Button  className="ms-1" variant="warning">
-                      Editar
-                    </Button>
-                    <Button  className="ms-1" variant="danger">
-                      Eliminar
-                    </Button>
+              <td key={"actions"+userObj._id} className="borderCustom">
+                <div className='d-flex justify-content-evenly'>
+                  {/* <Image src={userObj.image} alt="imagen de usuario" onClick={ ()=> userImagePopup(userObj.image) } roundedCircle className='cursorChange userImg d-inline-block'/> */}
+                  {/* <MdOutlinePhotoLibrary className='cursorChange m-1' onClick={ ()=> userImagePopup(userObj.image) } /> */}
+                  <FaRegEdit className='cursorChange mx-1' onClick={() => handleEdit(userObj)}/>
+                  <FaRegTrashCan className='cursorChange mx-1' onClick={()=> deleteUser(userObj)} />
+                </div>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
-      {/* <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Editar usuario</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FormComp editUser={editUser} handleClose={handleClose} />
+          <EditUserForm editUser={editUser} handleClose={handleClose}/>
         </Modal.Body>
-      </Modal> */}
+      </Modal>
     </>
   )
 };
 
 export default UsersTable;
+
+
+//TODO realizar conexion del dropdown userObj.active con backend
+//TODO formulario editar usuarios
+//TODO funcion eliminar usuarios

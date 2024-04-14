@@ -1,15 +1,21 @@
-body{
-    /* background: rgb(60, 69, 80); */
-}
-.frame {
+/* body{
+    background: rgb(60, 69, 80);
+} */
+
+/* .frame {
+    border-radius: 100px;
+} */
+
+/* .mainFrame {
+    box-shadow: 10px 10px 18px -10px var(--color-shadow);
+} */
+.frame__row {
     font-family: var(--main-font);
     font-size: 3vh;
     font-weight:900;
-    margin: 3vw;
-    margin-top: 100px;
-    
+    /* margin: 3vw; */
+    margin-top: 5vh;
 }
-
 .frame__leftBlock {
     background-color: rgb(34, 34, 34);
     min-height: 90%;
