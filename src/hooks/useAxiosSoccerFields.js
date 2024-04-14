@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-
-const baseUrl = 'http://localhost:4000/api'
+import { baseUrl } from '../api/apiUrl.js'
 function UseAxiosSoccerFields() {
 	const [soccerFields, setSoccerFields] = useState([])
 	const [soccerFieldsLoading, setSoccerFieldsLoading] = useState(false)

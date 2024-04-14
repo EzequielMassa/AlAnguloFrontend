@@ -2,16 +2,17 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
+import { AuthContextProvider } from './context/AuthContext'
+import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
 import { Cart } from './pages/Cart/Cart'
+import ProductDetail from './pages/ProductDetail/ProductDetail'
+import About from './pages/about/About'
 import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
 import Products from './pages/products/Productos'
-import About from './pages/about/About'
 import Register from './pages/register/Register'
-import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
 import SoccerFields from './pages/soccer-fields/SoccerFields'
-import ProductDetail from './pages/ProductDetail/ProductDetail'
 const router = createBrowserRouter([
 	{
 		element: <Layout />,
@@ -46,14 +47,13 @@ const router = createBrowserRouter([
 				),
 			},
 			{
-
-				path:'/nosotros',
-				element:<About />
-      },
-        {
-          path:'/productDetail',
-				element:<ProductDetail/>
-			}
+				path: '/nosotros',
+				element: <About />,
+			},
+			{
+				path: '/productDetail',
+				element: <ProductDetail />,
+			},
 		],
 		errorElement: <NotFound />,
 	},
@@ -62,7 +62,9 @@ const router = createBrowserRouter([
 function App() {
 	return (
 		<>
-			<RouterProvider router={router} />
+			<AuthContextProvider>
+				<RouterProvider router={router} />
+			</AuthContextProvider>
 		</>
 	)
 }
