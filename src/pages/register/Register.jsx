@@ -1,12 +1,20 @@
-import { Button, Form, Container, Row, Col, Image, Card } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
-import './register.css'
 import { useState } from 'react'
+import { Button, Card, Col, Container, Form, Image, Row } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/logo_AlAngulo.png'
+import Login from '../../components/Login/Login'
+import './register.css'
 function Register() {
+	const [showModal, setShowModal] = useState(false)
 	const [phone, setPhone] = useState('')
 	const reg = /^[0-9]+$/
+	const handleCloseModal = () => {
+		setShowModal(false)
+	}
 
+	const handleShowModal = () => {
+		setShowModal(true)
+	}
 	const handlePhoneChange = (e) => {
 		const inputValue = e.target.value
 		if (!reg.test(inputValue)) {
@@ -131,9 +139,10 @@ function Register() {
 								Registrarse
 							</Button>
 							<div className='box-link'>
-								<NavLink to={'../home/Home.jsx'} className={'redirect-link'}>
+								<NavLink onClick={handleShowModal} className={'redirect-link'}>
 									Ya tienes una cuenta? Ingresa
 								</NavLink>
+								<Login show={showModal} handleClose={handleCloseModal} />
 							</div>
 						</Form>
 					</Col>
