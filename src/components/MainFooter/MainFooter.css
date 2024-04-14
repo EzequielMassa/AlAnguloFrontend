@@ -2,6 +2,9 @@
 .Footer{
     padding: 2rem 0;
 }
+.Footer-container{
+    border-top: 2px solid var(--primary-color);
+}
 .foot-1 h3{
     font-weight: 700;
     font-family: 'Montserrat', sans-serif;

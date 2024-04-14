@@ -86,22 +86,22 @@ export const MainNavBar = () => {
 									</IconContext.Provider>
 								)}
 							</div>
-							<div className={isOpen ? 'smallMenu' : 'menu'}>
-								<NavLink to={'./'} className={'nav-link'}>
+							<div className={isOpen ? 'smallMenu ' : 'menu'}>
+								<NavLink to={'./'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}l>
 									Inicio
 								</NavLink>
-								<NavLink to={'./productos'} className={'nav-link'}>
+								<NavLink to={'./productos'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}>
 									Productos
 								</NavLink>
-								<NavLink to={'./canchas'} className={'nav-link'}>
+								<NavLink to={'./canchas'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}>
 									Canchas
 								</NavLink>
-								<NavLink to={'./nosotros'} className={'nav-link'}>
+								<NavLink to={'./nosotros'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}>
 									Nosotros
 								</NavLink>
 
 								{isAdmin() && (
-									<NavLink to={'./admin'} className={'nav-link'}>
+									<NavLink to={'./admin'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}>
 										Admin
 									</NavLink>
 								)}
