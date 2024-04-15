@@ -24,8 +24,12 @@ import logo10 from './logoPublicity/nintendoLogoRemove.png'
 import logo11 from './logoPublicity/nodeLogoRemove.png'
 import { useAuthContext } from '../../context/AuthContext'
 import { useEffect } from 'react'
+import { useUserContext } from '../../context/UserContext'
 
 export const Home = () => {
+	const {
+		userCart
+	} = useUserContext()
 	const {
 		soccerFieldsQuery,
 		soccerFieldsQueryLoading,

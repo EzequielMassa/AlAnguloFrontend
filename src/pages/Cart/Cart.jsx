@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Cart.css'
 import { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
@@ -7,30 +7,18 @@ import { FaRegClock } from "react-icons/fa";
 import { LuPlus, LuMinus } from "react-icons/lu";
 import { formatCurrency } from '../../helpers/formatCurrency';
 import { GoTrash } from "react-icons/go";
+import { useUserContext } from '../../context/UserContext';
+import { useAuthContext } from '../../context/AuthContext';
+
+
 
 export const Cart = () => {
+    const {
+		userCart,
+	} = useUserContext()
+    console.log(userCart)
     const [products, setProducts] = useState([
-        {
-			id: 1,
-			name: 'Camiseta',
-			price: 10000,
-			quantity: 1,
-			image: 'https://media.f2h.shop/media/catalog/product/cache/ab45d104292f1bb63d093e6be8310c97/i/m/imageedit_3_4516158279.png',
-		},
-		{
-			id: 2,
-			name: 'Bebida',
-			price: 1700,
-			quantity: 2,
-			image: 'https://quirinobebidas.com.ar/wp-content/uploads/2022/10/productos-2022-10-04T114921.209.png',
-		},
-		{
-			id: 2,
-			name: 'Bebida',
-			price: 1700,
-			quantity: 2,
-			image: 'https://media.f2h.shop/media/catalog/product/cache/ab45d104292f1bb63d093e6be8310c97/i/m/imageedit_3_4516158279.png',
-		},
+        
     ]);
     const [bookings, setBookings] = useState([
         {
@@ -60,11 +48,12 @@ export const Cart = () => {
     ]);
     const [displayProducts, setDisplayProducts] = useState(true)
     
-    const productsSubtotal = products.reduce((acc, product) => acc + product.price * product.quantity, 0);
-    const bookingsSubtotal = bookings.reduce((acc, booking) => acc + booking.price * booking.quantity, 0);
-    const subtotal = displayProducts ? productsSubtotal : bookingsSubtotal;
+    // const productsSubtotal = userCart.orders.total
+    // // .reduce((acc, product) => acc + product.price * product.quantity, 0);
+    // const bookingsSubtotal = bookings.reduce((acc, booking) => acc + booking.price * booking.quantity, 0);
+    // const subtotal = displayProducts ? productsSubtotal : bookingsSubtotal;
 
-    const total = productsSubtotal + bookingsSubtotal
+    // const total = productsSubtotal + bookingsSubtotal
     
 
     return (
@@ -88,32 +77,34 @@ export const Cart = () => {
                 {displayProducts ? (
                     <>
                         <div className='flex-grow-1'>
-                            {products.map((product) => (
-                                <Card key={product.id} className=' cartCards'>
-                                    <div className='d-flex align-items-center flex-column flex-md-row justify-content-around '>
-                                        <div className=''>
-                                            <Card.Img src={product.image} className='card-imagen col-3'/>
+                            {
+                                userCart ? userCart.orders.map((order) => (
+                                    <Card key={order.product.id} className=' cartCards'>
+                                        <div className='d-flex align-items-center flex-column flex-md-row justify-content-around '>
+                                            <div className=''>
+                                                <Card.Img src={order.product.image} className='card-imagen col-3'/>
+                                            </div>
+                                            <div className='separador d-none d-md-block'> 
+                                            </div>
+                                            <div className=''>
+                                                <Card.Body className='card-body d-flex flex-column align-items-center'>
+                                                    <Card.Title>{order.product.name}</Card.Title>
+                                                    <Card.Text className='icons-style-text'>Cantidad</Card.Text>
+                                                    <div className="d-flex justify-content-between align-items-center gap-3 ">
+                                                        <LuMinus className='icons-style icons-styleHover'/> {/* agregar Onclick */}
+                                                        <span>{order.quantity}</span>
+                                                        <LuPlus className='icons-style icons-styleHover' /> {/* agregar Onclick */}
+                                                    </div>
+                                                    <Card.Text className='mt-2 align-items-center d-flex '>
+                                                        Precio {formatCurrency(order.product.price*order.quantity)}
+                                                    </Card.Text>
+                                                    <Button variant="outline-danger" className='position-absolute end-0 bottom-0 ' ><GoTrash /></Button>
+                                                </Card.Body>
+                                            </div>
                                         </div>
-                                        <div className='separador d-none d-md-block'> 
-                                        </div>
-                                        <div className=''>
-                                            <Card.Body className='card-body d-flex flex-column align-items-center'>
-                                                <Card.Title>{product.name}</Card.Title>
-                                                <Card.Text className='icons-style-text'>Cantidad</Card.Text>
-                                                <div className="d-flex justify-content-between align-items-center gap-3 ">
-                                                    <LuMinus className='icons-style icons-styleHover'/> {/* agregar Onclick */}
-                                                    <span>{product.quantity}</span>
-                                                    <LuPlus className='icons-style icons-styleHover' /> {/* agregar Onclick */}
-                                                </div>
-                                                <Card.Text className='mt-2 align-items-center d-flex '>
-                                                    Precio {formatCurrency(product.price*product.quantity)}
-                                                </Card.Text>
-                                                <Button variant="outline-danger" className='position-absolute end-0 bottom-0 ' ><GoTrash /></Button>
-                                            </Card.Body>
-                                        </div>
-                                    </div>
-                                </Card>
-                            ))}
+                                    </Card>
+                                )):(<></>)}
+                            
                         </div>
                     </>
                 ) : (
@@ -148,7 +139,7 @@ export const Cart = () => {
                 
                 {displayProducts ? (
                     <h3>
-                        Subtotal Productos: {formatCurrency(subtotal)}
+                        Subtotal Productos: {userCart ? userCart.orders.total : 'no hay productos'}
                     </h3>
                 ):(
                     <h3>
