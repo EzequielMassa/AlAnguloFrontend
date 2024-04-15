@@ -4,9 +4,36 @@ import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/logo_AlAngulo.png'
 import Login from '../../components/Login/Login'
 import './register.css'
+import { useAuthContext } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
+
 function Register() {
+	const navigate = useNavigate();
+	const {loguedUser,
+		registerLoading,
+		registerError,
+		register } = useAuthContext()
 	const [showModal, setShowModal] = useState(false)
-	const [phone, setPhone] = useState('')
+	const [	formData,setFormData] = useState({
+		name:"",
+		lastname:"",
+		email:"",
+		phone:"",
+		image:"",
+		password:""
+		})
+	const validateRegisterData = () =>{
+		
+	}
+	const handleSubmit = (e) =>{
+		e.preventDefault();
+
+		register(formData)
+		if(loguedUser){
+			navigate('/')
+		}
+	}
+
 	const reg = /^[0-9]+$/
 	const handleCloseModal = () => {
 		setShowModal(false)
@@ -15,15 +42,12 @@ function Register() {
 	const handleShowModal = () => {
 		setShowModal(true)
 	}
-	const handlePhoneChange = (e) => {
-		const inputValue = e.target.value
-		if (!reg.test(inputValue)) {
-			// Display error message or handle invalid input
-			console.log('Invalid phone number')
-		} else {
-			setPhone(inputValue)
-		}
+	const handleChange = (e)=>{
+		setFormData({...formData,[e.target.name]:e.target.value})
 	}
+	
+
+	
 	return (
 		<>
 			<Container className='justify-content-center d-flex register-container w-100 align-content-center  '>
@@ -58,13 +82,18 @@ function Register() {
 						xs={12}
 						md={6}
 						xl={6}>
-						<Form className='form-register align-content-center '>
+
+						<Form onSubmit={handleSubmit} className='form-register align-content-center '>
 							<h1 className='title register-title '>Formulario de Registro</h1>
+
 							<Form.Group className='mb-2 form-group'>
 								<Form.Label className='form-label'>Direccion email</Form.Label>
 								<Form.Control
 									id='email'
 									required
+									name='email'
+									value={formData.email}
+									onChange={handleChange}
 									type='email'
 									minLength={5}
 									maxLength={40}
@@ -81,6 +110,9 @@ function Register() {
 									<Form.Control
 										id='password'
 										required
+										onChange={handleChange}
+										name='password'
+										value={formData.password}
 										type='password'
 										minLength={8}
 										maxLength={20}
@@ -98,8 +130,9 @@ function Register() {
 										minLength={9}
 										maxLength={10}
 										placeholder='Celular, ej: 3816646368'
-										value={phone}
-										onChange={handlePhoneChange}
+										value={formData.phone}
+										name='phone'
+										onChange={handleChange}
 									/>
 								</div>
 								<div className='box mt-3'>
@@ -111,6 +144,9 @@ function Register() {
 										maxLength={20}
 										type='text'
 										placeholder='Nombre'
+										name='name'
+										value={formData.name}
+										onChange={handleChange}
 									/>
 								</div>
 								<div className='box mt-3'>
@@ -122,15 +158,20 @@ function Register() {
 										maxLength={20}
 										type='text'
 										placeholder='Apellido'
+										name='lastname'
+										value={formData.lastname}
+										onChange={handleChange}
 									/>
 								</div>
 								<div className='box mt-3'>
 									<Form.Label className='form-label'>Imagen</Form.Label>
 									<Form.Control
 										id='url'
-										required
 										type='url'
 										placeholder='Agrega una url de tu imagen'
+										name='image'
+										value={formData.image}
+										onChange={handleChange}
 									/>
 								</div>
 							</Form.Group>
@@ -150,6 +191,6 @@ function Register() {
 			</Container>
 		</>
 	)
-}
 
+}
 export default Register
