@@ -82,8 +82,10 @@ function Register() {
 						xs={12}
 						md={6}
 						xl={6}>
+
 						<Form onSubmit={handleSubmit} className='form-register align-content-center '>
-							<h1 className='title'>Formulario de Registro</h1>
+							<h1 className='title register-title '>Formulario de Registro</h1>
+
 							<Form.Group className='mb-2 form-group'>
 								<Form.Label className='form-label'>Direccion email</Form.Label>
 								<Form.Control

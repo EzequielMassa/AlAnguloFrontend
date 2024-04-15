@@ -1,8 +1,17 @@
+import { useEffect } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useProductsContext } from '../../context/ProductsContext'
 import CategoryCard from '../CategoryCard/CategoryCard'
+import Spinner from '../Spinner/Spinner'
 
 function EShop() {
+	const { categories, categoriesLoading, categoriesError, getAllCategories } =
+		useProductsContext()
+	useEffect(() => {
+		getAllCategories()
+	}, [])
+
 	return (
 		<>
 			<Container fluid>
@@ -18,16 +27,21 @@ function EShop() {
 				</Row>
 				<Row className='d-flex justify-content-center align-items-center'>
 					<Col
-						className=' d-flex flex-wrap align-items-center justify-content-center align-content-center gap-2 py-4 '
+						className=' d-flex flex-wrap align-items-center justify-content-center align-content-center gap-2 py-4 align-items-stretch  '
 						xs={12}>
-						<CategoryCard />
-						<CategoryCard />
-						<CategoryCard />
-						<CategoryCard />
-						<CategoryCard />
-						<CategoryCard />
-						<CategoryCard />
-						<CategoryCard />
+						{categoriesLoading ? (
+							<Spinner />
+						) : categories ? (
+							categories.map((category) => (
+								<CategoryCard
+									key={category._id}
+									category={category}
+									categoryLoading={categoriesLoading}
+								/>
+							))
+						) : (
+							<></>
+						)}
 					</Col>
 				</Row>
 			</Container>

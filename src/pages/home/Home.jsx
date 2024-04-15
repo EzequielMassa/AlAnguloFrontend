@@ -37,10 +37,10 @@ export const Home = () => {
 				<div className='hero-content'>
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
 					<div className='d-flex flex-column flex-md-row justify-content-around gap-3'>
-						<Link to={'./Canchas'} className={'hero-link '}>
+						<Link to={'./canchas'} className={'hero-link '}>
 							Nuestras Canchas
 						</Link>
-						<Link to={'./Productos'} className={'hero-link '}>
+						<Link to={'./productos'} className={'hero-link '}>
 							Nuestros Productos
 						</Link>
 					</div>

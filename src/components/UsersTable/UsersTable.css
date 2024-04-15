@@ -1,0 +1,23 @@
+.cursorChange {
+    cursor: pointer;
+}
+.activeDropdown {
+    font-family: var(--main-font);
+    font-size: inherit;
+    font-weight:900;
+}
+.tableTitles {
+    font-weight: 900;
+}
+.userImg {
+    height: 5vh;
+    aspect-ratio: 1;
+}
+.borderCustom {
+    border: 1px solid rgba(0, 128, 0, 0.25)!important;
+}
+.dropdown-menu.min-width-0 {
+    min-width: 0;
+    text-align: center;
+    font-size: inherit;
+}

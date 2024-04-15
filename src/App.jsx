@@ -3,10 +3,13 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import { AuthContextProvider } from './context/AuthContext'
+import { ProductsContextProvider } from './context/ProductsContext'
 import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
+import { UserContextProvider } from './context/UserContext'
 import { Cart } from './pages/Cart/Cart'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import About from './pages/about/About'
+import Admin from './pages/admin/Admin'
 import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
@@ -22,7 +25,9 @@ const router = createBrowserRouter([
 
 				element: (
 					<SoccerFieldsContextProvider>
-						<Home />
+						<ProductsContextProvider>
+							<Home />
+						</ProductsContextProvider>
 					</SoccerFieldsContextProvider>
 				),
 			},
@@ -32,7 +37,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/productos',
-				element: <Products />,
+				element: (
+					<ProductsContextProvider>
+						<Products />
+					</ProductsContextProvider>
+				),
 			},
 			{
 				path: '/register',
@@ -52,7 +61,15 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/productDetail',
-				element: <ProductDetail />,
+				element: (
+					<ProductsContextProvider>
+						<ProductDetail />
+					</ProductsContextProvider>
+				),
+			},
+			{
+				path: '/admin',
+				element: <Admin />,
 			},
 		],
 		errorElement: <NotFound />,
@@ -63,7 +80,9 @@ function App() {
 	return (
 		<>
 			<AuthContextProvider>
-				<RouterProvider router={router} />
+				<UserContextProvider>
+					<RouterProvider router={router} />
+				</UserContextProvider>
 			</AuthContextProvider>
 		</>
 	)

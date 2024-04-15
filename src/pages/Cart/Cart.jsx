@@ -90,12 +90,11 @@ export const Cart = () => {
                         <div className='flex-grow-1'>
                             {products.map((product) => (
                                 <Card key={product.id} className=' cartCards'>
-                                    <div className='d-flex align-items-center justify-content-around '>
-
+                                    <div className='d-flex align-items-center flex-column flex-md-row justify-content-around '>
                                         <div className=''>
                                             <Card.Img src={product.image} className='card-imagen col-3'/>
                                         </div>
-                                        <div className='separador'> 
+                                        <div className='separador d-none d-md-block'> 
                                         </div>
                                         <div className=''>
                                             <Card.Body className='card-body d-flex flex-column align-items-center'>
@@ -121,12 +120,12 @@ export const Cart = () => {
                     <div className='flex-grow-1'>
                         {bookings.map((booking) => (
                             <Card key={booking.id} className='mb-2 cartCards'>
-                                <div className='d-flex align-items-center justify-content-around '>
+                                <div className='d-flex align-items-center justify-content-around flex-column flex-md-row  '>
                                     <div>
                                         <Card.Img variant="top" src={booking.image} className='card-img-booking'/>
                                     </div>
-                                <div className='separador'> 
-                                </div>
+                                    <div className='separador d-none d-md-block'> 
+                                        </div>
                                 <div>
                                     <Card.Body className='card-body d-flex flex-column align-items-center'>
                                         <Card.Title>{booking.name}</Card.Title>
@@ -145,7 +144,7 @@ export const Cart = () => {
                     </div>
                 )}
             </div>
-            <div className='d-flex flex-column align-items-end container total-price my-2 '>
+            <div className='d-flex flex-column align-items-end container total-price my-4 gap-4'>
                 
                 {displayProducts ? (
                     <h3>

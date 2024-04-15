@@ -15,8 +15,8 @@ export const MainFooter = () => {
 	return (
 		<>
 			<div className='Footer'>
-				<Container>
-					<Row className='d-flex flex-column flex-md-row justify-content-center align-items-center '>
+				<Container className='Footer-container'>
+					<Row className='d-flex flex-column flex-md-row justify-content-center align-items-center mt-4'>
 						<Col
 							md={6}
 							lg={5}
@@ -44,7 +44,7 @@ export const MainFooter = () => {
 							<h5>links rapidos</h5>
 							<ul className='d-flex flex-column justify-content-center align-items-center list-unstyled '>
 								<li className='nav-item'>
-									<NavLink to='./' className={'nav-link'}>
+									<NavLink to='./nosotros' className={'nav-link'}>
 										Nosotros
 									</NavLink>
 								</li>
@@ -54,18 +54,13 @@ export const MainFooter = () => {
 									</NavLink>
 								</li>
 								<li className='nav-item'>
-									<NavLink to='./' className={'nav-link'}>
-										Galeria
+									<NavLink to='./404' className={'nav-link'}>
+										Terminos y Condiciones
 									</NavLink>
 								</li>
 								<li className='nav-item'>
-									<NavLink to='./' className={'nav-link'}>
+									<NavLink to='./canchas' className={'nav-link'}>
 										Canchas
-									</NavLink>
-								</li>
-								<li className='nav-item'>
-									<NavLink to='./' className={'nav-link'}>
-										redes
 									</NavLink>
 								</li>
 							</ul>
