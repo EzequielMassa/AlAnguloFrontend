@@ -1,30 +1,26 @@
-import { createContext, useContext , useEffect, useState} from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import UseAxiosAuth from '../hooks/useAxiosAuth'
 
 export const AuthContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
+	const { loguedUser, registerLoading, registerError, register, login } =
+		UseAxiosAuth()
+	const [user, setUser] = useState({})
 
-	const { 
-		loguedUser,
-		registerLoading,
-		registerError,
-		register,
-		login,
-		
-	    } = UseAxiosAuth()
-	const [user,setUser] = useState({})
-	useEffect(()=>{
+	useEffect(() => {
 		setUser(JSON.parse(localStorage.getItem('user')) || {})
-	},[loguedUser])
+	}, [loguedUser])
+
 	return (
 		<AuthContext.Provider
-			value={{ loguedUser,
+			value={{
+				loguedUser,
 				registerLoading,
 				registerError,
 				register,
 				login,
-				user
+				user,
 			}}>
 			{children}
 		</AuthContext.Provider>
