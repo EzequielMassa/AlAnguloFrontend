@@ -9,7 +9,7 @@
 /* .mainFrame {
     box-shadow: 10px 10px 18px -10px var(--color-shadow);
 } */
-body {
+/* body {
     background-image: linear-gradient(
       to top,
       rgba(255, 255, 255, 0.171),
@@ -20,57 +20,56 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-  }
+  } */
 .frame__row {
-    font-family: var(--main-font);
-    font-size: 3vh;
-    font-weight:900;
-    /* margin: 3vw; */
-    margin-top: 5vh;
+	font-family: var(--main-font);
+	font-size: 3vh;
+	font-weight: 900;
+	/* margin: 3vw; */
+	margin-top: 5vh;
 }
 .frame__leftBlock {
-    background-color: rgb(34, 34, 34);
-    height: 100%;
-    width: 100%;
-    /* min-height: 90%; */
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border: 0;
+	background-color: rgb(34, 34, 34);
+	height: 100%;
+	width: 100%;
+	/* min-height: 90%; */
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border: 0;
 }
 .leftBlock {
-    /* min-height: 50vh; */
-    background: rgb(34, 34, 34)!important;
-    
+	/* min-height: 50vh; */
+	background: rgb(34, 34, 34) !important;
 }
 .frame__rightBlock {
-    /* min-height: 90%; */
-    background-color: rgb(226, 226, 231);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 0;
-    width: 100%;
+	/* min-height: 90%; */
+	background-color: rgb(226, 226, 231);
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: 0;
+	width: 100%;
 }
 .rightBlock_1 {
-    display: flex;
-    align-items: center;
-    background-color: gray;
-    border-top-right-radius: 10px;
-    height: auto;
-    background-color: rgb(243, 243, 243);
+	display: flex;
+	align-items: center;
+	background-color: gray;
+	border-top-right-radius: 10px;
+	height: auto;
+	background-color: rgb(243, 243, 243);
 }
 .rightBlock_2 {
-    /* min-height: 90vh; */
+	/* min-height: 90vh; */
 }
 .adminLogged {
-    height: 6vh;
+	height: 6vh;
 }
 .addIcon {
-    font-size: 3.5vh;
-    padding: 0;
-    margin: 0;
+	font-size: 3.5vh;
+	padding: 0;
+	margin: 0;
 }
 .orderIcon {
-    font-size: 2.5vh;
-    padding: 0;
-    margin: 0;
+	font-size: 2.5vh;
+	padding: 0;
+	margin: 0;
 }

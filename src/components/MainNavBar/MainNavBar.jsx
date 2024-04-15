@@ -67,7 +67,11 @@ export const MainNavBar = () => {
 	)
 
 	const handleCartToggle = () => setShowCart(!showCart)
-
+	const handleLinkClick = () => {
+		if (isOpen) {
+			setIsOpen(false)
+		}
+	}
 	return (
 		<>
 			<div className=''>
@@ -87,21 +91,37 @@ export const MainNavBar = () => {
 								)}
 							</div>
 							<div className={isOpen ? 'smallMenu ' : 'menu'}>
-								<NavLink to={'./'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}l>
+								<NavLink
+									to={'./'}
+									className={'nav-link nav-link-style'}
+									onClick={() => handleLinkClick()}
+									l>
 									Inicio
 								</NavLink>
-								<NavLink to={'./productos'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}>
+								<NavLink
+									to={'./productos'}
+									className={'nav-link nav-link-style'}
+									onClick={() => handleLinkClick()}>
 									Productos
 								</NavLink>
-								<NavLink to={'./canchas'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}>
+								<NavLink
+									to={'./canchas'}
+									className={'nav-link nav-link-style'}
+									onClick={() => handleLinkClick()}>
 									Canchas
 								</NavLink>
-								<NavLink to={'./nosotros'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}>
+								<NavLink
+									to={'./nosotros'}
+									className={'nav-link nav-link-style'}
+									onClick={() => handleLinkClick()}>
 									Nosotros
 								</NavLink>
 
 								{isAdmin() && (
-									<NavLink to={'./admin'} className={'nav-link nav-link-style'} onClick={() => setIsOpen(!isOpen)}>
+									<NavLink
+										to={'./admin'}
+										className={'nav-link nav-link-style'}
+										onClick={() => handleLinkClick()}>
 										Admin
 									</NavLink>
 								)}
@@ -176,16 +196,15 @@ export const MainNavBar = () => {
 					)}
 					<hr />
 					<div className='d-grid'>
-                        <NavLink to={'./carrito'} className={'d-grid text-decoration-none'}>
-
-                            <Button
-                                variant='outline-success'
-                                size='md'
-                                className='cart-button'
-                                onClick={handleCartToggle}>
-                                IR AL CARRITO
-                            </Button>
-                        </NavLink>
+						<NavLink to={'./carrito'} className={'d-grid text-decoration-none'}>
+							<Button
+								variant='outline-success'
+								size='md'
+								className='cart-button'
+								onClick={handleCartToggle}>
+								IR AL CARRITO
+							</Button>
+						</NavLink>
 					</div>
 				</Offcanvas.Body>
 			</Offcanvas>
