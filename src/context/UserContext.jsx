@@ -1,34 +1,30 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext } from 'react'
 import UseAxiosUser from '../hooks/useAxiosUser'
 
 export const UserContext = createContext()
 
 export const UserContextProvider = ({ children }) => {
-	const { bookingLoading, 
-		bookingError, 
-		postBooking, 
+	const {
+		bookingLoading,
+		bookingError,
+		postBooking,
 		userCart,
 		userCartLoading,
 		userCartError,
-		getUserCart, 
-		} = UseAxiosUser()
-
-	const [user, setUser] = useState({})
-	const [userId, setUserId] = useState('')
-	const userLocal = JSON.parse(localStorage.getItem('user')) || ''
-	useEffect(() => {
-			setUserId(user.id)
-		
-	}, [userLocal])
-	
-	useEffect(() => {
-		if (userId)
-			getUserCart(user.id)
-		
-	}, [userId])
+		getUserCart,
+	} = UseAxiosUser()
 
 	return (
-		<UserContext.Provider value={{ bookingLoading, bookingError, postBooking, userCart, userCartLoading, userCartError,	getUserCart }}>
+		<UserContext.Provider
+			value={{
+				bookingLoading,
+				bookingError,
+				postBooking,
+				userCart,
+				userCartLoading,
+				userCartError,
+				getUserCart,
+			}}>
 			{children}
 		</UserContext.Provider>
 	)
