@@ -23,6 +23,7 @@ import logo9 from './logoPublicity/logotwremove.png'
 import logo10 from './logoPublicity/nintendoLogoRemove.png'
 import logo11 from './logoPublicity/nodeLogoRemove.png'
 import { useAuthContext } from '../../context/AuthContext'
+import { useEffect } from 'react'
 
 export const Home = () => {
 	const {
@@ -30,7 +31,6 @@ export const Home = () => {
 		soccerFieldsQueryLoading,
 		soccerFieldsQueryError,
 	} = useSoccerFieldsContext()
-
 	return (
 		<>
 			<section className='hero'>

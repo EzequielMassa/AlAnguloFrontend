@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useAuthContext } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 import {
 	Modal,
 	Button,
@@ -10,14 +12,23 @@ import {
 import './login.css'
 import { NavLink } from 'react-router-dom'
 function Login({ show, handleClose }) {
+	const {loguedUser,
+		registerLoading,
+		registerError,
+		login } = useAuthContext()
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [showPassword, setShowPassword] = useState(false)
-	// const handleLogin = () => {
-
-	//   handleClose();
-	// };
-
+	
+	const handleLogin = (e) =>{
+		e.preventDefault();
+		const formData = {email,password}
+		login(formData)
+		if(loguedUser){
+			navigate('/')
+		}
+	}
+	const navigate = useNavigate()
 	return (
 		<Modal show={show} onHide={handleClose} centered>
 			<div className='heading-text'>
@@ -26,7 +37,7 @@ function Login({ show, handleClose }) {
 			<hr />
 			<Modal.Body className='body-modal'>
 				<div className='contenedor'>
-					<Form className='form'>
+					<Form className='form' onSubmit={handleLogin}>
 						<FormGroup controlId='email'>
 							<FormLabel className='form-label'>Email</FormLabel>
 							<FormControl

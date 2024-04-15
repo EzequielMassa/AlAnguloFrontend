@@ -5,12 +5,14 @@ import logo from '../../assets/images/logo_AlAngulo.png'
 import Login from '../../components/Login/Login'
 import './register.css'
 import { useAuthContext } from '../../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 function Register() {
-	const {registerData,
+	const navigate = useNavigate();
+	const {loguedUser,
 		registerLoading,
 		registerError,
-		register} = useAuthContext()
+		register } = useAuthContext()
 	const [showModal, setShowModal] = useState(false)
 	const [	formData,setFormData] = useState({
 		name:"",
@@ -20,11 +22,18 @@ function Register() {
 		image:"",
 		password:""
 		})
-	
+	const validateRegisterData = () =>{
+		
+	}
 	const handleSubmit = (e) =>{
 		e.preventDefault();
+
 		register(formData)
+		if(loguedUser){
+			navigate('/')
+		}
 	}
+
 	const reg = /^[0-9]+$/
 	const handleCloseModal = () => {
 		setShowModal(false)

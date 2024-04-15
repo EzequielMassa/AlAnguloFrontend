@@ -16,6 +16,7 @@ function UseAxiosAuth() {
 			const token = response.data.data;
 			localStorage.setItem('token',token)
 			const decoded = jwtDecode(token)
+			localStorage.setItem('user',JSON.stringify(decoded))
 			setLoguedUser(decoded)
 		} catch (err) {
 			console.log(err)
@@ -35,12 +36,29 @@ function UseAxiosAuth() {
 			
 		}
 	}
+	const login = async (formData) => {
+		setRegisterLoading(true)
+		try {
+			const response = await axios.post(`${baseUrl}/login`, formData)
+			const token = response.data.token;
+			localStorage.setItem('token',token)
+			const decoded = jwtDecode(token)
+			localStorage.setItem('user',JSON.stringify(decoded))
+			setLoguedUser(decoded)
+		} catch (err) {
+			console.log(err)
+			setRegisterError(err)
+		} finally {
+			setRegisterLoading(false)
+		}
+	}
 
 	return {
 		loguedUser,
 		registerLoading,
 		registerError,
 		register,
+		login
 	}
 }
 
