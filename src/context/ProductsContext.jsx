@@ -4,12 +4,29 @@ import UseAxiosProducts from '../hooks/useAxiosProducts'
 export const ProductsContext = createContext()
 
 export const ProductsContextProvider = ({ children }) => {
-	const { products, productsLoading, productsError, getAllProducts } =
-		UseAxiosProducts()
+	const {
+		products,
+		productsLoading,
+		productsError,
+		getAllProducts,
+		categories,
+		categoriesLoading,
+		categoriesError,
+		getAllCategories,
+	} = UseAxiosProducts()
 
 	return (
 		<ProductsContext.Provider
-			value={{ products, productsLoading, productsError, getAllProducts }}>
+			value={{
+				products,
+				productsLoading,
+				productsError,
+				getAllProducts,
+				categories,
+				categoriesLoading,
+				categoriesError,
+				getAllCategories,
+			}}>
 			{children}
 		</ProductsContext.Provider>
 	)

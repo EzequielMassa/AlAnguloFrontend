@@ -8,6 +8,11 @@ function UseAxiosProducts() {
 	const [productsError, setProductsError] = useState(null)
 	useState(false)
 
+	const [categories, setCategories] = useState([])
+	const [categoriesLoading, setCategoriesLoading] = useState(false)
+	const [categoriesError, setCategoriesError] = useState(null)
+	useState(false)
+
 	const getAllProducts = async () => {
 		setProductsLoading(true)
 		try {
@@ -20,11 +25,27 @@ function UseAxiosProducts() {
 		}
 	}
 
+	const getAllCategories = async () => {
+		setCategoriesLoading(true)
+		try {
+			const response = await axios.get(`${baseUrl}/categories`)
+			setCategories(response.data.data)
+		} catch (err) {
+			setCategoriesError(err)
+		} finally {
+			setCategoriesLoading(false)
+		}
+	}
+
 	return {
 		products,
 		productsLoading,
 		productsError,
 		getAllProducts,
+		categories,
+		categoriesLoading,
+		categoriesError,
+		getAllCategories,
 	}
 }
 
