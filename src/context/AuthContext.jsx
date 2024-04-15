@@ -4,10 +4,20 @@ import UseAxiosAuth from '../hooks/useAxiosAuth'
 export const AuthContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
-	const { login, loginLoading, loginError, loginSession } = UseAxiosAuth()
+
+	const { loguedUser,
+		registerLoading,
+		registerError,
+		register,
+	 } = UseAxiosAuth()
+	 console.log(loguedUser,'usuario logueado desde context')
 	return (
 		<AuthContext.Provider
-			value={{ login, loginLoading, loginError, loginSession }}>
+			value={{ loguedUser,
+				registerLoading,
+				registerError,
+				register,
+			}}>
 			{children}
 		</AuthContext.Provider>
 	)
