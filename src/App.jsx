@@ -9,8 +9,8 @@ import { UserContextProvider } from './context/UserContext'
 import { Cart } from './pages/Cart/Cart'
 import ProductDetail from './pages/ProductDetail/ProductDetail'
 import About from './pages/about/About'
-import { Home } from './pages/home/Home'
 import Admin from './pages/admin/Admin'
+import { Home } from './pages/home/Home'
 import Layout from './pages/layout/Layout'
 import { NotFound } from './pages/notFound/NotFound'
 import Products from './pages/products/Productos'
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/admin',
-				element: <UsersContext> <Admin /> </UsersContext>,
+				element: <Admin />,
 			},
 		],
 		errorElement: <NotFound />,

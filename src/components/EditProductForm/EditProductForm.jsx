@@ -1,18 +1,5 @@
-import './EditProductForm.css';
-
-
-
 const EditProductForm = () => {
-
-
-
-
-
-
-  return (
-    <>
-    </>
-  )
+	return <></>
 }
 
-export default EditProductForm;
+export default EditProductForm
