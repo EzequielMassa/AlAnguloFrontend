@@ -94,8 +94,7 @@ export const MainNavBar = () => {
 								<NavLink
 									to={'./'}
 									className={'nav-link nav-link-style'}
-									onClick={() => handleLinkClick()}
-									l>
+									onClick={() => handleLinkClick()}>
 									Inicio
 								</NavLink>
 								<NavLink
