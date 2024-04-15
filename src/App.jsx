@@ -24,7 +24,9 @@ const router = createBrowserRouter([
 
 				element: (
 					<SoccerFieldsContextProvider>
-						<Home />
+						<ProductsContextProvider>
+							<Home />
+						</ProductsContextProvider>
 					</SoccerFieldsContextProvider>
 				),
 			},
