@@ -95,7 +95,7 @@ const UsersTable = () => {
             <tr key={userObj._id} className='fs-5' >
               <td key={"active"+userObj._id} className="borderCustom" >
                 <div className='d-flex align-items-center justify-content-evenly'>
-                <Image style={userObj.active ?null :{filter: "grayscale(100%)"}}  src={userObj.image} alt="imagen de usuario" onClick={ ()=> userImagePopup(userObj.image) } roundedCircle className='cursorChange userImg'/>
+                <Image style={userObj.active ?null :{filter: "grayscale(100%)"}}  src={userObj.image||"https://static.vecteezy.com/system/resources/previews/005/720/408/large_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg"} alt="imagen de usuario" onClick={ ()=> userImagePopup(userObj.image) } roundedCircle className='cursorChange userImg'/>
                 {isActiveMenu(userObj)}
                 </div>
               </td>
@@ -141,6 +141,5 @@ const UsersTable = () => {
 export default UsersTable;
 
 
-//TODO realizar conexion del dropdown userObj.active con backend
-//TODO formulario editar usuarios
-//TODO funcion eliminar usuarios
+//TODO Terminar/corregir conexion del dropdown userObj.active con backend
+

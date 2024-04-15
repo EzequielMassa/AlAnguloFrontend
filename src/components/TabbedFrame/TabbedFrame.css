@@ -9,6 +9,18 @@
 /* .mainFrame {
     box-shadow: 10px 10px 18px -10px var(--color-shadow);
 } */
+body {
+    background-image: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.171),
+      hsla(199, 100%, 95%, 0.253)
+     ),  
+     url('https://image.cdn2.seaart.ai/2023-10-04/18913273638331397/ef389b8e187891129d9d7ee8868f7080cf6152a9_high.webp');
+    opacity: 97%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
 .frame__row {
     font-family: var(--main-font);
     font-size: 3vh;
@@ -18,7 +30,9 @@
 }
 .frame__leftBlock {
     background-color: rgb(34, 34, 34);
-    min-height: 90%;
+    height: 100%;
+    width: 100%;
+    /* min-height: 90%; */
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border: 0;
@@ -29,11 +43,12 @@
     
 }
 .frame__rightBlock {
-    min-height: 90%;
+    /* min-height: 90%; */
     background-color: rgb(226, 226, 231);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding: 0;
+    width: 100%;
 }
 .rightBlock_1 {
     display: flex;
@@ -44,8 +59,18 @@
     background-color: rgb(243, 243, 243);
 }
 .rightBlock_2 {
-    min-height: 90vh;
+    /* min-height: 90vh; */
 }
 .adminLogged {
     height: 6vh;
+}
+.addIcon {
+    font-size: 3.5vh;
+    padding: 0;
+    margin: 0;
+}
+.orderIcon {
+    font-size: 2.5vh;
+    padding: 0;
+    margin: 0;
 }
