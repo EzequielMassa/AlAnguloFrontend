@@ -13,6 +13,7 @@ export const NotFound = () => {
                             No encontramos la pagina <br/> que estas buscando.
                         </p>
                         <Link to="./" class="home__button">
+                            <img src="src\assets\images\logo_AlAngulo.png" alt="logo" />
                             Volver al Inicio
                         </Link>
                     </div>

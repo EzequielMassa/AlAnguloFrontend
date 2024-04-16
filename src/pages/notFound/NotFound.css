@@ -49,7 +49,9 @@
 .home__button:hover {
   box-shadow: 0 4px 12px hsla(38, 69%, 8%, .8);
 }
-
+.home__data img{
+  width: 50px;
+}
 .home__img img {
   width: 230px;
   animation: floaty 1.8s infinite alternate;
