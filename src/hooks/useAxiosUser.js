@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { toast } from 'sonner'
 import { baseUrl } from '../api/apiUrl.js'
 
 function UseAxiosUser() {
-	const [booking, setBooking] = useState({})
+	const [booking, setBooking] = useState(false)
 	const [bookingLoading, setBookingLoading] = useState(false)
 	const [bookingError, setBookingError] = useState(null)
-	
 
 	const [userCart, setUserCart] = useState({})
 	const [userCartLoading, setUserCartLoading] = useState(false)
@@ -16,9 +16,12 @@ function UseAxiosUser() {
 		setBookingLoading(true)
 		try {
 			const response = await axios.post(`${baseUrl}/booking`, booking)
-			setBooking(response.data.data)
+			toast.success('Reserva confirmada')
+			setBooking(true)
 		} catch (err) {
 			console.log(err)
+			toast.error(err.response.data.message)
+			setBooking(false)
 			setBookingError(err)
 		} finally {
 			setBookingLoading(false)
@@ -38,6 +41,8 @@ function UseAxiosUser() {
 	}
 
 	return {
+		booking,
+		setBooking,
 		bookingLoading,
 		bookingError,
 		postBooking,

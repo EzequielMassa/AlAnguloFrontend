@@ -5,7 +5,6 @@ function UseAxiosSoccerFields() {
 	const [soccerFields, setSoccerFields] = useState([])
 	const [soccerFieldsLoading, setSoccerFieldsLoading] = useState(false)
 	const [soccerFieldsError, setSoccerFieldsError] = useState(null)
-	useState(false)
 
 	const [soccerFieldsQuery, setSoccerFieldsQuery] = useState([])
 	const [soccerFieldsQueryLoading, setSoccerFieldsQueryLoading] =

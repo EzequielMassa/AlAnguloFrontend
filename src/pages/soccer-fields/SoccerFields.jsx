@@ -14,6 +14,7 @@ import {
 	detailSoccerField5,
 } from '../../utils/soccerfieldDetails'
 import './SoccerFields.css'
+import { Toaster } from 'sonner'
 
 function SoccerFields() {
 	const { soccerFields, getAllSoccerfields } = useSoccerFieldsContext()
@@ -142,6 +143,7 @@ function SoccerFields() {
 					</div>
 				</section>
 			</article>
+			<Toaster richColors />
 			<ScrollRestoration
 				getKey={(location) => {
 					return location.pathname
