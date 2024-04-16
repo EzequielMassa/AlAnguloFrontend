@@ -11,14 +11,15 @@ import DatePicker from 'react-datepicker'
 import { FaClock, FaRegCalendarAlt } from 'react-icons/fa'
 import { LuAlarmClock } from 'react-icons/lu'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
+import { useUserContext } from '../../context/UserContext'
 import { formatDate } from '../../utils/formatDate'
 import Spinner from '../Spinner/Spinner'
 import './BookingModal.css'
+import { Link } from 'react-router-dom'
 function BookingModal(props) {
 	const { selectedSoccerField } = useSoccerFieldsContext()
-
 	const [form, setForm] = useState({
-		soccerfield: '',
+		soccerField: '',
 		user: '',
 		date: '',
 		time: '',
@@ -31,17 +32,14 @@ function BookingModal(props) {
 		soccerFieldAvailableHoursError,
 		getSoccerFieldAvailableHours,
 	} = useSoccerFieldsContext()
+	const { booking, setBooking, postBooking, bookingLoading } = useUserContext()
 
 	const handleDateChange = (date) => {
 		const formatedDate = formatDate(date)
 		setSelectedDate(date)
 		setTime(soccerFieldAvailableHours[0])
 		setForm((prev) => ({ ...prev, date: formatedDate }))
-		getSoccerFieldAvailableHours(
-			selectedSoccerField._id,
-			formatedDate,
-			selectedDate
-		)
+		getSoccerFieldAvailableHours(selectedSoccerField._id, formatedDate, date)
 	}
 	const handleTimeChange = (e) => {
 		setTime(e.target.value)
@@ -56,7 +54,13 @@ function BookingModal(props) {
 	}
 
 	const handleBooking = async () => {
-		console.log(form)
+		//TODO: Validar
+		await postBooking(form)
+		await getSoccerFieldAvailableHours(
+			selectedSoccerField._id,
+			form.date,
+			selectedDate
+		)
 	}
 
 	useEffect(() => {
@@ -64,13 +68,18 @@ function BookingModal(props) {
 			setTime(soccerFieldAvailableHours[0])
 			setForm((prev) => ({
 				...prev,
-				soccerfield: selectedSoccerField._id,
-				user: '6608ccf89897b94a2f273473',
+				soccerField: selectedSoccerField._id,
+				user: props.userId,
 				date: formatDate(selectedDate),
 				time: soccerFieldAvailableHours[0],
 			}))
 		}
-	}, [soccerFieldAvailableHours, selectedDate, selectedSoccerField._id])
+	}, [
+		soccerFieldAvailableHours,
+		selectedDate,
+		selectedSoccerField._id,
+		booking,
+	])
 
 	useEffect(() => {
 		if (selectedSoccerField._id) {
@@ -81,6 +90,12 @@ function BookingModal(props) {
 			)
 		}
 	}, [selectedDate, selectedSoccerField._id])
+
+	useEffect(() => {
+		if (booking === true) {
+			setBooking(false)
+		}
+	}, [booking])
 
 	return (
 		<Modal
@@ -99,7 +114,7 @@ function BookingModal(props) {
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				{soccerFieldAvailableHoursLoading ? (
+				{soccerFieldAvailableHoursLoading || bookingLoading ? (
 					<Spinner />
 				) : (
 					<Container>
@@ -133,22 +148,29 @@ function BookingModal(props) {
 									<LuAlarmClock className='booking_modal_time_icon' />
 									Hora
 								</h4>
-								<Form.Select
-									aria-label='Default select example'
-									className='d-flex flex-column timepicker_container'
-									selected={time}
-									value={time}
-									onChange={handleTimeChange}>
-									{soccerFieldAvailableHours ? (
-										soccerFieldAvailableHours.map((hour) => (
-											<option key={hour} value={hour}>
-												{hour}
-											</option>
-										))
-									) : (
-										<p>sin datos</p>
-									)}
-								</Form.Select>
+								{soccerFieldAvailableHours.length < 1 ? (
+									<p className='text-center text-info'>
+										Sin horarios disponibles
+									</p>
+								) : (
+									<Form.Select
+										aria-label='Default select example'
+										className='d-flex flex-column timepicker_container'
+										selected={time}
+										value={time}
+										onChange={handleTimeChange}>
+										{soccerFieldAvailableHours ? (
+											soccerFieldAvailableHours.map((hour) => (
+												<option key={hour} value={hour}>
+													{hour}
+												</option>
+											))
+										) : (
+											<></>
+										)}
+									</Form.Select>
+								)}
+
 								<img
 									src={selectedSoccerField.imgUrl}
 									alt='imagen cancha'
@@ -176,11 +198,18 @@ function BookingModal(props) {
 				)}
 			</Modal.Body>
 			<Modal.Footer>
-				<Button
-					className={soccerFieldAvailableHoursLoading ? 'd-none' : 'w-100'}
-					onClick={handleBooking}>
-					Reservar
-				</Button>
+				{props.userId ? (
+					<Button
+						className={soccerFieldAvailableHoursLoading ? 'd-none' : 'w-100'}
+						onClick={handleBooking}
+						disabled={bookingLoading || soccerFieldAvailableHours.length < 1}>
+						Reservar
+					</Button>
+				) : (
+					<Link to={'/register'} className='btn btn-primary w-100'>
+						Registrate
+					</Link>
+				)}
 			</Modal.Footer>
 		</Modal>
 	)
