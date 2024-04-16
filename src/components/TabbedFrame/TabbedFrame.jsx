@@ -11,7 +11,7 @@ const loggedAdmin = JSON.parse(localStorage.getItem("Admin_Registrado_En_Local")
 const TabbedFrame = () => {
   return (
     <>
-      <section className='container-fluid bg-danger frame'>
+      <section className='container-fluid frame pt-5'>
         <Tab.Container id="|-tabs-example" defaultActiveKey="first" className="mainFrame">
             <Row className="frame__row d-flex">
               <Col sm={3} className='frame__leftBlock d-flex col-auto flex-column align-item-center'>
@@ -54,7 +54,7 @@ const TabbedFrame = () => {
                     </Tab.Pane>
                     <div className='d-flex'>
                     <Image src={loggedAdmin ?loggedAdmin.image :"https://xsgames.co/randomusers/assets/avatars/male/13.jpg"} alt="imagen de admin logeado" roundedCircle fluid className='adminLogged'/>
-                    <p className='my-auto ps-1 d-none d-md-block'>{loggedAdmin ?loggedAdmin.name :"BenitoCamela"}</p>
+                    <p className='my-auto ps-1 d-none d-md-block'>{loggedAdmin ?loggedAdmin.name :"JohnDoe"}</p>
                     </div>
                 </Tab.Content>
                 <Tab.Content className='rightBlock_2'>

@@ -1,16 +1,17 @@
 import './UsersTable.css';
-import { useContext, useState } from 'react';
-import { Table, Button, Modal, Dropdown, DropdownButton, Image } from 'react-bootstrap';
-import { UsersProvider } from '../../context/UsersContext';
+import { useState, useEffect } from 'react';
+import { Table, Modal, Dropdown, Image } from 'react-bootstrap';
+
 import Swal from 'sweetalert2';
 import { FaRegEdit } from "react-icons/fa";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { MdOutlineNoPhotography } from "react-icons/md";
 import { MdOutlinePhotoLibrary } from "react-icons/md";
 import EditUserForm from '../EditUserForm/EditUserForm';
+import { useAdminContext } from '../../context/AdminContext';
 
 const UsersTable = () => {
-    const { usersArr, getUsers, updateUserActive, deleteUser } = useContext(UsersProvider);
+    const { users:usersArr, usersLoading, usersError, setUsersError, getAllUsers, deleteUser, updateUserActive } = useAdminContext();
     const [editUser, setEditUser] = useState({});
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -31,27 +32,17 @@ const UsersTable = () => {
             })
         )
     };
-    console.log(editUser)
-    
-    const handleChange = (e) => {
-      e.preventDefault();
-      const { name } = e.target
-      console.log(name)
-      setEditUser({
-          ...editUser,
-          ["active"]: (name==="true" ?true :false),
-      });
-      // updateUserActive(editUser);
-      // getUsers();
-    };
-    
 
     const isActiveMenu = (userObj)=> {
-      const der = (e) => {
-        setEditUser(userObj);
-        console.log(editUser)
-        handleChange(e);
+      const der = async (e) => {
+        const { name } = e.target
+        userObj.active = (name==="true" ?true :false);
+        updateUserActive(userObj);
+        setTimeout(() => {
+          getAllUsers()
+        }, 100);
       }
+
         return (
             <>   
                 <Dropdown>
@@ -70,6 +61,21 @@ const UsersTable = () => {
             </>
         )
     };
+
+    useEffect(() => {
+      getAllUsers()
+    }, []);
+    
+    // if(usersError) {
+    //   console.log(usersError)
+    //   Swal.fire({
+    //     title: `Error al cargar datos`,
+    //     icon: "error",
+    //     showConfirmButton: false,
+    //     timer: 2500
+    // });
+    // };
+
   return (
     <>
     <Table
@@ -116,14 +122,20 @@ const UsersTable = () => {
               </td>
               <td key={"actions"+userObj._id} className="borderCustom">
                 <div className='d-flex justify-content-evenly'>
-                  {/* <Image src={userObj.image} alt="imagen de usuario" onClick={ ()=> userImagePopup(userObj.image) } roundedCircle className='cursorChange userImg d-inline-block'/> */}
-                  {/* <MdOutlinePhotoLibrary className='cursorChange m-1' onClick={ ()=> userImagePopup(userObj.image) } /> */}
                   <FaRegEdit className='cursorChange mx-1' onClick={() => handleEdit(userObj)}/>
                   <FaRegTrashCan className='cursorChange mx-1' onClick={()=> deleteUser(userObj)} />
                 </div>
               </td>
             </tr>
           ))}
+
+      {/* {usersError ?
+      <tr>
+        <td key={"error"} className="cursorChange borderCustom bg-warning"><h3>Error al cargar datos</h3></td>
+      </tr>
+       :null
+      } */}
+      
         </tbody>
       </Table>
       <Modal show={show} onHide={handleClose}>
@@ -139,7 +151,3 @@ const UsersTable = () => {
 };
 
 export default UsersTable;
-
-
-//TODO Terminar/corregir conexion del dropdown userObj.active con backend
-
