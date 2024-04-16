@@ -15,6 +15,7 @@ import { useUserContext } from '../../context/UserContext'
 import { formatDate } from '../../utils/formatDate'
 import Spinner from '../Spinner/Spinner'
 import './BookingModal.css'
+import { Link } from 'react-router-dom'
 function BookingModal(props) {
 	const { selectedSoccerField } = useSoccerFieldsContext()
 	const [form, setForm] = useState({
@@ -38,11 +39,7 @@ function BookingModal(props) {
 		setSelectedDate(date)
 		setTime(soccerFieldAvailableHours[0])
 		setForm((prev) => ({ ...prev, date: formatedDate }))
-		getSoccerFieldAvailableHours(
-			selectedSoccerField._id,
-			formatedDate,
-			selectedDate
-		)
+		getSoccerFieldAvailableHours(selectedSoccerField._id, formatedDate, date)
 	}
 	const handleTimeChange = (e) => {
 		setTime(e.target.value)
@@ -56,10 +53,14 @@ function BookingModal(props) {
 		return !isSunday(date)
 	}
 
-	const handleBooking = () => {
-		//TODO:Validate
-		console.log(form)
-		postBooking(form)
+	const handleBooking = async () => {
+		//TODO: Validar
+		await postBooking(form)
+		await getSoccerFieldAvailableHours(
+			selectedSoccerField._id,
+			form.date,
+			selectedDate
+		)
 	}
 
 	useEffect(() => {
@@ -68,7 +69,7 @@ function BookingModal(props) {
 			setForm((prev) => ({
 				...prev,
 				soccerField: selectedSoccerField._id,
-				user: '661c85a2d046f0ca8f7480d4',
+				user: props.userId,
 				date: formatDate(selectedDate),
 				time: soccerFieldAvailableHours[0],
 			}))
@@ -92,13 +93,7 @@ function BookingModal(props) {
 
 	useEffect(() => {
 		if (booking === true) {
-			// props.onHide()
 			setBooking(false)
-			getSoccerFieldAvailableHours(
-				selectedSoccerField._id,
-				formatDate(selectedDate),
-				selectedDate
-			)
 		}
 	}, [booking])
 
@@ -203,12 +198,18 @@ function BookingModal(props) {
 				)}
 			</Modal.Body>
 			<Modal.Footer>
-				<Button
-					className={soccerFieldAvailableHoursLoading ? 'd-none' : 'w-100'}
-					onClick={handleBooking}
-					disabled={bookingLoading || soccerFieldAvailableHours.length < 1}>
-					Reservar
-				</Button>
+				{props.userId ? (
+					<Button
+						className={soccerFieldAvailableHoursLoading ? 'd-none' : 'w-100'}
+						onClick={handleBooking}
+						disabled={bookingLoading || soccerFieldAvailableHours.length < 1}>
+						Reservar
+					</Button>
+				) : (
+					<Link to={'/register'} className='btn btn-primary w-100'>
+						Registrate
+					</Link>
+				)}
 			</Modal.Footer>
 		</Modal>
 	)

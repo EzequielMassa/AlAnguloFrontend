@@ -65,11 +65,11 @@ function UseAxiosSoccerFields() {
 			const response = await axios.get(
 				`${baseUrl}/bookings/available_hours?soccerfield=${soccerfieldId}&date=${date}`
 			)
-			const fechaActual = new Date()
+			const currentDate = new Date()
 
 			if (
-				fechaActual.getDate() === selectedDate.getDate() &&
-				fechaActual.getMonth() === selectedDate.getMonth()
+				currentDate.getDate() === selectedDate.getDate() &&
+				currentDate.getMonth() === selectedDate.getMonth()
 			) {
 				const horariosFiltrados = response.data.data.filter((horario) => {
 					const hora = parseInt(horario.split(':')[0], 10)
