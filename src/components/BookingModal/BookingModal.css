@@ -7,3 +7,6 @@
 .booking_modal_img {
 	width: 10rem;
 }
+.text-info {
+	color: var(--accent-color);
+}

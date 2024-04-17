@@ -5,6 +5,8 @@ export const UserContext = createContext()
 
 export const UserContextProvider = ({ children }) => {
 	const {
+		booking,
+		setBooking,
 		bookingLoading,
 		bookingError,
 		postBooking,
@@ -12,11 +14,17 @@ export const UserContextProvider = ({ children }) => {
 		userCartLoading,
 		userCartError,
 		getUserCart,
+		order,
+		orderLoading,
+		orderError,
+		postOrder,
 	} = UseAxiosUser()
 
 	return (
 		<UserContext.Provider
 			value={{
+				booking,
+				setBooking,
 				bookingLoading,
 				bookingError,
 				postBooking,
@@ -24,6 +32,10 @@ export const UserContextProvider = ({ children }) => {
 				userCartLoading,
 				userCartError,
 				getUserCart,
+				order,
+				orderLoading,
+				orderError,
+				postOrder,
 			}}>
 			{children}
 		</UserContext.Provider>

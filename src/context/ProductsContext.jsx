@@ -13,6 +13,10 @@ export const ProductsContextProvider = ({ children }) => {
 		categoriesLoading,
 		categoriesError,
 		getAllCategories,
+		product,
+		productLoading,
+		productError,
+		getProductById,
 	} = UseAxiosProducts()
 
 	return (
@@ -26,6 +30,10 @@ export const ProductsContextProvider = ({ children }) => {
 				categoriesLoading,
 				categoriesError,
 				getAllCategories,
+				product,
+				productLoading,
+				productError,
+				getProductById,
 			}}>
 			{children}
 		</ProductsContext.Provider>

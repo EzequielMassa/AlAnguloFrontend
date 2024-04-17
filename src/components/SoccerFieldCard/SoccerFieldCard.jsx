@@ -3,11 +3,14 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { GiBabyfootPlayers, GiGrass } from 'react-icons/gi'
 import { TbClockHour1 } from 'react-icons/tb'
+import { Link } from 'react-router-dom'
+import { useAuthContext } from '../../context/AuthContext.jsx'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext.jsx'
 import { capitalizeWord } from '../../helpers/capitalizeWord.js'
 import BookingModal from '../BookingModal/BookingModal.jsx'
 import './SoccerFieldCard.css'
 function SoccerFieldCard({ soccerField }) {
+	const { user } = useAuthContext()
 	const [modalShow, setModalShow] = useState(false)
 	const { setSelectedSoccerField } = useSoccerFieldsContext()
 	const { _id, name, description, imgUrl, size, grass, price } = soccerField
@@ -47,17 +50,27 @@ function SoccerFieldCard({ soccerField }) {
 								currency: 'ARS',
 							})}
 						</Card.Text>
-						<Button
-							className='my-2 '
-							id={_id}
-							onClick={() => handleBookingModalClick(soccerField)}>
-							Reservar
-						</Button>
+						{user.id ? (
+							<Button
+								className='my-2 '
+								id={_id}
+								onClick={() => handleBookingModalClick(soccerField)}>
+								Reservar
+							</Button>
+						) : (
+							<Link to={'/register'} className='btn btn-primary'>
+								Registrate
+							</Link>
+						)}
 					</Card.ImgOverlay>
 				</Card>
 			</article>
 
-			<BookingModal show={modalShow} onHide={() => setModalShow(false)} />
+			<BookingModal
+				userid={user.id}
+				show={modalShow}
+				onHide={() => setModalShow(false)}
+			/>
 		</>
 	)
 }
