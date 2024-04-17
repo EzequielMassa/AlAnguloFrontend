@@ -16,7 +16,7 @@ function UseAxiosProducts() {
 	const getAllProducts = async () => {
 		setProductsLoading(true)
 		try {
-			const response = await axios.post(`${baseUrl}/products`)
+			const response = await axios.get(`${baseUrl}/products`)
 			setProducts(response.data.data)
 		} catch (err) {
 			setProductsError(err)
