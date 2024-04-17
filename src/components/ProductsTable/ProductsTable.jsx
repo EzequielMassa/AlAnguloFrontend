@@ -6,10 +6,12 @@ import { FaRegEdit } from "react-icons/fa";
 import { FaRegTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import EditProductForm from "../EditProductForm/EditProductForm";
-import { useProductsContext } from "../../context/ProductsContext";
+// import { useProductsContext } from "../../context/ProductsContext";
+import { useAdminContext } from "../../context/AdminContext";
 
 const ProductsTable = () => {
-  const { products:productsArr, getAllProducts } = useProductsContext();
+//   const { products:productsArr, getAllProducts } = useProductsContext();
+  const { products:productsArr, getAllProducts, deleteProduct } = useAdminContext();
   const [editProduct, setEditProduct] = useState({});
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -74,59 +76,59 @@ const ProductsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {productsArr.map((ProductObj) => (
-            <tr key={ProductObj._id} className="fs-5">
+          {productsArr.map((productObj) => (
+            <tr key={productObj._id} className="fs-5">
               <td
-                key={"_id" + ProductObj._id}
+                key={"_id" + productObj._id}
                 className="borderCustom text-break ">
-                <p className="idCell m-0 p-0"> {ProductObj._id} </p>
+                <p className="idCell m-0 p-0"> {productObj._id} </p>
               </td>
               <td
-                key={"name" + ProductObj._id}
+                key={"name" + productObj._id}
                 className="cursorChange borderCustom">
-                {ProductObj.name}
+                {productObj.name}
               </td>
               <td
-                key={"description" + ProductObj._id}
+                key={"description" + productObj._id}
                 className="cursorChange borderCustom">
-                {ProductObj.description}
+                {productObj.description}
               </td>
               <td
-                key={"category" + ProductObj._id}
+                key={"category" + productObj._id}
                 className="cursorChange borderCustom">
-                {ProductObj.category.name}
+                {productObj.category.name}
               </td>
               <td
-                key={"price" + ProductObj._id}
+                key={"price" + productObj._id}
                 className="cursorChange borderCustom">
-                $ {ProductObj.price}
+                $ {productObj.price}
               </td>
               <td
-                key={"image" + ProductObj._id}
+                key={"image" + productObj._id}
                 className="cursorChange borderCustom"
-                onClick={() => productImagePopup(ProductObj.image)}>
+                onClick={() => productImagePopup(productObj.image)}>
                 <div className="d-flex align-items-center justify-content-evenly">
                   <Image
                     src={
-                      ProductObj.image ||
+                      productObj.image ||
                       "https://static.vecteezy.com/system/resources/previews/005/720/408/large_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg"
                     }
                     alt="imagen de productos"
-                    onClick={() => productImagePopup(ProductObj.image)}
+                    onClick={() => productImagePopup(productObj.image)}
                     roundedCircle
                     className="cursorChange userImg"
                   />
                 </div>
               </td>
-              <td key={"actions" + ProductObj._id} className="borderCustom">
+              <td key={"actions" + productObj._id} className="borderCustom">
                 <div className="d-flex justify-content-evenly">
                   <FaRegEdit
                     className="cursorChange mx-1"
-                    onClick={() => handleEdit(ProductObj)}
+                    onClick={() => handleEdit(productObj)}
                   />
                   <FaRegTrashCan
                     className="cursorChange mx-1"
-                    onClick={() => deleteProduct(ProductObj)}
+                    onClick={() => deleteProduct(productObj)}
                   />
                 </div>
               </td>
@@ -136,7 +138,7 @@ const ProductsTable = () => {
       </Table>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar usuario</Modal.Title>
+          <Modal.Title>Editar producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <EditProductForm

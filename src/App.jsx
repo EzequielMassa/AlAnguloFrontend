@@ -70,7 +70,14 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/admin',
-				element: ( <AdminContextProvider> <SoccerFieldsContextProvider> <ProductsContextProvider> <Admin /> </ProductsContextProvider> </SoccerFieldsContextProvider> </AdminContextProvider>)
+				element: ( 
+					<ProductsContextProvider> 
+						<AdminContextProvider> 
+							<SoccerFieldsContextProvider> 
+								<Admin /> 
+							</SoccerFieldsContextProvider> 
+						</AdminContextProvider>
+					</ProductsContextProvider> )
 			},
 		],
 		errorElement: <NotFound />,

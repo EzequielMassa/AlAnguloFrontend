@@ -1,14 +1,25 @@
 import './TabbedFrame.css';
-import { Container, Row, Col, Nav, Tab, Image, Button } from 'react-bootstrap';
+import { Container, Row, Col, Nav, Tab, Image, Button, Modal } from 'react-bootstrap';
 import UsersTable from '../UsersTable/UsersTable';
 import ProductsTable from '../ProductsTable/ProductsTable';
 import { ImSortAlphaDesc, ImSortAlphaAsc } from "react-icons/im";
 import { FcAddDatabase } from "react-icons/fc";
+import EditProductForm from '../EditProductForm/EditProductForm';
+import { useState } from 'react';
+
 
 
 const loggedAdmin = JSON.parse(localStorage.getItem("Admin_Registrado_En_Local"))
 
 const TabbedFrame = () => {
+
+  const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleEdit = (productObj) => {
+      // setEditProduct(productObj);
+      setShow(true);
+    };
+
   return (
     <>
       <section className='container-fluid frame pt-5'>
@@ -49,7 +60,7 @@ const TabbedFrame = () => {
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">
                     <div className='d-flex'>
-                    <div className='mx-1' ><Button className='m-0 p-1' variant='outline-success'> <FcAddDatabase className='addIcon'/> </Button></div>
+                    <div className='mx-1' ><Button className='m-0 p-1' variant='outline-success'> <FcAddDatabase onClick={handleEdit} className='addIcon'/> </Button></div>
                     </div>
                     </Tab.Pane>
                     <div className='d-flex'>
@@ -59,12 +70,22 @@ const TabbedFrame = () => {
                 </Tab.Content>
                 <Tab.Content className='rightBlock_2'>
                   <Tab.Pane eventKey="first"> <UsersTable/> </Tab.Pane>
-                  <Tab.Pane eventKey="second"> <ProductsTable/> </Tab.Pane>
+                  <Tab.Pane eventKey="second"> <ProductsTable handleEdit={handleEdit} /> </Tab.Pane>
                   <Tab.Pane eventKey="third">Third tab content</Tab.Pane>
                 </Tab.Content>
               </Col>
             </Row>
         </Tab.Container>
+
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Producto nuevo</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <EditProductForm handleClose={handleClose} />
+        </Modal.Body>
+        </Modal>
+
         </section>
 
 <br />

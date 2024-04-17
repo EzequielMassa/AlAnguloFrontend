@@ -11,7 +11,14 @@ export const AdminContextProvider = ({ children }) => {
 		getAllUsers,
         updateUserActive,
         updateUser,
-        deleteUser
+        deleteUser,
+		products,
+        productsLoading,
+        productsError,
+		deleteProduct,
+		updateProduct,
+		getAllProducts,
+		createProduct
      } = UseAxiosAdmin();
 
 	return (
@@ -23,7 +30,14 @@ export const AdminContextProvider = ({ children }) => {
 		        getAllUsers,
                 updateUserActive,
                 updateUser,
-                deleteUser
+                deleteUser,
+				products,
+        		productsLoading,
+        		productsError,
+				deleteProduct,
+				updateProduct,
+				getAllProducts,
+				createProduct
 			}}>
 			{children}
 		</AdminContext.Provider>

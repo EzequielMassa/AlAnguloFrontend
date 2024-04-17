@@ -51,7 +51,7 @@ const EditUserForm = ({editUser, handleClose}) => {
         updateUser(user);
         handleClose();
         resetUserState();
-        getAllUsers()
+        getAllUsers();
     }
 
     return (
@@ -109,7 +109,7 @@ const EditUserForm = ({editUser, handleClose}) => {
               type="checkbox"
               label="es admin?"
             //   value="roles"
-              checked={user.roles[0].name==="admin" ?true : false}
+              defaultChecked={user.roles[0].name}
               onChange={handleChange}
               name="roles" />
           </Form.Group>
@@ -123,7 +123,7 @@ const EditUserForm = ({editUser, handleClose}) => {
               onChange={handleChange}
               name="active"/>
           </Form.Group>
-          <Button variant="warning" type="submit">Guardar cambios</Button> 
+          <Button variant="warning" type="submit" className='d-flex mx-auto'>Guardar cambios</Button> 
         </Form>
       </>
     )
