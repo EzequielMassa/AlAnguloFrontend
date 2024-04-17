@@ -12,6 +12,10 @@ function UseAxiosUser() {
 	const [userCartLoading, setUserCartLoading] = useState(false)
 	const [userCartError, setUserCartError] = useState(null)
 
+	const [order, setOrder] = useState(false)
+	const [orderLoading, setOrderLoading] = useState(false)
+	const [orderError, setOrderError] = useState(null)
+
 	const postBooking = async (booking) => {
 		setBookingLoading(true)
 		try {
@@ -19,7 +23,6 @@ function UseAxiosUser() {
 			toast.success('Reserva confirmada')
 			setBooking(true)
 		} catch (err) {
-			console.log(err)
 			toast.error(err.response.data.message)
 			setBooking(false)
 			setBookingError(err)
@@ -33,10 +36,24 @@ function UseAxiosUser() {
 			const response = await axios.get(`${baseUrl}/cart/user/${userId}`)
 			setUserCart(response.data.data)
 		} catch (err) {
-			console.log(err)
 			setUserCartError(err)
 		} finally {
 			setUserCartLoading(false)
+		}
+	}
+
+	const postOrder = async (order) => {
+		setOrderLoading(true)
+		try {
+			const response = await axios.post(`${baseUrl}/orders`, order)
+			toast.success('Orden agregada al carrito')
+			setOrder(true)
+		} catch (err) {
+			toast.error(err.response.data.message)
+			setOrder(false)
+			setOrderError(err)
+		} finally {
+			setOrderLoading(false)
 		}
 	}
 
@@ -50,6 +67,10 @@ function UseAxiosUser() {
 		userCartLoading,
 		userCartError,
 		getUserCart,
+		order,
+		orderLoading,
+		orderError,
+		postOrder,
 	}
 }
 

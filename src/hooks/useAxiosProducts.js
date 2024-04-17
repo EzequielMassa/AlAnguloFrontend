@@ -13,6 +13,11 @@ function UseAxiosProducts() {
 	const [categoriesError, setCategoriesError] = useState(null)
 	useState(false)
 
+	const [product, setProduct] = useState([])
+	const [productLoading, setProductLoading] = useState(false)
+	const [productError, setProductError] = useState(null)
+	useState(false)
+
 	const getAllProducts = async () => {
 		setProductsLoading(true)
 		try {
@@ -37,6 +42,18 @@ function UseAxiosProducts() {
 		}
 	}
 
+	const getProductById = async (productId) => {
+		setProductLoading(true)
+		try {
+			const response = await axios.get(`${baseUrl}/product/${productId}`)
+			setProduct(response.data.data)
+		} catch (err) {
+			setProductError(err)
+		} finally {
+			setProductLoading(false)
+		}
+	}
+
 	return {
 		products,
 		productsLoading,
@@ -46,6 +63,10 @@ function UseAxiosProducts() {
 		categoriesLoading,
 		categoriesError,
 		getAllCategories,
+		product,
+		productLoading,
+		productError,
+		getProductById,
 	}
 }
 
