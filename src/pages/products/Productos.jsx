@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import {
 	Button,
 	Card,
@@ -10,7 +10,7 @@ import {
 	Navbar,
 	Row,
 } from 'react-bootstrap'
-import { TiDelete } from 'react-icons/ti'
+import { TbFilterX } from 'react-icons/tb'
 import {
 	NavLink,
 	ScrollRestoration,
@@ -19,7 +19,6 @@ import {
 } from 'react-router-dom'
 import { useProductsContext } from '../../context/ProductsContext'
 import { formatCurrency } from '../../helpers/formatCurrency'
-import './filter.css'
 import './products.css'
 function Products() {
 	const { products, getAllProducts, categories, getAllCategories } =
@@ -33,7 +32,6 @@ function Products() {
 		const category = searchParams.get('categoria')
 
 		let filteredFields = products
-		console.log(filteredFields)
 
 		if (name) {
 			filteredFields = filteredFields.filter((field) =>
@@ -99,22 +97,27 @@ function Products() {
 	return (
 		<>
 			<Container className='mt-5 pt-5 '>
-				<Navbar bg='light' expand='lg' className='mb-3 nav-filter '>
-					<Navbar.Brand>Búsqueda de Productos</Navbar.Brand>
+				<Navbar
+					bg='light'
+					expand='lg'
+					className='mb-3 nav-filter p-4 border rounded-4'>
+					<Navbar.Brand className='d-flex justify-content-center align-items-center mt-md-3'>
+						Búsqueda de Productos
+					</Navbar.Brand>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
-					<Navbar.Collapse id='basic-navbar-nav'>
-						<Nav className=' w-100 d-flex flex-column flex-md-row justify-content-center align-items-center'>
-							<Form className='form-search flex-column flex-md-row gap-2 w-100 d-flex justify-content-center align-items-center'>
+					<Navbar.Collapse id='basic-navbar-nav '>
+						<Nav className=' w-100 d-flex flex-column flex-md-row justify-content-center align-items-center '>
+							<Form className='form-search flex-column flex-md-row gap-4 w-100 d-flex justify-content-center align-items-center'>
 								<FormControl
 									type='text'
 									name='name'
 									placeholder='Buscar por nombre'
-									className='mr-sm-2 nav-search'
+									className='mt-4 w-75'
 									value={searchParams.get('nombre') || ''}
 									onChange={handleInputChange}
 								/>
 								<Form.Group
-									className='mb-3  filter_form_group_container'
+									className='mb-3  filter_form_group_container w-50 '
 									controlId='category'>
 									<Form.Label>Categoria</Form.Label>
 									<Form.Select
@@ -137,7 +140,7 @@ function Products() {
 									</Form.Select>
 								</Form.Group>
 								<Form.Group
-									className='mb-3 filter_form_group_container '
+									className='mb-3 filter_form_group_container w-50'
 									controlId='price'>
 									<Form.Label>Precio</Form.Label>
 									<Form.Select
@@ -150,8 +153,8 @@ function Products() {
 										<option value='mayor'>Mayor precio</option>
 									</Form.Select>
 								</Form.Group>
-								<TiDelete
-									className='d-inline-block  filter_form_icon'
+								<TbFilterX
+									className='d-inline-block  filter_form_icon fs-1'
 									onClick={clearProductsFilter}
 								/>
 							</Form>
