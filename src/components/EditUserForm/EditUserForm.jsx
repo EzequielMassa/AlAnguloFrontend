@@ -1,12 +1,12 @@
 import './EditUserForm.css';
 import { Form, Button } from "react-bootstrap";
-import { useState, useContext } from "react";
-import { UsersProvider } from '../../context/UsersContext'
+import { useState } from "react";
+import { useAdminContext } from '../../context/AdminContext';
 
 const EditUserForm = ({editUser, handleClose}) => {
-    const { updateUserActive } = useContext(UsersProvider);
+    const { updateUser, getAllUsers } = useAdminContext();
     const [user, setUser] = useState({
-        id: editUser.id,
+        _id: editUser._id,
         name: editUser.name,
         lastname: editUser.lastname,
         email: editUser.email,
@@ -18,7 +18,7 @@ const EditUserForm = ({editUser, handleClose}) => {
 
     const resetUserState = () => {
         setUser({
-            id:"",
+            _id:"",
             name:"",
             lastname:"",
             email:"",
@@ -30,8 +30,10 @@ const EditUserForm = ({editUser, handleClose}) => {
     };
 
     const handleChange = (e) => {
+        console.log(user.roles[0].name)
         const { name, value, checked, type } = e.target;
         if(type==="checkbox"){
+            console.log(checked)
             setUser({
                 ...user,
                 [name]: checked,
@@ -46,9 +48,10 @@ const EditUserForm = ({editUser, handleClose}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        updateUserActive(user);
+        updateUser(user);
         handleClose();
-        resetUserState()
+        resetUserState();
+        getAllUsers();
     }
 
     return (
@@ -94,11 +97,11 @@ const EditUserForm = ({editUser, handleClose}) => {
           <Form.Group className="mb-2">
             <Form.Label className="mb-0">Imagen</Form.Label>
             <Form.Control
-              type="image"
+              type="text"
               value={user.image}
               onChange={handleChange}
               name="image"
-              placeholder="Imagen" />
+              placeholder="http://mi_imagen.com" />
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Label className="mb-0">Rol</Form.Label>
@@ -106,7 +109,7 @@ const EditUserForm = ({editUser, handleClose}) => {
               type="checkbox"
               label="es admin?"
             //   value="roles"
-              checked={user.roles[0].name==="admin" ?true : false}
+              defaultChecked={user.roles[0].name}
               onChange={handleChange}
               name="roles" />
           </Form.Group>
@@ -116,11 +119,11 @@ const EditUserForm = ({editUser, handleClose}) => {
               type="checkbox"
               label="activo?"
             //   value={user.active}
-              checked={user.active}
+              defaultChecked={user.active}
               onChange={handleChange}
               name="active"/>
           </Form.Group>
-          <Button variant="warning" type="submit">Guardar cambios</Button> 
+          <Button variant="warning" type="submit" className='d-flex mx-auto'>Guardar cambios</Button> 
         </Form>
       </>
     )
