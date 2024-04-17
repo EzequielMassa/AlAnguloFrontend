@@ -69,7 +69,7 @@ function BookingModal(props) {
 			setForm((prev) => ({
 				...prev,
 				soccerField: selectedSoccerField._id,
-				user: props.userId,
+				user: props.userid,
 				date: formatDate(selectedDate),
 				time: soccerFieldAvailableHours[0],
 			}))
@@ -198,7 +198,7 @@ function BookingModal(props) {
 				)}
 			</Modal.Body>
 			<Modal.Footer>
-				{props.userId ? (
+				{props.userid ? (
 					<Button
 						className={soccerFieldAvailableHoursLoading ? 'd-none' : 'w-100'}
 						onClick={handleBooking}

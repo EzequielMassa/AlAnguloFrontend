@@ -11,7 +11,6 @@ import BookingModal from '../BookingModal/BookingModal.jsx'
 import './SoccerFieldCard.css'
 function SoccerFieldCard({ soccerField }) {
 	const { user } = useAuthContext()
-	console.log(user)
 	const [modalShow, setModalShow] = useState(false)
 	const { setSelectedSoccerField } = useSoccerFieldsContext()
 	const { _id, name, description, imgUrl, size, grass, price } = soccerField
@@ -68,7 +67,7 @@ function SoccerFieldCard({ soccerField }) {
 			</article>
 
 			<BookingModal
-				userId={user.id}
+				userid={user.id}
 				show={modalShow}
 				onHide={() => setModalShow(false)}
 			/>
