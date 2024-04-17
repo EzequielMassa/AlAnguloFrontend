@@ -2,10 +2,8 @@ import axios from 'axios'
 import { useState } from 'react'
 import { baseUrl } from '../api/apiUrl.js'
 import Swal from 'sweetalert2'
-// import { useProductsContext } from "../context/ProductsContext";
 
 function UseAxiosAdmin() {
-    // const { getAllProducts } = useProductsContext();
 	const [users, setUsers] = useState([])
 	const [usersLoading, setUsersLoading] = useState(false)
 	const [usersError, setUsersError] = useState(null)
@@ -17,6 +15,9 @@ function UseAxiosAdmin() {
     const [soccerfields, setSoccerfields] = useState([])
 	const [soccerfieldsLoading, setSoccerfieldsLoading] = useState(false)
 	const [soccerfieldsError, setSoccerfieldsError] = useState(null)
+
+    const token = localStorage.getItem("token")||{};
+    console.log(token)
 
     const getAllUsers = async () => {
         setUsersLoading(true);
@@ -156,7 +157,7 @@ function UseAxiosAdmin() {
                 try {
                     const response = axios.delete(`${baseUrl}/product/delete/${ProductObj._id}`,{
                         headers: {
-                            "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                            "x-access-token": `${token}`
                         }
                     });
                     response.then((result)=> {
