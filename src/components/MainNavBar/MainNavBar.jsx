@@ -5,6 +5,7 @@ import { IconContext } from 'react-icons'
 import {
 	AiOutlineClose,
 	AiOutlineLogin,
+	AiOutlineLogout,
 	AiOutlineSearch,
 	AiOutlineShoppingCart,
 } from 'react-icons/ai'
@@ -14,8 +15,20 @@ import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/logo_AlAngulo.png'
 import Login from '../Login/Login'
 import './MainNavBar.css'
+import { useAuthContext } from '../../context/AuthContext'
+import { useUserContext } from '../../context/UserContext'
+import { useEffect } from 'react'
 
 export const MainNavBar = () => {
+	const { user } = useAuthContext()
+	const { userCart, getUserCart, userCartLoading } = useUserContext()
+
+	useEffect(() => {
+		if (user.id) {
+			getUserCart(user.id)
+		}
+	}, [user])
+
 	const [showModal, setShowModal] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
 	const handleCloseModal = () => {
@@ -26,45 +39,32 @@ export const MainNavBar = () => {
 		setShowModal(true)
 	}
 
-	const [user, setUser] = useState({ userName: 'Facundo', role: 'admin' })
-
 	const isAdmin = () => {
-		return user && user.role === 'admin'
+		if (Object.keys(user).length != 0) {
+			return user && user.roles[0].name === 'admin'
+		}
+		else {
+			return false
+		}
 	}
 	const isUser = () => {
-		return user.role === 'user' || user.role === 'admin'
+		if (Object.keys(user).length != 0){
+			return user.roles[0].name === 'user' || user.roles[0].name === 'admin'
+		}
+		else{
+			return false
+		}
 	}
+
 
 	const [showCart, setShowCart] = useState(false)
 
 	const [products, setProducts] = useState([
-		{
-			id: 1,
-			name: 'Camiseta',
-			price: 10000,
-			quantity: 1,
-			image: 'icon-logo.jpg',
-		},
-		{
-			id: 2,
-			name: 'Bebida',
-			price: 1700,
-			quantity: 2,
-			image: 'icon-logo.jpg',
-		},
-		{
-			id: 2,
-			name: 'Bebida',
-			price: 1700,
-			quantity: 2,
-			image: 'icon-logo.jpg',
-		},
+		
 	])
 
-	const total = products.reduce(
-		(acc, product) => acc + product.price * product.quantity,
-		0
-	)
+	const total = userCart.total
+	console.log(user)
 
 	const handleCartToggle = () => setShowCart(!showCart)
 	const handleLinkClick = () => {
@@ -141,17 +141,30 @@ export const MainNavBar = () => {
 									value={{ className: 'global-class-name' }}>
 									<span className='cart Nav-Icon' onClick={handleCartToggle}>
 										<AiOutlineShoppingCart />
-										<div className='store'>0</div>
+										{!userCart  || Object.keys(userCart).length === 0 ? (
+											<></>
+											) : (
+												<b className='store'>{userCart.orders.length}</b>
+												)}
+										
 									</span>
 								</IconContext.Provider>
 								<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
 									<span>
-										<AiOutlineLogin onClick={handleShowModal} />
-										<Login show={showModal} handleClose={handleCloseModal} />
-										{isUser() && (
-											<b className='user_Name'>Hola {user.userName}</b>
-										)}
+										{isUser ? (
+										<>
+											<AiOutlineLogout onClick={handleShowModal}/>
+											<Login show={showModal} handleClose={handleCloseModal} />
+											<b className='user_Name'>Hola {user.name}</b>
+										</>
+										):(
+										<>
+											<AiOutlineLogin onClick={handleShowModal} />
+											<Login show={showModal} handleClose={handleCloseModal} />
+										</>)
+										}
+
 									</span>
 								</IconContext.Provider>
 							</div>
@@ -169,35 +182,47 @@ export const MainNavBar = () => {
 				</Offcanvas.Header>
 				<hr />
 				<Offcanvas.Body>
-					{products.length === 0 ? (
+
+					{userCart && Object.keys(userCart).length === 0 ? (
 						<p>No hay productos agregados.</p>
 					) : (
 						<div>
-							{products.map((product, index) => (
-								<div key={index} className='product-item'>
+							{userCart.orders.map((order) => (
+								<div key={order._id} className='product-item'>
 									<img
-										src={product.image}
-										alt={product.name}
+										src={order.product.image}
+										alt={order.product.name}
 										className='product-image'
 									/>
 									<div className='product-details'>
 										<ul>
-											<li>{product.name}</li>
-											<li>${product.price}</li>
-											<li>Cantidad: {product.quantity}</li>
+											<li>{order.product.name}</li>
+											<li>${order.product.price}</li>
+											<li>Cantidad: {order.quantity}</li>
 										</ul>
 									</div>
 								</div>
 							))}
+							{userCart.bookings.length != 0 ? (
+
+								<h2 className='paragraph '>
+									{user.name} tiene {userCart.bookings.length} reserva/s de canchas
+								</h2>
+							):(
+								<h2 className='paragraph cart-total'>
+									No hay reservas hechas
+								</h2>
+							)
+							}
 							<hr />
 							<p className='paragraph cart-total'>Total : ${total}</p>
 						</div>
 					)}
 					<hr />
-					<div className='d-grid'>
+					<div className='d-grid position-absolute bottom-0 start-50 translate-middle'>
 						<NavLink to={'./carrito'} className={'d-grid text-decoration-none'}>
 							<Button
-								variant='outline-success'
+								variant='success'
 								size='md'
 								className='cart-button'
 								onClick={handleCartToggle}>

@@ -132,12 +132,11 @@
 .store {
 	position: absolute;
 	top: -5px;
-	right: -5px;
-	background-color: var(--secondary-color);
+	right: -8px;
+	
 	border-radius: 50%;
-	padding-top: 0;
-	margin-top: 0;
-	border: 0;
+	font-family: 'Montserrat', sans-serif;
+	color: var(--primary-color);
 }
 .offcanvas {
 	background-color: var(--background-color);
@@ -185,4 +184,9 @@ ul {
 }
 .cart-button {
 	font-family: 'Montserrat', sans-serif;
+}
+.paragraph{
+	color: var(--primary-color);
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
 }

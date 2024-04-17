@@ -27,9 +27,9 @@ import { useEffect } from 'react'
 import { useUserContext } from '../../context/UserContext'
 
 export const Home = () => {
-	const {
-		userCart
-	} = useUserContext()
+	// const {
+	// 	userCart
+	// } = useUserContext()
 	const {
 		soccerFieldsQuery,
 		soccerFieldsQueryLoading,
