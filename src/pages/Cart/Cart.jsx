@@ -20,38 +20,10 @@ export const Cart = () => {
 		}
 	}, [user])
 
-	const [bookings, setBookings] = useState([
-		{
-			id: 1,
-			name: 'canchita',
-			time: '12:00',
-			quantity: 1,
-			image: 'src/assets/images/nuestras-canchas-hero.webp',
-			price: 5000,
-		},
-		{
-			id: 2,
-			name: 'cancha',
-			time: '17:00',
-			quantity: 2,
-			image: 'src/assets/images/nuestras-canchas-hero.webp',
-			price: 5000,
-		},
-		{
-			id: 2,
-			name: 'canchota',
-			time: '18:00',
-			quantity: 2,
-			image: 'src/assets/images/nuestras-canchas-hero.webp',
-			price: 5000,
-		},
-	])
+	
 	const [displayProducts, setDisplayProducts] = useState(true)
 
-	// const bookingsSubtotal = bookings.reduce(
-	// 	(acc, booking) => acc + booking.price * booking.quantity,
-	// 	0
-	// )
+	
 
 	let productsSubtotal
 	if (userCart.orders) {
