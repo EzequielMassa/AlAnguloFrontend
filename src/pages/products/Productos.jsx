@@ -181,7 +181,7 @@ function Products() {
 											{formatCurrency(p.price)}
 										</Card.Text>
 										<div className='btn-container d-flex'>
-											<NavLink to='/ProductDetail'>
+											<NavLink to={`/producto/${p._id}`}>
 												<Button className='btn-product btn-success'>
 													Ver producto
 												</Button>

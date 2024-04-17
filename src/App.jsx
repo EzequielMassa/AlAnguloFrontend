@@ -60,7 +60,7 @@ const router = createBrowserRouter([
 				element: <About />,
 			},
 			{
-				path: '/productDetail',
+				path: '/producto/:id',
 				element: (
 					<ProductsContextProvider>
 						<ProductDetail />
