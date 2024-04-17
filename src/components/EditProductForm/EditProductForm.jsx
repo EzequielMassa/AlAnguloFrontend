@@ -64,8 +64,7 @@ const EditProductForm = ({editProduct, handleClose}) => {
     <>
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-2">
-            <Form.Label className="mb-0">Nombre
-            </Form.Label>
+            <Form.Label className="mb-0">Nombre</Form.Label>
             <Form.Control required
               type="text"
               value={product.name}
@@ -93,7 +92,7 @@ const EditProductForm = ({editProduct, handleClose}) => {
           </Form.Group>
           <Form.Group className="mb-2">
             <Form.Label className="mb-0">Precio</Form.Label>
-            <Form.Control
+            <Form.Control required
               type="number"
               value={product.price}
               onChange={handleChange}
@@ -130,6 +129,3 @@ const EditProductForm = ({editProduct, handleClose}) => {
 }
 
 export default EditProductForm;
-
-
-

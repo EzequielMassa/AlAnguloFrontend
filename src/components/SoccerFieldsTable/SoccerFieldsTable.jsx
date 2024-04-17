@@ -1,27 +1,27 @@
-import "./ProductsTable.css";
+import './SoccerFieldsTable.css';
 
 import { useEffect, useState } from "react";
 import { Image, Modal, Table } from "react-bootstrap";
 import { FaRegEdit } from "react-icons/fa";
 import { FaRegTrashCan } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import EditProductForm from "../EditProductForm/EditProductForm";
 import { useAdminContext } from "../../context/AdminContext";
+import EditSoccerfieldForm from "../EditSoccerfieldForm/EditSoccerfieldForm";
 
-const ProductsTable = () => {
-  const { products:productsArr, getAllProducts, deleteProduct } = useAdminContext();
-  const [editProduct, setEditProduct] = useState({});
+const SoccerFieldsTable = () => {
+  const { soccerfields:soccerfieldsArr, getAllSoccerfields, deleteSoccerfield } = useAdminContext();
+  const [editSoccerfield, setEditSoccerfield] = useState({});
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
-  const handleEdit = (productObj) => {
-    setEditProduct(productObj);
+  const handleEdit = (soccerfieldObj) => {
+    setEditSoccerfield(soccerfieldObj);
     setShow(true);
   };
 
-  const productImagePopup = (url) => {
+  const soccerfieldImagePopup = (url) => {
     return Swal.fire({
       imageUrl: url,
-      imageAlt: "Product image",
+      imageAlt: "Soccerfield image",
       showCloseButton: true,
       closeButtonAriaLabel: "Cierra ésta imagen",
       showConfirmButton: false,
@@ -30,7 +30,7 @@ const ProductsTable = () => {
   };
 
   useEffect(() => {
-    getAllProducts();
+    getAllSoccerfields();
   }, []);
 
   return (
@@ -55,16 +55,16 @@ const ProductsTable = () => {
               className="border border-success border-opacity-50">
               DESCRIPCIÓN
             </th>
-            <th
-              key="CATEGORY"
-              className="border border-success border-opacity-50">
-              CATEGORIA
-            </th>
             <th key="PRICE" className="border border-success border-opacity-50">
               PRECIO
             </th>
-            <th key="IMAGE" className="border border-success border-opacity-50">
-              IMG
+            <th
+              key="SIZE"
+              className="border border-success border-opacity-50">
+              TAMAÑO
+            </th>
+            <th key="GRASS" className="border border-success border-opacity-50">
+              PASTO
             </th>
             <th
               key="ACTIONS"
@@ -74,59 +74,66 @@ const ProductsTable = () => {
           </tr>
         </thead>
         <tbody>
-          {productsArr.map((productObj) => (
-            <tr key={productObj._id} className="fs-5">
+          {soccerfieldsArr.map((soccerfieldObj) => (
+            <tr key={soccerfieldObj._id} className="fs-5">
               <td
-                key={"_id" + productObj._id}
-                className="borderCustom text-break ">
-                <p className="idCell m-0 p-0"> {productObj._id} </p>
+                key={"_id" + soccerfieldObj._id}
+                className="borderCustom text-break " onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}>
+                <p className="idCell m-0 p-0"> {soccerfieldObj._id} </p>
               </td>
               <td
-                key={"name" + productObj._id}
-                className="cursorChange borderCustom">
-                {productObj.name}
+                key={"name" + soccerfieldObj._id}
+                className="cursorChange borderCustom" onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}>
+                {soccerfieldObj.name}
               </td>
               <td
-                key={"description" + productObj._id}
-                className="cursorChange borderCustom">
-                {productObj.description}
+                key={"description" + soccerfieldObj._id}
+                className="cursorChange borderCustom" onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}>
+                {soccerfieldObj.description}
               </td>
               <td
-                key={"category" + productObj._id}
-                className="cursorChange borderCustom">
-                {productObj.category.name}
+                key={"price" + soccerfieldObj._id}
+                className="cursorChange borderCustom" onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}>
+                $ {soccerfieldObj.price}
               </td>
               <td
-                key={"price" + productObj._id}
-                className="cursorChange borderCustom">
-                $ {productObj.price}
+                key={"size" + soccerfieldObj._id}
+                className="cursorChange borderCustom" onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}>
+                {soccerfieldObj.size}
               </td>
               <td
-                key={"image" + productObj._id}
+                key={"grass" + soccerfieldObj._id}
+                className="cursorChange borderCustom" onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}>
+                {soccerfieldObj.grass}
+              </td>
+
+              {/* <td
+                key={"image" + soccerfieldObj._id}
                 className="cursorChange borderCustom"
-                onClick={() => productImagePopup(productObj.image)}>
+                onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}>
                 <div className="d-flex align-items-center justify-content-evenly">
                   <Image
                     src={
-                      productObj.image ||
+                      soccerfieldObj.imgUrl ||
                       "https://static.vecteezy.com/system/resources/previews/005/720/408/large_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg"
                     }
-                    alt="imagen de productos"
-                    onClick={() => productImagePopup(productObj.image)}
+                    alt="imagen de cancha"
+                    onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}
                     roundedCircle
                     className="cursorChange userImg"
                   />
                 </div>
-              </td>
-              <td key={"actions" + productObj._id} className="borderCustom">
+              </td> */}
+
+              <td key={"actions" + soccerfieldObj._id} className="borderCustom">
                 <div className="d-flex justify-content-evenly">
                   <FaRegEdit
                     className="cursorChange mx-1"
-                    onClick={() => handleEdit(productObj)}
+                    onClick={() => handleEdit(soccerfieldObj)}
                   />
                   <FaRegTrashCan
                     className="cursorChange mx-1"
-                    onClick={() => deleteProduct(productObj)}
+                    onClick={() => deleteSoccerfield(soccerfieldObj)}
                   />
                 </div>
               </td>
@@ -137,11 +144,11 @@ const ProductsTable = () => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar producto</Modal.Title>
+          <Modal.Title>Editar cancha</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditProductForm
-            editProduct={editProduct}
+          <EditSoccerfieldForm
+            editSoccerfield={editSoccerfield}
             handleClose={handleClose}
           />
         </Modal.Body>
@@ -151,4 +158,4 @@ const ProductsTable = () => {
   );
 };
 
-export default ProductsTable;
+export default SoccerFieldsTable;
