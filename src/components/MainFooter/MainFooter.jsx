@@ -30,10 +30,18 @@ export const MainFooter = () => {
 								Repudiandae nesciunt esse incidunt eius velit{' '}
 							</p>
 							<div className='footer-icons d-flex justify-content-start gap-2 fs-1'>
-								<FaFacebook className='icons' />
-								<AiFillInstagram className='icons' />
-								<FaGithub className='icons' />
-								<FaLinkedin className='icons' />
+								<NavLink to='./notFound' >
+									<FaFacebook className='icons' />	
+								</NavLink>
+								<NavLink to='./notFound' >
+									<AiFillInstagram className='icons' />
+								</NavLink>
+								<NavLink to='./notFound' >
+									<FaGithub className='icons' />
+								</NavLink>
+								<NavLink to='./notFound' >
+									<FaLinkedin className='icons' />
+								</NavLink>
 							</div>
 						</Col>
 						<Col
@@ -49,7 +57,7 @@ export const MainFooter = () => {
 									</NavLink>
 								</li>
 								<li className='nav-item'>
-									<NavLink to='./' className={'nav-link'}>
+									<NavLink to='./' className={'nav-link '}>
 										Contacto
 									</NavLink>
 								</li>
