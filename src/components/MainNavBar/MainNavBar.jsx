@@ -30,6 +30,7 @@ export const MainNavBar = () => {
 
 	const [showModal, setShowModal] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
+	const [showSearch, setShowSearch] = useState(false)
 	const handleCloseModal = () => {
 		setShowModal(false)
 	}
@@ -60,6 +61,9 @@ export const MainNavBar = () => {
 	const total = userCart.total
 
 	const handleCartToggle = () => setShowCart(!showCart)
+
+	const handleSearchToggle = () => setShowSearch(!showSearch)
+
 	const handleLinkClick = () => {
 		if (isOpen) {
 			setIsOpen(false)
@@ -124,15 +128,26 @@ export const MainNavBar = () => {
 							</NavLink>
 							<div className='noti'>
 								<IconContext.Provider
-									value={{ className: 'global-class-name Nav-Icon' }}>
-									<span>
+									value={{
+										className: 'global-class-name Nav-Icon d-flex gap-1',
+									}}>
+									{showSearch && (
+										<div className='search-bar-container position-relative'>
+											<input
+												type='text'
+												placeholder='Buscar...'
+												className='search-bar'
+											/>
+										</div>
+									)}
+									<span onClick={handleSearchToggle}>
 										<AiOutlineSearch />
 									</span>
 								</IconContext.Provider>
 
 								<IconContext.Provider
-									value={{ className: 'global-class-name' }}>
-									<span className='cart Nav-Icon' onClick={handleCartToggle}>
+									value={{ className: 'global-class-name Nav-Icon' }}>
+									<span className='cart' onClick={handleCartToggle}>
 										<AiOutlineShoppingCart />
 										{!userCart || Object.keys(userCart).length === 0 ? (
 											<></>
@@ -169,6 +184,7 @@ export const MainNavBar = () => {
 					</div>
 				</header>
 			</div>
+
 			<Offcanvas show={showCart} onHide={handleCartToggle} placement='end'>
 				<Offcanvas.Header closeButton>
 					<Offcanvas.Title>
