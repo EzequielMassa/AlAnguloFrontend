@@ -1,4 +1,4 @@
-import { Col, Container, Nav, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 import { AiFillInstagram } from 'react-icons/ai'
 import {
 	FaEnvelope,
@@ -30,16 +30,16 @@ export const MainFooter = () => {
 								Repudiandae nesciunt esse incidunt eius velit{' '}
 							</p>
 							<div className='footer-icons d-flex justify-content-start gap-2 fs-1'>
-								<NavLink to='./notFound' >
-									<FaFacebook className='icons' />	
+								<NavLink to='/404'>
+									<FaFacebook className='icons' />
 								</NavLink>
-								<NavLink to='./notFound' >
+								<NavLink to='/404'>
 									<AiFillInstagram className='icons' />
 								</NavLink>
-								<NavLink to='./notFound' >
+								<NavLink to='/404'>
 									<FaGithub className='icons' />
 								</NavLink>
-								<NavLink to='./notFound' >
+								<NavLink to='/404'>
 									<FaLinkedin className='icons' />
 								</NavLink>
 							</div>
@@ -52,22 +52,22 @@ export const MainFooter = () => {
 							<h5>links rapidos</h5>
 							<ul className='d-flex flex-column justify-content-center align-items-center list-unstyled '>
 								<li className='nav-item'>
-									<NavLink to='./nosotros' className={'nav-link'}>
+									<NavLink to='/nosotros' className={'nav-link'}>
 										Nosotros
 									</NavLink>
 								</li>
 								<li className='nav-item'>
-									<NavLink to='./' className={'nav-link '}>
+									<NavLink to='/' className={'nav-link '}>
 										Contacto
 									</NavLink>
 								</li>
 								<li className='nav-item'>
-									<NavLink to='./404' className={'nav-link'}>
+									<NavLink to='/404' className={'nav-link'}>
 										Terminos y Condiciones
 									</NavLink>
 								</li>
 								<li className='nav-item'>
-									<NavLink to='./canchas' className={'nav-link'}>
+									<NavLink to='/canchas' className={'nav-link'}>
 										Canchas
 									</NavLink>
 								</li>

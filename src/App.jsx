@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute'
+import { AdminContextProvider } from './context/AdminContext'
 import { AuthContextProvider } from './context/AuthContext'
 import { ProductsContextProvider } from './context/ProductsContext'
 import { SoccerFieldsContextProvider } from './context/SoccerFieldsContext'
@@ -16,7 +18,6 @@ import { NotFound } from './pages/notFound/NotFound'
 import Products from './pages/products/Productos'
 import Register from './pages/register/Register'
 import SoccerFields from './pages/soccer-fields/SoccerFields'
-import { AdminContextProvider } from './context/AdminContext'
 const router = createBrowserRouter([
 	{
 		element: <Layout />,
@@ -70,17 +71,24 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/admin',
-				element: ( 
-					<ProductsContextProvider> 
-						<AdminContextProvider> 
-							<SoccerFieldsContextProvider> 
-								<Admin /> 
-							</SoccerFieldsContextProvider> 
+				element: (
+					<ProductsContextProvider>
+						<AdminContextProvider>
+							<SoccerFieldsContextProvider>
+								<PrivateRoute>
+									<Admin />
+								</PrivateRoute>
+							</SoccerFieldsContextProvider>
 						</AdminContextProvider>
-					</ProductsContextProvider> )
+					</ProductsContextProvider>
+				),
 			},
 		],
 		errorElement: <NotFound />,
+	},
+	{
+		path: '/404',
+		element: <NotFound />,
 	},
 ])
 

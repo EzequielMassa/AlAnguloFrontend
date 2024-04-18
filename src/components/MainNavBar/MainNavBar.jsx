@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { IconContext } from 'react-icons'
@@ -13,11 +13,10 @@ import { HiBars4 } from 'react-icons/hi2'
 import { RiShoppingCartLine } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom'
 import logo from '../../assets/images/logo_AlAngulo.png'
-import Login from '../Login/Login'
-import './MainNavBar.css'
 import { useAuthContext } from '../../context/AuthContext'
 import { useUserContext } from '../../context/UserContext'
-import { useEffect } from 'react'
+import Login from '../Login/Login'
+import './MainNavBar.css'
 
 export const MainNavBar = () => {
 	const { user } = useAuthContext()
@@ -31,7 +30,7 @@ export const MainNavBar = () => {
 
 	const [showModal, setShowModal] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
-	const [showSearch, setShowSearch] = useState(false);
+	const [showSearch, setShowSearch] = useState(false)
 	const handleCloseModal = () => {
 		setShowModal(false)
 	}
@@ -42,34 +41,28 @@ export const MainNavBar = () => {
 
 	const isAdmin = () => {
 		if (Object.keys(user).length != 0) {
-			return user && user.roles[0].name === 'admin'
-		}
-		else {
+			return user && user.role === 'admin'
+		} else {
 			return false
 		}
 	}
 	const isUser = () => {
-		if (Object.keys(user).length != 0){
-			return user.roles[0].name === 'user' || user.roles[0].name === 'admin'
-		}
-		else{
+		if (Object.keys(user).length != 0) {
+			return user.role === 'user' || user.role === 'admin'
+		} else {
 			return false
 		}
 	}
 
-
 	const [showCart, setShowCart] = useState(false)
 
-	const [products, setProducts] = useState([
-		
-	])
+	const [products, setProducts] = useState([])
 
 	const total = userCart.total
-	console.log(user)
 
 	const handleCartToggle = () => setShowCart(!showCart)
 
-	const handleSearchToggle = () => setShowSearch(!showSearch);
+	const handleSearchToggle = () => setShowSearch(!showSearch)
 
 	const handleLinkClick = () => {
 		if (isOpen) {
@@ -135,10 +128,16 @@ export const MainNavBar = () => {
 							</NavLink>
 							<div className='noti'>
 								<IconContext.Provider
-									value={{ className: 'global-class-name Nav-Icon d-flex gap-1' }}>
+									value={{
+										className: 'global-class-name Nav-Icon d-flex gap-1',
+									}}>
 									{showSearch && (
 										<div className='search-bar-container position-relative'>
-											<input type='text' placeholder='Buscar...' className='search-bar' />
+											<input
+												type='text'
+												placeholder='Buscar...'
+												className='search-bar'
+											/>
 										</div>
 									)}
 									<span onClick={handleSearchToggle}>
@@ -150,30 +149,34 @@ export const MainNavBar = () => {
 									value={{ className: 'global-class-name Nav-Icon' }}>
 									<span className='cart' onClick={handleCartToggle}>
 										<AiOutlineShoppingCart />
-										{!userCart  || Object.keys(userCart).length === 0 ? (
+										{!userCart || Object.keys(userCart).length === 0 ? (
 											<></>
-											) : (
-												<b className='store'>{userCart.orders.length}</b>
-												)}
-										
+										) : (
+											<b className='store'>{userCart.orders.length}</b>
+										)}
 									</span>
 								</IconContext.Provider>
 								<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
 									<span>
 										{isUser() ? (
-										<>
-											<AiOutlineLogout onClick={handleShowModal}/>
-											<Login show={showModal} handleClose={handleCloseModal} />
-											<b className='user_Name'>Hola {user.name}</b>
-										</>
-										):(
-										<>
-											<AiOutlineLogin onClick={handleShowModal} />
-											<Login show={showModal} handleClose={handleCloseModal} />
-										</>)
-										}
-
+											<>
+												<AiOutlineLogout onClick={handleShowModal} />
+												<Login
+													show={showModal}
+													handleClose={handleCloseModal}
+												/>
+												<b className='user_Name'>Hola {user.name}</b>
+											</>
+										) : (
+											<>
+												<AiOutlineLogin onClick={handleShowModal} />
+												<Login
+													show={showModal}
+													handleClose={handleCloseModal}
+												/>
+											</>
+										)}
 									</span>
 								</IconContext.Provider>
 							</div>
@@ -181,7 +184,7 @@ export const MainNavBar = () => {
 					</div>
 				</header>
 			</div>
-			
+
 			<Offcanvas show={showCart} onHide={handleCartToggle} placement='end'>
 				<Offcanvas.Header closeButton>
 					<Offcanvas.Title>
@@ -192,7 +195,6 @@ export const MainNavBar = () => {
 				</Offcanvas.Header>
 				<hr />
 				<Offcanvas.Body>
-
 					{userCart && Object.keys(userCart).length === 0 ? (
 						<p>No hay productos agregados.</p>
 					) : (
@@ -214,16 +216,13 @@ export const MainNavBar = () => {
 								</div>
 							))}
 							{userCart.bookings.length != 0 ? (
-
 								<h2 className='paragraph '>
-									{user.name} tiene {userCart.bookings.length} reserva/s de canchas
+									{user.name} tiene {userCart.bookings.length} reserva/s de
+									canchas
 								</h2>
-							):(
-								<h2 className='paragraph cart-total'>
-									No hay reservas hechas
-								</h2>
-							)
-							}
+							) : (
+								<h2 className='paragraph cart-total'>No hay reservas hechas</h2>
+							)}
 							<hr />
 							<p className='paragraph cart-total'>Total : ${total}</p>
 						</div>
