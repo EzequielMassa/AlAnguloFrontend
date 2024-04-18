@@ -11,24 +11,48 @@ import {
 } from 'react-bootstrap'
 import './login.css'
 import { NavLink } from 'react-router-dom'
+import Swal from 'sweetalert2'
 function Login({ show, handleClose }) {
-	const {loguedUser,
+	const {
+		loguedUser,
 		registerLoading,
 		registerError,
-		login } = useAuthContext()
+		login,
+		loginSuccess } = useAuthContext()
+	
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [showPassword, setShowPassword] = useState(false)
-	
-	const handleLogin = (e) =>{
+	const navigate = useNavigate()
+	const handleLogin = async(e) =>{
 		e.preventDefault();
 		const formData = {email,password}
-		login(formData)
-		if(loguedUser){
+		try {
+			await login(formData)
+			if(loginSuccess){
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text:"Usuario o Contraseña mal ingresados"
+			});
+			}else{
+			Swal.fire({
+				title: "Bienvenido a AlAngulo",
+				confirmButtonText: "Okey"
+			  }).then((result) => {
+				if (result.isConfirmed) {
+					handleClose()
+					setEmail("")
+					setPassword("")
+				}
+			  });
 			navigate('/')
+		}	} catch (error) {
+			console.log(error)
+			}
+		
 		}
-	}
-	const navigate = useNavigate()
+	
 	return (
 		<Modal show={show} onHide={handleClose} centered>
 			<div className='heading-text'>
