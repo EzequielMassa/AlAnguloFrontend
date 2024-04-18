@@ -24,7 +24,7 @@ function UseAxiosAdmin() {
         try {
             const serverReply = await axios.get(`${baseUrl}/users`,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });
             setUsers(serverReply.data.data);
@@ -39,7 +39,7 @@ function UseAxiosAdmin() {
         try {
             const updatedUser = await axios.put(`${baseUrl}/user/changeState/${userObj._id}`, userObj,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });            
             if(updatedUser.status===200) {
@@ -62,7 +62,7 @@ function UseAxiosAdmin() {
         try {
             const updatedUser = await axios.put(`${baseUrl}/user/${userObj._id}`, userObj,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });
             if(updatedUser.status===200) {
@@ -97,7 +97,7 @@ function UseAxiosAdmin() {
                 try {
                     const response = axios.delete(`${baseUrl}/user/${userObj._id}`,{
                         headers: {
-                            "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                            "x-access-token": `${token}`
                         }
                     });
                     response.then((result)=> {
@@ -131,7 +131,7 @@ function UseAxiosAdmin() {
         try {
             const serverReply = await axios.get(`${baseUrl}/products`,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });
             setProducts(serverReply.data.data);
@@ -188,7 +188,7 @@ function UseAxiosAdmin() {
         try {
             const updatedUser = await axios.put(`${baseUrl}/product/update/${userObj._id}`, userObj,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });
             if(updatedUser.status===200) {
@@ -211,7 +211,7 @@ function UseAxiosAdmin() {
         try {
             const responseNewSoccerfield = await axios.post(`${baseUrl}/products`, newProductObj,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });
             console.log(responseNewSoccerfield, "Producto agregado")
@@ -236,7 +236,7 @@ function UseAxiosAdmin() {
         try {
             const serverReply = await axios.get(`${baseUrl}/soccerfields`,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });
             setSoccerfields(serverReply.data.data);
@@ -251,7 +251,7 @@ function UseAxiosAdmin() {
         try {
             const updatedSoccerfield = await axios.put(`${baseUrl}/soccerfield/update/${soccerfieldObj._id}`, soccerfieldObj,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });
             if(updatedSoccerfield.status===200) {
@@ -284,7 +284,7 @@ function UseAxiosAdmin() {
                 try {
                     const response = axios.delete(`${baseUrl}/soccerfield/delete/${soccerfieldObj._id}`,{
                         headers: {
-                            "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                            "x-access-token": `${token}`
                         }
                     });
                     response.then((result)=> {
@@ -316,7 +316,7 @@ function UseAxiosAdmin() {
         try {
             const responseNewSoccerfield = await axios.post(`${baseUrl}/soccerfield`, newSoccerfieldObj,{
                 headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
+                    "x-access-token": `${token}`
                 }
             });
             console.log(responseNewSoccerfield, "cancha agregada")

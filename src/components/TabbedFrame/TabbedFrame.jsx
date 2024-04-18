@@ -8,21 +8,30 @@ import ProductsTable from '../ProductsTable/ProductsTable';
 import SoccerFieldsTable from '../SoccerFieldsTable/SoccerFieldsTable';
 import EditProductForm from '../EditProductForm/EditProductForm';
 import EditSoccerfieldForm from '../EditSoccerfieldForm/EditSoccerfieldForm';
+import { useAuthContext } from '../../context/AuthContext'; 
 
-
-
-const loggedAdmin = JSON.parse(localStorage.getItem("Admin_Registrado_En_Local"))
 
 const TabbedFrame = () => {
-
+  const { user } = useAuthContext();
+  console.log(user)
   const [show1, setShow1] = useState(false);
-    const handleClose1 = () => setShow1(false);
-    const handleEdit1 = () => {setShow1(true)};
-
-    const [show2, setShow2] = useState(false);
-    const handleClose2 = () => setShow2(false);
-    const handleEdit2 = () => {setShow2(true)};
-
+  const handleClose1 = () => setShow1(false);
+  const handleEdit1 = () => {setShow1(true)};
+  
+  const [show2, setShow2] = useState(false);
+  const handleClose2 = () => setShow2(false);
+  const handleEdit2 = () => {setShow2(true)};
+  
+  const decodedJWTSession = () => {
+    const token = localStorage.getItem("token")||{};
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  };
+  const { name, lastname, image } = decodedJWTSession();
 
   return (
     <>
@@ -84,8 +93,8 @@ const TabbedFrame = () => {
                     </Tab.Pane>
 
                     <div className='d-flex'>
-                    <Image src={loggedAdmin ?loggedAdmin.image :"https://xsgames.co/randomusers/assets/avatars/male/13.jpg"} alt="imagen de admin logeado" roundedCircle fluid className='adminLogged'/>
-                    <p className='my-auto ps-1 d-none d-md-block'>{loggedAdmin ?loggedAdmin.name :"JohnDoe"}</p>
+                    <Image src={decodedJWTSession ?image :"https://xsgames.co/randomusers/assets/avatars/male/13.jpg"} alt="imagen de admin logeado" roundedCircle fluid className='adminLogged'/>
+                    <p className='my-auto ps-1 d-none d-md-block text-nowrap'>{decodedJWTSession ?`${name} ${lastname}` :"JohnDoe"}</p>
                     </div>
 
                 </Tab.Content>
