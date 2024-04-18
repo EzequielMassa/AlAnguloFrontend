@@ -9,7 +9,10 @@ import { useProductsContext } from '../../context/ProductsContext'
 import { useUserContext } from '../../context/UserContext'
 import { formatCurrency } from '../../helpers/formatCurrency'
 import { formatDate } from '../../utils/formatDate'
+import { LuMinus, LuPlus } from 'react-icons/lu'
+import { Link } from 'react-router-dom'
 import './productDetail.css'
+
 const ProductDetail = () => {
 	const { user } = useAuthContext()
 	const { id } = useParams()
@@ -51,61 +54,60 @@ const ProductDetail = () => {
 
 	return (
 		<>
-			<Container className=' product-container container-sm border rounded-4 '>
-				<Row className='product-row border rounded-4'>
+			<Container className=' product-container container-sm border rounded-4 p-4'>
+				<Row className='product-row '>
 					{productLoading || orderLoading ? (
 						<Spinner />
 					) : (
 						<>
-							<Col xs={12} lg={4} className='img-column'>
+							<Col xs={12} md={4} className='img-column'>
 								<img src={product.image} className='w-100 h-100 img-product' />
 							</Col>
 							<Col
 								xs={12}
-								lg={4}
-								className='d-flex aling-items-center justify-content-center'>
+								md={8}
+								className='d-flex aling-items-center justify-content-between flex-column '>
 								<div className='info-container d-flex aling-items-center mb-3 gap-2'>
-									<h2 className='text-center titl '>{product.name}</h2>
-									<h3 className='text-center mt-2 subtitle'>
+									<h2 className='text-center product-title '>{product.name}</h2>
+									<h3 className='text-center mt-2 product-description'>
 										{product.description}
 									</h3>
-									<h3 className='text-center mt-2 subtitle'>
-										{formatCurrency(product.price)}
+									<h3 className='text-center mt-2 '>
+										Precio : <b className='product-price'>{formatCurrency(product.price)}</b>
 									</h3>
 								</div>
-							</Col>
-
-							<Col
-								xs={12}
-								lg={4}
-								className='d-flex aling-items-center justify-content-center   py-md-0'>
+							
 								<div className='info-actions d-flex justify-content-center gap-3 py-4'>
-									<Button
-										className='bg-danger outline border-0'
-										onClick={removeProduct}>
-										<IoRemoveCircleOutline className='icon-cart' />
-									</Button>
+									<h3>Cantidad :</h3>
+									<LuMinus className='icons-style icons-styleHover' onClick={removeProduct} />
 									<h2 className='info-product'>{productQuantity}</h2>
-									<Button
-										className='bg-success outline border-0'
-										onClick={addProduct}>
-										<IoAddCircleOutline className='icon-cart' />
-									</Button>
+									<LuPlus className='icons-style icons-styleHover' onClick={addProduct}/>
+										
 								</div>
+								{user.id ? (
+									<Button
+										type='submit'
+										variant='outline-success'
+										className='mb-2 w-50 mx-auto'
+										onClick={handleOrder}
+										disabled={orderLoading}>
+										<span className='text-pay'>Agregar al carrito</span>
+									</Button>
+									) : (
+									<Link to={'/register'} className='btn btn-outline-success mb-2 w-50 mx-auto'>
+										Registrate
+									</Link>
+								)}
 							</Col>
+							
 						</>
 					)}
 
-					<Button
-						type='submit'
-						className='btn-pay mb-2'
-						onClick={handleOrder}
-						disabled={orderLoading}>
-						<span className='text-pay'>Agregar al carrito</span>
-					</Button>
+					
 				</Row>
 			</Container>
 			<Toaster richColors position='bottom-right' theme='dark' />
+
 		</>
 	)
 }
