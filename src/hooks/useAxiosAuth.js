@@ -2,12 +2,17 @@ import axios from 'axios'
 import { useState } from 'react'
 import { baseUrl } from '../api/apiUrl.js'
 import { jwtDecode } from 'jwt-decode'
+import Swal from 'sweetalert2'
+
+
 function UseAxiosAuth() {
 	const [registerLoading, setRegisterLoading] = useState(false)
 	const [registerError, setRegisterError] = useState(null)
 	const [loguedUser, setLoguedUser] = useState({})
 	const [useById,setUserById] = useState({})
-	useState(false)
+	const [loginSuccess, setLoginSuccess] = useState(false)
+
+	// useState(false)
 
 	const register = async (formData) => {
 		setRegisterLoading(true)
@@ -18,9 +23,15 @@ function UseAxiosAuth() {
 			const decoded = jwtDecode(token)
 			localStorage.setItem('user',JSON.stringify(decoded))
 			setLoguedUser(decoded)
+			
 		} catch (err) {
-			console.log(err)
 			setRegisterError(err)
+			console.error(err)
+			Swal.fire({
+				icon: "error",
+				title: "Oops...",
+				text: `${err.response.data.message || err.message}, porfavor intenta de vuelta`
+			})
 		} finally {
 			setRegisterLoading(false)
 		}
@@ -45,8 +56,9 @@ function UseAxiosAuth() {
 			const decoded = jwtDecode(token)
 			localStorage.setItem('user',JSON.stringify(decoded))
 			setLoguedUser(decoded)
+			setLoginSuccess(true)
 		} catch (err) {
-			console.log(err)
+			setLoginSuccess(false)
 			setRegisterError(err)
 		} finally {
 			setRegisterLoading(false)
@@ -58,7 +70,8 @@ function UseAxiosAuth() {
 		registerLoading,
 		registerError,
 		register,
-		login
+		login,
+		loginSuccess
 	}
 }
 
