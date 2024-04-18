@@ -34,6 +34,7 @@ function Login({ show, handleClose }) {
 			Swal.fire({
 				title: 'Bienvenido a AlAngulo',
 				confirmButtonText: 'Okey',
+				confirmButtonColor: '#25a18e',
 			}).then((result) => {
 				if (result.isConfirmed) {
 					handleClose()

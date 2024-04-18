@@ -8,7 +8,6 @@ function UseAxiosAuth() {
 	const [registerLoading, setRegisterLoading] = useState(false)
 	const [registerError, setRegisterError] = useState(null)
 	const [loguedUser, setLoguedUser] = useState({})
-	const [useById, setUserById] = useState({})
 
 	const register = async (formData) => {
 		setRegisterLoading(true)
@@ -33,13 +32,6 @@ function UseAxiosAuth() {
 			setRegisterLoading(false)
 		}
 	}
-	const validateRegisterData = async () => {}
-	const getUser = async () => {
-		try {
-			const user = axios.get(`${baseUrl}/user/:id`)
-			setUserById(user)
-		} catch (error) {}
-	}
 	const login = async (formData) => {
 		setRegisterLoading(true)
 		try {
@@ -58,6 +50,7 @@ function UseAxiosAuth() {
 
 	return {
 		loguedUser,
+		setLoguedUser,
 		registerLoading,
 		registerError,
 		register,
