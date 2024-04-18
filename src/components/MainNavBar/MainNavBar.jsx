@@ -4,14 +4,14 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 import { IconContext } from 'react-icons'
 import {
 	AiOutlineClose,
-	AiOutlineLogin,
-	AiOutlineLogout,
 	AiOutlineSearch,
 	AiOutlineShoppingCart,
 } from 'react-icons/ai'
 import { HiBars4 } from 'react-icons/hi2'
-import { RiShoppingCartLine } from 'react-icons/ri'
+import { IoLogIn } from 'react-icons/io5'
+import { RiLogoutBoxFill, RiShoppingCartLine } from 'react-icons/ri'
 import { NavLink } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import logo from '../../assets/images/logo_AlAngulo.png'
 import { useAuthContext } from '../../context/AuthContext'
 import { useUserContext } from '../../context/UserContext'
@@ -19,7 +19,7 @@ import Login from '../Login/Login'
 import './MainNavBar.css'
 
 export const MainNavBar = () => {
-	const { user } = useAuthContext()
+	const { user, setLoguedUser } = useAuthContext()
 	const { userCart, getUserCart, userCartLoading } = useUserContext()
 
 	useEffect(() => {
@@ -68,6 +68,20 @@ export const MainNavBar = () => {
 		if (isOpen) {
 			setIsOpen(false)
 		}
+	}
+	const handleLogout = () => {
+		Swal.fire({
+			title: 'Cerrar Sesion ?',
+			confirmButtonText: 'Si',
+			confirmButtonColor: '#25a18e',
+			showDenyButton: true,
+			denyButtonText: `No`,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				localStorage.clear()
+				setLoguedUser({})
+			}
+		})
 	}
 	return (
 		<>
@@ -161,16 +175,15 @@ export const MainNavBar = () => {
 									<span>
 										{isUser() ? (
 											<>
-												<AiOutlineLogout onClick={handleShowModal} />
-												<Login
-													show={showModal}
-													handleClose={handleCloseModal}
+												<RiLogoutBoxFill
+													onClick={handleLogout}
+													className='pointer-event '
 												/>
 												<b className='user_Name'>Hola {user.name}</b>
 											</>
 										) : (
 											<>
-												<AiOutlineLogin onClick={handleShowModal} />
+												<IoLogIn onClick={handleShowModal} />
 												<Login
 													show={showModal}
 													handleClose={handleCloseModal}
