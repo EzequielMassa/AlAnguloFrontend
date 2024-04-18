@@ -8,7 +8,7 @@ function SoccerFieldDetail({ description }) {
 		<>
 			<Card
 				style={{ width: '18rem' }}
-				className='d-flex align-items-center card_container '>
+				className='d-flex align-items-center card_container align-self-stretch '>
 				{size === 5 ? (
 					<TbCircleDashedNumber5 className='soccer_field_detail_icon' />
 				) : (

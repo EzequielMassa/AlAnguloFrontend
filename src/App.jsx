@@ -16,6 +16,7 @@ import { NotFound } from './pages/notFound/NotFound'
 import Products from './pages/products/Productos'
 import Register from './pages/register/Register'
 import SoccerFields from './pages/soccer-fields/SoccerFields'
+import { AdminContextProvider } from './context/AdminContext'
 const router = createBrowserRouter([
 	{
 		element: <Layout />,
@@ -60,7 +61,7 @@ const router = createBrowserRouter([
 				element: <About />,
 			},
 			{
-				path: '/productDetail',
+				path: '/producto/:id',
 				element: (
 					<ProductsContextProvider>
 						<ProductDetail />
@@ -69,7 +70,14 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/admin',
-				element: <Admin />,
+				element: ( 
+					<ProductsContextProvider> 
+						<AdminContextProvider> 
+							<SoccerFieldsContextProvider> 
+								<Admin /> 
+							</SoccerFieldsContextProvider> 
+						</AdminContextProvider>
+					</ProductsContextProvider> )
 			},
 		],
 		errorElement: <NotFound />,
