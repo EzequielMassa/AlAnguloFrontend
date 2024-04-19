@@ -48,6 +48,7 @@ function UseAxiosUser() {
 			const response = await axios.post(`${baseUrl}/orders`, order)
 			toast.success('Orden agregada al carrito')
 			setOrder(true)
+			getUserCart(order.user)
 		} catch (err) {
 			toast.error(err.response.data.message)
 			setOrder(false)
@@ -88,6 +89,7 @@ function UseAxiosUser() {
 		orderError,
 		postOrder,
 		clearUserCart,
+		setUserCart
 	}
 }
 
