@@ -164,11 +164,11 @@ function Products() {
 					</Navbar.Collapse>
 				</Navbar>
 			</Container>
-			<Container className='mt-5'>
+			<Container className='mt-5 '>
 				{filteredProducts.length === 0 ? (
 					<div className='text-center no-product'>No hay productos</div>
 				) : (
-					<Row className='product-row '>
+					<Row className='product-row d-flex justify-content-center align-items-stretch  '>
 						{filteredProducts.map((p) => (
 							<Col
 								xl={3}
