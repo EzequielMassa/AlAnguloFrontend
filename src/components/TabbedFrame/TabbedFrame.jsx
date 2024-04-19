@@ -19,6 +19,7 @@ const TabbedFrame = () => {
 
     const { user:loggedUser } = useAuthContext();
     const { name, lastname, image } = loggedUser;
+    console.log(loggedUser)
 
     const [show1, setShow1] = useState(false);
     const handleClose1 = () => setShow1(false);

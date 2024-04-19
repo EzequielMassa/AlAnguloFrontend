@@ -118,7 +118,7 @@ const UsersTable = () => {
                 {userObj.phone}
               </td>
               <td key={"role"+userObj._id} className="cursorChange borderCustom" onClick={ ()=> userImagePopup(userObj.image) }>
-                {userObj.roles[0].name}
+                {userObj.role.name}
               </td>
               <td key={"actions"+userObj._id} className="borderCustom">
                 <div className='d-flex justify-content-evenly'>
