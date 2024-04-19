@@ -57,6 +57,22 @@ function UseAxiosUser() {
 		}
 	}
 
+	const clearUserCart = async (userId) => {
+		setUserCartLoading(true)
+		try {
+			const response = await axios.post(
+				`${baseUrl}/cart/checkout/user/${userId}`
+			)
+			getUserCart(userId)
+			toast.success('Pago realizado con exito')
+		} catch (err) {
+			toast.error(err.response.data.message)
+			setUserCartError(err)
+		} finally {
+			setUserCartLoading(false)
+		}
+	}
+
 	return {
 		booking,
 		setBooking,
@@ -71,6 +87,7 @@ function UseAxiosUser() {
 		orderLoading,
 		orderError,
 		postOrder,
+		clearUserCart,
 	}
 }
 
