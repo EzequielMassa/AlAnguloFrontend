@@ -20,6 +20,7 @@ export const UserContextProvider = ({ children }) => {
 		orderError,
 		postOrder,
 		clearUserCart,
+		deleteOrder,
 	} = UseAxiosUser()
 
 	return (
@@ -40,6 +41,7 @@ export const UserContextProvider = ({ children }) => {
 				postOrder,
 				clearUserCart,
 				setUserCart,
+				deleteOrder,
 			}}>
 			{children}
 		</UserContext.Provider>

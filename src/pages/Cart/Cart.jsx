@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { FaRegClock } from 'react-icons/fa'
 import { GoTrash } from 'react-icons/go'
-import { LuMinus, LuPlus } from 'react-icons/lu'
 import { Toaster } from 'sonner'
+import Swal from 'sweetalert2'
 import { CheckOutModal } from '../../components/CheckOutModal/CheckOutModal'
 import Spinner from '../../components/Spinner/Spinner'
 import { useAuthContext } from '../../context/AuthContext'
@@ -13,7 +13,9 @@ import './Cart.css'
 
 export const Cart = () => {
 	const { user } = useAuthContext()
-	const { userCart, getUserCart, userCartLoading } = useUserContext()
+	const { userCart, getUserCart, userCartLoading, deleteOrder } =
+		useUserContext()
+
 	const [show, setShow] = useState(false)
 
 	const handleClose = () => setShow(false)
@@ -49,6 +51,19 @@ export const Cart = () => {
 		bookingsSubtotal = accSubtotal.reduce((a, b) => a + b, 0)
 	} else {
 		bookingsSubtotal = 0
+	}
+
+	const handleDeleteOrder = (order) => {
+		Swal.fire({
+			title: 'Eliminar orden?',
+			confirmButtonText: 'Si',
+			confirmButtonColor: '#25a18e',
+			showDenyButton: true,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deleteOrder(order, user.id)
+			}
+		})
 	}
 
 	if (userCartLoading) {
@@ -108,7 +123,8 @@ export const Cart = () => {
 													</Card.Text>
 													<Button
 														variant='outline-danger'
-														className='position-absolute end-0 bottom-0 '>
+														className='position-absolute end-0 bottom-0 '
+														onClick={() => handleDeleteOrder(order)}>
 														<GoTrash />
 													</Button>
 												</Card.Body>
@@ -181,9 +197,9 @@ export const Cart = () => {
 				<Button variant='success' onClick={handleShow}>
 					Pagar
 				</Button>
+				<Toaster richColors position='bottom-right' theme='dark' />
 			</div>
 			<CheckOutModal show={show} onHide={handleClose} user={user} />
-			<Toaster richColors position='bottom-right' theme='dark' />
 		</div>
 	)
 }

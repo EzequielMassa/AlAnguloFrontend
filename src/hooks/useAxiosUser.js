@@ -58,6 +58,18 @@ function UseAxiosUser() {
 		}
 	}
 
+	const deleteOrder = async (order, userId) => {
+		try {
+			await axios.delete(`${baseUrl}/order/delete/${order._id}`)
+			getUserCart(userId)
+			setTimeout(() => {
+				toast.success('Orden eliminada')
+			}, 500)
+		} catch (err) {
+			toast.error(err.response.data.message)
+		}
+	}
+
 	const clearUserCart = async (userId) => {
 		setUserCartLoading(true)
 		try {
@@ -90,6 +102,7 @@ function UseAxiosUser() {
 		postOrder,
 		clearUserCart,
 		setUserCart,
+		deleteOrder,
 	}
 }
 
