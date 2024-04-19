@@ -69,6 +69,17 @@ function UseAxiosUser() {
 			toast.error(err.response.data.message)
 		}
 	}
+	const deleteBooking = async (booking, userId) => {
+		try {
+			await axios.delete(`${baseUrl}/booking/delete/${booking._id}`)
+			getUserCart(userId)
+			setTimeout(() => {
+				toast.success('Reserva eliminada')
+			}, 500)
+		} catch (err) {
+			toast.error(err.response.data.message)
+		}
+	}
 
 	const clearUserCart = async (userId) => {
 		setUserCartLoading(true)
@@ -103,6 +114,7 @@ function UseAxiosUser() {
 		clearUserCart,
 		setUserCart,
 		deleteOrder,
+		deleteBooking,
 	}
 }
 

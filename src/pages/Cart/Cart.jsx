@@ -13,7 +13,7 @@ import './Cart.css'
 
 export const Cart = () => {
 	const { user } = useAuthContext()
-	const { userCart, getUserCart, userCartLoading, deleteOrder } =
+	const { userCart, getUserCart, userCartLoading, deleteOrder, deleteBooking } =
 		useUserContext()
 
 	const [show, setShow] = useState(false)
@@ -62,6 +62,19 @@ export const Cart = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				deleteOrder(order, user.id)
+			}
+		})
+	}
+
+	const handleDeleteBooking = (booking) => {
+		Swal.fire({
+			title: 'Eliminar reserva?',
+			confirmButtonText: 'Si',
+			confirmButtonColor: '#25a18e',
+			showDenyButton: true,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deleteBooking(booking, user.id)
 			}
 		})
 	}
@@ -154,8 +167,10 @@ export const Cart = () => {
 										<div>
 											<Card.Body className='card-body d-flex flex-column align-items-center'>
 												<Card.Title>{booking.soccerField.name}</Card.Title>
-												<Card.Text className='align-align-items-center '>
+												<Card.Text className='d-flex flex-column justify-content-center align-items-center  text-center'>
 													<FaRegClock className='icons-style me-2' />{' '}
+													{booking.date}
+													<br />
 													{booking.time}
 												</Card.Text>
 												<Card.Text>
@@ -163,7 +178,8 @@ export const Cart = () => {
 												</Card.Text>
 												<Button
 													variant='outline-danger'
-													className='position-absolute end-0 bottom-0 '>
+													className='position-absolute end-0 bottom-0 '
+													onClick={() => handleDeleteBooking(booking)}>
 													<GoTrash />
 												</Button>
 											</Card.Body>
