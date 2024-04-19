@@ -20,7 +20,7 @@ import './MainNavBar.css'
 
 export const MainNavBar = () => {
 	const { user, setLoguedUser } = useAuthContext()
-	const { userCart, getUserCart, userCartLoading } = useUserContext()
+	const { userCart, getUserCart, userCartLoading, setUserCart} = useUserContext()
 
 	useEffect(() => {
 		if (user.id) {
@@ -79,6 +79,7 @@ export const MainNavBar = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				localStorage.clear()
+				setUserCart({})
 				setLoguedUser({})
 			}
 		})
