@@ -10,14 +10,13 @@ import {
 import { HiBars4 } from 'react-icons/hi2'
 import { IoLogIn } from 'react-icons/io5'
 import { RiLogoutBoxFill, RiShoppingCartLine } from 'react-icons/ri'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import logo from '../../assets/images/logo_AlAngulo.png'
 import { useAuthContext } from '../../context/AuthContext'
 import { useUserContext } from '../../context/UserContext'
 import Login from '../Login/Login'
 import './MainNavBar.css'
-import { useNavigate } from 'react-router-dom'
 export const MainNavBar = () => {
 	const { user, setLoguedUser } = useAuthContext()
 	const { userCart, getUserCart, userCartLoading, setUserCart } =
@@ -83,7 +82,7 @@ export const MainNavBar = () => {
 				localStorage.clear()
 				setUserCart({})
 				setLoguedUser({})
-				navigate("/")
+				navigate('/')
 			}
 		})
 	}
@@ -234,8 +233,9 @@ export const MainNavBar = () => {
 							))}
 							{userCart.bookings.length != 0 ? (
 								<h2 className='paragraph '>
-									{user.name} tiene {userCart.bookings.length} reserva/s de
-									canchas
+									{userCart.bookings.length < 2
+										? 'Tienes 1 cancha reservada'
+										: `Tienes ${userCart.bookings.length} canchas reservadas`}
 								</h2>
 							) : (
 								<h2 className='paragraph cart-total'>No hay reservas hechas</h2>
