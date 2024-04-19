@@ -154,13 +154,13 @@ export const Cart = () => {
 					<div className='flex-grow-1'>
 						{userCart.bookings ? (
 							userCart.bookings.map((booking) => (
-								<Card key={booking._id} className='mb-2 cartCards'>
+								<Card key={booking._id} className='mb-2 cartCards p-2'>
 									<div className='d-flex align-items-center justify-content-around flex-column flex-md-row  '>
-										<div>
+										<div className='booking_img_container'>
 											<Card.Img
 												variant='top'
 												src={booking.soccerField.imgUrl}
-												className='card-img-booking'
+												className='card-img-booking border rounded-1 '
 											/>
 										</div>
 										<div className='separador d-none d-md-block'></div>
