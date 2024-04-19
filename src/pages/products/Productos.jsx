@@ -78,8 +78,8 @@ function Products() {
 
 	const clearProductsFilter = (param) => {
 		const params = new URLSearchParams()
-		params.set("",param)
-		navigate("/productos")		
+		params.set('', param)
+		navigate('/productos')
 	}
 
 	const handleInputChange = (e) => {
@@ -168,15 +168,25 @@ function Products() {
 				{filteredProducts.length === 0 ? (
 					<div className='text-center no-product'>No hay productos</div>
 				) : (
-					<Row className=' product-row  '>
+					<Row className='product-row '>
 						{filteredProducts.map((p) => (
-							<Col xl={3} md={4} key={p._id} className='product-column '>
+							<Col
+								xl={3}
+								md={4}
+								key={p._id}
+								className='product-column  d-flex justify-content-center align-items-center '>
 								<Card
 									key={p.id}
-									className='card-products my-2 d-flex flex-column  '>
-									<Card.Img variant='top' className='camiseta' src={p.image} />
+									className='card-products my-2 d-flex flex-column align-self-stretch '>
+									<div className='product_card_img_container'>
+										<Card.Img
+											variant='top'
+											className='product_card_img'
+											src={p.image}
+										/>
+									</div>
 
-									<Card.Body className='text-center bg-white'>
+									<Card.Body className='text-center bg-white d-flex flex-column justify-content-between '>
 										<div className='divisor-line' />
 										<Card.Title className='btn-product'>{p.name}</Card.Title>
 										<Card.Text className='btn-product btn-price'>
