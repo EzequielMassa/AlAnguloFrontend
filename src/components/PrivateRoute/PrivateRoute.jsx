@@ -7,3 +7,9 @@ export const PrivateRoute = ({ children }) => {
 
 	return user.id && user.role === 'admin' ? children : navigate('/404')
 }
+
+export const NotLoguedUserProtectedRoute = ({ children }) => {
+	const { user } = useAuthContext()
+	const navigate = useNavigate()
+	return user && user.id ? children : navigate('/')
+}

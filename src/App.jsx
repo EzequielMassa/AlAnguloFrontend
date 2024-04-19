@@ -2,7 +2,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
-import { PrivateRoute } from './components/PrivateRoute/PrivateRoute'
+import {
+	NotLoguedUserProtectedRoute,
+	PrivateRoute,
+} from './components/PrivateRoute/PrivateRoute'
 import { AdminContextProvider } from './context/AdminContext'
 import { AuthContextProvider } from './context/AuthContext'
 import { ProductsContextProvider } from './context/ProductsContext'
@@ -35,7 +38,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: '/carrito',
-				element: <Cart />,
+				element: (
+					<NotLoguedUserProtectedRoute>
+						<Cart />,
+					</NotLoguedUserProtectedRoute>
+				),
 			},
 			{
 				path: '/productos',
