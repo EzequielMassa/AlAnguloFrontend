@@ -1,5 +1,5 @@
 import './EditUserForm.css';
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useAdminContext } from '../../context/AdminContext';
 import { useFormik } from 'formik';
@@ -19,9 +19,9 @@ const EditUserForm = ({editUser, handleClose}) => {
 		validationSchema: Yup.object({
 			name: Yup.string("Ingresa un nombre valido").required("Completa este campo").min(3,"Minimo 3 letras").max(150,"Maximo 150 letras"),
 			lastname: Yup.string("Ingresa un apellido valido").required("Completa este campo").min(3,"Minimo 3 letras").max(150,"Maximo 150 letras"),
-			email: Yup.string().email("Ingresa un email valido").required("Completa este campo"),
+			email: Yup.string().email("Ingresa un email valido").required("Completa este campo").matches(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Ingrese un email válido"),
 			phone: Yup.string().required("Completa este campo").matches(/^\+?\d{0,3}\s?\d{9}$/,"Ingresa un numero de telefono valido"),
-      image: Yup.string().required("Completa este campo").matches(/^.*\.(jpg|jpeg|png|gif|bmp)$/i,"Ingresa una URL de imagen"),
+      image: Yup.string().matches(/^.*\.(jpg|jpeg|png|gif|bmp)$/i,"Ingresa una URL de imagen"),
 		}),
 		onSubmit: (formData) => {
             console.log(formData)
@@ -35,6 +35,7 @@ const EditUserForm = ({editUser, handleClose}) => {
             }
             updateUser(user);
             handleClose();
+            formik.handleReset()
             // resetUserState();
             getAllUsers();
 		},
@@ -147,6 +148,16 @@ const EditUserForm = ({editUser, handleClose}) => {
               isInvalid={formik.errors.image && formik.touched.image}
               name="image"
               placeholder="http://mi_imagen.com" />
+              <Form.Label className="d-flex">
+                <div className="my-1 py-1 mx-auto">
+                  <Image
+                    src={formik.values.image||"https://static.vecteezy.com/system/resources/previews/005/720/408/large_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg"}
+                    alt="imagen de usuario"
+                    roundedCircle
+                    className="editUserImg"
+                  />
+                </div>
+              </Form.Label>
           <Form.Control.Feedback type='invalid'>{formik.errors.image}</Form.Control.Feedback>
           </Form.Group>
 

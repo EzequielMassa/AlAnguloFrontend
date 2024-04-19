@@ -11,15 +11,10 @@ import EditSoccerfieldForm from '../EditSoccerfieldForm/EditSoccerfieldForm';
 import { useAuthContext } from '../../context/AuthContext'; 
 // import { jwtDecode } from 'jwt-decode'
 
-
-
-const loggedAdmin = JSON.parse(localStorage.getItem("Admin_Registrado_En_Local"))
-
 const TabbedFrame = () => {
   // const token = localStorage.getItem("token")||{};
   // const decoded = jwtDecode(token)
   // console.log(decoded)
-
 
 
     const { user:loggedUser } = useAuthContext();

@@ -114,7 +114,7 @@ const ProductsTable = () => {
                     alt="imagen de productos"
                     onClick={() => productImagePopup(productObj.image)}
                     roundedCircle
-                    className="cursorChange userImg"
+                    className="cursorChange productImg"
                   />
                 </div>
               </td>

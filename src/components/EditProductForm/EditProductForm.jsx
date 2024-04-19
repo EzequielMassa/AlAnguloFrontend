@@ -1,5 +1,5 @@
 import './EditProductForm.css';
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useAdminContext } from '../../context/AdminContext';
 
@@ -107,6 +107,16 @@ const EditProductForm = ({editProduct, handleClose}) => {
               onChange={handleChange}
               name="image"
               placeholder="http://Imagen_de_producto.com" />
+              <Form.Label className="d-flex">
+                <div className="my-1 py-1 mx-auto">
+                  <Image
+                    src={product.image||"https://static.vecteezy.com/system/resources/previews/005/720/408/large_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg"}
+                    alt="imagen del producto"
+                    roundedCircle
+                    className="editProductImg"
+                  />
+                </div>
+              </Form.Label>
           </Form.Group>
           
           {/* <Form.Group className="mb-2">
