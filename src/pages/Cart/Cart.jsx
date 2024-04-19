@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { FaRegClock } from 'react-icons/fa'
 import { GoTrash } from 'react-icons/go'
 import { LuMinus, LuPlus } from 'react-icons/lu'
+import { Toaster } from 'sonner'
+import { CheckOutModal } from '../../components/CheckOutModal/CheckOutModal'
 import Spinner from '../../components/Spinner/Spinner'
 import { useAuthContext } from '../../context/AuthContext'
 import { useUserContext } from '../../context/UserContext'
@@ -11,8 +13,11 @@ import './Cart.css'
 
 export const Cart = () => {
 	const { user } = useAuthContext()
-	const { userCart, getUserCart, userCartLoading, clearUserCart } =
-		useUserContext()
+	const { userCart, getUserCart, userCartLoading } = useUserContext()
+	const [show, setShow] = useState(false)
+
+	const handleClose = () => setShow(false)
+	const handleShow = () => setShow(true)
 
 	useEffect(() => {
 		if (user.id) {
@@ -44,10 +49,6 @@ export const Cart = () => {
 		bookingsSubtotal = accSubtotal.reduce((a, b) => a + b, 0)
 	} else {
 		bookingsSubtotal = 0
-	}
-
-	const handleCheckout = () => {
-		clearUserCart(user.id)
 	}
 
 	if (userCartLoading) {
@@ -177,10 +178,12 @@ export const Cart = () => {
 					</h3>
 				)}
 				<h3>Total: {formatCurrency(userCart.total)}</h3>
-				<Button variant='success' onClick={handleCheckout}>
+				<Button variant='success' onClick={handleShow}>
 					Pagar
 				</Button>
 			</div>
+			<CheckOutModal show={show} onHide={handleClose} user={user} />
+			<Toaster richColors position='bottom-right' theme='dark' />
 		</div>
 	)
 }

@@ -9,12 +9,10 @@ import { useAuthContext } from '../../context/AuthContext'
 import './register.css'
 
 function Register() {
-
 	const navigate = useNavigate()
 	const { loguedUser, registerLoading, registerError, register } =
 		useAuthContext()
 	const [showModal, setShowModal] = useState(false)
-	
 
 	const handleCloseModal = () => {
 		setShowModal(false)
@@ -33,11 +31,31 @@ function Register() {
 			password: '',
 		},
 		validationSchema: Yup.object({
-			name: Yup.string("Ingresa un nombre valido").required("Completa este campo").min(3,"Minimo 3 letras").max(150,"Maximo 150 letras"),
-			lastname: Yup.string("Ingresa un apellido valido").required("Completa este campo").min(3,"Minimo 3 letras").max(150,"Maximo 150 letras"),
-			email: Yup.string().email("Ingresa un email valido").required("Completa este campo"),
-			phone: Yup.string().required("Completa este campo").matches(/^\+?\d{0,3}\s?\d{9}$/,"Ingresa un numero de telefono valido"),
-			password: Yup.string().required("Completa la password").min(8,"Ingresa minimo 8 caracteres").max(100,"Maximo 25 caracteres").matches(/^(?!.*\s).{8,100}$/,"Debe tener entre 8 y 100 caracteres sin espacios en blanco"),
+			name: Yup.string('Ingresa un nombre valido')
+				.required('Completa este campo')
+				.min(3, 'Minimo 3 letras')
+				.max(150, 'Maximo 150 letras'),
+			lastname: Yup.string('Ingresa un apellido valido')
+				.required('Completa este campo')
+				.min(3, 'Minimo 3 letras')
+				.max(150, 'Maximo 150 letras'),
+			email: Yup.string()
+				.email('Ingresa un email valido')
+				.required('Completa este campo'),
+			phone: Yup.string()
+				.required('Completa este campo')
+				.matches(
+					/^\+?\d{0,3}\s?\d{9}$/,
+					'Ingresa un numero de telefono valido'
+				),
+			password: Yup.string()
+				.required('Completa la password')
+				.min(8, 'Ingresa minimo 8 caracteres')
+				.max(100, 'Maximo 25 caracteres')
+				.matches(
+					/^(?!.*\s).{8,100}$/,
+					'Debe tener entre 8 y 100 caracteres sin espacios en blanco'
+				),
 		}),
 		onSubmit: (formData) => {
 			register(formData)
@@ -96,10 +114,8 @@ function Register() {
 									isInvalid={formik.errors.email && formik.touched.email}
 								/>
 								<Form.Control.Feedback type='invalid'>
-                                    {formik.errors.email}
-                                </Form.Control.Feedback>
-							
-
+									{formik.errors.email}
+								</Form.Control.Feedback>
 							</Form.Group>
 
 							<Form.Group className='mb-3'>
@@ -111,11 +127,13 @@ function Register() {
 										name='password'
 										type='password'
 										placeholder='Ingresa una contraseña de 8-20 caracteres'
-										isInvalid={formik.errors.password && formik.touched.password}
+										isInvalid={
+											formik.errors.password && formik.touched.password
+										}
 									/>
 									<Form.Control.Feedback type='invalid'>
-                                    	{formik.errors.password}
-                               		 </Form.Control.Feedback>	
+										{formik.errors.password}
+									</Form.Control.Feedback>
 								</div>
 								<div className='box mt-3'>
 									<Form.Label className='form-label'>
@@ -130,8 +148,8 @@ function Register() {
 										isInvalid={formik.errors.phone && formik.touched.phone}
 									/>
 									<Form.Control.Feedback type='invalid'>
-                                    	{formik.errors.phone}
-                               		 </Form.Control.Feedback>	
+										{formik.errors.phone}
+									</Form.Control.Feedback>
 								</div>
 								<div className='box mt-3'>
 									<Form.Label className='form-label'>Nombre</Form.Label>
@@ -144,8 +162,8 @@ function Register() {
 										isInvalid={formik.errors.name && formik.touched.name}
 									/>
 									<Form.Control.Feedback type='invalid'>
-                                    	{formik.errors.name}
-                               		 </Form.Control.Feedback>
+										{formik.errors.name}
+									</Form.Control.Feedback>
 								</div>
 								<div className='box mt-3'>
 									<Form.Label className='form-label'>Apellido</Form.Label>
@@ -155,11 +173,13 @@ function Register() {
 										placeholder='Apellido'
 										name='lastname'
 										onChange={formik.handleChange}
-										isInvalid={formik.errors.lastname && formik.touched.lastname}
+										isInvalid={
+											formik.errors.lastname && formik.touched.lastname
+										}
 									/>
 									<Form.Control.Feedback type='invalid'>
-                                    	{formik.errors.lastname}
-                               		 </Form.Control.Feedback>
+										{formik.errors.lastname}
+									</Form.Control.Feedback>
 								</div>
 								<div className='box mt-3'>
 									<Form.Label className='form-label'>Imagen</Form.Label>
@@ -189,4 +209,4 @@ function Register() {
 		</>
 	)
 }
-export default Register
+export default Register
