@@ -5,9 +5,10 @@ import { useAdminContext } from '../../context/AdminContext';
 
 
 const EditProductForm = ({editProduct, handleClose}) => {
+  console.log(editProduct)
     const {  getAllProducts, updateProduct, createProduct } = useAdminContext();
     const [product, setProduct] = useState({
-        _id: editProduct ?editProduct._id :null,
+        // _id: editProduct ?editProduct._id :null,
         name: editProduct ?editProduct.name :"",
         description: editProduct ?editProduct.description :"",
         category: editProduct ?editProduct.category :"",
@@ -27,16 +28,19 @@ const EditProductForm = ({editProduct, handleClose}) => {
     };
     
     const handleChange = (e) => {
-        const { name, value, checked, type } = e.target;
-        if(type==="checkbox"){
-            console.log(checked)
+        const { name, value } = e.target;
+        // if(type==="checkbox"){
+        //     console.log(checked)
+        //     setProduct({
+        //         ...product,
+        //         [name]: checked,
+        //     });
+        // }
+        if (name==="category") {
             setProduct({
-                ...product,
-                [name]: checked,
-            });
-        // } else if (name==="category") {
-        //     setProduct({...product, [name]:{"name": value}});
-        //     console.log(product);
+              ...product, 
+              [name]:{"name": value}});
+            console.log(product);
         } else {
             setProduct({
                 ...product,

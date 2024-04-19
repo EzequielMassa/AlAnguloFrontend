@@ -1,6 +1,6 @@
 import './TabbedFrame.css';
 import { useState } from 'react';
-import { Container, Row, Col, Nav, Tab, Image, Button, Modal } from 'react-bootstrap';
+import { Row, Col, Nav, Tab, Image, Button, Modal } from 'react-bootstrap';
 import { ImSortAlphaDesc, ImSortAlphaAsc } from "react-icons/im";
 import { FcAddDatabase } from "react-icons/fc";
 import UsersTable from '../UsersTable/UsersTable';
@@ -9,9 +9,12 @@ import SoccerFieldsTable from '../SoccerFieldsTable/SoccerFieldsTable';
 import EditProductForm from '../EditProductForm/EditProductForm';
 import EditSoccerfieldForm from '../EditSoccerfieldForm/EditSoccerfieldForm';
 import { useAuthContext } from '../../context/AuthContext'; 
+import { useAdminContext } from '../../context/AdminContext';
+
 // import { jwtDecode } from 'jwt-decode'
 
 const TabbedFrame = () => {
+  const { getProductsSortedByPrice } = useAdminContext();
   // const token = localStorage.getItem("token")||{};
   // const decoded = jwtDecode(token)
   // console.log(decoded)
@@ -21,7 +24,7 @@ const TabbedFrame = () => {
     const { name, lastname, image } = loggedUser;
     console.log(loggedUser)
 
-    const [show1, setShow1] = useState(false);
+    const [show1, setShow1] = useState(false);    
     const handleClose1 = () => setShow1(false);
     const handleEdit1 = () => {setShow1(true)};
 
@@ -51,17 +54,17 @@ const TabbedFrame = () => {
                     
                   <Nav variant="underline" className=" leftBlock d-flex flex-column flex-md-row justify-content-around align-item-center">
                      
-                    <Nav.Item>
+                    <Nav.Item className="justify-content-center d-flex mt-1 my-md-auto">
                       <Nav.Link eventKey="first">Usuarios</Nav.Link>
                     </Nav.Item>
                      
                      
-                    <Nav.Item>
+                    <Nav.Item className="justify-content-center d-flex my-auto">
                       <Nav.Link eventKey="second">Productos</Nav.Link>
                     </Nav.Item>
                      
                       
-                    <Nav.Item>
+                    <Nav.Item className="justify-content-center d-flex mb-1 my-md-auto">
                       <Nav.Link eventKey="third">Canchas</Nav.Link>
                     </Nav.Item>
                      
@@ -69,41 +72,43 @@ const TabbedFrame = () => {
                     
               </Col>
               <Col sm={9} className='frame__rightBlock'>
-                <Tab.Content className='rightBlock_1 p-2 justify-content-between'>
-                    <p className='p-0 my-auto'>ADMIN</p>
+                <Tab.Content className='rightBlock_1 p-1'>
+                    <p className='p-0 my-auto '>ADMIN</p>
 
-                    <div className='d-flex'>
-                      <div className='mx-1' ><Button className='m-0 p-2' variant='outline-success'> <ImSortAlphaAsc className='orderIcon'/> </Button></div>
-                      <div className='mx-1' ><Button className='m-0 p-2' variant='outline-success'> <ImSortAlphaDesc className='orderIcon'/> </Button></div>
+                    <Tab.Pane eventKey="first" className='container-fluid px-0'>
+                      <div className='d-flex justify-content-center'>
+                    
+                      {/* <div eventKey="second" className='mx-1' ><Button className='m-0 p-2' variant='outline-success'> <ImSortAlphaAsc onClick={(e)=>getProductsSortedByPrice(1,e)} className='orderIcon'/> </Button></div> */}
+                      {/* <div eventKey="second" className='mx-1' ><Button className='m-0 p-2' variant='outline-success'> <ImSortAlphaDesc onClick={(e)=>getProductsSortedByPrice(-1,e)} className='orderIcon'/> </Button></div> */}
+                    
                     </div>
-
-                    <Tab.Pane eventKey="second">
-                    <div className='mx-1' ><Button className='m-0 p-1' variant='outline-success'> <FcAddDatabase onClick={handleEdit1} className='addIcon'/> </Button></div>
-                    <Modal show={show1} onHide={handleClose1}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Producto nuevo</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      <EditProductForm handleClose={handleClose1} />
-                    </Modal.Body>
-                    </Modal>
                     </Tab.Pane>
 
-                    <Tab.Pane eventKey="third">
-                    <div className='mx-1' ><Button className='m-0 p-1' variant='outline-success'> <FcAddDatabase onClick={handleEdit2} className='addIcon'/> </Button></div>
-                    <Modal show={show2} onHide={handleClose2}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Cancha nueva</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                      <EditSoccerfieldForm handleClose={handleClose2} />
-                    </Modal.Body>
-                    </Modal>
+                    <Tab.Pane eventKey="second" className='container-fluid px-0'>
+                      <div className='d-flex justify-content-center'>
+                    
+                      <div eventKey="second" className='mx-1' ><Button className='m-0 p-2' variant='outline-success'> <ImSortAlphaAsc  className='orderIcon'/> </Button></div>
+                      <div eventKey="second" className='mx-1' ><Button className='m-0 p-2' variant='outline-success'> <ImSortAlphaDesc className='orderIcon'/> </Button></div>
+                      <div eventKey="second" className='mx-1' ><Button className='m-0 p-1' variant='outline-success'> <FcAddDatabase onClick={handleEdit1} className='addIcon'/> </Button></div>
+                      
+                      </div>
                     </Tab.Pane>
 
-                    <div className='d-flex'>
-                    <Image src={loggedUser ?image :"https://xsgames.co/randomusers/assets/avatars/male/13.jpg"} alt="imagen de admin logeado" roundedCircle fluid className='adminLogged'/>
-                    <p className='my-auto ps-1 d-none d-md-block'>{loggedUser ?`${name} ${lastname}` :"JohnDoe"}</p>
+                    <Tab.Pane eventKey="third" className='container-fluid px-0'>
+                    <div className='d-flex justify-content-center'>
+                    
+                      <div eventKey="third" className='mx-1' ><Button className='m-0 p-2' variant='outline-success'> <ImSortAlphaAsc  className='orderIcon'/> </Button></div>
+                      <div eventKey="third" className='mx-1' ><Button className='m-0 p-2' variant='outline-success'> <ImSortAlphaDesc  className='orderIcon'/> </Button></div>
+                      <div eventKey="third" className='mx-1' ><Button className='m-0 p-1' variant='outline-success'> <FcAddDatabase onClick={handleEdit2} className='addIcon'/> </Button></div>
+                      {/* onClick={(e)=>getProductsSortedByPrice(1,e)} */}
+                    </div>
+                    </Tab.Pane>
+
+                    <div className='container col-auto d-flex'>
+                    <Image src={loggedUser ?loggedUser.image :null} alt="imagen de admin logeado" roundedCircle fluid className='adminLoggedImg my-auto'/>
+                    <div className='d-flex align-items-center'>
+                    <p className='ps-1 d-none d-sm-block my-0'>{loggedUser ?`${name} ${lastname}` :"JohnDoe"}</p>
+                    </div>
                     </div>
 
                 </Tab.Content>
@@ -117,6 +122,29 @@ const TabbedFrame = () => {
             </Row>
         </Tab.Container>
 
+        <Modal show={show1} onHide={handleClose1}>
+        <Modal.Header closeButton>
+          <Modal.Title>Producto nuevo</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <EditProductForm
+            editProduct={false}
+            handleClose={handleClose1}
+          />
+        </Modal.Body>
+      </Modal>
+
+      <Modal show={show2} onHide={handleClose2}>
+        <Modal.Header closeButton>
+          <Modal.Title>Cancha nueva</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <EditSoccerfieldForm
+            editSoccerfield={false}
+            handleClose={handleClose2}
+          />
+        </Modal.Body>
+      </Modal>
         
 
         </section>

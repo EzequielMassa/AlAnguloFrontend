@@ -89,7 +89,9 @@ const ProductsTable = () => {
               <td
                 key={"description" + productObj._id}
                 className="cursorChange borderCustom">
+                  <div className="customCellText">
                 {productObj.description}
+                </div>
               </td>
               <td
                 key={"category" + productObj._id}
