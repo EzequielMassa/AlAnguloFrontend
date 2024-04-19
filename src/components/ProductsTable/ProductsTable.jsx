@@ -89,7 +89,9 @@ const ProductsTable = () => {
               <td
                 key={"description" + productObj._id}
                 className="cursorChange borderCustom">
+                  <div className="customCellText">
                 {productObj.description}
+                </div>
               </td>
               <td
                 key={"category" + productObj._id}
@@ -114,7 +116,7 @@ const ProductsTable = () => {
                     alt="imagen de productos"
                     onClick={() => productImagePopup(productObj.image)}
                     roundedCircle
-                    className="cursorChange userImg"
+                    className="cursorChange productImg"
                   />
                 </div>
               </td>

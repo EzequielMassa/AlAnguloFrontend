@@ -1,13 +1,14 @@
 import './EditProductForm.css';
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useAdminContext } from '../../context/AdminContext';
 
 
 const EditProductForm = ({editProduct, handleClose}) => {
+  console.log(editProduct)
     const {  getAllProducts, updateProduct, createProduct } = useAdminContext();
     const [product, setProduct] = useState({
-        _id: editProduct ?editProduct._id :null,
+        // _id: editProduct ?editProduct._id :null,
         name: editProduct ?editProduct.name :"",
         description: editProduct ?editProduct.description :"",
         category: editProduct ?editProduct.category :"",
@@ -27,16 +28,19 @@ const EditProductForm = ({editProduct, handleClose}) => {
     };
     
     const handleChange = (e) => {
-        const { name, value, checked, type } = e.target;
-        if(type==="checkbox"){
-            console.log(checked)
+        const { name, value } = e.target;
+        // if(type==="checkbox"){
+        //     console.log(checked)
+        //     setProduct({
+        //         ...product,
+        //         [name]: checked,
+        //     });
+        // }
+        if (name==="category") {
             setProduct({
-                ...product,
-                [name]: checked,
-            });
-        // } else if (name==="category") {
-        //     setProduct({...product, [name]:{"name": value}});
-        //     console.log(product);
+              ...product, 
+              [name]:{"name": value}});
+            console.log(product);
         } else {
             setProduct({
                 ...product,
@@ -107,6 +111,16 @@ const EditProductForm = ({editProduct, handleClose}) => {
               onChange={handleChange}
               name="image"
               placeholder="http://Imagen_de_producto.com" />
+              <Form.Label className="d-flex">
+                <div className="my-1 py-1 mx-auto">
+                  <Image
+                    src={product.image||"https://static.vecteezy.com/system/resources/previews/005/720/408/large_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg"}
+                    alt="imagen del producto"
+                    roundedCircle
+                    className="editProductImg"
+                  />
+                </div>
+              </Form.Label>
           </Form.Group>
           
           {/* <Form.Group className="mb-2">

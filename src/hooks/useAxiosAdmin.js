@@ -22,11 +22,8 @@ function UseAxiosAdmin() {
     const getAllUsers = async () => {
         setUsersLoading(true);
         try {
-            const serverReply = await axios.get(`${baseUrl}/users`,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });
+            const serverReply = await axios.get(`${baseUrl}/users`);
+            console.log(serverReply.data.data)
             setUsers(serverReply.data.data);
         } catch (error) {
             setUsersError(error)
@@ -37,11 +34,7 @@ function UseAxiosAdmin() {
 
     const updateUserActive = async (userObj) => {
         try {
-            const updatedUser = await axios.put(`${baseUrl}/user/changeState/${userObj._id}`, userObj,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });            
+            const updatedUser = await axios.put(`${baseUrl}/user/changeState/${userObj._id}`, userObj);            
             if(updatedUser.status===200) {
                 Swal.fire({
                     position: "center",
@@ -60,11 +53,7 @@ function UseAxiosAdmin() {
 
     const updateUser = async (userObj) => {
         try {
-            const updatedUser = await axios.put(`${baseUrl}/user/${userObj._id}`, userObj,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });
+            const updatedUser = await axios.put(`${baseUrl}/user/${userObj._id}`, userObj);
             if(updatedUser.status===200) {
                 Swal.fire({
                     position: "center",
@@ -95,11 +84,7 @@ function UseAxiosAdmin() {
         }).then((result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = axios.delete(`${baseUrl}/user/${userObj._id}`,{
-                        headers: {
-                            "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                        }
-                    });
+                    const response = axios.delete(`${baseUrl}/user/${userObj._id}`);
                     response.then((result)=> {
                         if(result.status===200) {
                             return Swal.fire({
@@ -117,7 +102,6 @@ function UseAxiosAdmin() {
                         showConfirmButton: false,
                         timer: 2500
                     });
-                    // setUsersArr(usersArr.filter((user) => user.id !== userObj._id))
                 } catch (error) {
                     console.error(error)
                 }
@@ -129,11 +113,7 @@ function UseAxiosAdmin() {
     const getAllProducts = async () => {
         setProductsLoading(true)
         try {
-            const serverReply = await axios.get(`${baseUrl}/products`,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });
+            const serverReply = await axios.get(`${baseUrl}/products`);
             setProducts(serverReply.data.data);
         } catch (error) {
             setProductsError(error)
@@ -155,11 +135,7 @@ function UseAxiosAdmin() {
         }).then((result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = axios.delete(`${baseUrl}/product/delete/${ProductObj._id}`,{
-                        headers: {
-                            "x-access-token": `${token}`
-                        }
-                    });
+                    const response = axios.delete(`${baseUrl}/product/delete/${ProductObj._id}`);
                     response.then((result)=> {
                         if(result.status===200) {
                             return Swal.fire({
@@ -186,11 +162,7 @@ function UseAxiosAdmin() {
 
     const updateProduct = async (userObj) => {
         try {
-            const updatedUser = await axios.put(`${baseUrl}/product/update/${userObj._id}`, userObj,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });
+            const updatedUser = await axios.put(`${baseUrl}/product/update/${userObj._id}`, userObj);
             if(updatedUser.status===200) {
                 Swal.fire({
                     position: "center",
@@ -207,15 +179,8 @@ function UseAxiosAdmin() {
     };
 
     const createProduct = async (newProductObj) => {
-        console.log(newProductObj)
         try {
-            const responseNewSoccerfield = await axios.post(`${baseUrl}/products`, newProductObj,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });
-            console.log(responseNewSoccerfield, "Producto agregado")
-            // setProducts([...products, dispatchNewUser.data.data])
+            const responseNewSoccerfield = await axios.post(`${baseUrl}/products`, newProductObj);
             if(responseNewSoccerfield.status===201) {
             Swal.fire({
                 position: "center",
@@ -231,14 +196,22 @@ function UseAxiosAdmin() {
         }
     };
 
+    const getProductsSortedByPrice = async (sortOrder) => {
+        console.log(sortOrder)
+        try {
+            const sortedProductsReply = await axios.get(`${baseUrl}/products/price?sortOrder=${sortOrder}`);
+            if(sortedProductsReply.status===200) {
+                setSoccerfields(sortedProductsReply.data.data);
+            }   
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     const getAllSoccerfields = async () => {
         setSoccerfieldsLoading(true)
         try {
-            const serverReply = await axios.get(`${baseUrl}/soccerfields`,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });
+            const serverReply = await axios.get(`${baseUrl}/soccerfields`);
             setSoccerfields(serverReply.data.data);
         } catch (error) {
             setSoccerfieldsError(error)
@@ -249,11 +222,7 @@ function UseAxiosAdmin() {
 
     const updateSoccerfield = async (soccerfieldObj) => {
         try {
-            const updatedSoccerfield = await axios.put(`${baseUrl}/soccerfield/update/${soccerfieldObj._id}`, soccerfieldObj,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });
+            const updatedSoccerfield = await axios.put(`${baseUrl}/soccerfield/update/${soccerfieldObj._id}`, soccerfieldObj);
             if(updatedSoccerfield.status===200) {
                 Swal.fire({
                     position: "center",
@@ -282,11 +251,7 @@ function UseAxiosAdmin() {
         }).then((result) => {
             if (result.isConfirmed) {
                 try {
-                    const response = axios.delete(`${baseUrl}/soccerfield/delete/${soccerfieldObj._id}`,{
-                        headers: {
-                            "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                        }
-                    });
+                    const response = axios.delete(`${baseUrl}/soccerfield/delete/${soccerfieldObj._id}`);
                     response.then((result)=> {
                         if(result.status===200) {
                             return Swal.fire({
@@ -314,11 +279,7 @@ function UseAxiosAdmin() {
     const createSoccerfield = async (newSoccerfieldObj) => {
         console.log(newSoccerfieldObj)
         try {
-            const responseNewSoccerfield = await axios.post(`${baseUrl}/soccerfield`, newSoccerfieldObj,{
-                headers: {
-                    "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MTc2MGFhMzExYmY3Y2RhM2VlNmE5NiIsIm5hbWUiOiJhZG1pbiIsImxhc3RuYW1lIjoiYWRtaW4iLCJyb2xlcyI6IjY2MTcwYzQ1Njk1YWQwYzM3NmNkNWFlYyJ9.G0MZJD1CjP9XMJWjEz9uqhdBsTC3CmMKK4GQKQ4E4EQ"//TODO reemplazar value por acceso a token de sesión, posiblemente desde localStorage/sessionStorage
-                }
-            });
+            const responseNewSoccerfield = await axios.post(`${baseUrl}/soccerfield`, newSoccerfieldObj);
             console.log(responseNewSoccerfield, "cancha agregada")
             if(responseNewSoccerfield.status===201) {
             Swal.fire({
@@ -356,7 +317,8 @@ function UseAxiosAdmin() {
         getAllSoccerfields,
         updateSoccerfield,
         deleteSoccerfield,
-        createSoccerfield
+        createSoccerfield,
+        getProductsSortedByPrice
 	}
 }
 
