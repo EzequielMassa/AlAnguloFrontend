@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect } from 'react'
+import { createContext, useContext } from 'react'
 import UseAxiosUser from '../hooks/useAxiosUser'
 
 export const UserContext = createContext()
@@ -21,10 +21,6 @@ export const UserContextProvider = ({ children }) => {
 		postOrder,
 		clearUserCart,
 	} = UseAxiosUser()
-
-	useEffect(() => {
-		getUserCart()
-	}, [order])
 
 	return (
 		<UserContext.Provider

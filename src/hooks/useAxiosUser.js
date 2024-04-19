@@ -89,7 +89,7 @@ function UseAxiosUser() {
 		orderError,
 		postOrder,
 		clearUserCart,
-		setUserCart
+		setUserCart,
 	}
 }
 
