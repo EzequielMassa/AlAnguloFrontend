@@ -33,7 +33,7 @@ export const Home = () => {
 	return (
 		<>
 			<section className='hero'>
-				<div className='hero-content'>
+				<div className='hero-content pt-5'>
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
 					<div className='d-flex flex-column flex-md-row justify-content-around gap-5'>
 						<Link to={'./canchas'} className={'hero-link '}>

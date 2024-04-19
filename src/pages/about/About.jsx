@@ -20,6 +20,40 @@ const About = () => {
 						<div className='card carta'>
 							<img
 								className='card-image'
+								src={ezeProfile}
+								alt='profile picture'></img>
+							<h2 className='card-title'>Ezequiel Massa</h2>
+							<p className='card-text'>
+								Me considero buen compañero, siempre busco aportar al equipo.
+								Con este proyecto aprendi muchisimo y mi equipo nada mas que
+								decir que gracias por todo lo que me ayudo y por el aguante que
+								pusimos todos para llegar a esto.
+							</p>
+							<div className='social-icons d-flex flex-row w-100'>
+								<Link
+									target='_blank'
+									to={'https://portfolio-emdev.firebaseapp.com/emdev'}
+									className='w-100  '>
+									<BsMailbox2Flag className='w-100 icon' />
+								</Link>
+								<Link
+									target='_blank'
+									to={'https://www.linkedin.com/in/ezequiel-massa-dev/'}
+									className='w-100'>
+									{' '}
+									<BsLinkedin className='w-100 icon' />{' '}
+								</Link>
+								<Link
+									target='_blank'
+									to={'https://github.com/EzequielMassa'}
+									className='w-100'>
+									<BsGithub className='w-100 icon ' />
+								</Link>
+							</div>
+						</div>
+						<div className='card carta'>
+							<img
+								className='card-image'
 								src={tomiProfile}
 								alt='profile picture'></img>
 							<h2 className='card-title'>Tomas Williams</h2>
@@ -53,81 +87,11 @@ const About = () => {
 								</Link>
 							</div>
 						</div>
-						<div className='card carta'>
-							<img
-								className='card-image'
-								src={ezeProfile}
-								alt='profile picture'></img>
-							<h2 className='card-title'>Ezequiel Massa</h2>
-							<p className='card-text'>
-								Me considero buen compañero, siempre busco aportar al equipo.
-								Con este proyecto aprendi muchisimo y mi equipo nada mas que
-								decir que gracias por todo lo que me ayudo y por el aguante que
-								pusimos todos para llegar a esto.
-							</p>
-							<div className='social-icons d-flex flex-row w-100'>
-								<Link
-									target='_blank'
-									to={'https://portfolio-emdev.firebaseapp.com/emdev'}
-									className='w-100  '>
-									<BsMailbox2Flag className='w-100 icon' />
-								</Link>
-								<Link
-									target='_blank'
-									to={'https://www.linkedin.com/in/ezequiel-massa-dev/'}
-									className='w-100'>
-									{' '}
-									<BsLinkedin className='w-100 icon' />{' '}
-								</Link>
-								<Link
-									target='_blank'
-									to={'https://github.com/EzequielMassa'}
-									className='w-100'>
-									<BsGithub className='w-100 icon ' />
-								</Link>
-							</div>
-						</div>
 					</Col>
 					<Col
 						className='d-flex justify-content-center flex-md-row flex-column  pt-5 gap-4'
 						xs={12}
 						md={12}>
-						<div className='card carta'>
-							<img
-								className='card-image'
-								src={fedeProfile}
-								alt='profile picture'></img>
-							<h2 className='card-title'>Federico Code</h2>
-							<p className='card-text'>
-								Me considero buen compañero, siempre busco aportar al equipo.
-								Con este proyecto aprendi muchisimo y mi equipo nada mas que
-								decir que gracias por todo lo que me ayudo y por el aguante que
-								pusimos todos para llegar a esto.
-							</p>
-							<div className='social-icons d-flex flex-row w-100'>
-								<Link
-									target='_blank'
-									to={'https://mail.google.com/mail/u/0/#inbox'}
-									className='w-100  '>
-									<BsMailbox2Flag className='w-100 icon' />
-								</Link>
-								<Link
-									target='_blank'
-									to={
-										'https://www.linkedin.com/in/tomas-williams-neme-scheij-b60b8a1bb/'
-									}
-									className='w-100'>
-									{' '}
-									<BsLinkedin className='w-100 icon' />{' '}
-								</Link>
-								<Link
-									target='_blank'
-									to={'https://www.instagram.com/tomi_williams01/'}
-									className='w-100'>
-									<BsGithub className='w-100 icon ' />
-								</Link>
-							</div>
-						</div>
 						<div className='card carta'>
 							<img
 								className='card-image'
@@ -143,14 +107,14 @@ const About = () => {
 							<div className='social-icons d-flex flex-row w-100'>
 								<Link
 									target='_blank'
-									to={'https://mail.google.com/mail/u/0/#inbox'}
+									to={''}
 									className='w-100  '>
 									<BsMailbox2Flag className='w-100 icon' />
 								</Link>
 								<Link
 									target='_blank'
 									to={
-										'https://www.linkedin.com/in/tomas-williams-neme-scheij-b60b8a1bb/'
+										'/nosotros'
 									}
 									className='w-100'>
 									{' '}
@@ -158,7 +122,43 @@ const About = () => {
 								</Link>
 								<Link
 									target='_blank'
-									to={'https://www.instagram.com/tomi_williams01/'}
+									to={''}
+									className='w-100'>
+									<BsGithub className='w-100 icon ' />
+								</Link>
+							</div>
+						</div>
+						<div className='card carta'>
+							<img
+								className='card-image'
+								src={fedeProfile}
+								alt='profile picture'></img>
+							<h2 className='card-title'>Federico Frau</h2>
+							<p className='card-text'>
+								Me considero buen compañero, siempre busco aportar al equipo.
+								Con este proyecto aprendi muchisimo y mi equipo nada mas que
+								decir que gracias por todo lo que me ayudo y por el aguante que
+								pusimos todos para llegar a esto.
+							</p>
+							<div className='social-icons d-flex flex-row w-100'>
+								<Link
+									target='_blank'
+									to={''}
+									className='w-100  '>
+									<BsMailbox2Flag className='w-100 icon' />
+								</Link>
+								<Link
+									target='_blank'
+									to={
+										'/nosotros'
+									}
+									className='w-100'>
+									{' '}
+									<BsLinkedin className='w-100 icon' />{' '}
+								</Link>
+								<Link
+									target='_blank'
+									to={'/nosotros'}
 									className='w-100'>
 									<BsGithub className='w-100 icon ' />
 								</Link>

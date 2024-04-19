@@ -50,7 +50,7 @@ function UseAxiosUser() {
 			setOrder(true)
 			getUserCart(order.user)
 		} catch (err) {
-			toast.error(err.response.data.message)
+			toast.error("No puedes comprar porque eres admin o estas baneado")
 			setOrder(false)
 			setOrderError(err)
 		} finally {

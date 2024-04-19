@@ -76,8 +76,10 @@ function Products() {
 		setSearchParams(params)
 	}
 
-	const clearProductsFilter = () => {
-		navigate('/productos')
+	const clearProductsFilter = (param) => {
+		const params = new URLSearchParams()
+		params.set("",param)
+		navigate("/productos")		
 	}
 
 	const handleInputChange = (e) => {

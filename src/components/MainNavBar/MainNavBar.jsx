@@ -17,7 +17,7 @@ import { useAuthContext } from '../../context/AuthContext'
 import { useUserContext } from '../../context/UserContext'
 import Login from '../Login/Login'
 import './MainNavBar.css'
-
+import { useNavigate } from 'react-router-dom'
 export const MainNavBar = () => {
 	const { user, setLoguedUser } = useAuthContext()
 	const { userCart, getUserCart, userCartLoading, setUserCart } =
@@ -32,6 +32,7 @@ export const MainNavBar = () => {
 	const [showModal, setShowModal] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
 	const [showSearch, setShowSearch] = useState(false)
+	const navigate = useNavigate()
 	const handleCloseModal = () => {
 		setShowModal(false)
 	}
@@ -82,6 +83,7 @@ export const MainNavBar = () => {
 				localStorage.clear()
 				setUserCart({})
 				setLoguedUser({})
+				navigate("/")
 			}
 		})
 	}
