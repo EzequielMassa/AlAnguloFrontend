@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useProductsContext } from '../../context/ProductsContext'
 import CategoryCard from '../CategoryCard/CategoryCard'
 import Spinner from '../Spinner/Spinner'
+import GeneralButtons from '../GeneralButtons/GeneralButtons'
 
 function EShop() {
 	const { categories, categoriesLoading, categoriesError, getAllCategories } =
@@ -20,8 +21,8 @@ function EShop() {
 						xs={12}
 						md={4}
 						className='d-flex justify-content-center justify-content-md-end '>
-						<Link className='btn btn-primary' to={'/productos'}>
-							Descubri Nuestro E-Shop
+						<Link className='text-decoration-none' to={'/productos'}>
+							<GeneralButtons text='Descubri nuestro e-shop'/>
 						</Link>
 					</Col>
 				</Row>

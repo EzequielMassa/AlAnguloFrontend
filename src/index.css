@@ -17,7 +17,7 @@
 	--paragraph-font-size-tablet: 1.15rem;
 	--paragraph-font-size-desktop: 1.25rem;
 }
-
+ 
 html {
 	scroll-behavior: smooth;
 	scroll-padding-top: 7rem;

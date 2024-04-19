@@ -22,6 +22,7 @@ import logo12 from './logoPublicity/logorolling-remove.png'
 import logo9 from './logoPublicity/logotwremove.png'
 import logo10 from './logoPublicity/nintendoLogoRemove.png'
 import logo11 from './logoPublicity/nodeLogoRemove.png'
+import GeneralButtons from '../../components/GeneralButtons/GeneralButtons'
 
 export const Home = () => {
 	const {
@@ -34,12 +35,12 @@ export const Home = () => {
 			<section className='hero'>
 				<div className='hero-content'>
 					<h1>Reserva las Mejores Canchas en AlAngulo</h1>
-					<div className='d-flex flex-column flex-md-row justify-content-around gap-3'>
+					<div className='d-flex flex-column flex-md-row justify-content-around gap-5'>
 						<Link to={'./canchas'} className={'hero-link '}>
-							Nuestras Canchas
+							<GeneralButtons text='Nuestras Canchas'/>
 						</Link>
 						<Link to={'./productos'} className={'hero-link '}>
-							Nuestros Productos
+							<GeneralButtons text='Nuestros Productos'/>
 						</Link>
 					</div>
 				</div>
@@ -70,8 +71,8 @@ export const Home = () => {
 					<h3 className='text-center title'>Descubri nuestras canchas</h3>
 					<div className='col-12 d-flex flex-column align-items-center gap-3'>
 						<SoccerFieldPreviewCards />
-						<Link className='btn btn-primary ' to={'/canchas'}>
-							Explora nuestras canchas
+						<Link className='text-decoration-none ' to={'/canchas'}>
+							<GeneralButtons text='Explora Nuestras Canchas'/>
 						</Link>
 					</div>
 				</section>
