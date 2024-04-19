@@ -20,7 +20,8 @@ import './MainNavBar.css'
 
 export const MainNavBar = () => {
 	const { user, setLoguedUser } = useAuthContext()
-	const { userCart, getUserCart, userCartLoading, setUserCart} = useUserContext()
+	const { userCart, getUserCart, userCartLoading, setUserCart } =
+		useUserContext()
 
 	useEffect(() => {
 		if (user.id) {
@@ -243,15 +244,27 @@ export const MainNavBar = () => {
 					)}
 					<hr />
 					<div className='d-grid position-absolute bottom-0 start-50 translate-middle'>
-						<NavLink to={'./carrito'} className={'d-grid text-decoration-none'}>
-							<Button
-								variant='success'
-								size='md'
-								className='cart-button'
-								onClick={handleCartToggle}>
-								IR AL CARRITO
-							</Button>
-						</NavLink>
+						{user && user.id ? (
+							<NavLink
+								to={'./carrito'}
+								className={'d-grid text-decoration-none'}>
+								<Button
+									variant='success'
+									size='md'
+									className='cart-button'
+									onClick={handleCartToggle}>
+									IR AL CARRITO
+								</Button>
+							</NavLink>
+						) : (
+							<NavLink
+								to={'./register'}
+								className={'d-grid text-decoration-none'}>
+								<Button variant='success' size='md' className='cart-button'>
+									Registrate
+								</Button>
+							</NavLink>
+						)}
 					</div>
 				</Offcanvas.Body>
 			</Offcanvas>
