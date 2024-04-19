@@ -10,12 +10,12 @@ import Row from 'react-bootstrap/Row'
 import DatePicker from 'react-datepicker'
 import { FaClock, FaRegCalendarAlt } from 'react-icons/fa'
 import { LuAlarmClock } from 'react-icons/lu'
+import { Link } from 'react-router-dom'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import { useUserContext } from '../../context/UserContext'
 import { formatDate } from '../../utils/formatDate'
 import Spinner from '../Spinner/Spinner'
 import './BookingModal.css'
-import { Link } from 'react-router-dom'
 function BookingModal(props) {
 	const { selectedSoccerField } = useSoccerFieldsContext()
 	const [form, setForm] = useState({
@@ -32,7 +32,8 @@ function BookingModal(props) {
 		soccerFieldAvailableHoursError,
 		getSoccerFieldAvailableHours,
 	} = useSoccerFieldsContext()
-	const { booking, setBooking, postBooking, bookingLoading } = useUserContext()
+	const { booking, setBooking, postBooking, bookingLoading, getUserCart } =
+		useUserContext()
 
 	const handleDateChange = (date) => {
 		const formatedDate = formatDate(date)
@@ -54,13 +55,13 @@ function BookingModal(props) {
 	}
 
 	const handleBooking = async () => {
-		//TODO: Validar
 		await postBooking(form)
 		await getSoccerFieldAvailableHours(
 			selectedSoccerField._id,
 			form.date,
 			selectedDate
 		)
+		getUserCart(props.userid)
 	}
 
 	useEffect(() => {
