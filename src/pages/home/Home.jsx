@@ -69,7 +69,7 @@ export const Home = () => {
 			<article className='container-md my-4'>
 				<section className='row'>
 					<h3 className='text-center title'>Descubri nuestras canchas</h3>
-					<div className='col-12 d-flex flex-column align-items-center gap-3'>
+					<div className='col-12 d-flex flex-column align-items-center gap-3 py-4 '>
 						<SoccerFieldPreviewCards />
 						<Link className='text-decoration-none ' to={'/canchas'}>
 							<GeneralButtons text='Explora Nuestras Canchas' />

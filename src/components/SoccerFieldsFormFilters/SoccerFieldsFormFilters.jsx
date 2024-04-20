@@ -43,7 +43,7 @@ function SoccerFieldsFomFilters({
 					value={searchParams.get('grass') || ''}>
 					<option value=''>Todos</option>
 					<option value='natural'>Natural</option>
-					<option value='sintetic'>Sintetico</option>
+					<option value='sintetico'>Sintetico</option>
 				</Form.Select>
 			</Form.Group>
 			<Form.Group className='mb-3 filter_form_group_container' controlId='size'>

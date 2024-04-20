@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import SoccerFieldImgCard from '../SoccerFieldImgCard/SoccerFieldImgCard'
 import Spinner from '../Spinner/Spinner'
+import { Container } from 'react-bootstrap'
 
 function SoccerFieldPreviewCards() {
 	const {
@@ -17,7 +18,6 @@ function SoccerFieldPreviewCards() {
 
 	if (soccerFieldsLoading) {
 		return <Spinner />
-		// return <SpinnerAlternative />
 	}
 	if (soccerFieldsError) {
 		return (
@@ -29,15 +29,19 @@ function SoccerFieldPreviewCards() {
 
 	return (
 		<>
-			<div className='d-flex justify-content-center gap-2  '>
+			<Container
+				fluid
+				className='d-flex justify-content-center gap-2 flex-wrap'>
 				{soccerFields ? (
-					soccerFields.map((field) => (
-						<SoccerFieldImgCard key={field._id} fieldImage={field.imgUrl} />
-					))
+					soccerFields
+						.slice(0, 5)
+						.map((field) => (
+							<SoccerFieldImgCard key={field._id} fieldImage={field.imgUrl} />
+						))
 				) : (
 					<></>
 				)}
-			</div>
+			</Container>
 		</>
 	)
 }

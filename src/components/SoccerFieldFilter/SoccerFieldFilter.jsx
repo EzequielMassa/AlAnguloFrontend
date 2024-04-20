@@ -65,7 +65,7 @@ function SoccerFieldFilter() {
 						<option value='natural' className='soccerfieldOption'>
 							natural
 						</option>
-						<option value='sintetic' className='soccerfieldOption'>
+						<option value='sintetico' className='soccerfieldOption'>
 							sintetico
 						</option>
 					</Form.Select>

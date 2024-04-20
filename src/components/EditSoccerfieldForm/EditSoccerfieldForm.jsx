@@ -15,7 +15,7 @@ const EditSoccerfieldForm = ({ editSoccerfield, handleClose }) => {
 			description: editSoccerfield ? editSoccerfield.description : '',
 			price: editSoccerfield ? editSoccerfield.price : 1,
 			size: editSoccerfield ? editSoccerfield.size : 5,
-			grass: editSoccerfield ? editSoccerfield.grass : 'sintetic',
+			grass: editSoccerfield ? editSoccerfield.grass : 'sintetico',
 			imgUrl: editSoccerfield ? editSoccerfield.imgUrl : '',
 		},
 		validationSchema: Yup.object({
@@ -112,7 +112,7 @@ const EditSoccerfieldForm = ({ editSoccerfield, handleClose }) => {
 						value={formik.values.grass}
 						name='grass'
 						onChange={formik.handleChange}>
-						<option value='sintetic'>sintetico</option>
+						<option value='sintetico'>sintetico</option>
 						<option value='natural'>natural</option>
 					</Form.Select>
 				</Form.Group>
