@@ -179,10 +179,14 @@ const UsersTable = () => {
 										className='cursorChange mx-1'
 										onClick={() => handleEdit(userObj)}
 									/>
-									<FaRegTrashCan
-										className='cursorChange mx-1'
-										onClick={() => deleteUser(userObj)}
-									/>
+									{userObj.role.name === 'admin' ? (
+										<></>
+									) : (
+										<FaRegTrashCan
+											className='cursorChange mx-1'
+											onClick={() => deleteUser(userObj)}
+										/>
+									)}
 								</div>
 							</td>
 						</tr>
