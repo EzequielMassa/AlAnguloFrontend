@@ -58,6 +58,10 @@ function Register() {
 				),
 		}),
 		onSubmit: (formData) => {
+			if (formData.image === '') {
+				formData.image =
+					'https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/user-man-512.png'
+			}
 			register(formData)
 			formik.handleReset()
 			navigate('/')
@@ -184,8 +188,8 @@ function Register() {
 								<div className='box mt-3'>
 									<Form.Label className='form-label'>Imagen</Form.Label>
 									<Form.Control
-										id='url'
-										type='url'
+										id='image'
+										type='text'
 										placeholder='Agrega una url de tu imagen'
 										name='image'
 										onChange={formik.handleChange}

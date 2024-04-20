@@ -169,7 +169,9 @@ export const MainNavBar = () => {
 										{!userCart || Object.keys(userCart).length === 0 ? (
 											<></>
 										) : (
-											<b className='store'>{userCart.orders.length + userCart.bookings.length}</b>
+											<b className='store'>
+												{userCart.orders.length + userCart.bookings.length}
+											</b>
 										)}
 									</span>
 								</IconContext.Provider>
@@ -182,7 +184,11 @@ export const MainNavBar = () => {
 													onClick={handleLogout}
 													className='pointer-event '
 												/>
-												<b className='user_Name'>Hola {user.name}</b>
+												<img
+													src={user.image}
+													alt='imagen de usuario'
+													className='user_profile_img rounded rounded-5 ms-2'
+												/>
 											</>
 										) : (
 											<>
