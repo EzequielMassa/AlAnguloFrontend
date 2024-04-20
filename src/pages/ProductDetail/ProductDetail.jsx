@@ -85,7 +85,7 @@ const ProductDetail = () => {
 									<LuPlus className='icons-style icons-styleHover' onClick={addProduct}/>
 										
 								</div>
-								{user.id ? (
+								{user.id && user.role === "user" ? (
 									<Button
 										type='submit'
 										className='mb-2 w-50 mx-auto reactButton'
@@ -94,9 +94,7 @@ const ProductDetail = () => {
 										<CardsButtons cardText='Agregar Al Carrito' />
 									</Button>
 									) : (
-									<Link to={'/register'} className='btn btn-outline-success mb-2 w-50 mx-auto'>
-										Registrate
-									</Link>
+									<></>
 								)}
 							</Col>
 							

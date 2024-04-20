@@ -26,8 +26,8 @@ export const MainFooter = () => {
 								<span>A</span>l<span>A</span>ngulo
 							</h3>
 							<p className='text-center'>
-								Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-								Repudiandae nesciunt esse incidunt eius velit{' '}
+								Si necesitas una app para poder manejar la gestion de tus reservas de Canchas
+								y productos contactanos, no lo dudes!
 							</p>
 							<div className='footer-icons d-flex justify-content-start gap-2 fs-1'>
 								<NavLink to='/404'>

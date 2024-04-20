@@ -15,7 +15,6 @@ function SoccerFieldCard({ soccerField }) {
 	const [modalShow, setModalShow] = useState(false)
 	const { setSelectedSoccerField } = useSoccerFieldsContext()
 	const { _id, name, description, imgUrl, size, grass, price } = soccerField
-
 	const handleBookingModalClick = (soccerfield) => {
 		setSelectedSoccerField(soccerfield)
 		setModalShow(true)
@@ -51,7 +50,7 @@ function SoccerFieldCard({ soccerField }) {
 								currency: 'ARS',
 							})}
 						</Card.Text>
-						{user.id ? (
+						{user.id && user.role === "user" ? (
 							<Button
 								className='my-2 reactButton'
 								id={_id}
@@ -59,9 +58,7 @@ function SoccerFieldCard({ soccerField }) {
 								<CardsButtons cardText='Reservar' />
 							</Button>
 						) : (
-							<Link to={'/register'} className='btn btn-primary'>
-								Registrate
-							</Link>
+							<></>
 						)}
 					</Card.ImgOverlay>
 				</Card>
