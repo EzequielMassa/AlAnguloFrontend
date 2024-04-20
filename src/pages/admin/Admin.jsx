@@ -1,14 +1,12 @@
+import TabbedFrame from '../../components/TabbedFrame/TabbedFrame'
 import '../../index.css'
-import { Container, Row, Col } from 'react-bootstrap';
-import TabbedFrame from '../../components/TabbedFrame/TabbedFrame';
-
 
 const Admin = () => {
-  return (
-    <>
-      <TabbedFrame/>
-    </>
-  )
+	return (
+		<>
+			<TabbedFrame />
+		</>
+	)
 }
 
-export default Admin;
+export default Admin

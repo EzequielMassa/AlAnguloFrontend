@@ -1,59 +1,57 @@
-import { createContext, useContext, useState } from 'react'
-import UseAxiosAdmin from '../hooks/useAxiosAdmin.js';
+import { createContext, useContext } from 'react'
+import UseAxiosAdmin from '../hooks/useAxiosAdmin.js'
 
 export const AdminContext = createContext()
 
 export const AdminContextProvider = ({ children }) => {
 	const {
 		users,
-        usersLoading,
-        usersError,
+		usersLoading,
+		usersError,
 		getAllUsers,
-        updateUserActive,
-        updateUser,
-        deleteUser,
+		updateUserActive,
+		updateUser,
+		deleteUser,
 		products,
-        productsLoading,
-        productsError,
+		productsLoading,
+		productsError,
 		deleteProduct,
 		updateProduct,
 		getAllProducts,
 		createProduct,
 		soccerfields,
-        soccerfieldsLoading,
-        soccerfieldsError,
-        getAllSoccerfields,
+		soccerfieldsLoading,
+		soccerfieldsError,
+		getAllSoccerfields,
 		updateSoccerfield,
 		deleteSoccerfield,
 		createSoccerfield,
-		getProductsSortedByPrice
-     } = UseAxiosAdmin();
+	} = UseAxiosAdmin()
 
 	return (
 		<AdminContext.Provider
 			value={{
 				users,
-                usersLoading,
-                usersError,
-		        getAllUsers,
-                updateUserActive,
-                updateUser,
-                deleteUser,
+				usersLoading,
+				usersError,
+				getAllUsers,
+				updateUserActive,
+				updateUser,
+				deleteUser,
 				products,
-        		productsLoading,
-        		productsError,
+				productsLoading,
+				productsError,
 				deleteProduct,
 				updateProduct,
 				getAllProducts,
 				createProduct,
 				soccerfields,
-        		soccerfieldsLoading,
-        		soccerfieldsError,
-        		getAllSoccerfields,
+				soccerfieldsLoading,
+				soccerfieldsError,
+				getAllSoccerfields,
 				updateSoccerfield,
 				deleteSoccerfield,
 				createSoccerfield,
-				getProductsSortedByPrice
 			}}>
 			{children}
 		</AdminContext.Provider>
@@ -63,9 +61,7 @@ export const AdminContextProvider = ({ children }) => {
 export const useAdminContext = () => {
 	const context = useContext(AdminContext)
 	if (!context) {
-		throw new Error(
-			'AdminContext must be used within a AdminContextProvider'
-		)
+		throw new Error('AdminContext must be used within a AdminContextProvider')
 	}
 	return context
 }
