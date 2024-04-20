@@ -45,7 +45,12 @@ function UseAxiosAdmin() {
 				await getAllUsers()
 			}
 		} catch (error) {
-			console.error(error)
+			Swal.fire({
+				position: 'center',
+				icon: 'warning',
+				title: `${error.response.data.message}`,
+				showConfirmButton: true,
+			})
 		}
 	}
 
@@ -66,7 +71,12 @@ function UseAxiosAdmin() {
 				await getAllUsers()
 			}
 		} catch (error) {
-			console.error(error)
+			Swal.fire({
+				position: 'center',
+				icon: 'warning',
+				title: `${error.response.data.message}`,
+				showConfirmButton: true,
+			})
 		}
 	}
 
@@ -103,7 +113,12 @@ function UseAxiosAdmin() {
 						timer: 2500,
 					})
 				} catch (error) {
-					console.error(error)
+					Swal.fire({
+						position: 'center',
+						icon: 'warning',
+						title: `${error.response.data.message}`,
+						showConfirmButton: true,
+					})
 				}
 			}
 		})
@@ -156,7 +171,12 @@ function UseAxiosAdmin() {
 						timer: 2000,
 					})
 				} catch (error) {
-					console.error(error)
+					Swal.fire({
+						position: 'center',
+						icon: 'warning',
+						title: `${error.response.data.message}`,
+						showConfirmButton: true,
+					})
 				}
 			}
 		})
@@ -179,7 +199,12 @@ function UseAxiosAdmin() {
 				await getAllProducts()
 			}
 		} catch (error) {
-			console.error(error)
+			Swal.fire({
+				position: 'center',
+				icon: 'warning',
+				title: `${error.response.data.message}`,
+				showConfirmButton: true,
+			})
 		}
 	}
 
@@ -200,7 +225,12 @@ function UseAxiosAdmin() {
 				await getAllProducts()
 			}
 		} catch (error) {
-			console.error(error)
+			Swal.fire({
+				position: 'center',
+				icon: 'warning',
+				title: `${error.response.data.message}`,
+				showConfirmButton: true,
+			})
 		}
 	}
 
@@ -233,7 +263,12 @@ function UseAxiosAdmin() {
 				await getAllSoccerfields()
 			}
 		} catch (error) {
-			console.error(error)
+			Swal.fire({
+				position: 'center',
+				icon: 'warning',
+				title: `${error.response.data.message}`,
+				showConfirmButton: true,
+			})
 		}
 	}
 
@@ -272,7 +307,12 @@ function UseAxiosAdmin() {
 						timer: 2000,
 					})
 				} catch (error) {
-					console.error(error)
+					Swal.fire({
+						position: 'center',
+						icon: 'warning',
+						title: `${error.response.data.message}`,
+						showConfirmButton: true,
+					})
 				}
 			}
 		})
@@ -296,7 +336,12 @@ function UseAxiosAdmin() {
 				await getAllSoccerfields()
 			}
 		} catch (error) {
-			console.error(error)
+			Swal.fire({
+				position: 'center',
+				icon: 'warning',
+				title: `${error.response.data.message}`,
+				showConfirmButton: true,
+			})
 		}
 	}
 

@@ -78,16 +78,6 @@ const UsersTable = () => {
 		getAllUsers()
 	}, [])
 
-	// if(usersError) {
-	//   console.log(usersError)
-	//   Swal.fire({
-	//     title: `Error al cargar datos`,
-	//     icon: "error",
-	//     showConfirmButton: false,
-	//     timer: 2500
-	// });
-	// };
-
 	return (
 		<>
 			<Table
@@ -132,22 +122,26 @@ const UsersTable = () => {
 					{usersArr.map((userObj) => (
 						<tr key={userObj._id} className='fs-5'>
 							<td key={'active' + userObj._id} className='borderCustom'>
-								<div className='d-flex align-items-center justify-content-evenly'>
-									<Image
-										style={
-											userObj.active ? null : { filter: 'grayscale(100%)' }
-										}
-										src={
-											userObj.image ||
-											'https://static.vecteezy.com/system/resources/previews/005/720/408/large_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg'
-										}
-										alt='imagen de usuario'
-										onClick={() => userImagePopup(userObj.image)}
-										roundedCircle
-										className='cursorChange userImg'
-									/>
-									{isActiveMenu(userObj)}
-								</div>
+								{userObj.role.name === 'admin' ? (
+									<></>
+								) : (
+									<div className='d-flex align-items-center justify-content-evenly'>
+										<Image
+											style={
+												userObj.active ? null : { filter: 'grayscale(100%)' }
+											}
+											src={
+												userObj.image ||
+												'https://static.vecteezy.com/system/resources/previews/005/720/408/large_2x/crossed-image-icon-picture-not-available-delete-picture-symbol-free-vector.jpg'
+											}
+											alt='imagen de usuario'
+											onClick={() => userImagePopup(userObj.image)}
+											roundedCircle
+											className='cursorChange userImg'
+										/>
+										{isActiveMenu(userObj)}
+									</div>
+								)}
 							</td>
 							<td
 								key={'name' + userObj._id}
@@ -193,13 +187,6 @@ const UsersTable = () => {
 							</td>
 						</tr>
 					))}
-
-					{/* {usersError ?
-      <tr>
-        <td key={"error"} className="cursorChange borderCustom bg-warning"><h3>Error al cargar datos</h3></td>
-      </tr>
-       :null
-      } */}
 				</tbody>
 			</Table>
 			<Modal show={show} onHide={handleClose}>
