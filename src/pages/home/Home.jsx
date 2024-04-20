@@ -1,5 +1,7 @@
+import { useEffect } from 'react'
 import { Col } from 'react-bootstrap'
 import { Link, ScrollRestoration } from 'react-router-dom'
+import { Toaster, toast } from 'sonner'
 import Contact from '../../components/Contact/Contact'
 import EShop from '../../components/E-Shop/EShop'
 import Facilitie from '../../components/Facilitie/Facilitie'
@@ -30,6 +32,13 @@ export const Home = () => {
 		soccerFieldsQueryLoading,
 		soccerFieldsQueryError,
 	} = useSoccerFieldsContext()
+
+	useEffect(() => {
+		if (soccerFieldsQueryError) {
+			toast.error(`${soccerFieldsQueryError.response.data.message}`)
+		}
+	}, [soccerFieldsQueryError])
+
 	return (
 		<>
 			<section className='hero'>
@@ -54,8 +63,6 @@ export const Home = () => {
 						<SoccerFieldFilter />
 						{soccerFieldsQueryLoading ? (
 							<Spinner />
-						) : soccerFieldsQueryError ? (
-							<h1>{soccerFieldsQueryError.response.data.message}</h1>
 						) : soccerFieldsQuery ? (
 							soccerFieldsQuery.map((result) => (
 								<SoccerFieldCard key={result._id} soccerField={result} />
@@ -155,6 +162,7 @@ export const Home = () => {
 					</Col>
 				</section>
 			</article>
+			<Toaster richColors position='bottom-right' theme='dark' />
 			<ScrollRestoration
 				getKey={(location) => {
 					return location.pathname

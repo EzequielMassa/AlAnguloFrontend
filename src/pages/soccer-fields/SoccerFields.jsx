@@ -134,12 +134,14 @@ function SoccerFields() {
 			<article className='container-md '>
 				<section className='row'>
 					<div className='col-12'>
-						{filteredSoccerFields ? (
+						{filteredSoccerFields.length > 0 ? (
 							filteredSoccerFields.map((field) => (
 								<SoccerFieldCard key={field._id} soccerField={field} />
 							))
 						) : (
-							<></>
+							<h4 className='text-center'>
+								No hay Canchas que coincidan con ese filtro.
+							</h4>
 						)}
 					</div>
 				</section>
