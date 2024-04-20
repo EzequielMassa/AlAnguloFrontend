@@ -2,7 +2,7 @@
 .hero {
 	position: relative;
 	width: 100%;
-	height: calc(100vh - 50px);
+	height: calc(100vh);
 	background-color: #f5f5f5;
 	background-size: cover;
 	background-position: center;
@@ -156,25 +156,25 @@ img {
 	cursor: pointer;
 	overflow: hidden;
 	transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button svg {
+}
+
+.animated-button svg {
 	position: absolute;
 	width: 24px;
 	fill: var(--primary-color);
 	z-index: 9;
 	transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button .arr-1 {
+}
+
+.animated-button .arr-1 {
 	right: 16px;
-  }
-  
-  .animated-button .arr-2 {
+}
+
+.animated-button .arr-2 {
 	left: -25%;
-  }
-  
-  .animated-button .circle {
+}
+
+.animated-button .circle {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -185,45 +185,44 @@ img {
 	border-radius: 50%;
 	opacity: 0;
 	transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button .text {
+}
+
+.animated-button .text {
 	position: relative;
 	z-index: 1;
 	transform: translateX(-12px);
 	transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-  }
-  
-  .animated-button:hover {
+}
+
+.animated-button:hover {
 	box-shadow: 0 0 0 12px transparent;
 	color: #212121;
 	border-radius: 12px;
-  }
-  
-  .animated-button:hover .arr-1 {
+}
+
+.animated-button:hover .arr-1 {
 	right: -25%;
-  }
-  
-  .animated-button:hover .arr-2 {
+}
+
+.animated-button:hover .arr-2 {
 	left: 16px;
-  }
-  
-  .animated-button:hover .text {
+}
+
+.animated-button:hover .text {
 	transform: translateX(12px);
-  }
-  
-  .animated-button:hover svg {
+}
+
+.animated-button:hover svg {
 	fill: #212121;
-  }
-  
-  .animated-button:active {
+}
+
+.animated-button:active {
 	scale: 0.95;
 	box-shadow: 0 0 0 4px var(--primary-color);
-  }
-  
-  .animated-button:hover .circle {
+}
+
+.animated-button:hover .circle {
 	width: 220px;
 	height: 150px;
 	opacity: 1;
-  }
-  
+}

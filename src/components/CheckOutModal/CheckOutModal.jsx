@@ -36,7 +36,7 @@ export const CheckOutModal = (props) => {
 				</Modal.Header>
 				<Modal.Body className='d-flex flex-column  justify-content-center align-items-center p-0 p-md-1'>
 					<CreditCard user={user} onCvvChange={handleCvvChange} />
-					<h5>Ingrese su cvv</h5>
+					<h5>Ingrese cvv</h5>
 				</Modal.Body>
 				<Modal.Footer className='d-flex justify-content-center align-items-center '>
 					<Button variant='danger' onClick={onHide}>

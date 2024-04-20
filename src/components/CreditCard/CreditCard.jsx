@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './CreditCard.css'
+import { toast } from 'sonner'
 function CreditCard({ user, onCvvChange }) {
 	const { name } = user
 	const [cvv, setCvv] = useState('')
@@ -7,6 +8,7 @@ function CreditCard({ user, onCvvChange }) {
 	const handleCvvChange = (e) => {
 		const newCvv = e.target.value
 		if (isNaN(newCvv)) {
+			toast.warning('Ingrese solo numeros')
 			return
 		}
 		setCvv(newCvv)
@@ -84,7 +86,7 @@ function CreditCard({ user, onCvvChange }) {
 						</label>
 						<input
 							className='inputstyle'
-							placeholder='***'
+							placeholder=''
 							maxLength='3'
 							id='cvv'
 							value={cvv}

@@ -101,6 +101,7 @@ function Products() {
 	return (
 		<>
 			<Container className='mt-5 pt-5 '>
+				<h1 className='text-center title py-4 '>Nuestro E-Shop</h1>
 				<Navbar
 					bg='light'
 					expand='lg'
@@ -196,8 +197,7 @@ function Products() {
 										</Card.Text>
 										<div className='btn-container d-flex'>
 											<NavLink to={`/producto/${p._id}`}>
-													<CardsButtons cardText='Ver Producto'/>
-												
+												<CardsButtons cardText='Ver Producto' />
 											</NavLink>
 										</div>
 									</Card.Body>
