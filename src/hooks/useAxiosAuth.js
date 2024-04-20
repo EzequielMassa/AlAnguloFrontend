@@ -20,13 +20,10 @@ function UseAxiosAuth() {
 			setLoguedUser(decoded)
 		} catch (err) {
 			setRegisterError(err)
-			console.error(err)
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
-				text: `${
-					err.response.data.message || err.message
-				}, porfavor intenta de vuelta`,
+				text: `${err.response.data.message}, porfavor intenta de vuelta`,
 			})
 		} finally {
 			setRegisterLoading(false)
