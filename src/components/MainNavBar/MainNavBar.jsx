@@ -161,8 +161,9 @@ export const MainNavBar = () => {
 										<AiOutlineSearch />
 									</span>
 								</IconContext.Provider>
-
-								<IconContext.Provider
+								{user.role === 'admin' ?(
+									<></>
+								) :(<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
 									<span className='cart' onClick={handleCartToggle}>
 										<AiOutlineShoppingCart />
@@ -174,7 +175,9 @@ export const MainNavBar = () => {
 											</b>
 										)}
 									</span>
-								</IconContext.Provider>
+								</IconContext.Provider>)
+								}
+
 								<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
 									<span>
