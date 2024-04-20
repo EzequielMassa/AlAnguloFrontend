@@ -2,10 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'react-datepicker/dist/react-datepicker.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
-import {
-	NotLoguedUserProtectedRoute,
-	PrivateRoute,
-} from './components/PrivateRoute/PrivateRoute'
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute'
+import { ProtectedUserNotLoguedRoute } from './components/PrivateRoute/ProtectedUserNotLoguedRoute'
 import { AdminContextProvider } from './context/AdminContext'
 import { AuthContextProvider } from './context/AuthContext'
 import { ProductsContextProvider } from './context/ProductsContext'
@@ -39,9 +37,9 @@ const router = createBrowserRouter([
 			{
 				path: '/carrito',
 				element: (
-					<NotLoguedUserProtectedRoute>
-						<Cart />,
-					</NotLoguedUserProtectedRoute>
+					<ProtectedUserNotLoguedRoute>
+						<Cart />
+					</ProtectedUserNotLoguedRoute>
 				),
 			},
 			{
@@ -79,15 +77,15 @@ const router = createBrowserRouter([
 			{
 				path: '/admin',
 				element: (
-					<ProductsContextProvider>
+					<PrivateRoute>
 						<AdminContextProvider>
-							<SoccerFieldsContextProvider>
-								<PrivateRoute>
+							<ProductsContextProvider>
+								<SoccerFieldsContextProvider>
 									<Admin />
-								</PrivateRoute>
-							</SoccerFieldsContextProvider>
+								</SoccerFieldsContextProvider>
+							</ProductsContextProvider>
 						</AdminContextProvider>
-					</ProductsContextProvider>
+					</PrivateRoute>
 				),
 			},
 		],

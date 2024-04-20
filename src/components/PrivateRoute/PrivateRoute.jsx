@@ -1,15 +1,11 @@
-import { useNavigate } from 'react-router-dom'
-import { useAuthContext } from '../../context/AuthContext'
+import { Navigate } from 'react-router-dom'
 
 export const PrivateRoute = ({ children }) => {
-	const { user } = useAuthContext()
-	const navigate = useNavigate()
+	const user = JSON.parse(localStorage.getItem('user'))
 
-	return user.id && user.role === 'admin' ? children : navigate('/404')
-}
-
-export const NotLoguedUserProtectedRoute = ({ children }) => {
-	const { user } = useAuthContext()
-	const navigate = useNavigate()
-	return user && user.id ? children : navigate('/')
+	return user && user.id && user.role === 'admin' ? (
+		children
+	) : (
+		<Navigate to='/404' replace />
+	)
 }
