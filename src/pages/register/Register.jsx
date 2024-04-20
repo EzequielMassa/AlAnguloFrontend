@@ -1,5 +1,5 @@
 import { useFormik } from 'formik'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Card, Col, Container, Form, Image, Row } from 'react-bootstrap'
 import { NavLink, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
@@ -44,6 +44,8 @@ function Register() {
 				.required('Completa este campo'),
 			phone: Yup.string()
 				.required('Completa este campo')
+				.min(10, 'El telefono debe tener al menos 10 numeros.')
+				.max(15, 'El telefono no puede tener mas de 15 numeros.')
 				.matches(
 					/^\+?\d{0,3}\s?\d{9}$/,
 					'Ingresa un numero de telefono valido'
@@ -51,7 +53,7 @@ function Register() {
 			password: Yup.string()
 				.required('Completa la password')
 				.min(8, 'Ingresa minimo 8 caracteres')
-				.max(100, 'Maximo 25 caracteres')
+				.max(100, 'Maximo 100 caracteres')
 				.matches(
 					/^(?!.*\s).{8,100}$/,
 					'Debe tener entre 8 y 100 caracteres sin espacios en blanco'
@@ -63,10 +65,17 @@ function Register() {
 					'https://cdn3.iconfinder.com/data/icons/glypho-generic-icons/64/user-man-512.png'
 			}
 			register(formData)
-			formik.handleReset()
-			navigate('/')
 		},
 	})
+
+	useEffect(() => {
+		const user = localStorage.getItem('user')
+		if (user) {
+			formik.handleReset()
+			navigate('/')
+		}
+		return
+	}, [loguedUser])
 
 	return (
 		<>
@@ -130,7 +139,7 @@ function Register() {
 										onChange={formik.handleChange}
 										name='password'
 										type='password'
-										placeholder='Ingresa una contraseña de 8-20 caracteres'
+										placeholder='Ingresa una contraseña de 8 a 100 caracteres'
 										isInvalid={
 											formik.errors.password && formik.touched.password
 										}
