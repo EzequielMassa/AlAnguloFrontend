@@ -169,7 +169,7 @@ export const MainNavBar = () => {
 										{!userCart || Object.keys(userCart).length === 0 ? (
 											<></>
 										) : (
-											<b className='store'>{userCart.orders.length}</b>
+											<b className='store'>{userCart.orders.length + userCart.bookings.length}</b>
 										)}
 									</span>
 								</IconContext.Provider>

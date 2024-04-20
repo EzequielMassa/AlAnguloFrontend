@@ -11,6 +11,7 @@ import { formatCurrency } from '../../helpers/formatCurrency'
 import { formatDate } from '../../utils/formatDate'
 import { LuMinus, LuPlus } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
+import CardsButtons from '../../components/GeneralButtons/CardsButtons'
 import './productDetail.css'
 
 const ProductDetail = () => {
@@ -87,11 +88,10 @@ const ProductDetail = () => {
 								{user.id ? (
 									<Button
 										type='submit'
-										variant='outline-success'
-										className='mb-2 w-50 mx-auto'
+										className='mb-2 w-50 mx-auto reactButton'
 										onClick={handleOrder}
 										disabled={orderLoading}>
-										<span className='text-pay'>Agregar al carrito</span>
+										<CardsButtons cardText='Agregar Al Carrito' />
 									</Button>
 									) : (
 									<Link to={'/register'} className='btn btn-outline-success mb-2 w-50 mx-auto'>

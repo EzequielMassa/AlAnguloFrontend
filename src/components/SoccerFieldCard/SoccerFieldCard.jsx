@@ -8,6 +8,7 @@ import { useAuthContext } from '../../context/AuthContext.jsx'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext.jsx'
 import { capitalizeWord } from '../../helpers/capitalizeWord.js'
 import BookingModal from '../BookingModal/BookingModal.jsx'
+import CardsButtons from '../GeneralButtons/CardsButtons.jsx'
 import './SoccerFieldCard.css'
 function SoccerFieldCard({ soccerField }) {
 	const { user } = useAuthContext()
@@ -52,10 +53,10 @@ function SoccerFieldCard({ soccerField }) {
 						</Card.Text>
 						{user.id ? (
 							<Button
-								className='my-2 '
+								className='my-2 reactButton'
 								id={_id}
 								onClick={() => handleBookingModalClick(soccerField)}>
-								Reservar
+								<CardsButtons cardText='Reservar' />
 							</Button>
 						) : (
 							<Link to={'/register'} className='btn btn-primary'>

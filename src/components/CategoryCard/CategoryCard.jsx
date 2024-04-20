@@ -1,6 +1,8 @@
 import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 import './CategoryCard.css'
+import CardsButtons from '../GeneralButtons/CardsButtons'
+
 function CategoryCard({ category }) {
 	const { name, image, description } = category
 
@@ -11,10 +13,12 @@ function CategoryCard({ category }) {
 				<Card.Title className='text-center'>{name}</Card.Title>
 				<Card.Text className='text-center'>{description}</Card.Text>
 				<Link
-					className='btn btn-primary '
+					className=''
 					to={`/productos?categoria=${name.toLowerCase()}`}>
-					Ver Categoria
+						<CardsButtons cardText='Ver Categoria'/>
 				</Link>
+				
+				
 			</Card.Body>
 		</Card>
 	)

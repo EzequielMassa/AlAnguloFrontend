@@ -20,6 +20,8 @@ import {
 import { useProductsContext } from '../../context/ProductsContext'
 import { formatCurrency } from '../../helpers/formatCurrency'
 import './products.css'
+import CardsButtons from '../../components/GeneralButtons/CardsButtons'
+
 function Products() {
 	const { products, getAllProducts, categories, getAllCategories } =
 		useProductsContext()
@@ -194,9 +196,8 @@ function Products() {
 										</Card.Text>
 										<div className='btn-container d-flex'>
 											<NavLink to={`/producto/${p._id}`}>
-												<Button className='btn-product btn-success'>
-													Ver producto
-												</Button>
+													<CardsButtons cardText='Ver Producto'/>
+												
 											</NavLink>
 										</div>
 									</Card.Body>

@@ -22,3 +22,15 @@
 .soccerfield_card_icon {
 	color: var(--secondary-color);
 }
+.reactButton{
+	padding: 0 !important;
+	background: none !important;
+	border: none;
+	color: white !important;
+}
+.reactButton .fancy .text{
+	color: var(--accent-color);
+}
+.reactButton .fancy:hover .text{
+	color: white !important;
+}
