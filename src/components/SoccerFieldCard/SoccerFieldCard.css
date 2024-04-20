@@ -21,6 +21,7 @@
 
 .soccerfield_card_icon {
 	color: var(--secondary-color);
+	font-size: 2rem;
 }
 .reactButton {
 	padding: 0 !important;

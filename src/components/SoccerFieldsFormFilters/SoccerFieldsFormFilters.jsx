@@ -1,13 +1,14 @@
 import Form from 'react-bootstrap/Form'
 import { TiDelete } from 'react-icons/ti'
 import './SoccerFieldsFormFilters.css'
+import { TbFilterX } from 'react-icons/tb'
 function SoccerFieldsFomFilters({
 	searchParams,
 	handleInputChange,
 	clearSoccerFieldsFilter,
 }) {
 	return (
-		<Form className='d-flex flex-column flex-md-row  justify-content-center align-items-center  '>
+		<Form className='d-flex flex-column flex-md-row justify-content-center align-items-center  gap-2 bg-light py-4  border rounded-4'>
 			<Form.Group className='mb-3 filter_form_group_container' controlId='name'>
 				<Form.Label>Nombre de la cancha</Form.Label>
 				<Form.Control
@@ -59,8 +60,8 @@ function SoccerFieldsFomFilters({
 				</Form.Select>
 			</Form.Group>
 
-			<TiDelete
-				className='d-inline-block  filter_form_icon'
+			<TbFilterX
+				className='d-inline-block filter_form_icon'
 				onClick={clearSoccerFieldsFilter}
 			/>
 		</Form>

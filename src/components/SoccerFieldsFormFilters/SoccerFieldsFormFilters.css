@@ -6,8 +6,12 @@
 }
 
 .filter_form_icon {
-	font-size: 2rem;
+	font-size: 1.6rem;
 	color: red;
 	cursor: pointer;
 	margin-top: 20px;
+	transition: transform 0.5s ease;
+}
+.filter_form_icon:hover {
+	transform: scale(1.1);
 }

@@ -41,7 +41,7 @@ function SoccerFieldCard({ soccerField }) {
 							{size}
 						</Card.Text>
 						<Card.Text className='paragraph text-light d-flex align-items-center '>
-							<GiGrass className='me-2 soccerfield_card_icon' /> : {grass}
+							<GiGrass className='me-2 mb-2 soccerfield_card_icon' /> : {grass}
 						</Card.Text>
 						<Card.Text className='paragraph text-light d-flex align-items-center '>
 							<TbClockHour1 className='me-2 soccerfield_card_icon' /> : &nbsp;
@@ -50,7 +50,7 @@ function SoccerFieldCard({ soccerField }) {
 								currency: 'ARS',
 							})}
 						</Card.Text>
-						{user.id && user.role === "user" ? (
+						{user.id && user.role === 'user' ? (
 							<Button
 								className='my-2 reactButton'
 								id={_id}

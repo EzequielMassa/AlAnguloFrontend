@@ -121,6 +121,7 @@ function SoccerFields() {
 			<article className='container-md my-4 '>
 				<section className='row'>
 					<div className='col'>
+						<h3>Filtrar canchas por : </h3>
 						<SoccerFieldsFomFilters
 							searchParams={searchParams}
 							handleInputChange={handleInputChange}
