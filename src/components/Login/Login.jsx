@@ -13,7 +13,7 @@ import { useAuthContext } from '../../context/AuthContext'
 import Spinner from '../Spinner/Spinner'
 import './login.css'
 function Login({ show, handleClose }) {
-	const { registerLoading, registerError, login } = useAuthContext()
+	const { registerLoading, login } = useAuthContext()
 
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -25,15 +25,11 @@ function Login({ show, handleClose }) {
 		await login(formData)
 		const userlocal = localStorage.getItem('user')
 		if (!userlocal) {
-			Swal.fire({
-				icon: 'error',
-				title: 'Oops...',
-				text: 'Usuario o Contraseña mal ingresados',
-			})
+			return
 		} else {
 			Swal.fire({
 				title: 'Bienvenido a AlAngulo',
-				confirmButtonText: 'Okey',
+				confirmButtonText: 'Ok',
 				confirmButtonColor: '#25a18e',
 			}).then((result) => {
 				if (result.isConfirmed) {

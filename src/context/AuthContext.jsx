@@ -4,14 +4,8 @@ import UseAxiosAuth from '../hooks/useAxiosAuth'
 export const AuthContext = createContext()
 
 export const AuthContextProvider = ({ children }) => {
-	const {
-		loguedUser,
-		setLoguedUser,
-		registerLoading,
-		registerError,
-		register,
-		login,
-	} = UseAxiosAuth()
+	const { loguedUser, setLoguedUser, registerLoading, register, login } =
+		UseAxiosAuth()
 	const [user, setUser] = useState({})
 
 	useEffect(() => {
@@ -24,7 +18,6 @@ export const AuthContextProvider = ({ children }) => {
 				loguedUser,
 				setLoguedUser,
 				registerLoading,
-				registerError,
 				register,
 				login,
 				user,

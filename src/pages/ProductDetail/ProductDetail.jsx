@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
-import { IoAddCircleOutline, IoRemoveCircleOutline } from 'react-icons/io5'
+import { LuMinus, LuPlus } from 'react-icons/lu'
 import { useParams } from 'react-router-dom'
-import { Toaster } from 'sonner'
+import { Toaster, toast } from 'sonner'
+import CardsButtons from '../../components/GeneralButtons/CardsButtons'
 import Spinner from '../../components/Spinner/Spinner'
 import { useAuthContext } from '../../context/AuthContext'
 import { useProductsContext } from '../../context/ProductsContext'
 import { useUserContext } from '../../context/UserContext'
 import { formatCurrency } from '../../helpers/formatCurrency'
 import { formatDate } from '../../utils/formatDate'
-import { LuMinus, LuPlus } from 'react-icons/lu'
-import { Link } from 'react-router-dom'
-import CardsButtons from '../../components/GeneralButtons/CardsButtons'
 import './productDetail.css'
 
 const ProductDetail = () => {
@@ -53,12 +51,18 @@ const ProductDetail = () => {
 		getProductById(id)
 	}, [])
 
+	if (productError) {
+		toast.error('El producto no existe')
+	}
+
 	return (
 		<>
 			<Container className=' product-container container-sm border rounded-4 p-4'>
 				<Row className='product-row '>
 					{productLoading || orderLoading ? (
 						<Spinner />
+					) : productError ? (
+						<div className='mt-5'></div>
 					) : (
 						<>
 							<Col xs={12} md={4} className='img-column'>
@@ -74,18 +78,26 @@ const ProductDetail = () => {
 										{product.description}
 									</h3>
 									<h3 className='text-center mt-2 '>
-										Precio : <b className='product-price'>{formatCurrency(product.price)}</b>
+										Precio :{' '}
+										<b className='product-price'>
+											{formatCurrency(product.price)}
+										</b>
 									</h3>
 								</div>
-							
+
 								<div className='info-actions d-flex justify-content-center gap-3 py-4'>
 									<h3>Cantidad :</h3>
-									<LuMinus className='icons-style icons-styleHover' onClick={removeProduct} />
+									<LuMinus
+										className='icons-style icons-styleHover'
+										onClick={removeProduct}
+									/>
 									<h2 className='info-product'>{productQuantity}</h2>
-									<LuPlus className='icons-style icons-styleHover' onClick={addProduct}/>
-										
+									<LuPlus
+										className='icons-style icons-styleHover'
+										onClick={addProduct}
+									/>
 								</div>
-								{user.id && user.role === "user" ? (
+								{user.id && user.role === 'user' ? (
 									<Button
 										type='submit'
 										className='mb-2 w-50 mx-auto reactButton'
@@ -93,19 +105,15 @@ const ProductDetail = () => {
 										disabled={orderLoading}>
 										<CardsButtons cardText='Agregar Al Carrito' />
 									</Button>
-									) : (
+								) : (
 									<></>
 								)}
 							</Col>
-							
 						</>
 					)}
-
-					
 				</Row>
 			</Container>
 			<Toaster richColors position='bottom-right' theme='dark' />
-
 		</>
 	)
 }

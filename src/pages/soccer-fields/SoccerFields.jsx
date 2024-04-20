@@ -139,7 +139,7 @@ function SoccerFields() {
 								<SoccerFieldCard key={field._id} soccerField={field} />
 							))
 						) : (
-							<h4 className='text-center'>
+							<h4 className='text-center subtitle'>
 								No hay Canchas que coincidan con ese filtro.
 							</h4>
 						)}

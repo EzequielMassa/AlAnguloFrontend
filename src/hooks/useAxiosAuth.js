@@ -6,7 +6,6 @@ import { baseUrl } from '../api/apiUrl.js'
 
 function UseAxiosAuth() {
 	const [registerLoading, setRegisterLoading] = useState(false)
-	const [registerError, setRegisterError] = useState(null)
 	const [loguedUser, setLoguedUser] = useState({})
 
 	const register = async (formData) => {
@@ -19,7 +18,6 @@ function UseAxiosAuth() {
 			localStorage.setItem('user', JSON.stringify(decoded))
 			setLoguedUser(decoded)
 		} catch (err) {
-			setRegisterError(err)
 			Swal.fire({
 				icon: 'error',
 				title: 'Oops...',
@@ -39,7 +37,19 @@ function UseAxiosAuth() {
 			localStorage.setItem('user', JSON.stringify(decoded))
 			setLoguedUser(decoded)
 		} catch (err) {
-			setRegisterError(err)
+			if (err.response.data.message) {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: `${err.response.data.message}`,
+				})
+			} else {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: `${err.response.data}`,
+				})
+			}
 		} finally {
 			setRegisterLoading(false)
 		}
@@ -49,7 +59,6 @@ function UseAxiosAuth() {
 		loguedUser,
 		setLoguedUser,
 		registerLoading,
-		registerError,
 		register,
 		login,
 	}
