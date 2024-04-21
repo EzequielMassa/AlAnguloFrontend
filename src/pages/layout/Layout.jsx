@@ -1,5 +1,6 @@
 import { Outlet as Page } from 'react-router'
 import { ScrollRestoration } from 'react-router-dom'
+import DocsInfo from '../../components/DocsInfo/DocsInfo'
 import { MainFooter } from '../../components/MainFooter/MainFooter'
 import { MainNavBar } from '../../components/MainNavBar/MainNavBar'
 
@@ -9,7 +10,7 @@ const Layout = () => {
 			<MainNavBar />
 
 			<Page></Page>
-
+			<DocsInfo />
 			<MainFooter />
 			<ScrollRestoration
 				getKey={(location) => {
