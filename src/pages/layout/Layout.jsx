@@ -13,7 +13,7 @@ const Layout = () => {
 			<MainFooter />
 			<ScrollRestoration
 				getKey={(location) => {
-					const paths = ['/canchas', '/productos', '/admin']
+					const paths = ['/canchas', '/productos', '/admin', '/']
 					return paths.includes(location.pathname)
 						? location.pathname
 						: location.key

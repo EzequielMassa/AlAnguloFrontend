@@ -22,7 +22,7 @@ function EShop() {
 						md={4}
 						className='d-flex justify-content-center justify-content-md-end '>
 						<Link className='text-decoration-none' to={'/productos'}>
-							<GeneralButtons text='Descubri nuestro e-shop'/>
+							<GeneralButtons text='Ir al E-Shop' />
 						</Link>
 					</Col>
 				</Row>
