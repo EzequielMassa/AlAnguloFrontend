@@ -1,9 +1,5 @@
 import { useEffect } from 'react'
-import {
-	ScrollRestoration,
-	useNavigate,
-	useSearchParams,
-} from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Toaster } from 'sonner'
 import nuestrasCanchasHero from '../../assets/images/nuestras-canchas-hero.webp'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
@@ -147,11 +143,6 @@ function SoccerFields() {
 				</section>
 			</article>
 			<Toaster richColors position='bottom-right' theme='dark' />
-			<ScrollRestoration
-				getKey={(location) => {
-					return location.pathname
-				}}
-			/>
 		</>
 	)
 }

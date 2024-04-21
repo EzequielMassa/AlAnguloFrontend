@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Col } from 'react-bootstrap'
-import { Link, ScrollRestoration } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Toaster, toast } from 'sonner'
 import Contact from '../../components/Contact/Contact'
 import EShop from '../../components/E-Shop/EShop'
@@ -163,11 +163,6 @@ export const Home = () => {
 				</section>
 			</article>
 			<Toaster richColors position='bottom-right' theme='dark' />
-			<ScrollRestoration
-				getKey={(location) => {
-					return location.pathname
-				}}
-			/>
 		</>
 	)
 }

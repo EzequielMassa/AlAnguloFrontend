@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import {
-	Button,
 	Card,
 	Col,
 	Container,
@@ -11,16 +10,11 @@ import {
 	Row,
 } from 'react-bootstrap'
 import { TbFilterX } from 'react-icons/tb'
-import {
-	NavLink,
-	ScrollRestoration,
-	useNavigate,
-	useSearchParams,
-} from 'react-router-dom'
+import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
+import CardsButtons from '../../components/GeneralButtons/CardsButtons'
 import { useProductsContext } from '../../context/ProductsContext'
 import { formatCurrency } from '../../helpers/formatCurrency'
 import './products.css'
-import CardsButtons from '../../components/GeneralButtons/CardsButtons'
 
 function Products() {
 	const { products, getAllProducts, categories, getAllCategories } =
@@ -207,7 +201,6 @@ function Products() {
 					</Row>
 				)}
 			</Container>
-			<ScrollRestoration />
 		</>
 	)
 }

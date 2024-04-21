@@ -1,7 +1,6 @@
 import Form from 'react-bootstrap/Form'
-import { TiDelete } from 'react-icons/ti'
-import './SoccerFieldsFormFilters.css'
 import { TbFilterX } from 'react-icons/tb'
+import './SoccerFieldsFormFilters.css'
 function SoccerFieldsFomFilters({
 	searchParams,
 	handleInputChange,

@@ -106,25 +106,25 @@ export const MainNavBar = () => {
 							</div>
 							<div className={isOpen ? 'smallMenu ' : 'menu'}>
 								<NavLink
-									to={'./'}
+									to={'/'}
 									className={'nav-link nav-link-style'}
 									onClick={() => handleLinkClick()}>
 									Inicio
 								</NavLink>
 								<NavLink
-									to={'./productos'}
+									to={'/productos'}
 									className={'nav-link nav-link-style'}
 									onClick={() => handleLinkClick()}>
 									Productos
 								</NavLink>
 								<NavLink
-									to={'./canchas'}
+									to={'/canchas'}
 									className={'nav-link nav-link-style'}
 									onClick={() => handleLinkClick()}>
 									Canchas
 								</NavLink>
 								<NavLink
-									to={'./nosotros'}
+									to={'/nosotros'}
 									className={'nav-link nav-link-style'}
 									onClick={() => handleLinkClick()}>
 									Nosotros
@@ -132,14 +132,14 @@ export const MainNavBar = () => {
 
 								{isAdmin() && (
 									<NavLink
-										to={'./admin'}
+										to={'/admin'}
 										className={'nav-link nav-link-style'}
 										onClick={() => handleLinkClick()}>
 										Admin
 									</NavLink>
 								)}
 							</div>
-							<NavLink to={'./'} className={'logo'}>
+							<NavLink to={'/'} className={'logo'}>
 								<img src={logo} alt='logo' />
 								<b className='logoName'>AlAngulo</b>
 							</NavLink>
@@ -161,22 +161,23 @@ export const MainNavBar = () => {
 										<AiOutlineSearch />
 									</span>
 								</IconContext.Provider>
-								{user.role === 'admin' ?(
+								{user.role === 'admin' ? (
 									<></>
-								) :(<IconContext.Provider
-									value={{ className: 'global-class-name Nav-Icon' }}>
-									<span className='cart' onClick={handleCartToggle}>
-										<AiOutlineShoppingCart />
-										{!userCart || Object.keys(userCart).length === 0 ? (
-											<></>
-										) : (
-											<b className='store'>
-												{userCart.orders.length + userCart.bookings.length}
-											</b>
-										)}
-									</span>
-								</IconContext.Provider>)
-								}
+								) : (
+									<IconContext.Provider
+										value={{ className: 'global-class-name Nav-Icon' }}>
+										<span className='cart' onClick={handleCartToggle}>
+											<AiOutlineShoppingCart />
+											{!userCart || Object.keys(userCart).length === 0 ? (
+												<></>
+											) : (
+												<b className='store'>
+													{userCart.orders.length + userCart.bookings.length}
+												</b>
+											)}
+										</span>
+									</IconContext.Provider>
+								)}
 
 								<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
@@ -269,7 +270,7 @@ export const MainNavBar = () => {
 							</NavLink>
 						) : (
 							<NavLink
-								to={'./register'}
+								to={'/register'}
 								className={'d-grid text-decoration-none'}>
 								<Button variant='success' size='md' className='cart-button'>
 									Registrate
