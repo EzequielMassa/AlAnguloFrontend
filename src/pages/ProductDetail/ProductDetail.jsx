@@ -84,8 +84,9 @@ const ProductDetail = () => {
 										</b>
 									</h3>
 								</div>
-
-								<div className='info-actions d-flex justify-content-center gap-3 py-4'>
+								{user.id && user.role === "user"
+								?(
+									<div className='info-actions d-flex justify-content-center gap-3 py-4'>
 									<h3>Cantidad :</h3>
 									<LuMinus
 										className='icons-style icons-styleHover'
@@ -97,6 +98,9 @@ const ProductDetail = () => {
 										onClick={addProduct}
 									/>
 								</div>
+								):(
+									<></>
+								)} 
 								{user.id && user.role === 'user' ? (
 									<Button
 										type='submit'
