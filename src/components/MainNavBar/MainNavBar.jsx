@@ -2,11 +2,7 @@ import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { IconContext } from 'react-icons'
-import {
-	AiOutlineClose,
-	AiOutlineSearch,
-	AiOutlineShoppingCart,
-} from 'react-icons/ai'
+import { AiOutlineClose, AiOutlineShoppingCart } from 'react-icons/ai'
 import { HiBars4 } from 'react-icons/hi2'
 import { IoLogIn } from 'react-icons/io5'
 import { RiLogoutBoxFill, RiShoppingCartLine } from 'react-icons/ri'
@@ -144,23 +140,6 @@ export const MainNavBar = () => {
 								<b className='logoName'>AlAngulo</b>
 							</NavLink>
 							<div className='noti'>
-								<IconContext.Provider
-									value={{
-										className: 'global-class-name Nav-Icon d-flex gap-1',
-									}}>
-									{showSearch && (
-										<div className='search-bar-container position-relative'>
-											<input
-												type='text'
-												placeholder='Buscar...'
-												className='search-bar'
-											/>
-										</div>
-									)}
-									<span onClick={handleSearchToggle}>
-										<AiOutlineSearch />
-									</span>
-								</IconContext.Provider>
 								{user.role === 'admin' ? (
 									<></>
 								) : (
