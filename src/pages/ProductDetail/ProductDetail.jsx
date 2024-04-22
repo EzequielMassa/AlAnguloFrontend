@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { LuMinus, LuPlus } from 'react-icons/lu'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Toaster, toast } from 'sonner'
 import CardsButtons from '../../components/GeneralButtons/CardsButtons'
 import Spinner from '../../components/Spinner/Spinner'
@@ -109,7 +109,9 @@ const ProductDetail = () => {
 										<CardsButtons cardText='Agregar Al Carrito' />
 									</Button>
 								) : (
-									<></>
+									<Link to={'/register'} className='mb-2 w-50 mx-auto'>
+										<CardsButtons cardText='Registrate' />
+									</Link>
 								)}
 							</Col>
 						</>
