@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { GiBabyfootPlayers, GiGrass } from 'react-icons/gi'
 import { TbClockHour1 } from 'react-icons/tb'
+import { Link } from 'react-router-dom'
 import { useAuthContext } from '../../context/AuthContext.jsx'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext.jsx'
 import { capitalizeWord } from '../../helpers/capitalizeWord.js'
@@ -57,7 +58,9 @@ function SoccerFieldCard({ soccerField }) {
 								<CardsButtons cardText='Reservar' />
 							</Button>
 						) : (
-							<></>
+							<Link to={'/register'} className='my-2 reactButton'>
+								<CardsButtons cardText='Registrate' />
+							</Link>
 						)}
 					</Card.ImgOverlay>
 				</Card>

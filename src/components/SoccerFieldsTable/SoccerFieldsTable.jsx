@@ -5,10 +5,12 @@ import { FaRegTrashCan } from 'react-icons/fa6'
 import Swal from 'sweetalert2'
 import { useAdminContext } from '../../context/AdminContext'
 import EditSoccerfieldForm from '../EditSoccerfieldForm/EditSoccerfieldForm'
+import Spinner from '../Spinner/Spinner'
 
 const SoccerFieldsTable = () => {
 	const {
 		soccerfields: soccerfieldsArr,
+		soccerfieldsLoading,
 		getAllSoccerfields,
 		deleteSoccerfield,
 	} = useAdminContext()
@@ -35,6 +37,9 @@ const SoccerFieldsTable = () => {
 		getAllSoccerfields()
 	}, [])
 
+	if (soccerfieldsLoading) {
+		return <Spinner />
+	}
 	return (
 		<>
 			<Table
