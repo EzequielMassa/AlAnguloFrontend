@@ -122,11 +122,7 @@ export const Cart = () => {
 														Cantidad
 													</Card.Text>
 													<div className='d-flex justify-content-between align-items-center gap-3 '>
-														{/* <LuMinus className='icons-style icons-styleHover' />{' '} */}
-														{/* agregar Onclick */}
 														<span>{order.quantity}</span>
-														{/* <LuPlus className='icons-style icons-styleHover' />{' '} */}
-														{/* agregar Onclick */}
 													</div>
 													<Card.Text className='mt-2 align-items-center d-flex '>
 														Precio{' '}

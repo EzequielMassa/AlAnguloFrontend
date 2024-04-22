@@ -1,29 +1,20 @@
 .idCell {
-    width: 17vh;
-    text-align: center;
+	width: 17vh;
+	text-align: center;
 }
 .productImg {
-    height: 6vh;
+	height: 6vh;
 	width: 6vh;
 	aspect-ratio: 1;
-	object-fit:cover;
+	object-fit: cover;
 }
-.rowCustom {
-    /* max-height: 10px;
-    height: 10px; */
-    /* text-overflow:ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    text-wrap: balance; */
-    /* display: table; */
-    /* vertical-align: top; */
-}
+
 .customCellText {
-    max-height: calc(1.2em * 3); 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    line-height: 1.2em;
-    display: -webkit-box; 
-    -webkit-box-orient: vertical; 
-    -webkit-line-clamp: 3;
+	max-height: calc(1.2em * 3);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	line-height: 1.2em;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
 }

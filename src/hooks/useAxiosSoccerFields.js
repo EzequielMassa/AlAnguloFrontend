@@ -86,42 +86,6 @@ function UseAxiosSoccerFields() {
 		}
 	}
 
-	// const post = async (url, body) => {
-	// 	setLoading(true)
-	// 	try {
-	// 		const response = await axios.post(url, body)
-	// 		setData(response.data)
-	// 	} catch (err) {
-	// 		setError(err)
-	// 	} finally {
-	// 		setLoading(false)
-	// 	}
-	// }
-
-	// const put = async (url, body) => {
-	// 	setLoading(true)
-	// 	try {
-	// 		const response = await axios.put(url, body)
-	// 		setData(response.data)
-	// 	} catch (err) {
-	// 		setError(err)
-	// 	} finally {
-	// 		setLoading(false)
-	// 	}
-	// }
-
-	// const del = async (url) => {
-	// 	setLoading(true)
-	// 	try {
-	// 		await axios.delete(url)
-	// 		setData(null)
-	// 	} catch (err) {
-	// 		setError(err)
-	// 	} finally {
-	// 		setLoading(false)
-	// 	}
-	// }
-
 	return {
 		soccerFields,
 		soccerFieldsLoading,

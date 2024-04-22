@@ -17,7 +17,7 @@
 	--paragraph-font-size-tablet: 1.15rem;
 	--paragraph-font-size-desktop: 1.25rem;
 }
- 
+
 html {
 	scroll-behavior: smooth;
 	scroll-padding-top: 7rem;
@@ -54,8 +54,6 @@ body {
 	font-size: var(--paragraph-font-size);
 }
 
-/* Responsive */
-
 @media screen and (min-width: 768px) {
 	.title {
 		font-size: var(--title-font-size-tablet);
@@ -90,13 +88,13 @@ body {
 	border-bottom: 2px solid var(--primary-color);
 	transition: border 0.5s ease-in-out;
 }
-.nav-link{
+.nav-link {
 	padding: 5px 0;
-  	margin-right: -10px ;
-  	border: 2px solid transparent;
-  	transition: 0.3s ease-in-out;
-	color:var(--primary-color) !important ;
+	margin-right: -10px;
+	border: 2px solid transparent;
+	transition: 0.3s ease-in-out;
+	color: var(--primary-color) !important ;
 }
-.nav-link:hover{
-	color: var(--secondary-color) ;
+.nav-link:hover {
+	color: var(--secondary-color);
 }

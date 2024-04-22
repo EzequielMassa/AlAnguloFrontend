@@ -54,59 +54,9 @@ const EditUserForm = ({ editUser, handleClose }) => {
 			updateUser(user)
 			handleClose()
 			formik.handleReset()
-			// resetUserState();
 			getAllUsers()
 		},
 	})
-
-	// const [user, setUser] = useState({
-	//     _id: editUser._id,
-	//     name: editUser.name,
-	//     lastname: editUser.lastname,
-	//     email: editUser.email,
-	//     phone: editUser.phone,
-	//     image: editUser.image,
-	//     roles: editUser.roles,
-	//     active: editUser.active
-	// });
-
-	// const resetUserState = () => {
-	//     setUser({
-	//         _id:"",
-	//         name:"",
-	//         lastname:"",
-	//         email:"",
-	//         phone:"",
-	//         image:"",
-	//         roles:[{name: false}],
-	//         active:true
-	//     });
-	// };
-
-	// const handleChange = (e) => {
-	//     console.log(user.roles[0].name)
-	//     const { name, value, checked, type } = e.target;
-	//     if(type==="checkbox"){
-	//         console.log(checked)
-	//         setUser({
-	//             ...user,
-	//             [name]: checked,
-	//         });
-	//     } else {
-	//         setUser({
-	//             ...user,
-	//             [name]: value,
-	//         });
-	//     }
-	// }
-
-	// const handleSubmit = (e) => {
-	//     e.preventDefault();
-	//     updateUser(user);
-	//     handleClose();
-	//     resetUserState();
-	//     getAllUsers();
-	// }
 
 	return (
 		<>
@@ -195,27 +145,6 @@ const EditUserForm = ({ editUser, handleClose }) => {
 						{formik.errors.image}
 					</Form.Control.Feedback>
 				</Form.Group>
-
-				{/* <Form.Group className="mb-2">
-            <Form.Label className="mb-0">Rol</Form.Label>
-            <Form.Check
-              type="checkbox"
-              label="es admin?"
-            //   value="roles"
-              defaultChecked={user.roles[0].name}
-              onChange={handleChange}
-              name="roles" />
-          </Form.Group> */}
-				{/* <Form.Group className="mb-2">
-            <Form.Label className="mb-0">Activo</Form.Label>
-            <Form.Check
-              type="checkbox"
-              label="activo?"
-            //   value={user.active}
-              defaultChecked={user.active}
-              onChange={handleChange}
-              name="active"/>
-          </Form.Group> */}
 
 				<Button variant='warning' type='submit' className='d-flex mx-auto'>
 					Guardar cambios

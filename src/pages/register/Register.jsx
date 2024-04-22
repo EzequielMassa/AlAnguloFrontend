@@ -10,7 +10,7 @@ import './register.css'
 
 function Register() {
 	const navigate = useNavigate()
-	const { loguedUser, registerLoading, register } = useAuthContext()
+	const { loguedUser, register } = useAuthContext()
 	const [showModal, setShowModal] = useState(false)
 
 	const handleCloseModal = () => {

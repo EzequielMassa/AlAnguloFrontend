@@ -1,4 +1,3 @@
-import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { BsGithub, BsLinkedin, BsMailbox2Flag } from 'react-icons/bs'
 import { Link } from 'react-router-dom'

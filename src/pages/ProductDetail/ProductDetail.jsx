@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { LuMinus, LuPlus } from 'react-icons/lu'
 import { useParams } from 'react-router-dom'
@@ -17,7 +17,7 @@ const ProductDetail = () => {
 	const { id } = useParams()
 	const { product, productLoading, productError, getProductById } =
 		useProductsContext()
-	const { order, orderLoading, orderError, postOrder } = useUserContext()
+	const { orderLoading, postOrder } = useUserContext()
 	const [productQuantity, setProductQuantity] = useState(1)
 
 	const removeProduct = () => {
@@ -84,23 +84,22 @@ const ProductDetail = () => {
 										</b>
 									</h3>
 								</div>
-								{user.id && user.role === "user"
-								?(
+								{user.id && user.role === 'user' ? (
 									<div className='info-actions d-flex justify-content-center gap-3 py-4'>
-									<h3>Cantidad :</h3>
-									<LuMinus
-										className='icons-style icons-styleHover'
-										onClick={removeProduct}
-									/>
-									<h2 className='info-product'>{productQuantity}</h2>
-									<LuPlus
-										className='icons-style icons-styleHover'
-										onClick={addProduct}
-									/>
-								</div>
-								):(
+										<h3>Cantidad :</h3>
+										<LuMinus
+											className='icons-style icons-styleHover'
+											onClick={removeProduct}
+										/>
+										<h2 className='info-product'>{productQuantity}</h2>
+										<LuPlus
+											className='icons-style icons-styleHover'
+											onClick={addProduct}
+										/>
+									</div>
+								) : (
 									<></>
-								)} 
+								)}
 								{user.id && user.role === 'user' ? (
 									<Button
 										type='submit'

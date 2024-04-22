@@ -5,8 +5,8 @@ import { Image, Modal, Table } from 'react-bootstrap'
 import { FaRegEdit } from 'react-icons/fa'
 import { FaRegTrashCan } from 'react-icons/fa6'
 import Swal from 'sweetalert2'
-import EditProductForm from '../EditProductForm/EditProductForm'
 import { useAdminContext } from '../../context/AdminContext'
+import EditProductForm from '../EditProductForm/EditProductForm'
 
 const ProductsTable = () => {
 	const {

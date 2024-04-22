@@ -51,19 +51,6 @@
 	width: 1.5rem;
 }
 
-/* a{
-    text-decoration: none;
-    color: var(--primary-color);
-    font-family: var(--main-font);
-} */
-/* .menu a:hover{
-    text-decoration: underline;
-    text-decoration-color: var(--secondary-color);
-    text-decoration-style: double;
-    color: var(--secondary-color);
-    transition: .5s;
-} */
-
 @media (max-width: 880px) {
 	.header .nav-container {
 		padding: 10px;

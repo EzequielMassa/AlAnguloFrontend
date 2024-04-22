@@ -1,4 +1,3 @@
-import React from 'react'
 import './CardsButtons.css'
 
 const CardsButtons = ({ cardText }) => {
