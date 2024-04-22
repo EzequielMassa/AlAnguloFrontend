@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Container, Col, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 import { BsGithub, BsLinkedin, BsMailbox2Flag } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 import './about.css'
-import tomiProfile from './profiles/tomiProfile.jpg'
+import facuProfile from './profiles/facuProfile.jpg'
 import ezeProfile from './profiles/perfilEze.png'
 import fedeProfile from './profiles/perfilFede.jpg'
-import facuProfile from './profiles/facuProfile.jpg'
+import tomiProfile from './profiles/tomiProfile.jpg'
 const About = () => {
 	return (
 		<>
@@ -105,25 +105,14 @@ const About = () => {
 								pusimos todos para llegar a esto.
 							</p>
 							<div className='social-icons d-flex flex-row w-100'>
-								<Link
-									target='_blank'
-									to={''}
-									className='w-100  '>
+								<Link target='_blank' to={''} className='w-100  '>
 									<BsMailbox2Flag className='w-100 icon' />
 								</Link>
-								<Link
-									target='_blank'
-									to={
-										'/nosotros'
-									}
-									className='w-100'>
+								<Link target='_blank' to={'/nosotros'} className='w-100'>
 									{' '}
 									<BsLinkedin className='w-100 icon' />{' '}
 								</Link>
-								<Link
-									target='_blank'
-									to={''}
-									className='w-100'>
+								<Link target='_blank' to={''} className='w-100'>
 									<BsGithub className='w-100 icon ' />
 								</Link>
 							</div>
@@ -141,25 +130,14 @@ const About = () => {
 								pusimos todos para llegar a esto.
 							</p>
 							<div className='social-icons d-flex flex-row w-100'>
-								<Link
-									target='_blank'
-									to={''}
-									className='w-100  '>
+								<Link target='_blank' to={''} className='w-100  '>
 									<BsMailbox2Flag className='w-100 icon' />
 								</Link>
-								<Link
-									target='_blank'
-									to={
-										'/nosotros'
-									}
-									className='w-100'>
+								<Link target='_blank' to={'/nosotros'} className='w-100'>
 									{' '}
 									<BsLinkedin className='w-100 icon' />{' '}
 								</Link>
-								<Link
-									target='_blank'
-									to={'/nosotros'}
-									className='w-100'>
+								<Link target='_blank' to={'/nosotros'} className='w-100'>
 									<BsGithub className='w-100 icon ' />
 								</Link>
 							</div>
