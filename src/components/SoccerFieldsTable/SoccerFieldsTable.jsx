@@ -1,5 +1,3 @@
-import './SoccerFieldsTable.css'
-
 import { useEffect, useState } from 'react'
 import { Modal, Table } from 'react-bootstrap'
 import { FaRegEdit } from 'react-icons/fa'
