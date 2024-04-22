@@ -1,5 +1,6 @@
 .facilitie_img {
 	object-fit: cover;
+	mask-image: linear-gradient(to right, transparent 0%, black 30%);
 }
 
 .facilite_icon {
