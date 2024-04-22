@@ -30,8 +30,14 @@
 	color: white !important;
 }
 .reactButton .fancy .text {
-	color: var(--accent-color);
+	color: var(--primary-color);
 }
 .reactButton .fancy:hover .text {
-	color: white !important;
+	color: black !important;
+}
+.reactButton .fancy{
+	background-color: var(--background-color);
+}
+.reactButton .fancy:hover{
+	background-color: var(--primary-color);
 }
