@@ -137,8 +137,6 @@ img {
 	transform: rotateZ(180deg);
 }
 
-/* de aqui botones */
-
 .animated-button {
 	position: relative;
 	display: flex;

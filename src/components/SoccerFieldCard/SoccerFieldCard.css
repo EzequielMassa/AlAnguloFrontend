@@ -2,9 +2,9 @@
 	width: 75%;
 	min-height: 20rem;
 	overflow: auto;
-	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 	-webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 .soccerfield_card_title {
 	color: var(--accent-color) !important;
@@ -35,9 +35,9 @@
 .reactButton .fancy:hover .text {
 	color: black !important;
 }
-.reactButton .fancy{
+.reactButton .fancy {
 	background-color: var(--background-color);
 }
-.reactButton .fancy:hover{
+.reactButton .fancy:hover {
 	background-color: var(--primary-color);
 }

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const baseUrl = 'http://localhost:4000/api'
+export const baseUrl = 'https://alangulobknd.onrender.com/api'
 
 axios.interceptors.request.use(
 	(config) => {

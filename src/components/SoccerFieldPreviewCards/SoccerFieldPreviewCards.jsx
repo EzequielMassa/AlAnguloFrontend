@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
+import { Container } from 'react-bootstrap'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import SoccerFieldImgCard from '../SoccerFieldImgCard/SoccerFieldImgCard'
 import Spinner from '../Spinner/Spinner'
-import { Container } from 'react-bootstrap'
 
 function SoccerFieldPreviewCards() {
 	const {

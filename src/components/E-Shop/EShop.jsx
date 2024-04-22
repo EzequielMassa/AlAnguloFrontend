@@ -3,11 +3,11 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useProductsContext } from '../../context/ProductsContext'
 import CategoryCard from '../CategoryCard/CategoryCard'
-import Spinner from '../Spinner/Spinner'
 import GeneralButtons from '../GeneralButtons/GeneralButtons'
+import Spinner from '../Spinner/Spinner'
 
 function EShop() {
-	const { categories, categoriesLoading, categoriesError, getAllCategories } =
+	const { categories, categoriesLoading, getAllCategories } =
 		useProductsContext()
 	useEffect(() => {
 		getAllCategories()

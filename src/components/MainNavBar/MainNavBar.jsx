@@ -15,8 +15,7 @@ import Login from '../Login/Login'
 import './MainNavBar.css'
 export const MainNavBar = () => {
 	const { user, setLoguedUser } = useAuthContext()
-	const { userCart, getUserCart, userCartLoading, setUserCart } =
-		useUserContext()
+	const { userCart, getUserCart, setUserCart } = useUserContext()
 
 	useEffect(() => {
 		if (user.id) {
@@ -53,13 +52,9 @@ export const MainNavBar = () => {
 
 	const [showCart, setShowCart] = useState(false)
 
-	const [products, setProducts] = useState([])
-
 	const total = userCart.total
 
 	const handleCartToggle = () => setShowCart(!showCart)
-
-	const handleSearchToggle = () => setShowSearch(!showSearch)
 
 	const handleLinkClick = () => {
 		if (isOpen) {

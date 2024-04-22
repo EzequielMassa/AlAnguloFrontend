@@ -1,19 +1,15 @@
 import { useEffect, useState } from 'react'
 import { Dropdown, Image, Modal, Table } from 'react-bootstrap'
-import './UsersTable.css'
-
 import { FaRegEdit } from 'react-icons/fa'
 import { FaRegTrashCan } from 'react-icons/fa6'
 import Swal from 'sweetalert2'
 import { useAdminContext } from '../../context/AdminContext'
 import EditUserForm from '../EditUserForm/EditUserForm'
+import './UsersTable.css'
 
 const UsersTable = () => {
 	const {
 		users: usersArr,
-		usersLoading,
-		usersError,
-		setUsersError,
 		getAllUsers,
 		deleteUser,
 		updateUserActive,

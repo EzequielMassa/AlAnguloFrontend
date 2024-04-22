@@ -1,7 +1,6 @@
+import { useEffect } from 'react'
 import Form from 'react-bootstrap/Form'
 import { GiHighGrass, GiSoccerField } from 'react-icons/gi'
-
-import { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import './SoccerFieldFilter.css'

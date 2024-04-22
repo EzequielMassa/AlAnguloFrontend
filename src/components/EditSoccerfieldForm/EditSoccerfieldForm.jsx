@@ -1,5 +1,3 @@
-import './EditSoccerfieldForm.css'
-
 import { useFormik } from 'formik'
 import { Button, Form } from 'react-bootstrap'
 import * as Yup from 'yup'

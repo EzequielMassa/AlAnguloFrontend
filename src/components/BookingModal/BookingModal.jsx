@@ -29,7 +29,6 @@ function BookingModal(props) {
 	const {
 		soccerFieldAvailableHours,
 		soccerFieldAvailableHoursLoading,
-		soccerFieldAvailableHoursError,
 		getSoccerFieldAvailableHours,
 	} = useSoccerFieldsContext()
 	const { booking, setBooking, postBooking, bookingLoading, getUserCart } =

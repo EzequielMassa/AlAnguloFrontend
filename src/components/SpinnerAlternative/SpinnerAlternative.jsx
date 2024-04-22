@@ -1,4 +1,3 @@
-import React from 'react'
 import SpinnerAlt from '../../assets/images/spinner2.gif'
 import './spinnerAlternative.css'
 function SpinnerAlternative() {
