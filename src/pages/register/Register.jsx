@@ -5,12 +5,13 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import logo from '../../assets/images/logo_AlAngulo.png'
 import Login from '../../components/Login/Login'
+import Spinner from '../../components/Spinner/Spinner'
 import { useAuthContext } from '../../context/AuthContext'
 import './register.css'
 
 function Register() {
 	const navigate = useNavigate()
-	const { loguedUser, register } = useAuthContext()
+	const { loguedUser, registerLoading, register } = useAuthContext()
 	const [showModal, setShowModal] = useState(false)
 
 	const handleCloseModal = () => {
@@ -110,111 +111,123 @@ function Register() {
 						xs={12}
 						md={6}
 						xl={6}>
-						<Form
-							onSubmit={formik.handleSubmit}
-							className='form-register align-content-center '>
-							<h1 className='title register-title '>Formulario de Registro</h1>
+						{registerLoading ? (
+							<div className='d-flex flex-column justify-content-center align-content-center '>
+								<Spinner />
+							</div>
+						) : (
+							<Form
+								onSubmit={formik.handleSubmit}
+								className='form-register align-content-center '>
+								<h1 className='title register-title '>
+									Formulario de Registro
+								</h1>
 
-							<Form.Group className='mb-2 form-group'>
-								<Form.Label className='form-label'>Direccion email</Form.Label>
-								<Form.Control
-									id='email'
-									name='email'
-									onChange={formik.handleChange}
-									type='email'
-									placeholder='Ingresa un email'
-									isInvalid={formik.errors.email && formik.touched.email}
-								/>
-								<Form.Control.Feedback type='invalid'>
-									{formik.errors.email}
-								</Form.Control.Feedback>
-							</Form.Group>
-
-							<Form.Group className='mb-3'>
-								<div className='box'>
-									<Form.Label className='form-label'>Contraseña</Form.Label>
-									<Form.Control
-										id='password'
-										onChange={formik.handleChange}
-										name='password'
-										type='password'
-										placeholder='Ingresa una contraseña de 8 a 100 caracteres'
-										isInvalid={
-											formik.errors.password && formik.touched.password
-										}
-									/>
-									<Form.Control.Feedback type='invalid'>
-										{formik.errors.password}
-									</Form.Control.Feedback>
-								</div>
-								<div className='box mt-3'>
+								<Form.Group className='mb-2 form-group'>
 									<Form.Label className='form-label'>
-										Telefono celular
+										Direccion email
 									</Form.Label>
 									<Form.Control
-										id='phone'
-										type='text'
-										placeholder='Celular, ej: 3816646368'
-										name='phone'
+										id='email'
+										name='email'
 										onChange={formik.handleChange}
-										isInvalid={formik.errors.phone && formik.touched.phone}
+										type='email'
+										placeholder='Ingresa un email'
+										isInvalid={formik.errors.email && formik.touched.email}
 									/>
 									<Form.Control.Feedback type='invalid'>
-										{formik.errors.phone}
+										{formik.errors.email}
 									</Form.Control.Feedback>
-								</div>
-								<div className='box mt-3'>
-									<Form.Label className='form-label'>Nombre</Form.Label>
-									<Form.Control
-										id='name'
-										type='text'
-										placeholder='Nombre'
-										name='name'
-										onChange={formik.handleChange}
-										isInvalid={formik.errors.name && formik.touched.name}
-									/>
-									<Form.Control.Feedback type='invalid'>
-										{formik.errors.name}
-									</Form.Control.Feedback>
-								</div>
-								<div className='box mt-3'>
-									<Form.Label className='form-label'>Apellido</Form.Label>
-									<Form.Control
-										id='lastname'
-										type='text'
-										placeholder='Apellido'
-										name='lastname'
-										onChange={formik.handleChange}
-										isInvalid={
-											formik.errors.lastname && formik.touched.lastname
-										}
-									/>
-									<Form.Control.Feedback type='invalid'>
-										{formik.errors.lastname}
-									</Form.Control.Feedback>
-								</div>
-								<div className='box mt-3'>
-									<Form.Label className='form-label'>Imagen</Form.Label>
-									<Form.Control
-										id='image'
-										type='text'
-										placeholder='Agrega una url de tu imagen'
-										name='image'
-										onChange={formik.handleChange}
-									/>
-								</div>
-							</Form.Group>
+								</Form.Group>
 
-							<Button variant='primary' type='submit'>
-								Registrarse
-							</Button>
-							<div className='box-link'>
-								<NavLink onClick={handleShowModal} className={'redirect-link'}>
-									Ya tienes una cuenta? Ingresa
-								</NavLink>
-								<Login show={showModal} handleClose={handleCloseModal} />
-							</div>
-						</Form>
+								<Form.Group className='mb-3'>
+									<div className='box'>
+										<Form.Label className='form-label'>Contraseña</Form.Label>
+										<Form.Control
+											id='password'
+											onChange={formik.handleChange}
+											name='password'
+											type='password'
+											placeholder='Ingresa una contraseña de 8 a 100 caracteres'
+											isInvalid={
+												formik.errors.password && formik.touched.password
+											}
+										/>
+										<Form.Control.Feedback type='invalid'>
+											{formik.errors.password}
+										</Form.Control.Feedback>
+									</div>
+									<div className='box mt-3'>
+										<Form.Label className='form-label'>
+											Telefono celular
+										</Form.Label>
+										<Form.Control
+											id='phone'
+											type='text'
+											placeholder='Celular, ej: 3816646368'
+											name='phone'
+											onChange={formik.handleChange}
+											isInvalid={formik.errors.phone && formik.touched.phone}
+										/>
+										<Form.Control.Feedback type='invalid'>
+											{formik.errors.phone}
+										</Form.Control.Feedback>
+									</div>
+									<div className='box mt-3'>
+										<Form.Label className='form-label'>Nombre</Form.Label>
+										<Form.Control
+											id='name'
+											type='text'
+											placeholder='Nombre'
+											name='name'
+											onChange={formik.handleChange}
+											isInvalid={formik.errors.name && formik.touched.name}
+										/>
+										<Form.Control.Feedback type='invalid'>
+											{formik.errors.name}
+										</Form.Control.Feedback>
+									</div>
+									<div className='box mt-3'>
+										<Form.Label className='form-label'>Apellido</Form.Label>
+										<Form.Control
+											id='lastname'
+											type='text'
+											placeholder='Apellido'
+											name='lastname'
+											onChange={formik.handleChange}
+											isInvalid={
+												formik.errors.lastname && formik.touched.lastname
+											}
+										/>
+										<Form.Control.Feedback type='invalid'>
+											{formik.errors.lastname}
+										</Form.Control.Feedback>
+									</div>
+									<div className='box mt-3'>
+										<Form.Label className='form-label'>Imagen</Form.Label>
+										<Form.Control
+											id='image'
+											type='text'
+											placeholder='Agrega una url de tu imagen'
+											name='image'
+											onChange={formik.handleChange}
+										/>
+									</div>
+								</Form.Group>
+
+								<Button variant='primary' type='submit'>
+									Registrarse
+								</Button>
+								<div className='box-link'>
+									<NavLink
+										onClick={handleShowModal}
+										className={'redirect-link'}>
+										Ya tienes una cuenta? Ingresa
+									</NavLink>
+									<Login show={showModal} handleClose={handleCloseModal} />
+								</div>
+							</Form>
+						)}
 					</Col>
 				</Row>
 			</Container>

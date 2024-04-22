@@ -12,13 +12,19 @@ import {
 import { TbFilterX } from 'react-icons/tb'
 import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
 import CardsButtons from '../../components/GeneralButtons/CardsButtons'
+import Spinner from '../../components/Spinner/Spinner'
 import { useProductsContext } from '../../context/ProductsContext'
 import { formatCurrency } from '../../helpers/formatCurrency'
 import './products.css'
 
 function Products() {
-	const { products, getAllProducts, categories, getAllCategories } =
-		useProductsContext()
+	const {
+		products,
+		productsLoading,
+		getAllProducts,
+		categories,
+		getAllCategories,
+	} = useProductsContext()
 	const [searchParams, setSearchParams] = useSearchParams({})
 	const navigate = useNavigate()
 
@@ -162,7 +168,9 @@ function Products() {
 				</Navbar>
 			</Container>
 			<Container className='mt-5 '>
-				{filteredProducts.length === 0 ? (
+				{productsLoading ? (
+					<Spinner />
+				) : filteredProducts.length === 0 ? (
 					<div className='text-center no-product'>No hay productos</div>
 				) : (
 					<Row className='product-row d-flex justify-content-center align-items-stretch  '>

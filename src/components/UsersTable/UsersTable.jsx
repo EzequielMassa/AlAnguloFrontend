@@ -6,10 +6,12 @@ import Swal from 'sweetalert2'
 import { useAdminContext } from '../../context/AdminContext'
 import EditUserForm from '../EditUserForm/EditUserForm'
 import './UsersTable.css'
+import Spinner from '../Spinner/Spinner'
 
 const UsersTable = () => {
 	const {
 		users: usersArr,
+		usersLoading,
 		getAllUsers,
 		deleteUser,
 		updateUserActive,
@@ -73,6 +75,10 @@ const UsersTable = () => {
 	useEffect(() => {
 		getAllUsers()
 	}, [])
+
+	if (usersLoading) {
+		return <Spinner />
+	}
 
 	return (
 		<>

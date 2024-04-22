@@ -5,6 +5,7 @@ import nuestrasCanchasHero from '../../assets/images/nuestras-canchas-hero.webp'
 import SoccerFieldCard from '../../components/SoccerFieldCard/SoccerFieldCard'
 import SoccerFieldDetail from '../../components/SoccerFieldsDetail/SoccerFieldDetail'
 import SoccerFieldsFomFilters from '../../components/SoccerFieldsFormFilters/SoccerFieldsFormFilters'
+import Spinner from '../../components/Spinner/Spinner'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext'
 import {
 	detailSoccerField11,
@@ -13,7 +14,8 @@ import {
 import './SoccerFields.css'
 
 function SoccerFields() {
-	const { soccerFields, getAllSoccerfields } = useSoccerFieldsContext()
+	const { soccerFields, soccerFieldsLoading, getAllSoccerfields } =
+		useSoccerFieldsContext()
 	const [searchParams, setSearchParams] = useSearchParams({})
 	const navigate = useNavigate()
 
@@ -130,7 +132,9 @@ function SoccerFields() {
 			<article className='container-md '>
 				<section className='row'>
 					<div className='col-12'>
-						{filteredSoccerFields.length > 0 ? (
+						{soccerFieldsLoading ? (
+							<Spinner />
+						) : filteredSoccerFields.length > 0 ? (
 							filteredSoccerFields.map((field) => (
 								<SoccerFieldCard key={field._id} soccerField={field} />
 							))

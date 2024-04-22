@@ -104,13 +104,14 @@ function UseAxiosAdmin() {
 									timer: 2500,
 								}) + getAllUsers()
 							)
+						} else {
+							Swal.fire({
+								title: `Operación fallida`,
+								icon: 'error',
+								showConfirmButton: false,
+								timer: 2500,
+							})
 						}
-					})
-					Swal.fire({
-						title: `Operación fallida`,
-						icon: 'error',
-						showConfirmButton: false,
-						timer: 2500,
 					})
 				} catch (error) {
 					Swal.fire({
@@ -162,13 +163,14 @@ function UseAxiosAdmin() {
 									timer: 2500,
 								}) + getAllProducts()
 							)
+						} else {
+							Swal.fire({
+								title: `Operación fallida`,
+								icon: 'error',
+								showConfirmButton: false,
+								timer: 2000,
+							})
 						}
-					})
-					Swal.fire({
-						title: `Operación fallida`,
-						icon: 'error',
-						showConfirmButton: false,
-						timer: 2000,
 					})
 				} catch (error) {
 					Swal.fire({
@@ -298,13 +300,14 @@ function UseAxiosAdmin() {
 									timer: 2500,
 								}) + getAllSoccerfields()
 							)
+						} else {
+							Swal.fire({
+								title: `Operación fallida`,
+								icon: 'error',
+								showConfirmButton: false,
+								timer: 2000,
+							})
 						}
-					})
-					Swal.fire({
-						title: `Operación fallida`,
-						icon: 'error',
-						showConfirmButton: false,
-						timer: 2000,
 					})
 				} catch (error) {
 					Swal.fire({

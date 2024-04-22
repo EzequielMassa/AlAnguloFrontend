@@ -7,10 +7,12 @@ import { FaRegTrashCan } from 'react-icons/fa6'
 import Swal from 'sweetalert2'
 import { useAdminContext } from '../../context/AdminContext'
 import EditProductForm from '../EditProductForm/EditProductForm'
+import Spinner from '../Spinner/Spinner'
 
 const ProductsTable = () => {
 	const {
 		products: productsArr,
+		productsLoading,
 		getAllProducts,
 		deleteProduct,
 	} = useAdminContext()
@@ -37,6 +39,9 @@ const ProductsTable = () => {
 		getAllProducts()
 	}, [])
 
+	if (productsLoading) {
+		return <Spinner />
+	}
 	return (
 		<>
 			<Table
