@@ -1,0 +1,6 @@
+.editProductImg {
+    height: 15vh;
+	width: 15vh;
+	aspect-ratio: 1;
+	object-fit:cover;
+}

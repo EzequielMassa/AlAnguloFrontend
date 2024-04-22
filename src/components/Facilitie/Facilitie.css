@@ -1,0 +1,22 @@
+.facilitie_img {
+	object-fit: cover;
+	mask-image: linear-gradient(to right, transparent 0%, black 30%);
+}
+
+.facilite_icon {
+	font-size: 4rem;
+	color: var(--accent-color);
+}
+
+.facilitie_title-decorator {
+	width: 50%;
+	height: 1.2rem;
+	border-radius: 10px;
+	background-color: var(--primary-color);
+}
+
+@media screen and (min-width: 768px) {
+	.facilite_icon {
+		font-size: 8rem;
+	}
+}

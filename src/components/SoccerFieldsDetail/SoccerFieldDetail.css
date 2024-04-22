@@ -1,0 +1,14 @@
+.soccer_field_detail_icon {
+	font-size: 6rem;
+	color: var(--accent-color);
+}
+.card_container {
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+.soccer_field_detail_title {
+	border-bottom: 5px solid var(--primary-color);
+	padding-bottom: 10px;
+	border-bottom-style: double;
+}

@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
+.btn-cart.active {
+	border-bottom: 2px solid var(--primary-color);
+	color: var(--primary-color);
+}
+.btn-cart {
+	text-decoration: none;
+	font-size: var(--paragraph-font-size);
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	color: var(--primary-color);
+}
+.btn-cart:hover {
+	color: var(--accent-color);
+}
+.cartCards {
+	border: 0.15em solid var(--primary-color);
+	display: flex !important;
+}
+
+.booking_img_container {
+	width: 45%;
+}
+.card-imagen {
+	width: 10em;
+}
+.card-img-booking {
+	width: 100%;
+	object-fit: cover;
+}
+.card-body .card-title,
+.card-body .card-text {
+	font-family: var(--main-font);
+	text-transform: uppercase;
+}
+.icons-style-text {
+	color: var(--primary-color);
+	font-size: var(--paragraph-font-size);
+}
+.icons-style {
+	font-size: var(--subtitle-font-size);
+	color: var(--primary-color);
+}
+.icons-styleHover:hover {
+	cursor: pointer;
+	border: 2px solid var(--primary-color);
+	border-radius: 50%;
+	transition: 0.5s ease-in-out;
+}
+.separador {
+	border: 2px solid var(--primary-color);
+	height: 200px;
+	border-radius: 50%;
+	width: 3px;
+}
+@media (min-width: 850px) {
+	.btn-cart {
+		font-size: var(--subtitle-font-size);
+	}
+}
+.total-price {
+	font-family: 'Montserrat', sans-serif;
+	color: var(--primary-color);
+	text-transform: uppercase;
+}
+h3 {
+	font-size: var(--subtitle-font-size);
+}
+.title-cartPage {
+	font-family: 'Montserrat', sans-serif;
+	color: var(--primary-color);
+	text-transform: uppercase;
+	font-size: var(--title-font-size);
+}

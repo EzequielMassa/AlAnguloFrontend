@@ -1,0 +1,43 @@
+.soccerfield_card_container {
+	width: 75%;
+	min-height: 20rem;
+	overflow: auto;
+	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.soccerfield_card_title {
+	color: var(--accent-color) !important;
+}
+.soccerfield_card_img {
+	object-fit: cover;
+	width: 100%;
+	height: 25rem;
+	filter: contrast(100%);
+}
+.overlay {
+	background-color: rgba(0, 0, 0, 0.557);
+}
+
+.soccerfield_card_icon {
+	color: var(--secondary-color);
+	font-size: 2rem;
+}
+.reactButton {
+	padding: 0 !important;
+	background: none !important;
+	border: none;
+	color: white !important;
+}
+.reactButton .fancy .text {
+	color: var(--primary-color);
+}
+.reactButton .fancy:hover .text {
+	color: black !important;
+}
+.reactButton .fancy{
+	background-color: var(--background-color);
+}
+.reactButton .fancy:hover{
+	background-color: var(--primary-color);
+}
