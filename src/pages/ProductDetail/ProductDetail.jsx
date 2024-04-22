@@ -108,10 +108,12 @@ const ProductDetail = () => {
 										disabled={orderLoading}>
 										<CardsButtons cardText='Agregar Al Carrito' />
 									</Button>
-								) : (
+								) : user.role !== 'admin' ? (
 									<Link to={'/register'} className='mb-2 w-50 mx-auto'>
 										<CardsButtons cardText='Registrate' />
 									</Link>
+								) : (
+									<></>
 								)}
 							</Col>
 						</>
