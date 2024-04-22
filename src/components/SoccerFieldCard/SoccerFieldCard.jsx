@@ -57,10 +57,12 @@ function SoccerFieldCard({ soccerField }) {
 								onClick={() => handleBookingModalClick(soccerField)}>
 								<CardsButtons cardText='Reservar' />
 							</Button>
-						) : (
+						) : user.role !== 'admin' ? (
 							<Link to={'/register'} className='my-2 reactButton'>
 								<CardsButtons cardText='Registrate' />
 							</Link>
+						) : (
+							<></>
 						)}
 					</Card.ImgOverlay>
 				</Card>
