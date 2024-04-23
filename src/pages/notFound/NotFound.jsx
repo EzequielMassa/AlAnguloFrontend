@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import alAnguloLogo from '../../assets/images/logo_AlAngulo.png'
 import SpinnerAlternative from '../../components/SpinnerAlternative/SpinnerAlternative'
 import './NotFound.css'
 export const NotFound = () => {
@@ -12,7 +13,7 @@ export const NotFound = () => {
 							No encontramos la pagina <br /> que estas buscando.
 						</p>
 						<Link to='/' className='home__button'>
-							<img src='../../assets/images/logo_AlAngulo.png' alt='logo' />
+							<img src={alAnguloLogo} alt='logo' />
 							Volver al Inicio
 						</Link>
 					</div>
