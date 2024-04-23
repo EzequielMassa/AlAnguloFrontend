@@ -1,22 +1,51 @@
+import { useFormik } from 'formik'
 import Form from 'react-bootstrap/Form'
 import { TbFilterX } from 'react-icons/tb'
+import * as Yup from 'yup'
 import './SoccerFieldsFormFilters.css'
 function SoccerFieldsFomFilters({
 	searchParams,
 	handleInputChange,
 	clearSoccerFieldsFilter,
 }) {
+	const formik = useFormik({
+		initialValues: {
+			name: searchParams.get('name') || '',
+		},
+		validationSchema: Yup.object({
+			name: Yup.string('Ingresa un nombre valido').matches(
+				/^[a-zA-Z0-9]+$/,
+				'Ingrese solo letras y/o numeros'
+			),
+		}),
+		validateOnChange: true,
+		onSubmit: () => {},
+	})
+
+	const handleChange = (event) => {
+		formik.handleSubmit()
+		formik.handleChange(event)
+		handleInputChange(event)
+	}
+
 	return (
-		<Form className='d-flex flex-column flex-md-row justify-content-center align-items-center  gap-2 bg-light py-4  border rounded-4'>
+		<Form
+			className='d-flex flex-column flex-md-row justify-content-center align-items-center  gap-2 bg-light py-4  border rounded-4'
+			onSubmit={formik.handleSubmit}>
 			<Form.Group className='mb-3 filter_form_group_container' controlId='name'>
 				<Form.Label>Nombre de la cancha</Form.Label>
 				<Form.Control
 					type='text'
 					placeholder='Nombre de la cancha'
 					name='name'
-					onChange={handleInputChange}
-					value={searchParams.get('name') || ''}
+					onChange={handleChange}
+					onBlur={formik.handleBlur}
+					value={formik.values.name}
+					isInvalid={formik.touched.name && formik.errors.name}
 				/>
+				<Form.Control.Feedback type='invalid'>
+					{formik.errors.name}
+				</Form.Control.Feedback>
 			</Form.Group>
 			<Form.Group
 				className='mb-3 filter_form_group_container '
