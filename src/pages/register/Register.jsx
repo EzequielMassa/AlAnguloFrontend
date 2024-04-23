@@ -34,22 +34,26 @@ function Register() {
 			name: Yup.string('Ingresa un nombre valido')
 				.required('Completa este campo')
 				.min(3, 'Minimo 3 letras')
-				.max(150, 'Maximo 150 letras'),
+				.max(150, 'Maximo 150 letras')
+				.matches(/^[a-zA-Z]+$/, 'Ingrese solo letras'),
 			lastname: Yup.string('Ingresa un apellido valido')
 				.required('Completa este campo')
 				.min(3, 'Minimo 3 letras')
-				.max(150, 'Maximo 150 letras'),
+				.max(150, 'Maximo 150 letras')
+				.matches(/^[a-zA-Z]+$/, 'Ingrese solo letras'),
 			email: Yup.string()
 				.email('Ingresa un email valido')
-				.required('Completa este campo'),
+				.required('Completa este campo')
+				.matches(
+					/^[\w-]+(\.[\w-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$/,
+					'Ingrese un formato de email valido'
+				),
 			phone: Yup.string()
 				.required('Completa este campo')
 				.min(10, 'El telefono debe tener al menos 10 numeros.')
 				.max(15, 'El telefono no puede tener mas de 15 numeros.')
-				.matches(
-					/^\+?\d{0,3}\s?\d{9}$/,
-					'Ingresa un numero de telefono valido'
-				),
+				.matches(/^[0-9]+$/, 'Ingresa solo numeros'),
+
 			password: Yup.string()
 				.required('Completa la password')
 				.min(8, 'Ingresa minimo 8 caracteres')
@@ -59,6 +63,7 @@ function Register() {
 					'Debe tener entre 8 y 100 caracteres sin espacios en blanco'
 				),
 		}),
+		validateOnChange: true,
 		onSubmit: (formData) => {
 			if (formData.image === '') {
 				formData.image =
@@ -148,6 +153,7 @@ function Register() {
 											onChange={formik.handleChange}
 											name='password'
 											type='password'
+											maxLength={100}
 											placeholder='Ingresa una contraseña de 8 a 100 caracteres'
 											isInvalid={
 												formik.errors.password && formik.touched.password
@@ -166,6 +172,7 @@ function Register() {
 											type='text'
 											placeholder='Celular, ej: 3816646368'
 											name='phone'
+											maxLength={15}
 											onChange={formik.handleChange}
 											isInvalid={formik.errors.phone && formik.touched.phone}
 										/>
@@ -180,6 +187,7 @@ function Register() {
 											type='text'
 											placeholder='Nombre'
 											name='name'
+											maxLength={150}
 											onChange={formik.handleChange}
 											isInvalid={formik.errors.name && formik.touched.name}
 										/>
@@ -194,6 +202,7 @@ function Register() {
 											type='text'
 											placeholder='Apellido'
 											name='lastname'
+											maxLength={150}
 											onChange={formik.handleChange}
 											isInvalid={
 												formik.errors.lastname && formik.touched.lastname

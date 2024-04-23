@@ -1,3 +1,4 @@
+import { useFormik } from 'formik'
 import { useEffect } from 'react'
 import {
 	Card,
@@ -11,12 +12,12 @@ import {
 } from 'react-bootstrap'
 import { TbFilterX } from 'react-icons/tb'
 import { NavLink, useNavigate, useSearchParams } from 'react-router-dom'
+import * as Yup from 'yup'
 import CardsButtons from '../../components/GeneralButtons/CardsButtons'
 import Spinner from '../../components/Spinner/Spinner'
 import { useProductsContext } from '../../context/ProductsContext'
 import { formatCurrency } from '../../helpers/formatCurrency'
 import './products.css'
-
 function Products() {
 	const {
 		products,
@@ -28,6 +29,25 @@ function Products() {
 	const [searchParams, setSearchParams] = useSearchParams({})
 	const navigate = useNavigate()
 
+	const formik = useFormik({
+		initialValues: {
+			name: searchParams.get('name') || '',
+		},
+		validationSchema: Yup.object({
+			name: Yup.string('Ingresa un nombre valido').matches(
+				/^[a-zA-Z0-9]+$/,
+				'Ingrese solo letras y/o numeros'
+			),
+		}),
+		validateOnChange: true,
+		onSubmit: () => {},
+	})
+
+	const handleChange = (event) => {
+		formik.handleSubmit()
+		formik.handleChange(event)
+		handleInputChange(event)
+	}
 	const applyFilters = () => {
 		const name = searchParams.get('nombre')
 		const price = searchParams.get('precio')
@@ -112,15 +132,22 @@ function Products() {
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav '>
 						<Nav className=' w-100 d-flex flex-column flex-md-row justify-content-center align-items-center '>
-							<Form className='form-search flex-column flex-md-row gap-4 w-100 d-flex justify-content-center align-items-center'>
+							<Form
+								className='form-search flex-column flex-md-row gap-4 w-100 d-flex justify-content-center align-items-center'
+								onSubmit={formik.handleSubmit}>
 								<FormControl
 									type='text'
 									name='name'
 									placeholder='Buscar por nombre'
 									className='mt-4 w-75'
-									value={searchParams.get('nombre') || ''}
-									onChange={handleInputChange}
+									onChange={handleChange}
+									onBlur={formik.handleBlur}
+									value={formik.values.name}
+									isInvalid={formik.touched.name && formik.errors.name}
 								/>
+								<Form.Control.Feedback type='invalid'>
+									{formik.errors.name}
+								</Form.Control.Feedback>
 								<Form.Group
 									className='mb-3  filter_form_group_container w-50 '
 									controlId='category'>
