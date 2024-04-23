@@ -12,7 +12,7 @@ export const NotFound = () => {
 							No encontramos la pagina <br /> que estas buscando.
 						</p>
 						<Link to='/' className='home__button'>
-							<img src='/src/assets/images/logo_AlAngulo.png' alt='logo' />
+							<img src='../../assets/images/logo_AlAngulo.png' alt='logo' />
 							Volver al Inicio
 						</Link>
 					</div>
