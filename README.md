@@ -34,7 +34,7 @@ AlAngulo es una plataforma en línea que facilita la reserva de canchas de fútb
 + **Gestión de reservas**: Los usuarios pueden ver y administrar sus reservas existentes, incluida la posibilidad de cancelar o modificar reservas según sea necesario.
 + **Información detallada de la cancha**: Los usuarios pueden ver información detallada sobre cada cancha, incluidas las instalaciones, los horarios de disponibilidad y los precios.
 
-### Tecnologías utilizadas
+## Tecnologías utilizadas
 
 + **Frontend**: La interfaz de usuario de AlAngulo está construida utilizando tecnologías web modernas como React.js para la creación de componentes interactivos y dinámicos, React Router para la navegación entre páginas, y Bootstrap para el diseño responsivo y la interfaz de usuario amigable.
 + **Backend**: El backend de la aplicación está desarrollado con Node.js y Express.js para crear una API RESTful que gestiona las solicitudes de los clientes, la autenticación de usuarios y la lógica de negocio relacionada con la gestión de reservas.
@@ -60,6 +60,7 @@ AlAngulo es una plataforma en línea que facilita la reserva de canchas de fútb
 ![reserva](https://github.com/EzequielMassa/AlAnguloFrontend/assets/124631401/b4900c65-0c02-4bd9-b090-672263d91b6d)
 
 + **Gestión de reservas y Productos**: Accede a tu Carrito para ver y administrar tus reservas activas, así como para recibir notificaciones importantes.
+
 ![carrito](https://github.com/EzequielMassa/AlAnguloFrontend/assets/124631401/629b6c34-603b-493c-931d-a7570a8d2b50)
 
   
@@ -67,26 +68,47 @@ AlAngulo es una plataforma en línea que facilita la reserva de canchas de fútb
  	
 ## Guía de instalación
 
-Paso a paso de cómo instalar la herramienta digital. En esta sección es recomendable explicar la arquitectura de carpetas y módulos que componen el sistema.
+Para ejecutar el proyecto localmente en tu máquina, sigue estos pasos:
 
-Según el tipo de herramienta digital, el nivel de complejidad puede variar. En algunas ocasiones puede ser necesario instalar componentes que tienen dependencia con la herramienta digital. Si este es el caso, añade también la siguiente sección.
+### Prerrequisitos
+Antes de comenzar, asegúrate de tener instalado lo siguiente en tu sistema:
 
-La guía de instalación debe contener de manera específica:
-- Los requisitos del sistema operativo para la compilación (versiones específicas de librerías, software de gestión de paquetes y dependencias, SDKs y compiladores, etc.).
-- Las dependencias propias del proyecto, tanto externas como internas (orden de compilación de sub-módulos, configuración de ubicación de librerías dinámicas, etc.).
-- Pasos específicos para la compilación del código fuente y ejecución de tests unitarios en caso de que el proyecto disponga de ellos.
++ Node.js (v20.x o superior)
++ npm (normalmente se instala junto con Node.js)
++ MongoDB
 
-### Dependencias
-Descripción de los recursos externos que generan una dependencia para la reutilización de la herramienta digital (librerías, frameworks, acceso a bases de datos y licencias de cada recurso). Es una buena práctica describir las últimas versiones en las que ha sido probada la herramienta digital. 
+### Pasos de Instalación
+Desde la consola 
 
-    Puedes usar este estilo de letra diferenciar los comandos de instalación.
++ Clona el repositorio:
 
+  git clone https://github.com/EzequielMassa/AlAnguloFrontend.git
+
++ Accede al directorio del proyecto:
+
+  cd AlAnguloFrontend
+
++ Instala las dependencias
+
+  npm install
+
++ Configura variables de entorno:
+
+  Copia el archivo .env.example y renómbralo a .env. Luego, actualiza las variables de entorno según tu configuración.
+
++ Inicia el servidor de desarrollo
+
+  npm run dev
+
++Accede a la aplicación:
+
+ Abre tu navegador web y visita http://localhost:5173 para ver la aplicación en funcionamiento.
 
 ## Autores
----
-[Ezequiel Massa](enlace al perfil de GitHub)
-[Facundo Gimenez](enlace al perfil de GitHub)
-[Tomas Williams](enlace al perfil de GitHub)
-[Federico Frau](enlace al perfil de GitHub)
+
++ [Ezequiel Massa](https://github.com/EzequielMassa)
++ [Facundo Gimenez](https://github.com/facundoit)
++ [Tomas Williams](https://github.com/willytucuman)
++ [Federico Frau](https://github.com/FedericoFrau)
 
 
