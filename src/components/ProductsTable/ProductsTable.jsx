@@ -53,9 +53,6 @@ const ProductsTable = () => {
 				className='text-center align-middle'>
 				<thead className=''>
 					<tr className='tableTitles'>
-						<th key='ID' className='border border-success border-opacity-50'>
-							ID
-						</th>
 						<th key='NAME' className='border border-success border-opacity-50'>
 							NOMBRE
 						</th>
@@ -85,11 +82,6 @@ const ProductsTable = () => {
 				<tbody>
 					{productsArr.map((productObj) => (
 						<tr key={productObj._id} className='fs-5'>
-							<td
-								key={'_id' + productObj._id}
-								className='borderCustom text-break '>
-								<p className='idCell m-0 p-0'> {productObj._id} </p>
-							</td>
 							<td
 								key={'name' + productObj._id}
 								className='cursorChange borderCustom'>

@@ -51,9 +51,6 @@ const SoccerFieldsTable = () => {
 				className='text-center align-middle'>
 				<thead className=''>
 					<tr className='tableTitles'>
-						<th key='ID' className='border border-success border-opacity-50'>
-							ID
-						</th>
 						<th key='NAME' className='border border-success border-opacity-50'>
 							NOMBRE
 						</th>
@@ -81,12 +78,6 @@ const SoccerFieldsTable = () => {
 				<tbody>
 					{soccerfieldsArr.map((soccerfieldObj) => (
 						<tr key={soccerfieldObj._id} className='fs-5'>
-							<td
-								key={'_id' + soccerfieldObj._id}
-								className='borderCustom text-break '
-								onClick={() => soccerfieldImagePopup(soccerfieldObj.imgUrl)}>
-								<p className='idCell m-0 p-0'> {soccerfieldObj._id} </p>
-							</td>
 							<td
 								key={'name' + soccerfieldObj._id}
 								className='cursorChange borderCustom'

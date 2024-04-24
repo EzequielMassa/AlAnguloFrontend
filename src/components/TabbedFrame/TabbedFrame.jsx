@@ -27,7 +27,7 @@ const TabbedFrame = () => {
 
 	return (
 		<>
-			<section className='container-fluid frame pt-5'>
+			<section className='container-md frame pt-5'>
 				<Tab.Container
 					id='|-tabs-example'
 					defaultActiveKey='first'
@@ -112,16 +112,19 @@ const TabbedFrame = () => {
 
 							<Tab.Content className='rightBlock_2'>
 								<Tab.Pane eventKey='first'>
-									{' '}
-									<UsersTable />{' '}
+									<div className='container-md'>
+										<UsersTable />
+									</div>
 								</Tab.Pane>
 								<Tab.Pane eventKey='second'>
-									{' '}
-									<ProductsTable />{' '}
+									<div className='container-md'>
+										<ProductsTable />
+									</div>
 								</Tab.Pane>
 								<Tab.Pane eventKey='third'>
-									{' '}
-									<SoccerFieldsTable />{' '}
+									<div className='container-md'>
+										<SoccerFieldsTable />
+									</div>
 								</Tab.Pane>
 							</Tab.Content>
 						</Col>
