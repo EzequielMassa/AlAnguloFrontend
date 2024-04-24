@@ -47,20 +47,7 @@ function SoccerFieldsFomFilters({
 					{formik.errors.name}
 				</Form.Control.Feedback>
 			</Form.Group>
-			<Form.Group
-				className='mb-3 filter_form_group_container '
-				controlId='name'>
-				<Form.Label>Precio</Form.Label>
-				<Form.Select
-					aria-label='price'
-					name='price'
-					onChange={handleInputChange}
-					value={searchParams.get('price') || ''}>
-					<option hidden>Todos</option>
-					<option value='menor'>Menor precio</option>
-					<option value='mayor'>Mayor precio</option>
-				</Form.Select>
-			</Form.Group>
+
 			<Form.Group
 				className='mb-3  filter_form_group_container'
 				controlId='grass'>
