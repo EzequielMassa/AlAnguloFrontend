@@ -5,8 +5,8 @@ import { FaRegTrashCan } from 'react-icons/fa6'
 import Swal from 'sweetalert2'
 import { useAdminContext } from '../../context/AdminContext'
 import EditUserForm from '../EditUserForm/EditUserForm'
-import './UsersTable.css'
 import Spinner from '../Spinner/Spinner'
+import './UsersTable.css'
 
 const UsersTable = () => {
 	const {
@@ -173,14 +173,19 @@ const UsersTable = () => {
 								key={'role' + userObj._id}
 								className='cursorChange borderCustom'
 								onClick={() => userImagePopup(userObj.image)}>
-								{userObj.role.name}
+								{userObj.role.name === 'user' ? 'usuario' : userObj.role.name}
 							</td>
 							<td key={'actions' + userObj._id} className='borderCustom'>
 								<div className='d-flex justify-content-evenly'>
-									<FaRegEdit
-										className='cursorChange mx-1'
-										onClick={() => handleEdit(userObj)}
-									/>
+									{userObj.phone == '3816646368' ? (
+										<></>
+									) : (
+										<FaRegEdit
+											className='cursorChange mx-1'
+											onClick={() => handleEdit(userObj)}
+										/>
+									)}
+
 									{userObj.role.name === 'admin' ? (
 										<></>
 									) : (

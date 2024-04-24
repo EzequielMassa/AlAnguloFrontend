@@ -6,7 +6,6 @@ import './EditUserForm.css'
 
 const EditUserForm = ({ editUser, handleClose }) => {
 	const { updateUser, getAllUsers } = useAdminContext()
-
 	const formik = useFormik({
 		initialValues: {
 			name: editUser.name,
@@ -14,6 +13,7 @@ const EditUserForm = ({ editUser, handleClose }) => {
 			email: editUser.email,
 			phone: editUser.phone,
 			image: editUser.image,
+			rol: editUser.role.name,
 		},
 		validationSchema: Yup.object({
 			name: Yup.string('Ingresa un nombre valido')
@@ -45,6 +45,7 @@ const EditUserForm = ({ editUser, handleClose }) => {
 		onSubmit: (formData) => {
 			const user = {
 				_id: editUser._id,
+				role: formData.rol,
 				name: formData.name,
 				lastname: formData.lastname,
 				email: formData.email,
@@ -61,6 +62,25 @@ const EditUserForm = ({ editUser, handleClose }) => {
 	return (
 		<>
 			<Form onSubmit={formik.handleSubmit}>
+				<Form.Group className='mb-2' controlId='rol'>
+					<Form.Label className='mb-0'>Rol</Form.Label>
+					<Form.Select
+						aria-label='rol'
+						name='rol'
+						onChange={formik.handleChange}
+						value={formik.values.rol}>
+						<option
+							value='admin'
+							className={formik.values.rol === 'admin' ? 'd-none' : ''}>
+							Admin
+						</option>
+						<option
+							value='user'
+							className={formik.values.rol === 'user' ? 'd-none' : ''}>
+							Usuario
+						</option>
+					</Form.Select>
+				</Form.Group>
 				<Form.Group className='mb-2'>
 					<Form.Label className='mb-0'>Nombre</Form.Label>
 					<Form.Control
