@@ -78,11 +78,16 @@ export const Cart = () => {
 			}
 		})
 	}
-
-	if (userCartLoading) {
-		return <Spinner />
-	}
-
+	const formatDate = (bookingDate) => {
+		const date = new Date(bookingDate);
+		const day = date.getDate().toString().padStart(2, '0');
+		const month = (date.getMonth() + 1).toString().padStart(2, '0');
+		const year = date.getFullYear();
+		return `${day}-${month}-${year}`;
+	};
+	// if (userCartLoading) {
+	// 	return <Spinner />
+	// }
 	return (
 		<div className='container mt-5 pt-4 '>
 			<h1 className='text-center title-cartPage m-4'>Carrito</h1>
@@ -101,39 +106,98 @@ export const Cart = () => {
 						Reservas
 					</Button>
 				</div>
+				{userCartLoading ? (
+					<div className='m-auto '>
+
+						<Spinner/>
+					</div>
+				):(
+				<>
+
 				{displayProducts ? (
-					<>
-						<div className='flex-grow-1'>
+						<div className='flex-grow-1 '>
 							{userCart.orders ? (
-								userCart.orders.map((order) => (
-									<Card key={order._id} className=' cartCards'>
-										<div className='d-flex align-items-center flex-column flex-md-row justify-content-around '>
-											<div className=''>
+								<>
+								{userCart.orders.length !=0 ? (
+									
+									userCart.orders.map((order) => (
+										<Card key={order._id} className=' cartCards'>
+											<div className='d-flex align-items-center flex-column flex-md-row justify-content-around '>
+												<div className=''>
+													<Card.Img
+														src={order.product.image}
+														className='card-imagen col-3'
+													/>
+												</div>
+												<div className='separador d-none d-md-block'></div>
+												<div className=''>
+													<Card.Body className='card-body d-flex flex-column align-items-center'>
+														<Card.Title>{order.product.name}</Card.Title>
+														<Card.Text className='icons-style-text'>
+															Cantidad
+														</Card.Text>
+														<div className='d-flex justify-content-between align-items-center gap-3 '>
+															<span>{order.quantity}</span>
+														</div>
+														<Card.Text className='mt-2 align-items-center d-flex '>
+															Precio{' '}
+															{formatCurrency(
+																order.product.price * order.quantity
+															)}
+														</Card.Text>
+														<Button
+															variant='outline-danger'
+															className='position-absolute end-0 bottom-0 '
+															onClick={() => handleDeleteOrder(order)}>
+															<GoTrash />
+														</Button>
+													</Card.Body>
+												</div>
+											</div>
+										</Card>
+									))
+								):(
+									<h1 className='text-success text-center'>Aun no hay productos en el carrito</h1>
+								)}
+								</>
+								
+							) : (
+								<></>
+							)}
+						</div>
+				) : (
+					<div className='flex-grow-1'>
+						{userCart.bookings ? (
+							<>
+							{userCart.bookings.length != 0 ?(
+
+								userCart.bookings.map((booking) => (
+									<Card key={booking._id} className='mb-2 cartCards p-2'>
+										<div className='d-flex align-items-center justify-content-around flex-column flex-md-row  '>
+											<div className='booking_img_container'>
 												<Card.Img
-													src={order.product.image}
-													className='card-imagen col-3'
+													variant='top'
+													src={booking.soccerField.imgUrl}
+													className='card-img-booking border rounded-1 '
 												/>
 											</div>
 											<div className='separador d-none d-md-block'></div>
-											<div className=''>
+											<div>
 												<Card.Body className='card-body d-flex flex-column align-items-center'>
-													<Card.Title>{order.product.name}</Card.Title>
-													<Card.Text className='icons-style-text'>
-														Cantidad
+													<Card.Title>{booking.soccerField.name}</Card.Title>
+													<Card.Text className='d-flex flex-column justify-content-center align-items-center  text-center'>
+														<FaRegClock className='icons-style me-2' />{' '}
+														{formatDate(booking.date)}
+														<br />
+														{booking.time}
 													</Card.Text>
-													<div className='d-flex justify-content-between align-items-center gap-3 '>
-														<span>{order.quantity}</span>
-													</div>
-													<Card.Text className='mt-2 align-items-center d-flex '>
-														Precio{' '}
-														{formatCurrency(
-															order.product.price * order.quantity
-														)}
+													<Card.Text>
+														Precio: {formatCurrency(booking.soccerField.price)}
 													</Card.Text>
 													<Button
 														variant='outline-danger'
 														className='position-absolute end-0 bottom-0 '
-														onClick={() => handleDeleteOrder(order)}>
+														onClick={() => handleDeleteBooking(booking)}>
 														<GoTrash />
 													</Button>
 												</Card.Body>
@@ -141,52 +205,17 @@ export const Cart = () => {
 										</div>
 									</Card>
 								))
-							) : (
-								<></>
+							):(
+								<h1 className='text-success text-center'>Aun no hay reservas en el carrito</h1>
 							)}
-						</div>
-					</>
-				) : (
-					<div className='flex-grow-1'>
-						{userCart.bookings ? (
-							userCart.bookings.map((booking) => (
-								<Card key={booking._id} className='mb-2 cartCards p-2'>
-									<div className='d-flex align-items-center justify-content-around flex-column flex-md-row  '>
-										<div className='booking_img_container'>
-											<Card.Img
-												variant='top'
-												src={booking.soccerField.imgUrl}
-												className='card-img-booking border rounded-1 '
-											/>
-										</div>
-										<div className='separador d-none d-md-block'></div>
-										<div>
-											<Card.Body className='card-body d-flex flex-column align-items-center'>
-												<Card.Title>{booking.soccerField.name}</Card.Title>
-												<Card.Text className='d-flex flex-column justify-content-center align-items-center  text-center'>
-													<FaRegClock className='icons-style me-2' />{' '}
-													{booking.date}
-													<br />
-													{booking.time}
-												</Card.Text>
-												<Card.Text>
-													Precio: {formatCurrency(booking.soccerField.price)}
-												</Card.Text>
-												<Button
-													variant='outline-danger'
-													className='position-absolute end-0 bottom-0 '
-													onClick={() => handleDeleteBooking(booking)}>
-													<GoTrash />
-												</Button>
-											</Card.Body>
-										</div>
-									</div>
-								</Card>
-							))
+							</>
 						) : (
-							<></>
+							<>
+							</>
 						)}
 					</div>
+				)}
+				</>
 				)}
 			</div>
 			<div className='d-flex flex-column align-items-end container total-price my-4 gap-4'>
