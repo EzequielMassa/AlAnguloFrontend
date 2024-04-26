@@ -84,7 +84,7 @@ const ProductDetail = () => {
 										</b>
 									</h3>
 								</div>
-								{user.id && user.role === 'user' ? (
+								{user.id ? (
 									<div className='info-actions d-flex justify-content-center gap-3 py-4'>
 										<h3>Cantidad :</h3>
 										<LuMinus
@@ -100,7 +100,7 @@ const ProductDetail = () => {
 								) : (
 									<></>
 								)}
-								{user.id && user.role === 'user' ? (
+								{user.id ? (
 									<Button
 										type='submit'
 										className='mb-2 w-50 mx-auto reactButton'

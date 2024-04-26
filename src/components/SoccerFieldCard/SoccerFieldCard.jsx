@@ -50,7 +50,7 @@ function SoccerFieldCard({ soccerField }) {
 								currency: 'ARS',
 							})}
 						</Card.Text>
-						{user.id && user.role === 'user' ? (
+						{user.id ? (
 							<Button
 								className='my-2 reactButton'
 								id={_id}
