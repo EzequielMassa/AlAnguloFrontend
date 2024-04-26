@@ -15,6 +15,7 @@ import Login from '../Login/Login'
 import './MainNavBar.css'
 export const MainNavBar = () => {
 	const { user, setLoguedUser } = useAuthContext()
+
 	const { userCart, getUserCart, setUserCart } = useUserContext()
 
 	useEffect(() => {
@@ -135,24 +136,19 @@ export const MainNavBar = () => {
 								<b className='logoName'>AlAngulo</b>
 							</NavLink>
 							<div className='noti'>
-								{user.role === 'admin' ? (
-									<></>
-								) : (
-									<IconContext.Provider
-										value={{ className: 'global-class-name Nav-Icon' }}>
-										<span className='cart' onClick={handleCartToggle}>
-											<AiOutlineShoppingCart />
-											{!userCart || Object.keys(userCart).length === 0 ? (
-												<></>
-											) : (
-												<b className='store'>
-													{userCart.orders.length + userCart.bookings.length}
-												</b>
-											)}
-										</span>
-									</IconContext.Provider>
-								)}
-
+								<IconContext.Provider
+									value={{ className: 'global-class-name Nav-Icon' }}>
+									<span className='cart' onClick={handleCartToggle}>
+										<AiOutlineShoppingCart />
+										{!userCart || Object.keys(userCart).length === 0 ? (
+											<></>
+										) : (
+											<b className='store'>
+												{userCart.orders.length + userCart.bookings.length}
+											</b>
+										)}
+									</span>
+								</IconContext.Provider>
 								<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
 									<span>
