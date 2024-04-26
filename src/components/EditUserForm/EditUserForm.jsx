@@ -2,9 +2,11 @@ import { useFormik } from 'formik'
 import { Button, Form, Image } from 'react-bootstrap'
 import * as Yup from 'yup'
 import { useAdminContext } from '../../context/AdminContext'
+import { useAuthContext } from '../../context/AuthContext'
 import './EditUserForm.css'
 
 const EditUserForm = ({ editUser, handleClose }) => {
+	const { user } = useAuthContext()
 	const { updateUser, getAllUsers } = useAdminContext()
 	const formik = useFormik({
 		initialValues: {
@@ -51,7 +53,8 @@ const EditUserForm = ({ editUser, handleClose }) => {
 						aria-label='rol'
 						name='rol'
 						onChange={formik.handleChange}
-						value={formik.values.rol}>
+						value={formik.values.rol}
+						disabled={user.id === editUser._id}>
 						<option
 							value='admin'
 							className={formik.values.rol === 'admin' ? 'd-none' : ''}>
