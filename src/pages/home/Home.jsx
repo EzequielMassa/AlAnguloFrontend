@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Toaster, toast } from 'sonner'
 import Contact from '../../components/Contact/Contact'
 import EShop from '../../components/E-Shop/EShop'
@@ -33,6 +33,10 @@ export const Home = () => {
 		soccerFieldsQueryError,
 	} = useSoccerFieldsContext()
 
+	const [searchParams] = useSearchParams({})
+	const size = searchParams.get('size')
+	const grass = searchParams.get('grass')
+
 	useEffect(() => {
 		if (soccerFieldsQueryError) {
 			toast.error(`${soccerFieldsQueryError.response.data.message}`)
@@ -63,12 +67,14 @@ export const Home = () => {
 						<SoccerFieldFilter />
 						{soccerFieldsQueryLoading ? (
 							<Spinner />
+						) : (size || grass) && soccerFieldsQuery.length < 1 ? (
+							<h3 className='text-center'> No contamos con esas canchas </h3>
 						) : soccerFieldsQuery ? (
 							soccerFieldsQuery.map((result) => (
 								<SoccerFieldCard key={result._id} soccerField={result} />
 							))
 						) : (
-							<></>
+							<h3> No hay Resultados</h3>
 						)}
 					</div>
 				</section>

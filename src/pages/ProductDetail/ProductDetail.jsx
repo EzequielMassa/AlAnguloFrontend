@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { LuMinus, LuPlus } from 'react-icons/lu'
-import { Link, useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { Toaster, toast } from 'sonner'
 import CardsButtons from '../../components/GeneralButtons/CardsButtons'
+import Login from '../../components/Login/Login'
 import Spinner from '../../components/Spinner/Spinner'
 import { useAuthContext } from '../../context/AuthContext'
 import { useProductsContext } from '../../context/ProductsContext'
@@ -19,6 +20,15 @@ const ProductDetail = () => {
 		useProductsContext()
 	const { orderLoading, postOrder } = useUserContext()
 	const [productQuantity, setProductQuantity] = useState(1)
+	const [showModal, setShowModal] = useState(false)
+
+	const handleCloseModal = () => {
+		setShowModal(false)
+	}
+
+	const handleShowModal = () => {
+		setShowModal(true)
+	}
 
 	const removeProduct = () => {
 		setProductQuantity((prev) => {
@@ -84,7 +94,7 @@ const ProductDetail = () => {
 										</b>
 									</h3>
 								</div>
-								{user.id && user.role === 'user' ? (
+								{user.id ? (
 									<div className='info-actions d-flex justify-content-center gap-3 py-4'>
 										<h3>Cantidad :</h3>
 										<LuMinus
@@ -100,7 +110,7 @@ const ProductDetail = () => {
 								) : (
 									<></>
 								)}
-								{user.id && user.role === 'user' ? (
+								{user.id ? (
 									<Button
 										type='submit'
 										className='mb-2 w-50 mx-auto reactButton'
@@ -108,12 +118,15 @@ const ProductDetail = () => {
 										disabled={orderLoading}>
 										<CardsButtons cardText='Agregar Al Carrito' />
 									</Button>
-								) : user.role !== 'admin' ? (
-									<Link to={'/register'} className='mb-2 w-50 mx-auto'>
-										<CardsButtons cardText='Registrate' />
-									</Link>
 								) : (
-									<></>
+									<>
+										<NavLink
+											onClick={handleShowModal}
+											className='mb-2 w-50 mx-auto reactButton'>
+											<CardsButtons cardText='Inicia Sesion' />
+										</NavLink>
+										<Login show={showModal} handleClose={handleCloseModal} />
+									</>
 								)}
 							</Col>
 						</>

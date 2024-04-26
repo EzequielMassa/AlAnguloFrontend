@@ -2,16 +2,16 @@ import { useFormik } from 'formik'
 import { Button, Form, Image } from 'react-bootstrap'
 import * as Yup from 'yup'
 import { useAdminContext } from '../../context/AdminContext'
+import { useAuthContext } from '../../context/AuthContext'
 import './EditUserForm.css'
 
 const EditUserForm = ({ editUser, handleClose }) => {
+	const { user } = useAuthContext()
 	const { updateUser, getAllUsers } = useAdminContext()
 	const formik = useFormik({
 		initialValues: {
 			name: editUser.name,
 			lastname: editUser.lastname,
-			email: editUser.email,
-			phone: editUser.phone,
 			image: editUser.image,
 			rol: editUser.role.name,
 		},
@@ -24,19 +24,6 @@ const EditUserForm = ({ editUser, handleClose }) => {
 				.required('Completa este campo')
 				.min(3, 'Minimo 3 letras')
 				.max(150, 'Maximo 150 letras'),
-			email: Yup.string()
-				.email('Ingresa un email valido')
-				.required('Completa este campo')
-				.matches(
-					/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-					'Ingrese un email válido'
-				),
-			phone: Yup.string()
-				.required('Completa este campo')
-				.matches(
-					/^\+?\d{0,3}\s?\d{9}$/,
-					'Ingresa un numero de telefono valido'
-				),
 			image: Yup.string().matches(
 				/^.*\.(jpg|jpeg|png|gif|bmp)$/i,
 				'Ingresa una URL de imagen'
@@ -48,8 +35,6 @@ const EditUserForm = ({ editUser, handleClose }) => {
 				role: formData.rol,
 				name: formData.name,
 				lastname: formData.lastname,
-				email: formData.email,
-				phone: formData.phone,
 				image: formData.image,
 			}
 			updateUser(user)
@@ -68,7 +53,8 @@ const EditUserForm = ({ editUser, handleClose }) => {
 						aria-label='rol'
 						name='rol'
 						onChange={formik.handleChange}
-						value={formik.values.rol}>
+						value={formik.values.rol}
+						disabled={user.id === editUser._id}>
 						<option
 							value='admin'
 							className={formik.values.rol === 'admin' ? 'd-none' : ''}>
@@ -108,34 +94,6 @@ const EditUserForm = ({ editUser, handleClose }) => {
 					/>
 					<Form.Control.Feedback type='invalid'>
 						{formik.errors.lastname}
-					</Form.Control.Feedback>
-				</Form.Group>
-				<Form.Group className='mb-2'>
-					<Form.Label className='mb-0'>Email</Form.Label>
-					<Form.Control
-						type='email'
-						value={formik.values.email}
-						onChange={formik.handleChange}
-						isInvalid={formik.errors.email && formik.touched.email}
-						name='email'
-						placeholder='Email'
-					/>
-					<Form.Control.Feedback type='invalid'>
-						{formik.errors.email}
-					</Form.Control.Feedback>
-				</Form.Group>
-				<Form.Group className='mb-2'>
-					<Form.Label className='mb-0'>Teléfono</Form.Label>
-					<Form.Control
-						type='phone'
-						value={formik.values.phone}
-						onChange={formik.handleChange}
-						isInvalid={formik.errors.phone && formik.touched.phone}
-						name='phone'
-						placeholder='Teléfono'
-					/>
-					<Form.Control.Feedback type='invalid'>
-						{formik.errors.phone}
 					</Form.Control.Feedback>
 				</Form.Group>
 				<Form.Group className='mb-2'>

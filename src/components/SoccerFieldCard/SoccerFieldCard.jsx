@@ -3,18 +3,28 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import { GiBabyfootPlayers, GiGrass } from 'react-icons/gi'
 import { TbClockHour1 } from 'react-icons/tb'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '../../context/AuthContext.jsx'
 import { useSoccerFieldsContext } from '../../context/SoccerFieldsContext.jsx'
 import { capitalizeWord } from '../../helpers/capitalizeWord.js'
 import BookingModal from '../BookingModal/BookingModal.jsx'
 import CardsButtons from '../GeneralButtons/CardsButtons.jsx'
+import Login from '../Login/Login.jsx'
 import './SoccerFieldCard.css'
 function SoccerFieldCard({ soccerField }) {
 	const { user } = useAuthContext()
 	const [modalShow, setModalShow] = useState(false)
 	const { setSelectedSoccerField } = useSoccerFieldsContext()
 	const { _id, name, description, imgUrl, size, grass, price } = soccerField
+	const [showModal, setShowModal] = useState(false)
+
+	const handleCloseModal = () => {
+		setShowModal(false)
+	}
+
+	const handleShowModal = () => {
+		setShowModal(true)
+	}
 	const handleBookingModalClick = (soccerfield) => {
 		setSelectedSoccerField(soccerfield)
 		setModalShow(true)
@@ -50,7 +60,7 @@ function SoccerFieldCard({ soccerField }) {
 								currency: 'ARS',
 							})}
 						</Card.Text>
-						{user.id && user.role === 'user' ? (
+						{user.id ? (
 							<Button
 								className='my-2 reactButton'
 								id={_id}
@@ -58,9 +68,12 @@ function SoccerFieldCard({ soccerField }) {
 								<CardsButtons cardText='Reservar' />
 							</Button>
 						) : user.role !== 'admin' ? (
-							<Link to={'/register'} className='my-2 reactButton'>
-								<CardsButtons cardText='Registrate' />
-							</Link>
+							<>
+								<NavLink onClick={handleShowModal} className='my-2 reactButton'>
+									<CardsButtons cardText='Inicia Sesion' />
+								</NavLink>
+								<Login show={showModal} handleClose={handleCloseModal} />
+							</>
 						) : (
 							<></>
 						)}

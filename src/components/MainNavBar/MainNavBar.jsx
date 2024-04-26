@@ -25,7 +25,6 @@ export const MainNavBar = () => {
 
 	const [showModal, setShowModal] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
-	const [showSearch, setShowSearch] = useState(false)
 	const navigate = useNavigate()
 	const handleCloseModal = () => {
 		setShowModal(false)
@@ -135,24 +134,19 @@ export const MainNavBar = () => {
 								<b className='logoName'>AlAngulo</b>
 							</NavLink>
 							<div className='noti'>
-								{user.role === 'admin' ? (
-									<></>
-								) : (
-									<IconContext.Provider
-										value={{ className: 'global-class-name Nav-Icon' }}>
-										<span className='cart' onClick={handleCartToggle}>
-											<AiOutlineShoppingCart />
-											{!userCart || Object.keys(userCart).length === 0 ? (
-												<></>
-											) : (
-												<b className='store'>
-													{userCart.orders.length + userCart.bookings.length}
-												</b>
-											)}
-										</span>
-									</IconContext.Provider>
-								)}
-
+								<IconContext.Provider
+									value={{ className: 'global-class-name Nav-Icon' }}>
+									<span className='cart' onClick={handleCartToggle}>
+										<AiOutlineShoppingCart />
+										{!userCart || Object.keys(userCart).length === 0 ? (
+											<></>
+										) : (
+											<b className='store'>
+												{userCart.orders.length + userCart.bookings.length}
+											</b>
+										)}
+									</span>
+								</IconContext.Provider>
 								<IconContext.Provider
 									value={{ className: 'global-class-name Nav-Icon' }}>
 									<span>
@@ -244,10 +238,10 @@ export const MainNavBar = () => {
 							</NavLink>
 						) : (
 							<NavLink
-								to={'/register'}
+								onClick={handleShowModal}
 								className={'d-grid text-decoration-none'}>
 								<Button variant='success' size='md' className='cart-button'>
-									Registrate
+									Inicia Sesion
 								</Button>
 							</NavLink>
 						)}
