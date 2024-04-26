@@ -68,7 +68,7 @@ export const Home = () => {
 						{soccerFieldsQueryLoading ? (
 							<Spinner />
 						) : (size || grass) && soccerFieldsQuery.length < 1 ? (
-							<h3> No disponemos de esas canchas </h3>
+							<h3 className='text-center'> No contamos con esas canchas </h3>
 						) : soccerFieldsQuery ? (
 							soccerFieldsQuery.map((result) => (
 								<SoccerFieldCard key={result._id} soccerField={result} />
