@@ -15,7 +15,6 @@ import Login from '../Login/Login'
 import './MainNavBar.css'
 export const MainNavBar = () => {
 	const { user, setLoguedUser } = useAuthContext()
-
 	const { userCart, getUserCart, setUserCart } = useUserContext()
 
 	useEffect(() => {
@@ -26,7 +25,6 @@ export const MainNavBar = () => {
 
 	const [showModal, setShowModal] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
-	const [showSearch, setShowSearch] = useState(false)
 	const navigate = useNavigate()
 	const handleCloseModal = () => {
 		setShowModal(false)
@@ -240,10 +238,10 @@ export const MainNavBar = () => {
 							</NavLink>
 						) : (
 							<NavLink
-								to={'/register'}
+								onClick={handleShowModal}
 								className={'d-grid text-decoration-none'}>
 								<Button variant='success' size='md' className='cart-button'>
-									Registrate
+									Inicia Sesion
 								</Button>
 							</NavLink>
 						)}
