@@ -31,7 +31,7 @@ AlAngulo es una plataforma en línea que facilita la reserva de canchas de fútb
 
 + **Búsqueda de canchas**: Los usuarios pueden buscar canchas de fútbol por ubicación, fecha y hora para encontrar la opción más adecuada para sus necesidades.
 + **Reservas en línea**: Los usuarios registrados pueden reservar canchas de fútbol de manera fácil y rápida a través de la plataforma.
-+ **Gestión de reservas**: Los usuarios pueden ver y administrar sus reservas existentes, incluida la posibilidad de cancelar o modificar reservas según sea necesario.
++ **Gestión de reservas**: Los usuarios pueden ver sus reservas existentes, y tienen la posibilidad de cancelar reservas según sea necesario.
 + **Información detallada de la cancha**: Los usuarios pueden ver información detallada sobre cada cancha, incluidas las instalaciones, los horarios de disponibilidad y los precios.
 
 ## Tecnologías utilizadas
