@@ -5,6 +5,7 @@
   font-weight: 500;
   color: var(--primary-font-color);
   background: var(--primary-color);
+  height: 100vh;
 }
 
 
@@ -15,14 +16,13 @@
   
 }
 
-.home404{
-height: 100vh;
-}
+
 
 .home__container {
   display: grid;
   align-content: center;
   row-gap: 2.5rem;
+  background: var(--primary-color);
 }
 
 .home__data {
@@ -58,6 +58,7 @@ height: 100vh;
 
 .home__img {
   justify-self: center;
+  background: var(--primary-color);
 }
 .number404{
   font-family: 'Montserrat', sans-serif;
