@@ -20,14 +20,15 @@ const EditSoccerfieldForm = ({ editSoccerfield, handleClose }) => {
 			name: Yup.string('Ingresa un nombre valido')
 				.required('Completa este campo')
 				.min(3, 'Minimo 3 letras')
-				.max(100, 'Maximo 100 letras'),
+				.max(50, 'Maximo 50 letras'),
 			description: Yup.string('Ingrese una descripcion valida')
 				.required('Completa este campo')
 				.min(10, 'Minimo 10 letras')
-				.max(500, 'Maximo 500 letras'),
+				.max(50, 'Maximo 50 letras'),
 			price: Yup.number('Ingrese solo valores numericos')
 				.required('Completa este campo')
-				.min(1, 'El precio minimo es de 1'),
+				.min(1, 'El precio minimo es de 1')
+				.max(999999999, 'El precio maximo es de 999999999'),
 			imgUrl: Yup.string().matches(
 				/^.*\.(jpg|jpeg|png|gif|bmp)$/i,
 				'Ingresa una url de imagen valida'
@@ -65,7 +66,8 @@ const EditSoccerfieldForm = ({ editSoccerfield, handleClose }) => {
 				<Form.Group className='mb-2'>
 					<Form.Label className='mb-0'>Descripción</Form.Label>
 					<Form.Control
-						type='text'
+						as='textarea'
+						rows={3}
 						value={formik.values.description}
 						onChange={formik.handleChange}
 						name='description'

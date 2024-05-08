@@ -67,3 +67,6 @@
   background: var(--primary-color);
   color: white;
 }
+.img-column {
+  align-content: center;
+}
