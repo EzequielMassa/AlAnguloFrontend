@@ -76,7 +76,7 @@ const ProductDetail = () => {
 					) : (
 						<>
 							<Col xs={12} md={4} className='img-column'>
-								<img src={product.image} className='w-100 h-100 img-product' />
+								<img src={product.image} className='w-100 img-product' />
 							</Col>
 							<Col
 								xs={12}
