@@ -113,7 +113,7 @@ function BookingModal(props) {
 					Reservar
 				</Modal.Title>
 			</Modal.Header>
-			<Modal.Body>
+			<Modal.Body className='overflow-x-auto'>
 				{soccerFieldAvailableHoursLoading || bookingLoading ? (
 					<Spinner />
 				) : (
@@ -176,7 +176,9 @@ function BookingModal(props) {
 									alt='imagen cancha'
 									className='booking_modal_img rounded rounded-2 mt-3 '
 								/>
-								<h5 className='pt-1 text-center'>{selectedSoccerField.name}</h5>
+								<h5 className='pt-1 text-center fs-6'>
+									{selectedSoccerField.name}
+								</h5>
 								<div className='d-flex align-items-center justify-content-center gap-3'>
 									<FaClock />
 									<span>1 hora</span>
