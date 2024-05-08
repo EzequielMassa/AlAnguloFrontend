@@ -14,10 +14,9 @@
   display: grid;
   
 }
-@media (min-width : 768px){
-  .home404{
-  height: 100vh;
-  }
+
+.home404{
+height: 100vh;
 }
 
 .home__container {
