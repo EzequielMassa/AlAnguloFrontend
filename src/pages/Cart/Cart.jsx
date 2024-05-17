@@ -135,7 +135,7 @@ export const Cart = () => {
 														<div className='separador d-none d-md-block'></div>
 														<div className=''>
 															<Card.Body className='card-body d-flex flex-column align-items-center'>
-																<Card.Title>{order.product.name}</Card.Title>
+																<Card.Title className='name-booking'>{order.product.name}</Card.Title>
 																<Card.Text className='icons-style-text'>
 																	Cantidad
 																</Card.Text>
@@ -186,8 +186,8 @@ export const Cart = () => {
 														</div>
 														<div className='separador d-none d-md-block'></div>
 														<div>
-															<Card.Body className='card-body d-flex flex-column align-items-center'>
-																<Card.Title>
+															<Card.Body className='card-body d-flex flex-column align-items-center '>
+																<Card.Title className="card-title text-center overflow-hidden" >
 																	{booking.soccerField.name}
 																</Card.Title>
 																<Card.Text className='d-flex flex-column justify-content-center align-items-center  text-center'>
@@ -202,7 +202,7 @@ export const Cart = () => {
 																</Card.Text>
 																<Button
 																	variant='outline-danger'
-																	className='position-absolute end-0 bottom-0 '
+																	className='delete-button position-absolute end-0 bottom-0 '
 																	onClick={() => handleDeleteBooking(booking)}>
 																	<GoTrash />
 																</Button>
