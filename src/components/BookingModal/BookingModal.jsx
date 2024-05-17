@@ -101,7 +101,7 @@ function BookingModal(props) {
 		<Modal
 			{...props}
 			size='lg'
-			fullscreen='sm-down'
+			fullscreen='md-down'
 			aria-labelledby='contained-modal-title-vcenter'
 			backdrop='static'
 			keyboard={false}
@@ -121,7 +121,7 @@ function BookingModal(props) {
 						<Row className='d-flex flex-column flex-md-row justify-content-center  '>
 							<Col
 								xs={12}
-								md={7}
+								md={6}
 								className='d-flex flex-column align-items-center '>
 								<h4 className=' d-flex justify-content-center align-items-center gap-2'>
 									<FaRegCalendarAlt className='booking_modal_time_icon' />
@@ -142,7 +142,7 @@ function BookingModal(props) {
 							</Col>
 							<Col
 								xs={12}
-								md={5}
+								md={6}
 								className='d-flex flex-column  align-items-center my-2 my-md-0 '>
 								<h4 className='d-flex justify-content-center align-items-center gap-2'>
 									<LuAlarmClock className='booking_modal_time_icon' />
@@ -176,7 +176,7 @@ function BookingModal(props) {
 									alt='imagen cancha'
 									className='booking_modal_img rounded rounded-2 mt-3 '
 								/>
-								<h5 className='pt-1 text-center fs-6'>
+								<h5 className='pt-1 text-center fs-6 ps-2'>
 									{selectedSoccerField.name}
 								</h5>
 								<div className='d-flex align-items-center justify-content-center gap-3'>
